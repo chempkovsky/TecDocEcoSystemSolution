@@ -1,0 +1,128 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.EnterpriseTDES>
+
+@{
+    ViewBag.Title = Resources.EnterpriseTDES_INDEX;
+}
+
+
+
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterprisesHelp1 <br> @Resources.EnterprisesHelp2 <br> @Resources.EnterprisesHelp3 <br>
+        @HttpUtility.HtmlDecode("<connectionStrings>")<br>
+        @HttpUtility.HtmlDecode("  <add name=\"DefaultConnection\" connectionString=\"Data Source=...\" />")<br>
+        @HttpUtility.HtmlDecode("  <add name=\"CarShopArticleContext\" connectionString=\"Data Source=...\" />")<br>
+        @HttpUtility.HtmlDecode("  ...")<br>
+        @HttpUtility.HtmlDecode("</connectionStrings>")<br>
+        @Resources.EnterprisesHelp4 <br> <b> @Resources.EnterprisesHelp5 </b> <br> @Resources.EnterprisesHelp6
+    </div>
+</div>
+
+    <h2>@Resources.EnterpriseTDES_INDEX</h2>
+
+    @if (ViewBag.IsEcoSystemAdmin)
+    {
+        <p>
+            @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues:null, htmlAttributes:new { @class = "btn btn-primary" })
+        </p>
+    }
+
+    @using (Html.BeginForm("Index", "Enterprises", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+    {
+        <h3>@Resources.FILTER_TITLE</h3>
+        <div class="form-group">
+            @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control",  data_autocomplete_url = Url.Action("Autocomplete") }) 
+        </div>
+        <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+    }
+
+
+    @{var dummy = Model.FirstOrDefault(); }
+
+
+
+    <table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntGuid)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntDescription)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => dummy.ArticleCatalog)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => dummy.TecDocSrcTypeId)
+        </th>
+
+        <th class="hidden-xs"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntGuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntDescription)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.ArticleCatalog)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.EnterpriseTecDocSrcTypeTDES.TecDocSrcTypeDescr)
+            </td>
+            <td class="hidden-xs btn-group btn-group-xs">
+                @*<div class="btn-group btn-group-xs">*@
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.EntGuid }, new { @class = "btn btn-primary" })
+                }
+
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.EntGuid }, new { @class = "btn btn-info" })
+
+                @if (ViewBag.IsEcoSystemAdmin)
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.EntGuid }, new { @class = "btn btn-danger" })
+                }
+                @*</div>*@
+            </td>
+        </tr>
+        <tr class="visible-xs active">
+            <td colspan="3" class="btn-group btn-group-xs">
+
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.EntGuid }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.EntGuid }, new { @class = "btn btn-info" })
+                @if (ViewBag.IsEcoSystemAdmin)
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.EntGuid }, new { @class = "btn btn-danger" })
+                }
+
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/autocomplete")
+    }

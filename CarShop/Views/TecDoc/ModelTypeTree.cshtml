@@ -1,0 +1,75 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPESTREE_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREE_INDEX;
+    int CountryId = ViewBag.CountryId;
+    int LangId = ViewBag.LangId;
+    int BandId = ViewBag.BandId;
+    int ModelId = ViewBag.ModelId;
+    int ModelTypeId = ViewBag.ModelTypeId;
+
+}
+
+<h2>@Resources.CARMODELTYPETREE_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.TecDocModel_INDEX, "Index", "TecDoc", new { countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId }, new { })</li>
+    @if (!String.IsNullOrEmpty(ViewBag.ModelDescription))
+    {
+        <li>@Html.ActionLink(ViewBag.ModelDescription as string, "ModelType", "TecDoc", new { modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId }, new { })</li>
+    }
+</ol>
+
+@if (!String.IsNullOrEmpty(ViewBag.ModelDescription))
+{
+
+
+<div class="css-treeview-container">    
+<div class="css-treeview">
+    <ul>
+      @foreach (var item in Model)
+      {
+         if (item.Subitems == null)
+         {
+             
+             <li>
+             @Html.ActionLink(@Html.DisplayFor(modelItem => item.TEX_TEXT).ToString(), "ModelTypeTreeItems", 
+             new {topicId = item.STR_ID, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId}, 
+             new { } )
+            </li>
+         } else {
+             <li>
+                 @if (item.isOpen) { 
+                     <input type="checkbox" id="item-@item.STR_ID.ToString()" checked="checked" /> 
+                 }
+                 else { 
+                     <input type="checkbox" id="item-@item.STR_ID.ToString()" /> 
+                 }
+                 <label for="item-@item.STR_ID.ToString()">@Html.DisplayFor(modelItem => item.TEX_TEXT)</label>
+                 <ul>
+                     @*<li>
+        @Html.DisplayFor(modelItem => item.TEX_TEXT)
+    @Html.ActionLink(@Html.DisplayFor(modelItem => item.TEX_TEXT).ToString(), "ModelTypeTreeItems",
+    new {topicId = item.STR_ID, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId},
+    new { } )*@
+
+                     @foreach (var subItm in item.Subitems)
+                     {
+                         @Html.Partial("TrVwItemView", subItm)
+                     }
+                 </ul>
+             </li>
+         }
+      }    
+    </ul>
+</div>
+</div>
+    
+    
+    
+@section Scripts {
+    <link href="~/Content/TreeVievCntnt/TreeView.css" rel="stylesheet" />
+}
+    
+}    

@@ -1,0 +1,42 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.OriginalCatalogTDES>
+
+@{
+    ViewBag.Title = Resources.SearchOriginal;
+}
+
+<h2>@Resources.SearchOriginal</h2>
+
+<ul class="nav nav-pills nav-justified">
+    <li>@Html.ActionLink(Resources.InStock, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.UnderTheOrder, "IndexUTO", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li class="active">@Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })</li>
+</ul>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OriginalCatalogName)
+        </th>
+        @*<th class="hidden-xs hidden-sm">
+                @Html.DisplayNameFor(model => model.OriginalCatalogURI)
+            </th>*@
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.OriginalCatalogName)*@
+                <a href="@item.OriginalCatalogURI">@Html.DisplayFor(modelItem => item.OriginalCatalogName)</a>
+            </td>
+            @*<td class="hidden-xs hidden-sm">
+                    @Html.DisplayFor(modelItem => item.OriginalCatalogURI)
+                </td>*@
+        </tr>
+    }
+</table>

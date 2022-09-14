@@ -1,0 +1,55 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODEL_TD>
+
+@{
+    ViewBag.Title = Resources.TecDocModel_INDEX;
+    SelectList sliLANGUAGES = ViewBag.sliLANGUAGES as SelectList;
+    SelectList sliCOUNTRIES = ViewBag.sliCOUNTRIES as SelectList;
+    SelectList sliBRANDS = ViewBag.sliBRANDS as SelectList;
+    SelectList sliFUELS = ViewBag.sliFUELS as SelectList;
+}
+
+<h2>@Resources.TecDocModel_INDEX</h2>
+
+@using (Html.BeginForm("Index", "TecDoc", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Resources.LANGUAGES_INDEX
+    @Html.DropDownList("langId", sliLANGUAGES)
+    @Resources.COUNTRIES_INDEX
+    @Html.DropDownList("countryId", sliCOUNTRIES)
+    <p>
+        @Html.DropDownList("fluelId", sliFUELS)
+        @Resources.BRANDS_INDEX
+        @Html.DropDownList("BandId", sliBRANDS)
+        <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+    </p>
+}
+
+
+<table class="table  table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MOD_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TEX_TEXT)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MOD_ID)
+            </td>
+            <td class="btn-group btn-group-xs">
+                @Html.ActionLink(
+              Html.DisplayFor(modelItem => item.TEX_TEXT).ToHtmlString(),
+             "ModelType", new { modelId = item.MOD_ID, CountryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
+
+</table>

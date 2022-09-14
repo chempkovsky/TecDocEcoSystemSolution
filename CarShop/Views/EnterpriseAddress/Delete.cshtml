@@ -1,0 +1,206 @@
+﻿@model TecDocEcoSystemDbClassLibrary.EnterpriseAddressTDES
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+}
+
+<h2>@Resources.DELETE_ACTION <small>@Resources.Address_INDEX</small></h2>
+
+@if (!SearchEntGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    </ol>
+    @Html.ValidationSummary(true)
+} else {
+
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>EnterpriseAddressTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", new { searchEntGuid = SearchEntGuid }, new { })</li>
+        }
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressType.AddressTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryIso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryIso)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettlementTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettlementType.SettlementTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soato.SoatoSettlementName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soato.SoatoSettlementName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetType.StreetTypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetType.StreetTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressRegion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressRegion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressDistrict)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressDistrict)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressRural)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressRural)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressSettlementName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressSettlementName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressStreetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressStreetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressHouse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressHouse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressBuilding)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressBuilding)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressOffice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressOffice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressPostCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressPostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressValidFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressValidFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressValidTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressValidTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVisible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVisible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLongitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLongitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLatitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLatitude)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid }, new { })
+        </div>
+    }
+</div>
+
+}

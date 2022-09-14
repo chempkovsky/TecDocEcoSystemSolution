@@ -1,0 +1,103 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseSupplierContactTDES
+
+@{
+    ViewBag.Title = Resources.MYCONTACTS;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    String SearchEntSupplierId = ViewBag.SearchEntSupplierId as String;
+    String EntSupplierDescription = ViewBag.EntSupplierDescription as String;
+}
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+@if (String.IsNullOrEmpty(SearchEntSupplierId))
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if ( SearchEntGuid.HasValue )
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+            if (!String.IsNullOrEmpty(SearchEntSupplierId))
+            {
+                <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.MYCONTACTS, "Index", new {searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId })</li>
+            }
+        }
+    </ol>
+    @Html.ValidationSummary(true)
+} else {
+
+
+<div>
+    @*<h4>EnterpriseSupplierContactTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+            if (!String.IsNullOrEmpty(SearchEntSupplierId))
+            {
+                <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.MYCONTACTS, "Index", new {searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId })</li>
+            }
+        }
+    </ol>
+
+
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVisible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVisible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactType.ContactTypeDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id=Model.ContactGuid }, new { @class = "btn btn-info" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new {searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId })
+</p>
+
+}    

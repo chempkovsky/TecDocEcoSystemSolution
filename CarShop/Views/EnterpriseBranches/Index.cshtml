@@ -1,0 +1,240 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.EnterpriseBranchTDES>
+
+@{
+    ViewBag.Title = Resources.Branch_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    // SelectList ContactTypes = ViewBag.sliBranchType as SelectList;
+    SelectList sliIsActive = ViewBag.sliIsActive as SelectList;
+    SelectList sliIsVisible = ViewBag.sliIsVisible as SelectList;
+    SelectList sliBranchType = ViewBag.sliBranchType as SelectList;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Подразделение (или магазин) является основной структурной единицей,
+        к которой привязывают ведомости прихода товара и история продаж (кем, когда, как(нал.безнал.), во сколько и за сколько).
+        Реализация категории подразделения удобна для предприятий (или торговых сетей) с территориально разделенными филиалами.
+        В рамках подразделения заводятся рабочие места - аналог кассового аппарата.
+        Категории рабочего места является крайне необходимым, когда на площадке подразделения установлено несколько кассовых аппаратов
+        или развернуто более одного отдела (к примеру отдел автокосметики и отдел запчастей).
+        За подразделением закрепляется штат подразделения со следующим набором ролей:
+        <b>администратор подразделения, аудитор подразделения, бухгалтер (или старший продавец) и продавец</b>.<p />
+
+        Реализация решения такова, что каждое подразделение может хранить свои <br />
+        <b>ПРИХОД</b> или в отдельной базе данных или на выделенном экземпляре SQL сервера.<br />
+        <b>РАСХОД</b> или в отдельной базе данных или на выделенном экземпляре SQL сервера. <br />
+        <b>ОСТАТКИ</b> товара или в отдельной базе данных или на выделенном экземпляре SQL сервера.<br />
+        <b>СТОЛ ЗАКАЗОВ</b> или в отдельной базе данных или на выделенном экземпляре SQL сервера. <br />
+        <b>АРТИКУЛЫ</b> или в отдельной базе данных или на выделенном экземпляре SQL сервера. <br />
+        Если это покажется крайне неудобным вы можете разместить и артикулы (описание товаров) и приход и расход и остатки в одной и той же БД
+        или даже в одной и той же БД с другими подразделениями и предприятиями. Но мы не рекомендуем это делать. <br />
+        Это нормальная практика <b>сбрасывать в архив данные</b>, которые потеряли актуальность. При модульной обработке (каждый ресурс в независимой БД) это делается самым безболезненным способом.
+        Действительно, БД остатков практически не растет (она будет увеличиваться, но незначительно). БД прихода будет расти значительно быстрее. И очень быстро будет расти БД расходных операций.
+        Если вы используете промышленную версию SQL сервера, то проблема откусывания неактуальным данных и переноса их в рахив решается средствами partition-table на раз-два.
+        Второй вариант -- это использование абсолютно бесплатной версии SQL сервера (SQL-Express). В этой версии нет реализации partition-table.
+        С другой стороны есть ограничение на размер БД -- он не может превышать 10 гигабайт. Тут и понадобится архитектура, при которой каждый ресурс в своей БД.
+        В этом случае вместо 10 гигабайт вы получаете 60 гигабайт (10ГБ на приход + 10ГБ на расход +  10ГБ на остатки +  10ГБ на артикулы + 10ГБ на стол заказов + 10ГБ на инфраструктуру).
+        Этого хватит на очень долго. Далее по мере заполнения баз данных. Вы можете создать пустую и переключить подразделение на использование этой пустой базы данных.
+    </div>
+</div>
+
+
+
+<h2>@Resources.Branch_INDEX</h2>
+
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if ( SearchEntGuid.HasValue )
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+    }
+</ol>
+
+
+@if (!SearchEntGuid.HasValue)
+{
+    @Html.ValidationSummary(true)
+}
+else { 
+
+if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {    
+<p>
+    @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues:  new { searchEntGuid = SearchEntGuid }, htmlAttributes:new { @class = "btn btn-primary" })
+</p>
+}    
+
+using (Html.BeginForm("Index", "EnterpriseBranches", FormMethod.Get, new { @class = "form-inline", role = "form"  }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    <div class="form-group">
+                @Resources.FILTER_ISACTIVE     
+    </div>
+    <div class="form-group">
+                @Html.DropDownList("showIsActive", sliIsActive, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+                @Resources.FILTER_ISVISIBLE
+    </div>
+    <div class="form-group">
+                @Html.DropDownList("showIsVisible", sliIsVisible, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+                @Resources.FILTER_BRANCHTYPE
+    </div>
+    <div class="form-group">
+                @Html.DropDownList("showBranchTypeId", sliBranchType, String.Empty, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EntBranchGuid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntBranchDescription)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsVisible)
+        </th>
+        <td class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.BranchTypeId)
+        </td>
+
+        <th class="hidden-xs  hidden-sm"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EntBranchGuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntBranchDescription)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsVisible)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.BranchType.BranchTypeDescription)
+            </td>
+
+
+
+            <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.EntBranchGuid }, new { @class = "btn btn-primary" })
+                }
+
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.EntBranchGuid }, new { @class = "btn btn-info" })
+
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.EntBranchGuid }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+
+
+
+    <tr class="warning">
+        <td colspan="2">
+            <dl class="dl-horizontal">
+
+                <dt class="visible-xs visible-sm">
+                    @Html.DisplayNameFor(model => model.BranchTypeId)
+                </dt>
+                <dd class="visible-xs visible-sm">
+                    @Html.DisplayFor(modelItem => item.BranchType.BranchTypeDescription)
+                </dd>
+
+
+                <dt class ="visible-xs visible-sm">
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd class ="visible-xs visible-sm">
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </dd>
+
+                <dt class="visible-xs visible-sm">
+                    @Html.DisplayNameFor(model => model.IsVisible)
+                </dt>
+
+                <dd class="visible-xs visible-sm">
+                    @Html.DisplayFor(modelItem => item.IsVisible)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TecDocCatalog)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.TecDocCatalog)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SalesCatalog)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.SalesCatalog)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IncomeCatalog)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.IncomeCatalog)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderCatalog)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.OrderCatalog)
+                </dd>
+
+            </dl>
+
+        </td>
+    </tr>
+
+    <tr class="visible-xs visible-sm active">
+        <td colspan="2" class="btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.EntBranchGuid }, new { @class = "btn btn-primary" })
+            }
+
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.EntBranchGuid }, new { @class = "btn btn-info" })
+
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.EntBranchGuid }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+    }
+</table>
+    
+}

@@ -1,0 +1,159 @@
+﻿@using CarShop.Properties;
+@using PagedList.Mvc;
+@using TecDocEcoSystemDbClassLibrary;
+@using Newtonsoft.Json;
+
+@model PagedList.IPagedList<EnterpriseArticleTDES>
+
+@{
+    ViewBag.Title = Resources.EnterpriseArticle_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy;
+
+    String RedirecData = ViewBag.RedirecData;
+    String RedirectContriller = ViewBag.RedirectContriller;
+    String RedirectAction = ViewBag.RedirectAction;
+
+}
+
+<h2>@Resources.EnterpriseArticle_INDEX</h2>
+
+@Html.ValidationSummary(true)
+
+@if (SearchEntGuid.HasValue)
+{
+
+    
+using (Html.BeginForm("LookUpArticleByID", "EnterpriseArticle", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("redirecData",  RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+    <div class="form-group">
+                @Html.DropDownList("searchStringBy", sliSearchStringBy, new
+                {
+                        @class = "form-control",
+                        data_autocomplete_selector = "data-autocomplete-url", 
+                        sel1 = Url.Action("Autocomplete", new { currentFilterBy="1", searchEntGuid = SearchEntGuid }), 
+                        sel2 = Url.Action("Autocomplete", new { currentFilterBy="2", searchEntGuid = SearchEntGuid }), 
+                        sel3 = Url.Action("Autocomplete", new { currentFilterBy="3", searchEntGuid = SearchEntGuid }), 
+                        sel4 = Url.Action("Autocomplete", new { currentFilterBy="4", searchEntGuid = SearchEntGuid }), 
+                        sel5 = Url.Action("Autocomplete", new { currentFilterBy="5", searchEntGuid = SearchEntGuid }) 
+                })
+    </div>
+    <div class="form-group">
+                @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new {
+                        @class = "form-control", 
+                        data_autocomplete_url = Url.Action("AutocompleteForLookUp", "EnterpriseArticle", new { currentFilterBy=ViewBag.currentFilterBy, searchEntGuid = SearchEntGuid }) })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+using (Html.BeginForm("LookUpArticleByIDSelected", "EnterpriseArticle", FormMethod.Post))
+{
+
+    @Html.Hidden("redirecData",  RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+
+    if ((Model != null) && (Model.Count > 0))
+    {
+
+        <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+    }
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+
+    <input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+    
+    
+    var dummy = Model.FirstOrDefault();
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntArticle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntBrandNic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.ExternArticleEAN)
+        </th>
+    </tr>
+
+@{
+    var selected = true;
+//    System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+}
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.RadioButton("SimpleArticle", JsonConvert.SerializeObject(new EnterpriseArticleTmp() { EntArticle = item.EntArticle, EntBrandNic = item.EntBrandNic, EntGuid = item.EntGuid, EntArticleDescriptionId = item.EntArticleDescriptionId, EntArticleDescription = item.EnterpriseArticleDescriptionTDES.EntArticleDescription, ExternArticle = item.ExternArticle, ExternBrandNic = item.ExternBrandNic, ExternArticleEAN = item.ExternArticleEAN }), selected, selected)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntArticle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntBrandNic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternArticleEAN)
+        </td>
+    </tr>
+    
+    <tr class="warning">
+        <td colspan="3">
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(model => dummy.EntArticleDescriptionId)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.EnterpriseArticleDescriptionTDES.EntArticleDescription)</dd>
+
+
+                <dt>@Html.DisplayNameFor(model => dummy.ExternArticle)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.ExternArticle)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.ExternBrandNic)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.ExternBrandNic)</dd>
+            </dl>
+        </td>
+    </tr>
+    
+    
+    selected = false;
+}
+
+</table>
+
+<p/>
+    if ((Model != null) && (Model.Count > 0))
+    {
+        <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+    }
+    else
+    {
+    <h4>@Resources.NO_ANY_DATA</h4>
+    }
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+    
+    <input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+<p/>
+
+}    
+       
+@Html.PagedListPager( Model, page => Url.Action("LookUpArticleByID", new { redirecData=RedirecData, redirectContriller=RedirectContriller, redirectAction=RedirectAction,  searchEntGuid=SearchEntGuid, currentFilter=ViewBag.CurrentFilter, currentFilterBy=ViewBag.currentFilterBy, page=page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+    
+@section Scripts {
+    @Scripts.Render("~/bundles/autocompleteEx")
+}
+    
+        
+}        

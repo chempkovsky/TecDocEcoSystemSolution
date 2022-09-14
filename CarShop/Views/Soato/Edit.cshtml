@@ -1,0 +1,63 @@
+﻿@model TecDocEcoSystemDbClassLibrary.Soato
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+}
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>Soato</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.Soato_INDEX, "Index")</li>
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoatoId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.SoatoId)*@
+                @Html.TextBoxFor(model => model.SoatoId, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.SoatoId)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoatoSettlementName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SoatoSettlementName)
+                @Html.ValidationMessageFor(model => model.SoatoSettlementName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SettlementTypeId, "SettlementTypeId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SettlementTypeId", String.Empty)
+                @Html.ValidationMessageFor(model => model.SettlementTypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index") 
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

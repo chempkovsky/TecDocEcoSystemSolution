@@ -1,0 +1,127 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+
+.tt-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+.tt-suggestion > p {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+}
+.tt-suggestion > p:hover,
+.tt-suggestion > p:focus {
+  color: #ffffff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #428bca;
+}
+
+
+/*.form-inline {
+    background: linear-gradient(to top, gold, yellow);
+    background: #d9edf7;
+    padding: 0px 0px 5px 10px;
+    padding-bottom: 30px;
+    padding-left: 70px;
+    border-radius:10px;
+    margin:0px 10px 5px 0px;
+    margin-bottom: 15px;
+}*/
+
+
+/*.table {
+    background: linear-gradient(to top, gold, yellow);
+    padding: 0px 0px 0px 10px;
+    border-radius:15px;
+    margin:0px 10px 0px 0px;
+}*/
+
+.form-inline {
+    /*background: #d9edf7;*/
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+    border-radius: 0.5em;
+    margin-bottom: 0.5em;
+    border-style:solid;
+    border-color:#d9edf7;
+    border-width:2px;
+}
+.tt-dropdown-menu {
+    max-height: 300px; 
+    overflow-y: auto;
+}
+
+
+/*.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}*/

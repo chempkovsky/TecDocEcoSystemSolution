@@ -1,0 +1,199 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.RevaluationArticleTDES>
+
+@{
+    ViewBag.Title = Resources.RevaluationArticleTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+
+    Guid? searchSheetRevaluationTDESGuid = ViewBag.searchSheetRevaluationTDESGuid;
+    String searchSheetRevaluationDescr = ViewBag.searchSheetRevaluationDescr;
+
+    TecDocEcoSystemDbClassLibrary.SheetRevaluationTDES sheetrevaluationtdes = ViewBag.searchSheetRevaluation;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Управление ведомостями переоценки", "SheetRevaluation", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.RevaluationArticleTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid}, new { })</li>  
+            if (searchSheetRevaluationTDESGuid.HasValue)
+            {
+                <li>@Html.ActionLink(searchSheetRevaluationDescr, "Details", "SheetRevaluation", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = searchSheetRevaluationTDESGuid }, new {  })</li>  
+            }
+        }
+    }
+</ol>
+
+
+@if (  searchSheetRevaluationTDESGuid.HasValue )
+{
+
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", "RevaluationArticle", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchSheetRevaluationTDESGuid = searchSheetRevaluationTDESGuid }, new { @class = "btn btn-primary" })
+        @if (sheetrevaluationtdes != null)
+        {
+            @Html.ActionLink(Resources.DoMakeSheetRevaluation_INDEX, "DoMakeSheetRevaluation", "SheetRevaluation", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, Id = sheetrevaluationtdes.SheetRevaluationTDESGuid }, new { @class = "btn btn-primary" })
+            @Html.ActionLink(Resources.ReverseIncome_INDEX, "ReverseSheetRevaluation", "SheetRevaluation", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, Id = sheetrevaluationtdes.SheetRevaluationTDESGuid }, new { @class = "btn btn-danger" })
+        }
+
+        <input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+    </p>
+
+var dummy = Model.FirstOrDefault();
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntArticle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntBrandNic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsProcessed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsReversed)
+        </th>
+
+
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.EntArticle)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.EntBrandNic)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsProcessed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReversed)
+        </td>
+
+
+
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new {  EntArticle=item.EntArticle,EntBrandNic=item.EntBrandNic,IncomePayRollTDESGuid=item.IncomePayRollTDESGuid,SheetRevaluationTDESGuid=searchSheetRevaluationTDESGuid,searchEntGuid=SearchEntGuid,searchEntBranchGuid=SearchEntBranchGuid   }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new {  EntArticle=item.EntArticle,EntBrandNic=item.EntBrandNic,IncomePayRollTDESGuid=item.IncomePayRollTDESGuid,SheetRevaluationTDESGuid=searchSheetRevaluationTDESGuid,searchEntGuid=SearchEntGuid,searchEntBranchGuid=SearchEntBranchGuid   }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new {  EntArticle=item.EntArticle,EntBrandNic=item.EntBrandNic,IncomePayRollTDESGuid=item.IncomePayRollTDESGuid,SheetRevaluationTDESGuid=searchSheetRevaluationTDESGuid,searchEntGuid=SearchEntGuid,searchEntBranchGuid=SearchEntBranchGuid   }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+    
+    <tr class="warning">
+        <td colspan="3">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.IncomePayRollTDESGuid)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.IncomePayRollTDESGuid)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.EntArticleDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.EntArticleDescription)
+                </dd>
+
+                <dt class="alert-info">
+                    @Html.DisplayNameFor(model => dummy.CurrArtPrice)
+                </dt>
+                <dd class="alert-info">
+                    @Html.DisplayFor(model => item.CurrArtPrice)
+                </dd>
+
+                <dt class="alert-success">
+                    @Html.DisplayNameFor(model => dummy.NewArtPrice)
+                </dt>
+                <dd class="alert-success">
+                    @Html.DisplayFor(model => item.NewArtPrice)
+                </dd>
+
+                <dt class="alert-success">
+                    @Html.DisplayNameFor(model => dummy.ArtAmountRest)
+                </dt>
+                <dd class="alert-success">
+                    @Html.DisplayFor(model => item.ArtAmountRest)
+                </dd>
+
+
+                <dt class="alert-warning">
+                    @Html.DisplayNameFor(model => dummy.OperSum)
+                </dt>
+                <dd class="alert-warning">
+                    @Html.DisplayFor(model => item.OperSum)
+                </dd>
+
+                @if (!string.IsNullOrEmpty(item.Comments))
+                {
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.Comments)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Comments)
+                </dd>
+                }
+            </dl>
+        </td>
+    </tr>
+    
+    
+        <tr class="visible-xs visible-sm active">
+            <td colspan="2" class="btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new {  EntArticle=item.EntArticle,EntBrandNic=item.EntBrandNic,IncomePayRollTDESGuid=item.IncomePayRollTDESGuid,SheetRevaluationTDESGuid=searchSheetRevaluationTDESGuid,searchEntGuid=SearchEntGuid,searchEntBranchGuid=SearchEntBranchGuid   }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new {  EntArticle=item.EntArticle,EntBrandNic=item.EntBrandNic,IncomePayRollTDESGuid=item.IncomePayRollTDESGuid,SheetRevaluationTDESGuid=searchSheetRevaluationTDESGuid,searchEntGuid=SearchEntGuid,searchEntBranchGuid=SearchEntBranchGuid   }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new {  EntArticle=item.EntArticle,EntBrandNic=item.EntBrandNic,IncomePayRollTDESGuid=item.IncomePayRollTDESGuid,SheetRevaluationTDESGuid=searchSheetRevaluationTDESGuid,searchEntGuid=SearchEntGuid,searchEntBranchGuid=SearchEntBranchGuid   }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+    
+    
+}
+
+</table>
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { searchEntGuid=SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid, searchSheetRevaluationTDESGuid=searchSheetRevaluationTDESGuid, page=page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+        
+    
+}

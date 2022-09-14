@@ -1,0 +1,94 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseSupplierTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseSupplierHelp1<br />
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Приход на магазин", "Income", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+@if ( !SearchEntGuid.HasValue )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li> 
+        }
+    </ol>
+    @Html.ValidationSummary(true)
+} else {
+
+
+    <div>
+        @*<h4>EnterpriseSupplierTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+        {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+        }
+        </ol>
+
+        <hr />
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EntSupplierId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EntSupplierId)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EntSupplierDescription)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EntSupplierDescription)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
+
+                </dl>
+            </div>
+
+            <div class="col-xs-8 col-sm-3 col-md-3">
+                <div class="btn-group-vertical">
+                    @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseSupplierContact", new { searchEntGuid = SearchEntGuid, searchEntSupplierId = Model.EntSupplierId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseSupplierAddress", new { searchEntGuid = SearchEntGuid, searchEntSupplierId = Model.EntSupplierId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink(Resources.ReplyRests, "Index", "EnterpriseSupplierRest", new { searchEntGuid = SearchEntGuid, searchEntSupplierId = Model.EntSupplierId }, new { @class = "btn btn-info" })
+                </div>
+            </div>
+
+       </div>
+</div>
+<p>
+    @if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = Model.EntSupplierId, searchEntGuid = SearchEntGuid }, new { @class = "btn btn-info" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid }, new{}) 
+</p>
+
+}

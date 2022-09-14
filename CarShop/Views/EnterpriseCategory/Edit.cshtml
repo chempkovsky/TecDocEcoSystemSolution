@@ -1,0 +1,92 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseCategoryTDES
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+}
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+@if (! SearchEntGuid.HasValue )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { })</li>
+    }
+    </ol>
+
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+
+using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>EnterpriseCategoryTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { })</li>
+            }
+        </ol>
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.EntGuid)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.CategoryId)*@
+                @Html.TextBoxFor(model => model.CategoryId, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CategoryDescription)
+                @Html.ValidationMessageFor(model => model.CategoryDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryParent, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CategoryParent)
+                @Html.ValidationMessageFor(model => model.CategoryParent)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+    
+    
+    
+}    

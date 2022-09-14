@@ -1,0 +1,78 @@
+﻿@model IEnumerable<TecDocEcoSystemDbClassLibrary.OriginalCatalogTDES>
+@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.OriginalCatalog;
+}
+
+<h2>@Resources.OriginalCatalog</h2>
+
+
+@if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+{
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+    </p>
+}
+
+<input type="button" class="btn btn-info visible-xs visible-sm" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OriginalCatalogName)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.OriginalCatalogURI)
+        </th>
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OriginalCatalogName)
+        </td>
+        <td class="hidden-xs hidden-sm">
+            @Html.DisplayFor(modelItem => item.OriginalCatalogURI)
+        </td>
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.OriginalCatalogId }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.OriginalCatalogId }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.OriginalCatalogId }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+        <tr class="warning">
+            <td colspan="3" class="visible-xs visible-sm">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OriginalCatalogURI)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.OriginalCatalogURI)
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+    <tr class="visible-xs visible-sm active">
+        <td colspan="3" class="btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.OriginalCatalogId }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.OriginalCatalogId }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.OriginalCatalogId }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+}
+</table>

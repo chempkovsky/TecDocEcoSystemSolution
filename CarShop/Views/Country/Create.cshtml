@@ -1,0 +1,92 @@
+﻿@model TecDocEcoSystemDbClassLibrary.Country
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.CREATENEW_ACTION;
+}
+
+<h2>@Resources.CREATENEW_ACTION <small>@Resources.Country_INDEX</small></h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>Country</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.Country_INDEX, "Index")</li>
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryIso, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CountryIso)
+                @Html.ValidationMessageFor(model => model.CountryIso)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryCode2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CountryCode2)
+                @Html.ValidationMessageFor(model => model.CountryCode2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryCode3, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CountryCode3)
+                @Html.ValidationMessageFor(model => model.CountryCode3)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CountryName)
+                @Html.ValidationMessageFor(model => model.CountryName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryEngName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CountryEngName)
+                @Html.ValidationMessageFor(model => model.CountryEngName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryCapital, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CountryCapital)
+                @Html.ValidationMessageFor(model => model.CountryCapital)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryPhone, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CountryPhone)
+                @Html.ValidationMessageFor(model => model.CountryPhone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.CREATE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

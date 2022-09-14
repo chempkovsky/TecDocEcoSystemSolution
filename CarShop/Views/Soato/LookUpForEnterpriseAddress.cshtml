@@ -1,0 +1,82 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@using CarShop.Models;
+
+@model LookUpSoatoForEnterpriseAddress
+
+@{
+    ViewBag.Title = Resources.Soato_LOOKUP;
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy as SelectList;
+}
+
+<h2>@Resources.Soato_LOOKUP</h2>
+
+@{var dummy = Model.SoatoList.FirstOrDefault(); }
+
+@using (Html.BeginForm("LookUpForEnterpriseAddress", "Soato", FormMethod.Post, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.HiddenFor(model => model.RedirecData)
+    @Html.HiddenFor(model => model.RedirectContriller)
+    @Html.HiddenFor(model => model.RedirectAction)
+
+    <div class="form-group">
+        @Html.DropDownList("searchStringBy", sliSearchStringBy, new { @class = "form-control", data_autocomplete_selector = "data-autocomplete-url", sel1 = Url.Action("Autocomplete", new { currentFilterBy = "1" }), sel2 = Url.Action("Autocomplete", new { currentFilterBy = "2" }) })
+    </div>
+    <div class="form-group">
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control", data_autocomplete_url = Url.Action("Autocomplete", new { currentFilterBy = ViewBag.currentFilterBy }) })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-primary" />
+}
+
+
+@using (Html.BeginForm("LookUpForEnterpriseAddressSelected", "Soato", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.RedirecData)
+    @Html.HiddenFor(model => model.RedirectContriller)
+    @Html.HiddenFor(model => model.RedirectAction)
+        <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+        <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+        <table class="table table-condensed">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => dummy.SoatoId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => dummy.SoatoSettlementName)
+                </th>
+                <th class="hidden-xs">
+                    @Html.DisplayNameFor(model => dummy.SettlementType.SettlementTypeDescription)
+                </th>
+            </tr>
+
+            @{var selected = true;}
+            @foreach (var item in Model.SoatoList)
+            {
+                <tr>
+                    <td>
+                        @Html.RadioButton("SoatoId", item.SoatoId, selected, selected)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoatoSettlementName)
+
+                    </td>
+                    <td class="hidden-xs">
+                        @Html.DisplayFor(modelItem => item.SettlementType.SettlementTypeDescription)
+                    </td>
+                </tr>
+                selected = false;
+            }
+
+        </table>
+        <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+        <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+}
+
+@Html.PagedListPager(Model.SoatoList, page => Url.Action("LookUpForEnterpriseAddress", new { redirecData = Model.RedirecData, redirectContriller = Model.RedirectContriller, redirectAction = Model.RedirectAction, currentFilter = ViewBag.CurrentFilter, currentFilterBy = ViewBag.currentFilterBy, page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+@(Model.SoatoList.PageCount < Model.SoatoList.PageNumber ? 0 : Model.SoatoList.PageNumber) @Resources.PAGE_OF  @Model.SoatoList.PageCount
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocomplete")
+}

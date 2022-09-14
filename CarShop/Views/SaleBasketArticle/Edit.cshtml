@@ -1,0 +1,194 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.SaleBasketArticleTmp
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription;
+
+    String SearchEntUserNic = ViewBag.SearchEntUserNic;
+    Guid? SearchEntBasketGuid = ViewBag.SearchEntBasketGuid;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Проведение продаж", "SaleBasket", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+
+@if (!SearchEntBasketGuid.HasValue) {
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                if (!String.IsNullOrEmpty(SearchEntUserNic))
+                {
+                    <li>@Html.ActionLink(SearchEntUserNic, "Details", "EnterpriseBranchUsers", new { userId = SearchEntUserNic }, new { })</li>
+                    if (SearchEntBasketGuid.HasValue)
+                    {
+                        <li>@Html.ActionLink(Resources.SaleBasketTDES_PROFILE, "Details", "SaleBasket", new { searchEntBasketGuid = SearchEntBasketGuid, searchEntUserNic = SearchEntUserNic, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                        <li>@Html.ActionLink(Resources.SaleBasketArticleTDES_INDEX, "Index", "SaleBasketArticle", new { searchEntBasketGuid = SearchEntBasketGuid, searchEntUserNic = SearchEntUserNic, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                    }
+
+                }
+            }
+        }
+    </ol>
+    
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+
+using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>SaleBasketArticleTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+        {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                if (!String.IsNullOrEmpty(SearchEntUserNic))
+                {
+                    <li>@Html.ActionLink(SearchEntUserNic, "Details", "EnterpriseBranchUsers", new { userId = SearchEntUserNic }, new { })</li>
+                    if (SearchEntBasketGuid.HasValue)
+                    {
+                        <li>@Html.ActionLink(Resources.SaleBasketTDES_PROFILE, "Details", "SaleBasket", new { searchEntBasketGuid = SearchEntBasketGuid, searchEntUserNic = SearchEntUserNic, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                        <li>@Html.ActionLink(Resources.SaleBasketArticleTDES_INDEX, "Index", "SaleBasketArticle", new { searchEntBasketGuid = SearchEntBasketGuid, searchEntUserNic = SearchEntUserNic, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                    }
+
+                }
+            }
+        }
+        </ol>
+
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.EntBasketGuid)
+        @Html.HiddenFor(model => model.EntArticleDescriptionId)
+        @Html.HiddenFor(model => model.EntGuid)
+        @Html.HiddenFor(model => model.EntBranchGuid)
+        @Html.HiddenFor(model => model.EntUserNic)
+        @Html.HiddenFor(model => model.WorkPlaceGuid)
+        @Html.HiddenFor(model => model.SpellGuid)
+        @Html.HiddenFor(model => model.IsPaid)
+
+        @Html.HiddenFor(model => model.PaidAt)
+
+        @Html.HiddenFor(model => model.ReverseAmount)
+        @Html.HiddenFor(model => model.IsSpellClosed)
+        @Html.HiddenFor(model => model.CribFromIncome)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtAmount)
+                @Html.ValidationMessageFor(model => model.ArtAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalePrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SalePrice)
+                @Html.ValidationMessageFor(model => model.SalePrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntArticle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.EntArticle)*@
+                @Html.TextBoxFor(model => model.EntArticle, new { @readonly="true"} )
+                @Html.ValidationMessageFor(model => model.EntArticle)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBrandNic, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.EntBrandNic)*@
+                @Html.TextBoxFor(model => model.EntBrandNic, new { @readonly="true"} )
+                @Html.ValidationMessageFor(model => model.EntBrandNic)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntArticleDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.EntArticleDescription)*@
+                @Html.TextBoxFor(model => model.EntArticleDescription, new { @readonly="true"} )
+                @Html.ValidationMessageFor(model => model.EntArticleDescription)
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternArticle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ExternArticle, new { @readonly="true"} )
+                @Html.ValidationMessageFor(model => model.ExternArticle)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternBrandNic, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ExternBrandNic, new { @readonly="true"} )
+                @Html.ValidationMessageFor(model => model.ExternBrandNic)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternArticleEAN, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ExternArticleEAN, new { @readonly="true"} )
+                @Html.ValidationMessageFor(model => model.ExternArticleEAN)
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "SaleBasketArticle", new { searchEntBasketGuid=SearchEntBasketGuid, searchEntUserNic = SearchEntUserNic, searchEntGuid=SearchEntGuid,  searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+}    

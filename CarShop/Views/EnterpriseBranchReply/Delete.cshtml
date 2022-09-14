@@ -1,0 +1,145 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseBranchReplyTDES
+
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<h2>@Resources.DELETE_ACTION</h2>
+
+
+@if (!SearchEntBranchGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseBranchReplyTDES_INDEX, "Index", "EnterpriseBranchReply", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+    </ol>
+
+    @Html.ValidationSummary(true)
+}
+else {
+    @Html.ValidationSummary(true)
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>EnterpriseBranchReplyTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseBranchReplyTDES_INDEX, "Index", "EnterpriseBranchReply", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            }
+        }
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReplyType)
+        </dt>
+
+        @if (Model != null) {
+                switch(Model.ReplyType) {
+                case 1: {
+                    <dd>@Resources.ReplyRests</dd>; break; }
+                case 2: {
+        <dd>@Resources.ReplyProfile</dd>; break; }
+                case 3: {
+        <dd>@Resources.ReplyOrders</dd>; break; }
+                case 4: {
+        <dd>@Resources.ReplyArticles</dd>; break; }
+                default: {
+        <dd></dd>; break; }
+                }
+            }
+            else {
+            <dd></dd>}
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseHttpAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaseHttpAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HttpLoginUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HttpLoginUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HttpGetUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HttpGetUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HttpPostUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HttpPostUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HttpPutUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HttpPutUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HttpDeleteUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HttpDeleteUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HttpUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HttpUser)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.EntBranchGuid)
+        @Html.HiddenFor(model => model.ReplyType)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(@Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { }) 
+        </div>
+    }
+</div>
+}

@@ -1,0 +1,79 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseProductCategoryTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+@if (!SearchEntBranchGuid.HasValue)
+{
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.ProductCategory_INDEX, "Index", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })</li> 
+        }
+    }
+</ol>
+    
+    @Html.ValidationSummary(true)
+    
+} else {
+    @Html.ValidationSummary(true)
+    
+
+<div>
+    @*<h4>EnterpriseProductCategoryTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.ProductCategory_INDEX, "Index", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })</li>
+        }
+    }
+    </ol>
+
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PCId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PCDescription)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = Model.PCId, searchEntBranchGuid = Model.EntBranchGuid }, new { @class = "btn btn-primary" })
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })
+</p>
+}

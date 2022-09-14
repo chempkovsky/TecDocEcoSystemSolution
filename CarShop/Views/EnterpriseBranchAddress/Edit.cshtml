@@ -1,0 +1,253 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseBranchAddressTDES
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+@if (!SearchEntBranchGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Address_INDEX, "Index", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })</li>
+            }
+        }
+    </ol>
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+using (Html.BeginForm("Edit", "EnterpriseBranchAddress", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>EnterpriseBranchAddressTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.Address_INDEX, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })</li>
+                }
+            }
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.EntGuid)
+        @Html.HiddenFor(model => model.EntBranchGuid)
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.AddressGuid, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.AddressGuid)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressTypeId,  new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AddressTypeId", String.Empty)
+                @Html.ValidationMessageFor(model => model.AddressTypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CountryIso,  new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CountryIso", String.Empty)
+                @Html.ValidationMessageFor(model => model.CountryIso)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressRegion, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressRegion)
+                @Html.ValidationMessageFor(model => model.AddressRegion)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressDistrict, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressDistrict)
+                @Html.ValidationMessageFor(model => model.AddressDistrict)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressRural, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressRural)
+                @Html.ValidationMessageFor(model => model.AddressRural)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SettlementTypeId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SettlementTypeId", String.Empty)
+                @Html.ValidationMessageFor(model => model.SettlementTypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressSettlementName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressSettlementName)
+                <input type="submit" name="SettlementNameLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.AddressSettlementName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoatoId, "SoatoId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SoatoId)
+                <input type="submit" name="SoatoLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.SoatoId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StreetTypeId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("StreetTypeId", String.Empty)
+                @Html.ValidationMessageFor(model => model.StreetTypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressStreetName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressStreetName)
+                @Html.ValidationMessageFor(model => model.AddressStreetName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressHouse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressHouse)
+                @Html.ValidationMessageFor(model => model.AddressHouse)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressBuilding, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressBuilding)
+                @Html.ValidationMessageFor(model => model.AddressBuilding)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressOffice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressOffice)
+                @Html.ValidationMessageFor(model => model.AddressOffice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressPostCode, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressPostCode)
+                @Html.ValidationMessageFor(model => model.AddressPostCode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressValidFrom, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.AddressValidFrom)*@
+                @Html.TextBoxFor(model => model.AddressValidFrom)
+                @Html.ValidationMessageFor(model => model.AddressValidFrom)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressValidTo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.AddressValidTo)*@
+                @Html.TextBoxFor(model => model.AddressValidTo)
+                @Html.ValidationMessageFor(model => model.AddressValidTo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsVisible, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsVisible)
+                @Html.ValidationMessageFor(model => model.IsVisible)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressLongitude, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressLongitude)
+                @Html.ValidationMessageFor(model => model.AddressLongitude)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressLatitude, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressLatitude)
+                @Html.ValidationMessageFor(model => model.AddressLatitude)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocompleteVal")
+}
+
+}

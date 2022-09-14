@@ -1,0 +1,106 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.IncomeArticleTDES>
+@{
+    ViewBag.Title = Resources.IncomePayRollReport;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+    Guid? SearchIncomePayRollTDESGuid = ViewBag.searchIncomePayRollTDESGuid;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Приход на магазин", "Income", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.IncomePayRollReport</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            if (SearchIncomePayRollTDESGuid.HasValue)
+            {
+                <li>@Html.ActionLink(Resources.DETAILS_ACTION, "Details", "IncomePayRoll", new { id = SearchIncomePayRollTDESGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            }
+        }
+    }
+</ol>
+
+
+@Html.ValidationSummary(true)
+
+
+
+
+@if (  (SearchIncomePayRollTDESGuid.HasValue ) && (Model != null) )
+{
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IsProcessed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsReversed)
+        </th>
+        <th>
+            @Resources.ArtAmountSum
+        </th>
+        <th>
+            @Resources.PurchasePriceSum
+        </th>
+        <th>
+            @Resources.ArtPriceSum
+        </th>
+        <th>
+            @Resources.ArtAmountRestSum
+        </th>
+        <th>
+            @Resources.CurrArtPriceSum
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsProcessed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReversed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchasePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtAmountRest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrArtPrice)
+        </td>
+    </tr>
+}
+
+</table>
+
+}    

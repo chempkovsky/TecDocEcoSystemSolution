@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @*@Styles.Render("~/Content/maincss")*@
+
+    <link href="@Url.Content("~/Content/maincss/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/maincss/site.css")" rel="stylesheet" type="text/css" />
+
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                @Html.ActionLink("Автозапчасти", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Домашняя", "Index", "Home")</li>
+                    <li>@Html.ActionLink("О проекте", "About", "Home")</li>
+                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("По ролям", "IndexByRoles", "Home")</li>
+                    <li>@Html.ActionLink("Задачи", "Index", "ByTasks")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderSection("headerscripts", required: true)
+        <div class="row">
+
+            <div class="col-xs-8 col-sm-4 col-md-4">
+
+                <div class="bs-docs-sidebar" role="complementary">
+                    <ul class="nav bs-docs-sidenav">
+                        <li>
+                            @Html.ActionLink("Задачи и роли", "Index", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("1. Каталог артикулов", "Articles", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("2. Приход на магазин", "Income", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("3. Управление ведомостями переоценки", "SheetRevaluation", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("4. Управление остатками подразделения", "EnterpriseBranchRest", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("5. Управление сменой", "BranchSpell", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("6. Размещение исполнителей по рабочим местам", "User2WorkPlace", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("7. Списание с прихода после закрытия смены", "BranchSpellHst", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("8. Проведение продаж", "SaleBasket", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("9. Возврат товара", "ReturnBasket", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("10. Создание заказов по телефону", "BranchGuestProfile", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("11. Репликации заказов", "DoMakeOrdersReply", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("12. Обработка заказов", "BranchOrderSearch", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("13. Репликация остатков", "DoMakeReply", "ByTasks", routeValues: null, htmlAttributes: new {  })
+                        </li>
+                        <li>
+                            @Html.ActionLink("14. Стол заказов", "TableOfOrders", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("15. Расщирение каталога TecDoc", "TecDocExpansion", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("16. Оригинальные каталоги", "OriginalCatalogs", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("17. Остатки поставщиков", "SupplierRests", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("18. Остатки внешней учетной системы", "ExternalRests", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("19. Утилита CarShopRestToWeb.exe (1)", "CarShopRestToWeb", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("20. Утилита CarShopRestToWeb.exe (2)", "CarShopRestToWeb2", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("21. Утилита CarShopRestToWeb.exe (3)", "CarShopRestToWeb3", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("22. Утилита CarShopRestToWeb.exe (4)", "CarShopRestToWeb4", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("23. Утилита CarShopRestToWeb.exe (5)", "CarShopRestToWeb5", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("24. Интернет магазин", "InternetShop", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("25. Загрузки", "Dounloads", "ByTasks", routeValues: null, htmlAttributes: new { })
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @RenderBody()
+            </div>
+        </div>
+
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year – Автозапчасти</p>
+        </footer>
+    </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+</body>
+</html>

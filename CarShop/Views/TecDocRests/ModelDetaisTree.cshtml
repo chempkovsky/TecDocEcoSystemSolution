@@ -1,0 +1,166 @@
+﻿@using CarShop.Properties;
+
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPESTREE_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREE_INDEX;
+    Guid? searchEntGuid = ViewBag.searchEntGuid;
+    Guid? searchEntBranchGuid = ViewBag.searchEntBranchGuid;
+    int? MFA_ID = ViewBag.MFA_ID;
+    int? MOD_ID = ViewBag.MOD_ID;
+    int? FluelId = ViewBag.FluelId;
+    int? topicId = ViewBag.topicId;
+    SelectList sliTreeKind = ViewBag.sliTreeKind;
+    int? treeKindId = ViewBag.treeKindId;
+    int? TYP_ID = ViewBag.TYP_ID;
+
+    string redirecData = ViewBag.redirecData;
+    string redirectContriller = ViewBag.redirectContriller;
+    string redirectAction = ViewBag.redirectAction;
+
+}
+
+<h2>@Resources.CARMODELTYPETREE_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(Resources.BRANDS_INDEX, "Manufact", "TecDocRests", new
+   {
+       redirecData = redirecData,
+       redirectContriller = redirectContriller,
+       redirectAction = redirectAction,
+       searchEntGuid = searchEntGuid,
+       searchEntBranchGuid = searchEntBranchGuid
+   }, new { })
+</li>
+@if (MFA_ID.HasValue)
+{
+    <li>
+        @Html.ActionLink(Resources.TecDocModel_INDEX, "ModelTypes", "TecDocRests", new
+       {
+           redirecData = redirecData,
+           redirectContriller = redirectContriller,
+           redirectAction = redirectAction,
+           searchEntGuid = searchEntGuid,
+           searchEntBranchGuid = searchEntBranchGuid,
+           MFA_ID = MFA_ID
+       }, new { })
+</li>
+    if (MOD_ID.HasValue)
+    {
+        <li>
+            @Html.ActionLink(Resources.CARMODELTYPE_INDEX, "ModelDetais", "TecDocRests", new
+           {
+               redirecData = redirecData,
+               redirectContriller = redirectContriller,
+               redirectAction = redirectAction,
+               searchEntGuid = searchEntGuid,
+               searchEntBranchGuid = searchEntBranchGuid,
+               MFA_ID = MFA_ID,
+               MOD_ID = MOD_ID,
+               fluelId = FluelId,
+               treeKindId = treeKindId
+           }, new { })
+    </li>
+    }
+}
+</ol>
+
+@using (Html.BeginForm("ModelDetaisTree", "TecDocRests", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+    @Html.Hidden("searchEntGuid", searchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", searchEntBranchGuid)
+    @Html.Hidden("MOD_ID", MOD_ID)
+    @Html.Hidden("MFA_ID", MFA_ID)
+    @Html.Hidden("fluelId", FluelId)
+    @Html.Hidden("topicId", topicId)
+    @Html.Hidden("TYP_ID", TYP_ID)
+
+
+    <div class="form-group">
+    @Html.DropDownList("treeKindId", sliTreeKind, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+<div class="css-treeview-container">
+    <div class="css-treeview">
+        <ul>
+            @foreach (var item in Model)
+            {
+                if (item.Subitems == null)
+                {
+
+                    <li>
+                        @Html.ActionLink(@Html.DisplayFor(modelItem => item.TEX_TEXT).ToString(), "ModelDetaisItems",
+             new
+             {
+                 redirecData = redirecData,
+                 redirectContriller = redirectContriller,
+                 redirectAction = redirectAction,
+                 searchEntGuid = searchEntGuid,
+                 searchEntBranchGuid = searchEntBranchGuid,
+                 topicId = item.STR_ID,
+                 TYP_ID = ViewBag.TYP_ID,
+                 MOD_ID = ViewBag.MOD_ID,
+                 MFA_ID = ViewBag.MFA_ID,
+                 fluelId = ViewBag.FluelId,
+                 treeKindId = ViewBag.treeKindId
+             },
+             new { })
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <input type="checkbox" id="item-@item.STR_ID.ToString()" checked="checked" />
+                        @*@if (item.isOpen)
+                        {
+                            <input type="checkbox" id="item-@item.STR_ID.ToString()" checked="checked" />
+                        }
+                        else
+                        {
+                            <input type="checkbox" id="item-@item.STR_ID.ToString()" />
+                        }*@
+                        <label for="item-@item.STR_ID.ToString()">@Html.DisplayFor(modelItem => item.TEX_TEXT)</label>
+
+                        <ul>
+                                @*<li>
+                                @Html.ActionLink(@Html.DisplayFor(modelItem => item.TEX_TEXT).ToString(), "ModelDetaisItems",
+                                 new
+                                 {
+                                     redirecData = redirecData,
+                                     redirectContriller = redirectContriller,
+                                     redirectAction = redirectAction,
+                                     searchEntGuid = searchEntGuid,
+                                     searchEntBranchGuid = searchEntBranchGuid,
+                                     topicId = item.STR_ID,
+                                     TYP_ID = ViewBag.TYP_ID,
+                                     MOD_ID = ViewBag.MOD_ID,
+                                     MFA_ID = ViewBag.MFA_ID,
+                                     fluelId = ViewBag.FluelId,
+                                     treeKindId = ViewBag.treeKindId
+                                 },
+                                 new { })*@
+
+                                @foreach (var subItm in item.Subitems)
+                                {
+                                    @Html.Partial("TrVwDetailsView", subItm)
+                                }
+                        </ul>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+    <link href="~/Content/TreeVievCntnt/TreeView.css" rel="stylesheet" />
+}

@@ -1,0 +1,51 @@
+﻿@model TecDocEcoSystemDbClassLibrary.Soato
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+}
+
+<h2>@Resources.DELETE_ACTION</h2>
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>Soato</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.Soato_INDEX, "Index")</li>
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoatoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoatoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettlementType.SettlementTypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettlementType.SettlementTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoatoSettlementName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoatoSettlementName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index") 
+        </div>
+    }
+</div>

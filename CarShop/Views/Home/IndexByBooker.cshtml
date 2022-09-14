@@ -1,0 +1,284 @@
+﻿@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.BranchBookerName;
+}
+
+<h2>@Resources.IndexByRoles</h2>
+<h3>@Resources.SolutionRoles</h3>
+
+<ul class="nav nav-pills">
+    <li class="active"><a href="#">Подразделение</a></li>
+    <li>@Html.ActionLink("Предприятие", "IndexByEnterpriseAdmin", "Home")</li>
+</ul>
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(Resources.BranchSellerName, "IndexByRoles", "Home")</li>
+    <li class="active"><a href="#">@Resources.BranchBookerName</a></li>
+    <li>@Html.ActionLink(Resources.BranchAdminName, "IndexByBranchAdmin", "Home")</li>
+    <li>@Html.ActionLink(Resources.BranchAuditName, "IndexByBranchAudit", "Home")</li>
+
+</ul>
+
+<p />
+
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="btn-group-vertical">
+            @Html.ActionLink(Resources.BranchSpell_INDEX, "Index", "BranchSpell", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+            @Html.ActionLink(Resources.User2WorkPlace_INDEX, "Index", "User2WorkPlace", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.User2WorkPlaceHstTDES_INDEX, "Index", "User2WorkPlaceHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+            @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+            @Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+
+            @Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+            @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+
+            @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", "EnterpriseBranchRate", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">В обязанности роли "@Resources.BranchBookerName" входит</div>
+            <div class="panel-body">
+                <ul>
+                    <li>открытие и зарытие смены</li>
+                    <li>размещение исполнителей по рабочим местам</li>
+                    <li>Формирование, проведение и сторнирование приходных ведомостей</li>
+                    <li>Формирование, проведение и сторнирование ведомостей переоценки</li>
+                    <li>Кроме того "@Resources.BranchBookerName" может изменять остатки (Не рекомендуется)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Размещение исполнителей по рабочим местам</div>
+            <div class="panel-body">
+                @Html.ActionLink(Resources.User2WorkPlace_INDEX, "Index", "User2WorkPlace", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Данная форма позволяет управлять размещением пользователей по рабочим местам.
+                Чтобы ракрепить пользователя за рабочим местом на данной форме необходимо кликнуть по ссылке "Закрепить пользователя за рабочим местом".
+                Появится форма со списками рабочих мест и исполнителей. Сделайте выбор и подтвердите свое намерение кликнув по кнопке "Создать".
+                Если за рабочим местом уже был закреплен другой пользователь, то старый пользователь открепляется и происходит закрепление нового пользователя за выбранным рабочим местом.
+                Закрепляются только те исполнители, которые имеют роль "Продавец".<p />
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Управление остатками подразделения</div>
+            <div class="panel-body">
+                @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Данная форма позволяет управлять остатками по подразделению. Когда в этом есть необходимость. Как говаривал неизвестный персонаж: "Раз в год и палка стреляет".
+                Если был сбой в работе (электричество и т.п.) вы провели выверку переоценок, продаж и прихода. Окакзалось, что или остаток или цена товара не такие, какими должны быть.
+                В этом случае проводится интервенция в остатки. Важным замечанием является следующее.
+                Если вы запускаете данное решение в эксплуатацию, то никто не вносит продажи с со дня сотворения мира. Как правило вносятся остатки в систему и дело пошло. <br>
+                Но.<br>
+                Напомним, что ведомости переоценок формируются не на текущем остатке, а на приходных ведомостях. Если внести остатки в систему используя инструмент управления остатками
+                и не создавать приходных ведемостей, то в сухом остатке получим не учетный механизм, но дохлого осла уши.<br>
+                Чтобы решить эту проблему необходимо внести остатки не через Управление остатками подразделения, но через создание одной или нескольких ведомостей прихода.
+                Т.Е. при запуске этого программного обеспечения в работу создаейте остатки через механизм приходных ведеомостей. Оприходуйте их.
+                При таком сценарии ввода в работу данного решения вы получаете автоматическое формирование ведомостей переоценки по приходным ведомостям.
+                Все что потребуется - это выверка и проведение.<p />
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">Просмотр данных операционной работы без права изменять</div>
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        @Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" }) История смен подразделения<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.User2WorkPlaceHstTDES_INDEX, "Index", "User2WorkPlaceHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })<p />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">Просмотр данных подразделения без права изменять</div>
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Адреса подразделения<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Ваши контакты (телефоны, e-mail)<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Штат вашего подразделения<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Рабочие места зарегистрированные для вашего подразделения<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Каталог остатков товара вашего подразделения<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Перечень подразделений вашего предприятия<p />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">Управление сменой</div>
+            <div class="panel-body">
+                @Html.ActionLink(Resources.BranchSpell_INDEX, "Index", "BranchSpell", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Переход на данную страницу дает возможность управлять текущей сменой. <br />
+                <span style="font-weight:bold">Управление сменой подчиняется следующим бизнес правилам:</span><br />
+                Открыть новую смену можно, если текущая смена или отсутствует или закрыта. <br />
+                Закрыть текущую смену можно, если она находится в заблокированном состоянии.<p />
+                Итак, текущая смена закрыта или текущей смены нет вовсе. Переходим на страницу по ссылке выше и кликаем на ссылку "Открыть новую смену".
+                На появившейся форме отредактировать дату (если это надо) и подтвердить намерение кликнув по кнопке "Открыть новую смену". <b>Заметим, что новая смена открывается в блокированном состоянии.</b>
+                Сделано это для того, чтобы после открытия "@Resources.BranchBookerName" разместил исполнителей по рабочим местам. После этого необходимо снять блокировку текущей смены.<br />
+                <span style="font-weight:bold">Для снятия блокировки с текущей смены</span> необходимо перейти на форму по ссылке выше. Далее кликнуть по ссылке подробно. На появившейся форме кликнуть кнопку разблокировать.<br />
+                <span style="font-weight:bold">Для блокировки текущей смены</span> необходимо перейти на форму по ссылке выше. Далее кликнуть по ссылке подробно. На появившейся форме кликнуть кнопку заблокировать.<br />
+                <span style="font-weight:bold">Для закрытия текущей смены</span> необходимо перейти на форму по ссылке выше. Далее кликнуть по ссылке подробно. На появившейся форме кликнуть кнопку закрыть.<p />
+                <span style="font-weight:bold">В данном решении реализован функционал отложенного закрытия смены:</span><p />
+                Действия описанные выше манипулируют парой флагов (открыта,блокирована). Но этого недостаточно с точки зрения ведения ведомостей переоценки.
+                Напомним, что решение манипулирует тремя ресурсами: приход, остатки, расход. Когда продавец проводит продажу происходит списание с остатков и только.
+                В то время как приходные ведомости остаются нетронутыми. Чтобы ведомости переоценки велись корректно необходимо списывать с прихода также.
+                Операция списания с прихода достаточно медленная и исполняется после закрытия смены, когда сторнирование продаж запрещено.
+                С другой стороны во время списания с прихода могут возникнуть ошибки, которые необходимо анализировать и может быть вносить
+                исправления в картотеки и запускать процесс списания с прихода повторно. Коротко говоря, закрытие смены в любой учетной системе - это праздник,
+                который может растянуться на часы а то и дни.     С другой стороны наступил новый день и необходимо начинать продажи,
+                а стало быть открывать новую смену и стало быть старая смена должна быть закрыта. Тут то и понадобится <span style="font-weight:bold">отложенное закрытие смены.</span>
+                Массовый процесс <b>отложенного закрытия смены запускается через историю ранее открытых смен.</b> Выше мы постарались показать причины по которым пришлось реализовать такого рода функционал.<p />
+                @Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Используя фильт по датам найдите смену, по которой не проводилось списание с прихода (ваша последняя закрытая смена, к примеру). Перейдите по ссылке "Подробно" и кликните на кнопке "Списать с прихода".
+                Данная кнопка не запускает процесс списания, но открывает форму "Списать с прихода". Именно на этой форме вы запустите массовый процесс списания кликнув по аналогичной кнопке "Списать с прихода".<br />
+                На первый взгляд может показаться излишним сначала открыть форму и только тогда запустить процесс. Но любая важная операция выполняется через шаг - показать форму и только тогда активировать функцию.
+                Хорошим примером важности такого подхода является операция удаления - будет показана дополнительная форма с вопросом "Вы уверены ?" и кнопкой "Удалить".<p />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Управление ведомостями прихода</div>
+            <div class="panel-body">
+                @Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" }) Данная форма позволяет управлять ведомостями прихода.
+                Создав запись ведомости прихода перейдите по ссылке "Подробно" и кликните ссылку "Артикулы". Появится форма с перечнем товаров по данной приходной ведомости.
+                Каждая запись артикула ведомости прихода состоит из двух пар артикулов. Первая пара (Id, Брэнд) - это артикул в нотации поставщика. Данная пара присутствует в сопроводительном документе поставки товара.
+                Вторая пара (Id, Брэнд) - это описание артикула в нумерации, которую ведет ваше подразделение. Напомним, что есть еще одна пара (Id, Брэнд) - это нотация TecDoc.
+                Соответсвие внутренней нумерации подразделения и нумерации TecDoc ведется в каталоге
+                @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Право редактировать данный ресурс предоставлено администратору предприятия. (Не путать с администратором подразделения)<br />
+                Вернемся к наполнению приходной ведомости. Артикул поставщика вносится руками. Артикул подразделения выбирается из списка. Вносится цена закупки, вносится цена продажи,
+                вносится количество и последнее - это флаг "С переоценкой". Если этот флаг выставлен, то по вашей приходной ведомости при запуске функции "сформировать ведомость переоценки"
+                для артикула будут подняты все ненулевые остатки и автоматически составлена ведомость переоценки остатков данного наименования товаров. Анализу подвергаются не ресурс текущих остатков, но ранее оприходованные ведомости.
+                После закрытия смены через механизм <span style="font-weight:bold">отложенного закрытия смены</span> проводится списание с оприходованных ведомостей. Напомним, что при проведении продажи проводится списание
+                только с ресурса текущих остатков. Операция продажи не затрагивает приходные ведомости.<br>
+                <span style="font-weight:bold">Оприходование</span> проводится следующим образом. Перейдите по ссылке подробно и в нижней части формы кликните кнопку "Оприходовать ведомость". Откроется форма "Оприходовать ведомость".
+                На этой форме кликните кнопку "Оприходовать ведомость". При этом запустится массовый процесс изменения ресурса остатков (цена, количество). Если оприходование прошло успешно на ведомости включится флаг "Оприх.".<br>
+                <span style="font-weight:bold">Сторнирование</span>  проводится следующим образом. Перейдите по ссылке подробно и в нижней части формы кликните кнопку "Сторнирование". Откроется форма "Сторнирование".
+                На этой форме кликните кнопку "Сторнирование". При этом запустится массовый процесс изменения ресурса остатков (цена, количество). Если Сторнирование прошло успешно на ведомости включится флаг "Сторн".<br>
+                <span style="font-weight:bold">Сформировать ведомость переоценки</span> проводится следующим образом. Перейдите по ссылке подробно и в нижней части формы кликните кнопку "Сформировать ведомость переоценки".
+                Откроется форма "Сформировать ведомость переоценки". На этой форме кликните кнопку "Сформировать ведомость переоценки". При этом запустится массовый создания ведомости переоценки.
+                После того как ведомость переоценки сформировани ее необходимо провести. Как это сделать можно прочесть в параграфе "Управление ведомостями переоценки".
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Управление ведомостями переоценки</div>
+            <div class="panel-body">
+                @Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" }) Данная форма позволяет управлять ведомостями переоценки.
+                Создав запись ведомости переоценки перейдите по ссылке "Подробно" и кликните ссылку "Артикулы". Вы перейдете на форму с перечнем артикулов. Кликните ссылку "создать запись" для создания записи артикула переоценки.
+                Появившаяся форма предоставляет возможность выбора артикула переоценки из списка ранее проведенных приходных ведемостей. Заметим, что при создании записи артикула переоценки помимо самого артикула присутствует
+                идентификатор той приходной ведомости, для артикула которой необходимо выполнить переоценку.
+                Вносим старую цену, старый остаток и новую цену. Напомним, что ведомость переоценки может быть создана <span style="font-weight:bold">автоматически</span>, как производная новой приходной ведомости.
+                При этом в качестве старой цены берется текущая цена старой ведомости, в качестве остатка берется остаток по старой веломости. В качестве новой цены берется цена новой ведомости. Вы можете поэкспериментировать.
+                Создать приходную ведомость на паре артикулов. Оприходовать эту ведомость. Создать новую ведомость на этих же артикулах, но с новыми ценами. Сформировать ведомость переоценки по второй приходной ведомости и посмотреть
+                что получится. В конце игр удаляем новую ведомость (если вы провели оприходование новой ведомости, то сторнируем новую ведомость). Если провели переоценку, то сторнируем переоценку (если не провели, то просто удаляем).
+                После этого сторнируем первую приходную ведомость. Если попытаться сторнировать первую приходную ведомость без сторнирования ведомости переоценки, то будет выдано сообщение об ошибке.
+                Сторнировать оприходованную приходную ведомость можно лишь в том случае, если не изменились ни цена ни остатки артикулов данной приходной ведомости.<br />
+                <span style="font-weight:bold">Проведение переоценки</span> Перейдем к списку ведомостей переоценки и найдем интересующую. Перейдите по ссылке подробно и в нижней части формы кликните кнопку "Провести переоценку".
+                Откроется форма "Провести переоценку". На этой форме кликните кнопку "Провести переоценку". При этом запустится массовый процесс изменения ресурса остатков (цена) и оприходованных ведомостей артикулы которых попали
+                в ведемость переоценки (цена).  Если переоценка прошла успешно на ведомости включится флаг "Оприх.".<br>
+                <span style="font-weight:bold">Сторнирование</span>  проводится следующим образом. Перейдите по ссылке подробно и в нижней части формы кликните кнопку "Сторнирование". Откроется форма "Сторнирование".
+                На этой форме кликните кнопку "Сторнирование". При этом запустится массовый процесс изменения ресурса остатков (цена) и оприходованных ведомостей артикулы которых попали в ведемость переоценки (цена).
+                Если Сторнирование прошло успешно на ведомости включится флаг "Сторн". Замечание, сторнирование ведомости переоценки возможно, если после проведения переоценки не было расходных операций по артикулам переоценки
+                (т.е. не менялось кол-во по приходной ведомости) и не было новых переоценок (т.е. не менялась цена по приходной ведомости).
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">Просмотр данных предприятия без права изменять</div>
+    <div class="panel-body">
+        <ul>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Профиль предприятия к которому вы прикреплены<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Адреса предприятия к которому вы прикреплены<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Исполнители уровня предприятия (админы и аудиторы)<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Ваши бизнес-партнеры или оптовые поставщики товара<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Мировые брэнды товаров, которыми торгует ваше предприятие<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Артикулы товаров, которыми торгует ваше предприятиею. Описание каждого артикула состоит из двух пар. Первая пара (Id, Брэнд)- это нумерация,
+                которую закрепило ваше предприятие за наименованием товара. Вторая пара (Id, Брэнд) - это нумерация, которая ведется в TecDoc (т.е. то, что написано на упаковке).
+                Как правило, эти пары (ваш нумератор и нумератор TecDoc) должны совпадать. Но если предприятие работает давно и так сложилось, что была заведена своя собственная нумерация.
+                При отсутствии такого ресурса в учетной системе, предприятия со своей собственной нумерацией товаров не смогут воспользоваться данным решением.
+                Другими словами, наличие данного ресурса позволяет предприятию вести свою собственную нумерацию, но при обслуживании клиентов использовать нумерацию TecDoc.
+                Покупателю понятны слова (B31991-00, GLASER), т.к. это он найдет на упаковке товара "Комплекта прокладок, блок-картер двигателя". На этой же упаковке он найдет европейский штрих-код=8429020262113.
+                Все это отнисится к нумерации TecDoc. Внутренняя нумерация вашего предприятия наверное интересует только вашего бухгалтера и только до тех пор пока тот находится на работе.
+                <span style="font-weight:bold">Этот ресурс учетной системы один из важнейших.</span> И причины следующие: это и определение аналогов, это и определение соответсвия европейских штрих-кодов вашей собственной нумерации и
+                это определение соответсвия конструкционных номеров деталей и вашей собственной нумерации<p />
+            </li>
+        </ul>
+    </div>
+</div>

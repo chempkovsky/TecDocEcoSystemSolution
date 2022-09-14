@@ -1,0 +1,213 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.ANALOGOUS_REST_TD>
+
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREEITEMANALOG_INDEX;
+
+    int? MFA_ID = ViewBag.MFA_ID;
+    int? MOD_ID = ViewBag.MOD_ID;
+    int? TYP_ID = ViewBag.TYP_ID;
+    int? FluelId = ViewBag.FluelId;
+    int? topicId = ViewBag.topicId;
+    int? ART_ID = ViewBag.ART_ID;
+    string ART_ARTICLE_NR = ViewBag.ART_ARTICLE_NR;
+    int? treeKindId = ViewBag.treeKindId;
+    int? tof_assemblyId = ViewBag.tof_assemblyId;
+    int? GA_NR = ViewBag.GA_NR;
+
+    //string redirecData = ViewBag.redirecData;
+    //string redirectContriller = ViewBag.redirectContriller;
+    //string redirectAction = ViewBag.redirectAction;
+    //Guid? searchEntGuid = ViewBag.searchEntGuid;
+    //Guid? searchEntBranchGuid = ViewBag.searchEntBranchGuid;
+
+}
+
+<h3>@Resources.CARMODELTYPETREEITEMANALOG_INDEX</h3>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(ART_ID + " : " + ART_ARTICLE_NR,
+                      "ModelDetaisItemsUTO", "TecDocGuest",
+               new
+               {
+                   //redirecData = redirecData,
+                   //redirectContriller = redirectContriller,
+                   //redirectAction = redirectAction,
+                   //searchEntGuid = searchEntGuid,
+                   //searchEntBranchGuid = searchEntBranchGuid,
+                   MFA_ID = MFA_ID,
+                   MOD_ID = MOD_ID,
+                   TYP_ID = TYP_ID,
+                   fluelId = FluelId,
+                   topicId = topicId,
+                   treeKindId = treeKindId,
+                   tof_assemblyId = tof_assemblyId
+               }, new { })
+    </li>
+</ol>
+
+@Html.ValidationSummary(true)
+
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(Resources.InStock, "ModelDetaisAnalog", "TecDocGuest", new { 
+       MFA_ID = MFA_ID, 
+       MOD_ID = MOD_ID, 
+       fluelId = FluelId, 
+       TYP_ID = TYP_ID, 
+       topicId = topicId,
+       ART_ARTICLE_NR = ART_ARTICLE_NR,
+       GA_NR = GA_NR,
+       ART_ID = ART_ID,
+       treeKindId = treeKindId, tof_assemblyId = tof_assemblyId 
+   }, new { })</li>
+    
+
+    <li class="active"><a href="#">@Resources.UnderTheOrder</a></li>
+</ul>
+
+
+
+@if ((Model != null) && (Model.Count() > 0))
+{
+    @*using (Html.BeginForm("IndexSelected", "TecDocGuest", FormMethod.Post))
+        {
+            @Html.Hidden("redirecData", redirecData)
+        @Html.Hidden("redirectContriller", redirectContriller)
+        @Html.Hidden("redirectAction", redirectAction)
+
+        @Html.Hidden("searchEntGuid", searchEntGuid)
+        @Html.Hidden("searchEntBranchGuid", searchEntBranchGuid)
+
+        <p>
+            <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+            <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+        </p>*@
+
+
+
+    int currGroup = 0;
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @*@Resources.TECDOC_ART_ID :*@
+                @Resources.TECDOC_ART_ARTICLE_NR
+            </th>
+            <th>
+                @Resources.TECDOC_SUP_TEXT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtAmount)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ArtPrice)
+            </th>*@
+        </tr>
+
+        @*@{
+            var selected = true;
+            System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+                }*@
+
+        @foreach (var item in Model)
+        {
+            if (currGroup != item.GA_NR)
+            {
+                currGroup = item.GA_NR;
+                <tr class="warning">
+                    <td colspan="4">
+                        @*@Html.DisplayFor(modelItem => item.GA_NR) :*@ @Html.DisplayFor(modelItem => item.GA_TEXT) : @Html.DisplayFor(modelItem => item.MASTER_BEZ)
+                    </td>
+                </tr>
+
+            }
+
+            <tr>
+
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.ART_ID) :*@
+                    @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUP_TEXT)
+                </td>
+                <td class="btn-group btn-group-xs">
+                    @*@Html.ActionLink(Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString(),
+                        "ArticleShopDetaisItemsUTO", new
+                        {
+                            ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                            SUP_TEXT = item.SUP_TEXT,
+                            MFA_ID = MFA_ID,
+                            MOD_ID = MOD_ID,
+                            fluelId = FluelId,
+                            TYP_ID = TYP_ID,
+                            topicId = topicId,
+                            tof_assemblyId = tof_assemblyId,   
+                            treeKindId = treeKindId
+                        }, new { @class = "btn btn-success" })*@
+                    @if (item.ArtAmount > 0) { 
+                        <a class="btn btn-success" href="@Url.Action("ArticleShopDetaisItemsUTO", new
+                                                    {
+                                ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                                SUP_TEXT = item.SUP_TEXT,
+                                MFA_ID = MFA_ID,
+                                MOD_ID = MOD_ID,
+                                fluelId = FluelId,
+                                TYP_ID = TYP_ID,
+                                topicId = topicId,
+                                tof_assemblyId = tof_assemblyId,
+                                treeKindId = treeKindId
+                                })">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString()
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" href="@Url.Action("ArticleShopDetaisItemsUTO", new
+                                                    {
+                                ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                                SUP_TEXT = item.SUP_TEXT,
+                                MFA_ID = MFA_ID,
+                                MOD_ID = MOD_ID,
+                                fluelId = FluelId,
+                                TYP_ID = TYP_ID,
+                                topicId = topicId,
+                                tof_assemblyId = tof_assemblyId,
+                                treeKindId = treeKindId
+                                })">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString()
+                        </a>
+                    }
+
+
+
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.MinArtPrice) : @Html.DisplayFor(modelItem => item.ArtPrice)
+                </td>*@
+            </tr>
+            //selected = false;
+        }
+
+    </table>
+
+
+
+    @*<p>
+                <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+                <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+            </p>
+
+        }*@
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}

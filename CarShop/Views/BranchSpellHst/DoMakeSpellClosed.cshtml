@@ -1,0 +1,155 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.BranchSpellHstTDES
+
+@{
+    ViewBag.Title = Resources.MakeSpellClosed_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Списание с прихода после закрытия смены", "BranchSpellHst", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.MakeSpellClosed_INDEX <small>@Resources.BranchSpellHstTDES_INDEX</small></h2>
+
+
+
+@if ( !SearchEntBranchGuid.HasValue )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", new { searchEntGuid = SearchEntGuid, SearchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            if (Model != null) { 
+                <li>@Html.ActionLink(Model.OpenAt.ToString(), "Details", new { id = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            }
+        }
+    }
+    </ol>
+
+    <div class="alert alert-warning">@Html.ValidationSummary(true)</div>
+} else {
+
+<div>
+    @*<h4>BranchSpellHstTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", new { searchEntGuid = SearchEntGuid, SearchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                if (Model != null) { 
+                    <li>@Html.ActionLink(Model.OpenAt.ToString(), "Details", new { id = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                }
+            }
+        }
+    </ol>
+    <div class="alert alert-warning">@Html.ValidationSummary(true)</div>
+	<hr />
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SpellGuid)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SpellGuid)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsBlocked)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsBlocked)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsCribFromIncome)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsCribFromIncome)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OpenAt)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OpenAt)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CloseAt)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CloseAt)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OpenedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OpenedBy)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ClosedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ClosedBy)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-xs-8 col-sm-4 col-md-4">
+                @using (Html.BeginForm("DoMakeSpellClosed", "BranchSpellHst"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("Id", Model.SpellGuid)
+                    @Html.Hidden("searchEntGuid", SearchEntGuid)
+                    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+                    <div class="btn-group-vertical">
+                        @Html.ActionLink(Resources.GETSTATEINFO, "DoMakeSpellClosed", "BranchSpellHst", new { id = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-info" })
+                        <input type="submit" value="@Resources.MakeSpellClosed_INDEX" class="btn btn-primary" />
+                    </div>
+                }
+        </div>
+    </div>
+
+
+</div>
+<p>
+    @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker)) {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id=Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</p>
+
+}    

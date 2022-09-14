@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+
+    @*@Styles.Render("~/Content/maincss")*@
+
+    <link href="@Url.Content("~/Content/maincss/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/maincss/site.css")" rel="stylesheet" type="text/css" />
+
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                @Html.ActionLink("Автозапчасти", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Домашняя", "Index", "Home")</li>
+                    <li>@Html.ActionLink("О проекте", "About", "Home")</li>
+                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("По ролям", "IndexByRoles", "Home")</li>
+                    <li>@Html.ActionLink("Задачи", "Index", "ByTasks")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderSection("headerscripts", required: true)
+        <div class="row">
+
+            <div class="col-xs-8 col-sm-4 col-md-4">
+
+                <div class="bs-docs-sidebar" role="complementary">
+                    <ul class="nav bs-docs-sidenav">
+                        <li>
+                            @Html.ActionLink("Шаги и очередность развертывания решения", "Index", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("1. Развертывание MSSQL Express 2012", "HowToMSSQL", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("2. Запуск и знакомство с MSSQL Management Studio", "HowToMSSQLManagementStudio", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("3. Создание баз данных с использованием утилиты WpfCarShop", "HowToWpfCarShop", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("4. Загрузка справочников утилитой WpfCarShop", "WpfCarShopDict", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("5. Конфигурирование ODBC TecDoc", "ODBCTecDoc", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("6. Регистрация вашей торговой сети", "Enterprise", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("7. Наполнение каталога артикулов вашей торговой сети", "CarShopArticleContext", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("8. Добавление роли Internet Server", "InternetServer", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("9. Создание экземпляра БД для поддержки учетных записей и безопасности", "AspNetSecurity", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("10. Настройка поддержки распределенных транзакций", "MsDts", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("11. Развертывание решения на узле интернет сервер", "InstallonIIS", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("12. Каталог TecDoc В формате Ms-Sql", "TecDocMsSql", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("13. Настройка Брандмаура на компьютере, где развернут SQL сервер", "FirewallSettings", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("14. Настройка Брандмаура на компьютере, где развернут Интернет сервер", "FirewallSettingsHttp", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("15. Первый запуск решения, где развернут Интернет сервер", "FirstStartApp", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("16. Регистрация гостевого стола заказов", "RegAdvanceOrders", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("17. Минимальное число шагов настройки, чтобы начать работать", "MinStepToGetWork", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("18. Если вы используете Internet Explorer", "IESettings", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("19. Утилита CarShopRestToWeb.exe", "CarShopRestToWeb", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("20. Загрузки", "Dounloads", "HowTo", routeValues: null, htmlAttributes: new { })
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @RenderBody()
+            </div>
+        </div>
+
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year – Автозапчасти</p>
+        </footer>
+    </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+</body>
+</html>

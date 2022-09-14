@@ -1,0 +1,156 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.BranchSpellTDES
+
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Изменять состояние смены может исполнитель с <b>правами администратора подразделения или бухгалтера</b>.<br />
+        Смена <b>открывается в заблокированном состоянии</b>. Перед разблокировкой необходимо закрепить исполнителей за рабочими местами.
+        Операция закрепления выполняется на странице <b>Пользователь на рабоч.месте</b><br />
+
+        Открыть новую смену можно, если текущая смена или отсутствует или закрыта. Закрыть текущую смену можно, если она находится в заблокированном состоянии.<br />
+        Чтобы <b>открыть смену</b> необходимо кликнуть на ссылку "Открыть новую смену". На появившейся форме отредактировать дату (если это надо) и
+        подтвердить намерение кликнув по кнопке "Открыть новую смену". <br />
+
+        Для <b>снятия блокировки</b> с текущей смены необходимо  кликнуть по ссылке <b>подробно</b>. На появившейся форме кликнуть кнопку разблокировать.<br />
+        Для <b>блокировки текущей</b> смены необходимо  кликнуть по ссылке <b>подробно</b>. На появившейся форме кликнуть кнопку заблокировать.<br />
+        Для <b>закрытия текущей смены</b> необходимо  кликнуть по ссылке <b>подробно</b>. На появившейся форме кликнуть кнопку закрыть.<p />
+
+        Напомним, что в данном решении реализован <b>функционал отложенного закрытия смены:</b><br />
+        После закрытия смены необходимо перейти на страницу <b>История смен</b> и кликнуть по ссылке <b>подробно</b> для вашей закрытой смены.
+        На появившейся странице кликните на кнопке "Списать с прихода".
+        Действия открытия,закрытия и блокировки манипулируют парой флагов (открыта,блокирована).
+        Но этого недостаточно с точки зрения ведения ведомостей переоценки. Когда продавец проводит продажу происходит списание с остатков и только.
+        В то время как приходные ведомости остаются нетронутыми. Чтобы ведомости переоценки велись корректно необходимо списывать с прихода также.
+        Операция списания с прихода достаточно медленная и исполняется после закрытия смены, когда сторнирование продаж запрещено.
+        Массовый процесс <b>отложенного закрытия смены запускается через историю ранее открытых смен.</b><br />
+        Разрешено открывать новую смену и проводить продажи <b>до выполнения операции списания с прихода</b>. Но нельзя проводить переоценку,
+        если остались смены для которых не выло выполнено списание с прихода.
+        <p />
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Управление сменой", "BranchSpell", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+
+
+    </div>
+</div>
+
+
+
+<h2>@Resources.DELETE_ACTION <small>@Resources.BranchSpell_INDEX</small></h2>
+
+@if (( !SearchEntBranchGuid.HasValue ) || (Model == null) )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchSpell_INDEX, "Index", "BranchSpell", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            }
+        }
+    </ol>
+    @Html.ValidationSummary(true)
+
+} else {
+
+    <div class="alert alert-warning">
+        @Resources.ActiveSpellCannotBeDeleted
+    </div>
+    
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+    
+@Html.ValidationSummary(true)
+        
+<div>
+    @*<h4>BranchSpellTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchSpell_INDEX, "Index", "BranchSpell", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            }
+        }
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SpellGuid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpellGuid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBlocked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBlocked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CloseAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloseAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenedBy)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "BranchSpell", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+        </div>
+    }
+</div>
+
+}

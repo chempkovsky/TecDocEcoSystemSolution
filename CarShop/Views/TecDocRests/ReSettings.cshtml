@@ -1,0 +1,27 @@
+﻿@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.TecDocCountryLang;
+
+    SelectList sliLANGUAGES = ViewBag.sliLANGUAGES;
+    SelectList sliCOUNTRIES = ViewBag.sliCOUNTRIES;
+}
+
+<h2>@Resources.TecDocCountryLang</h2>
+
+
+@using (Html.BeginForm("ReSettings", "TecDocRests", FormMethod.Post, new { @class = "form-inline", role = "form" }))
+{
+    <div class="form-group">
+    @Resources.TecDocCountry
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("countryId", sliCOUNTRIES, new { @class = "form-control" }) 
+    </div>
+    <div class="form-group">
+    @Resources.TecDocLang
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("langId", sliLANGUAGES, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.TecDocSelect" class="btn btn-primary" />
+}

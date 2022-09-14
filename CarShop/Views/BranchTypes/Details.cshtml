@@ -1,0 +1,44 @@
+﻿@using CarShop.Properties;
+@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.BranchType
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+}
+
+<h2>@Resources.DETAILS_ACTION <small>@Resources.BranchType_INDEX</small></h2>
+
+<div>
+    @*<h4>BranchType</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.BranchType_INDEX, "Index")</li>
+    </ol>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchTypeId)
+        </dd>
+    </dl>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchTypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchTypeDescription)
+        </dd>
+    </dl>
+</div>
+<p>
+    @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+    {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = Model.BranchTypeId }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+</p>

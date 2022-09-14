@@ -1,0 +1,131 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseArticleTmp
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+
+    String SearchEntBrandNic = ViewBag.SearchEntBrandNic;
+    String EntBrandDescription = ViewBag.EntBrandDescription;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseArticleHelp1<br>@Resources.EnterpriseArticleHelp2
+        <br>
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Каталог артикулов", "Articles", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+    </div>
+</div>
+
+<h2>@Resources.EDIT_ACTION <small>@Resources.EnterpriseArticle_INDEX</small></h2>
+
+
+@if ( string.IsNullOrEmpty( SearchEntBrandNic ))
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", new { searchEntGuid = SearchEntGuid }, new { })</li>
+            if (SearchEntBrandNic != null)
+            {
+                <li>@Html.ActionLink(EntBrandDescription, "Details", "EnterpriseBrand", new { idEntBrandNic = SearchEntBrandNic, searchEntGuid = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle", new { searchEntBrandNic = SearchEntBrandNic, searchEntGuid = SearchEntGuid }, new { })</li>
+            }
+        }
+    </ol>
+
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+
+using (Html.BeginForm("Edit", "EnterpriseArticle"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>EnterpriseArticleTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", new { searchEntGuid = SearchEntGuid }, new { })</li>
+                if (SearchEntBrandNic != null)
+                {
+                    <li>@Html.ActionLink(EntBrandDescription, "Details", "EnterpriseBrand", new { idEntBrandNic = SearchEntBrandNic, searchEntGuid = SearchEntGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle", new { searchEntBrandNic = SearchEntBrandNic, searchEntGuid = SearchEntGuid }, new { })</li>
+                }
+            }
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.EntBrandNic)
+        @Html.HiddenFor(model => model.EntGuid)
+        @Html.HiddenFor(model => model.EntArticleDescriptionId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntArticle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EntArticle, new { @readonly="true"} )
+                @Html.ValidationMessageFor(model => model.EntArticle)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntArticleDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntArticleDescription)
+                @Html.ValidationMessageFor(model => model.EntArticleDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternArticle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExternArticle)
+                <input type="submit" name="ART_ARTICLE_NRLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.ExternArticle)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternBrandNic, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExternBrandNic)
+                @Html.ValidationMessageFor(model => model.ExternBrandNic)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternArticleEAN, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExternArticleEAN)
+                @Html.ValidationMessageFor(model => model.ExternArticleEAN)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "EnterpriseArticle", new { searchEntBrandNic = SearchEntBrandNic, searchEntGuid = SearchEntGuid }, new { })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocompleteVal")
+}
+
+}

@@ -1,0 +1,232 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.IncomeArticleTDES>
+
+@{
+    ViewBag.Title = Resources.ArtDistrib;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+
+    string searchEntArticle = ViewBag.SearchEntArticle;
+    string searchEntBrandNic = ViewBag.SearchEntBrandNic;
+
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseBranchRestHelp1<p />
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Управление остатками подразделения", "EnterpriseBranchRest", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.ArtDistrib</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchString = searchEntArticle, searchStringBy = 1 }, new { })</li>
+        }
+    }
+</ol>
+
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">@Resources.IncomePayRollTDES_INDEX</a></li>
+    <li>@Html.ActionLink(Resources.LookForArticleSelt_INDEX, "Sales", "EnterpriseBranchRestDistrib", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchEntArticle = searchEntArticle, searchEntBrandNic = searchEntBrandNic }, new { })</li>
+    <li>@Html.ActionLink(Resources.RevaluationArticleTDES_INDEX, "Revaluations", "EnterpriseBranchRestDistrib", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchEntArticle = searchEntArticle, searchEntBrandNic = searchEntBrandNic }, new { })</li>
+    <li>@Html.ActionLink(Resources.ReturnBasketArticleTDES_INDEX, "Returns", "EnterpriseBranchRestDistrib", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchEntArticle = searchEntArticle, searchEntBrandNic = searchEntBrandNic }, new { })</li>
+</ul>
+
+
+@if (string.IsNullOrEmpty(searchEntArticle) || string.IsNullOrEmpty(searchEntBrandNic))
+{
+    <div class="alert alert-danger">
+        @Resources.SEARCH_STRING_IS_EMPTY
+    </div>
+}
+else
+{
+
+    var dummy = Model.FirstOrDefault();
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+    
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => dummy.IncomePayRollTDES.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.ArtAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.IsProcessed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.IsReversed)
+            </th>
+            <th class="hidden-xs hidden-sm">
+                @Html.DisplayNameFor(model => dummy.IsRevaluate)
+            </th>
+            <th class="hidden-xs hidden-sm">
+                @Html.DisplayNameFor(model => dummy.ArtPrice)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.IncomePayRollTDES.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsProcessed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsReversed)
+                </td>
+                <td class="hidden-xs hidden-sm">
+                    @Html.DisplayFor(modelItem => item.IsRevaluate)
+                </td>
+                <td class="hidden-xs hidden-sm">
+                    @Html.DisplayFor(modelItem => item.ArtPrice)
+                </td>
+
+            </tr>
+
+            <tr class="warning">
+                <td colspan="4">
+                    <dl class="dl-horizontal">
+
+                        <dt class="visible-xs  visible-sm">
+                            @Html.DisplayNameFor(model => dummy.ArtPrice)
+                        </dt>
+                        <dd class="visible-xs  visible-sm">
+                            @Html.DisplayFor(model => item.ArtPrice)
+                        </dd>
+
+                        <dt class="visible-xs  visible-sm">
+                            @Html.DisplayNameFor(model => dummy.IsRevaluate)
+                        </dt>
+                        <dd class="visible-xs  visible-sm">
+                            @Html.DisplayFor(model => item.IsRevaluate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.EntArticleDescription)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.EntArticleDescription)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.SupArticle)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.SupArticle)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.SupBrandNic)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.SupBrandNic)
+                        </dd>
+
+
+
+                        <dt class="alert-success">
+                            @Html.DisplayNameFor(model => dummy.ArtAmountRest)
+                        </dt>
+                        <dd class="alert-success">
+                            @Html.DisplayFor(model => item.ArtAmountRest)
+                        </dd>
+
+                        <dt class="alert-info">
+                            @Html.DisplayNameFor(model => dummy.PurchasePrice)
+                        </dt>
+                        <dd class="alert-info">
+                            @Html.DisplayFor(model => item.PurchasePrice)
+                        </dd>
+
+
+
+
+                        <dt class="alert-success">
+                            @Html.DisplayNameFor(model => dummy.CurrArtPrice)
+                        </dt>
+                        <dd class="alert-success">
+                            @Html.DisplayFor(model => item.CurrArtPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.EntArticle)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.EntArticle)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.EntBrandNic)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.EntBrandNic)
+                        </dd>
+
+                        @if (!string.IsNullOrEmpty(item.Comments))
+                        {
+
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.Comments)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => item.Comments)
+                            </dd>
+                        }
+
+                        <dt class="alert-info">
+                            @Html.DisplayNameFor(model => dummy.IncomePayRollTDES.EntSupplierId)
+                        </dt>
+                        <dd class="alert-info">
+                            @Html.DisplayFor(model => item.IncomePayRollTDES.EntSupplierId)
+                        </dd>
+                        <dt class="alert-info">
+                            @Html.DisplayNameFor(model => dummy.IncomePayRollTDES.EntSupplierDescription)
+                        </dt>
+                        <dd class="alert-info">
+                            @Html.DisplayFor(model => item.IncomePayRollTDES.EntSupplierDescription)
+                        </dd>
+
+
+
+                    </dl>
+                </td>
+            </tr>
+
+
+        }
+
+    </table>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchEntArticle = searchEntArticle, searchEntBrandNic = searchEntBrandNic, page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+
+}    

@@ -1,0 +1,237 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseSupplierAddressTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    String SearchEntSupplierId = ViewBag.SearchEntSupplierId as String;
+    String EntSupplierDescription = ViewBag.EntSupplierDescription as String;
+}
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+
+@if ( String.IsNullOrEmpty( SearchEntSupplierId ) )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if ( SearchEntGuid.HasValue )
+        {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+            if (!String.IsNullOrEmpty(SearchEntSupplierId))
+            {
+                <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Address_INDEX, "Index", new {searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId })</li>
+            }
+        }
+    </ol>
+    
+    @Html.ValidationSummary(true)
+} else {
+
+
+<div>
+    @*<h4>EnterpriseSupplierAddressTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if ( SearchEntGuid.HasValue )
+            {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+                if (!String.IsNullOrEmpty(SearchEntSupplierId))
+                {
+                <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Address_INDEX, "Index", new {searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId })</li>
+                }
+            }
+    </ol>
+
+	<hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressGuid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressGuid)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressType.AddressTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryIso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryIso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressRegion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressRegion)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressDistrict)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressDistrict)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressRural)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressRural)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettlementTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettlementType.SettlementTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressSettlementName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressSettlementName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoatoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoatoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetType.StreetTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressStreetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressStreetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressHouse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressHouse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressBuilding)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressBuilding)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressOffice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressOffice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressPostCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressPostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressValidFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressValidFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressValidTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressValidTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVisible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVisible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLongitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLongitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLatitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLatitude)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+    {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = Model.AddressGuid }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { })
+</p>
+
+}

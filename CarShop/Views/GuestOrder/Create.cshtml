@@ -1,0 +1,69 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.GuestOrderTDES
+
+@{
+    ViewBag.Title = Resources.GuestOrderTDES_CREATE;
+}
+
+<h2>@Resources.GuestOrderTDES_CREATE <small>@Resources.GuestOrderTDES_INDEX</small></h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>GuestOrderTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile")</li>
+            <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder")</li>
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.GuestOrderGuid)
+        @Html.HiddenFor(model => model.GestUserNic)
+        @Html.HiddenFor(model => model.IsDone)
+        @Html.HiddenFor(model => model.LastUpdated)
+        @Html.HiddenFor(model => model.LastReplicated)
+
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBranchGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntBranchGuid)
+                @Html.ValidationMessageFor(model => model.EntBranchGuid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBranchDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntBranchDescription)
+                @Html.ValidationMessageFor(model => model.EntBranchDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.CREATE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+</div>

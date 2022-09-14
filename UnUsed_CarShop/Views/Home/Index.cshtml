@@ -1,0 +1,581 @@
+﻿@using CarShop.Properties;
+@{
+    ViewBag.Title = "Home Page";
+    bool IsAutorise = ViewBag.IsAutorise;
+
+    bool IsEcoSystemAdmin = ViewBag.IsEcoSystemAdmin;
+    bool IsEnterpriseAdmin = ViewBag.IsEnterpriseAdmin;
+    bool IsEnterpriseAudit = ViewBag.IsEnterpriseAudit;
+    bool IsBranchAdmin = ViewBag.IsBranchAdmin;
+    bool IsBranchAudit = ViewBag.IsBranchAudit;
+    bool IsBranchSeller = ViewBag.IsBranchSeller;
+    bool IsBranchBooker = ViewBag.IsBranchBooker;
+
+    bool SearchKind = ViewBag.SearchKind;
+    SelectList slisrchTp = ViewBag.slisrchTp as SelectList;
+}
+
+
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    </div>*@
+
+@if (!IsAutorise)
+{
+
+    <div id="carousel-carshop-main" class="carousel slide" @*data-interval="4000" data-pause="false"*@>
+
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-carshop-main" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-carshop-main" data-slide-to="1"></li>
+            <li data-target="#carousel-carshop-main" data-slide-to="2"></li>
+            <li data-target="#carousel-carshop-main" data-slide-to="3"></li>
+            @*<li data-target="#carousel-carshop-main" data-slide-to="4"></li>
+                <li data-target="#carousel-carshop-main" data-slide-to="5"></li>
+                <li data-target="#carousel-carshop-main" data-slide-to="6"></li>*@
+        </ol>
+
+        <!-- Картинки в карусельке -->
+        <div class="carousel-inner">
+            <div class="active item">
+                <img src="~/Content/Images/1.jpg" class="img-responsive" style="margin:auto;" />
+                <div class="carousel-caption">
+                    <h2>TecDoc inside</h2>
+                    <p>Подбор неоригинальных авто запчастей по каталогу TecDoc</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="~/Content/Images/2.jpg" class="img-responsive" style="margin: auto;" />
+                <div class="carousel-caption">
+                    <h2>Любые брэнды</h2>
+                    <p>Автозапчасти для любых авто-брэндов</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/3.jpg" class="img-responsive" style="margin: auto;" />
+                <div class="carousel-caption">
+                    <h2>Любые модели</h2>
+                    <p>Автозапчасти для любых моделей</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/4.jpg" class="img-responsive" style="margin: auto;" />
+                <div class="carousel-caption">
+                    <h2>Личный кабинет</h2>
+                    <p>Обработка заказов в течение дня</p>
+                </div>
+            </div>
+        </div>
+        <!-- Навигационные элементы -->
+
+        <a class="left carousel-control" href="#carousel-carshop-main" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-carshop-main" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+
+
+    <p />
+    <ul class="nav nav-pills nav-justified">
+        @if (SearchKind)
+        {
+            <li class="active">@Html.ActionLink(Resources.InStock, "Index", "Home", new { SearchKind = 1 }, new { @class = "btn btn-warning" })</li>
+            <li>@Html.ActionLink(Resources.UnderTheOrder, "Index", "Home", new { SearchKind = 2 }, new { @class = "btn btn-warning" })</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink(Resources.InStock, "Index", "Home", new { SearchKind = 1 }, new { @class = "btn btn-warning" })</li>
+            <li class="active">@Html.ActionLink(Resources.UnderTheOrder, "Index", "Home", new { SearchKind = 2 }, new { @class = "btn btn-warning" })</li>
+        }
+        <li>@Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+        <li>@Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", new { }, new { @class = "btn btn-warning" })</li>
+        <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+        <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+        <li>@Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    </ul>
+
+    <p />
+
+    if (SearchKind)
+    {
+        using (Html.BeginForm("Index", "TecDocGuest", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+        {
+            @*<h3>@Resources.FILTER_TITLE</h3>*@
+            <p />
+            <div class="form-group">
+                @Html.DropDownList("srchTp", slisrchTp, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.TextBox("artId", ViewBag.artId as string, new { @class = "form-control" })
+            </div>
+            <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("IndexUTO", "TecDocGuest", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+        {
+            @*<h3>@Resources.FILTER_TITLE</h3>*@
+            <p />
+            <div class="form-group">
+                @Html.DropDownList("srchTp", slisrchTp, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.TextBox("artId", ViewBag.artId as string, new { @class = "form-control" })
+            </div>
+            <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+        }
+    }
+
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Вы автолюбитель</h2>
+            На данном сайте продавцы публикуют информацию о наличии и ценах на автозапчасти для всех марок автомобилей.
+            Вы можете выполнить поиск интересующей вас детали и выбрать магазин вашего города с оптимальной для вас ценой.
+            Если магазин оказывает услуги по доставке товара на дом, вы можете оформить заказ на один или несколько магазинов.<br />
+            <mark>Данный ресурс поддерживает Ваше мобильное устройство.</mark>
+            <p /><p />
+            @*Итак, вы подыскиваете запасные части для вашего авто.
+                <p />*@
+            @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+            Если вы знаете какую именно запчасть вы ищете (Вам известен или <b>Штрих-код</b> или
+            <b>Артикул производителя</b> или
+            <b>Конструкционный номер</b> или <b>номер TecDoc</b>),
+            то воспользуйтесь <b>поиском по артукулу</b>.
+            <br />
+            Режим поиска <b>В наличии</b> покажет остатки и цены товаров, которые уже находятся на полках магазинов розничных продавцов.
+            <br />
+            Режим поиска <b>Под заказ</b> покажет остатки и цены товаров, которые находятся на складах оптовых поставщиков,
+            с которыми розница заключила договора на закупку товара.
+            Каждый магазин розничной продажи указывается свое время реализации заявки на товар <b>Под заказ</b>.
+
+            <p />
+            @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn  btn-info" })
+            Выбор товара в каталоге TecDoc через дерево. Это последовательность Web-страниц позволяющая выбрать Брэнд, Модель, Тип модели (по году выпуска, топливу, двигателю ).
+            Далее идет страница с деревом категорий деталей и по узлу в дереве вы переходите к перечню деталей с остатками и ценами.
+            <p />
+            @Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", routeValues: null, htmlAttributes: new { @class = "btn  btn-info" })
+            Выбор товара в каталогах оригинальных запчастей. Каждый производитель (BMW, Peugeot и т.д) при проектировании очередной модели автомобиля
+            закрепляет за каждым узлом номер, который принято называть конструкционным номером. Поиск в оригинальном каталоге дает Вам возможность
+            определить конструкционный номер. Далее по этому конструкционному номеру вы найдете остатки и цены с распределением по магазинам.
+            <p />
+            @Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })
+            Если вы  не нашли то, что искали перейдите на форум, выберите ветку форума (т.е. магазин) и сформируйте заказ в свободной форме.
+            Необходимо указать <b>модель, год выпуска, вид топлива, тип двигателя</b>. Желательно указать VIN вашего авто. Укажите, что вас интересует.
+            Если вы потратили время и выяснили конструкционный номер детали (к примеру через поиск по оригинальным каталогам), то вам помогут.
+            <p />
+            @Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+            Позволяет просмотреть и отредактировать ваш профиль
+            <p />
+            @Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+            Позволяет просмотреть и наполнить ваши заказы на магазины
+            <p />
+            @Html.ActionLink("Каталоги производителей", "OnLineCatalogs", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+            Перейти к перечню Online каталогов различных производителей.
+            <p />
+            @Html.ActionLink("Если вы используете Internet Explorer", "IESettings", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+            Перейдите на эту страничку, где приводятся рекомендации по настройке Internet Explorer, если возникли проблемы входа в систему
+            или неправильного отображения контента.
+
+        </div>
+        <div class="col-md-6">
+            <h2>Вы продаете</h2>
+            <h4>Нужна учетная система продаж автозапчастей</h4>
+            Если вы подыскиваете учетную систему для ведения бизнеса по продаже автозапчастей, то вы выбрали правильный сайт.
+            Данное решение абсолютно <mark><b>БЕСПЛАТНО</b></mark>, построено на основе новейших технологий, не требует инвестиций на закупку лицензий.
+            <p>@Html.ActionLink("Читать далее", "ToBusinessMan", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })</p>
+            <p />
+
+            <h4>Нужен интернет-магазин <mark>с поддержкой мобильных устройств</mark></h4>
+            У вас есть учетная система, но появилось ощущение, что добавив канал продаж через интернет, вы увеличите прибыль.
+            <mark><b>БЕСПЛАТНО</b></mark>, с минимальными усилиями вы можете публиковать остатки и цены вашего магазина,
+            которые будут видны покупателю как товары <b>"в наличии"</b>.
+            Вы можете подключить остатки и цены оптовых поставщиков (таких как ШАТЭ-М, АВТОСПЭЙС и т.д.) указав свою наценку,
+            которые будут видны покупателю как товары вашего магазина <b>"под заказ"</b>.
+            <p>@Html.ActionLink("Читать далее", "ToExternals", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })</p>
+
+            <p />
+            <h4>Загрузка остатков Online</h4>
+            Вам доступен функционал загрузки остатков и цен своего магазина через Web-интерфейс. Проведя выгрузку остатков и цен в файл формата
+            Excel (*.xlsx, *.xls) или CSV вы можете залить этот файл на наш сервер и запустить процесс импорта данных в каталог остатков
+            непосредственно на нащем web-сервере.<br />
+
+            <a href="http://admin.atomix.by" target="_blank" class="btn btn-info">Загрузка остатков Online</a> перейдите по указанной ссылке,
+            чтобы воспользоваться функционалом импорта остатков и цен. Заметим, что загрузка Online не предоставляет детальный отчет
+            по отвергнутым записям. Для получения детального отчета вам необходимо воспользоваться утилитой CarShopRestToWeb.exe.
+            Информация по данной утилите приводится в разделах <b>Развертывание</b> и <b>Задачи и роли</b>.
+
+            <p />
+            <h4>Если вы регистрируетесь на нашем сайте как продавец</h4>
+            Вы получаете <b>свой собственный сайт-визитку</b>, где вы <b>без программирования</b> публикуете информацию о себе,
+            публикуете ваши новости (о новых поступлениях, новых брэндах), наполняете витрину сайта вашего магазина
+            описанием новых товаров (с картинками, которые являются обязательными к наполнению).
+            Ссылка на этот сайт будет фигурировать на страницах с ценами на товар. В нашем интернет магазине цены на товар
+            предъявляются с информацией о магазинах. Среди прочей информация о магазине размещается и ссылка на ваш сайт-визитку.
+
+            <br>
+            <a href="http://cms.atomix.by/Demo" target="_blank" class="btn btn-info">DEMO</a>
+            Перейдите по указанной ссылке, чтобы ознакомиться с дизайном и функционалом вашего нового сайта.
+            Мы рекомендуем активно вести ленту новостей. Чем больше грамотной информации фигурирует на вашем сайте-визитке,
+            тем выше посещаемость. Это с одной стороны. С другой стороны, ваша информация постоянно подвергается индексированию
+            поисковыми движками (Google, Yandex и т.д.) и тем самым повышается вероятность, того, что пользователь
+            выйдет на ваш сайт. К примеру, вы опубликовали серию статей о товарном знаке <b>CarGo</b>. В РБ таких статей не так много.
+            А если это так, то ваш сайт будет появляться на первых страницах в поисковиках.<p />
+
+            <a href="http://sites.kooboo.com" target="_blank" class="btn btn-info">Шаблоны</a>
+            Если дизайн или функционал сайта-визитки вас не вдохновил, перейдите по указанной
+            ссылке чтобы выбрать шаблон, который вам понравился больше. <b>НО</b> в шаблоне моут быть ошибки.
+            Коротко говоря, адаптация и доработка шаблонов возлагается на ваши хрупкиие плечи.
+            Со своей стороны мы обязуемся на нашем ресурсе развернуть ваш сайт по шаблону, который вы выбрали или разработали.<p />
+            <a href="http://kooboo-cms.ru/documentation/" target="_blank" class="btn btn-info">Документация</a>
+            Перейдите по указанной ссылке, чтобы ознакомиться с документацией по CMS-движку, коорый используется для управления
+            сайтами-визитками в нашем решении.<p />
+
+
+
+            Помимо собственного сайта, для вашего магазина открывается <b>ветка на форуме и вам предоставляются права модератора.</b>
+            Мы рекомендуем периодически просматривать запросы на вашу ветку форума, т.к. посетители могут сформировать заказ
+            в свободной форме. Заказ в свободной форме формируется и отправляется на форум,
+            если покупатель не нашел в каталогах, что его интересует.
+            <p />
+
+            <h2>Развертывание</h2>
+            Описание шагов развертывания с указанием ресурсов для загрузки компонент решения, вариантов конфигурирования и требований к вычислительной технике
+            <p>@Html.ActionLink("Читать далее", "Index", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })</p>
+
+            <h2>Наша бизнес-стратегия</h2>
+            Куда уйдут ваши деньги и ваше время, если вы займетесь интернет комерцией или почему мы предлагаем наше решение бесплатно.
+            <p>@Html.ActionLink("Читать далее", "WhyItsFree", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })</p>
+
+        </div>
+    </div>
+
+    @section Scripts {
+        <script type="text/javascript">
+            $(function () {
+                $("#carousel-carshop-main").carousel();
+            });
+        </script>
+    }
+
+}
+else
+{
+
+    <div class="well">
+        <h3>Вам доступны перечисленные ниже функции согласно назначенным вам ролям.</h3>
+
+        @Html.ActionLink("По ролям", "IndexByRoles", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+        @Html.ActionLink("Задачи", "Index", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+        <a href="http://admin.atomix.by" target="_blank" class="btn btn-info">Загрузка остатков Online</a>
+        @Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })
+
+    </div>
+
+
+    if (IsBranchAdmin || IsBranchAudit || IsBranchSeller || IsBranchBooker)
+    {
+        int offsetVar = 0;
+        if (IsBranchAdmin) { offsetVar += 1; }
+        if (IsBranchAudit) { offsetVar += 1; }
+        if (IsBranchSeller) { offsetVar += 1; }
+        if (IsBranchBooker) { offsetVar += 1; }
+        offsetVar = 12 / offsetVar;
+        var offsetVarClass = "col-sm-" + offsetVar.ToString();
+
+
+        <div class="row">
+            @if (IsBranchSeller)
+            {
+                <div class="@offsetVarClass">
+
+                    <div class="panel panel-default ">
+                        <div class="panel-heading">@Resources.BranchSellerName:</div>
+                        <div class="panel-body text-center">
+
+                            <div class="btn-group-vertical">
+                                @Html.ActionLink(Resources.SaleBasketTDES_INDEX, "Index", "SaleBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success " })
+                                @Html.ActionLink(Resources.LookForArticleRest_INDEX, "Index", "EnterpriseArticleAndRest", routeValues: new { redirectContriller = "SaleBasketArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-sm btn-success " })
+                                @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success " })
+                                @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success " })
+                                @Html.ActionLink(Resources.SuppRestTDES_INDEX, "Index", "EnterpriseSuppArticleAndRest", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+
+
+
+
+                                @*@Html.ActionLink(Resources.TecDocCountryLang, "ReSettings", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-xs   btn-warning" })*@
+                                @Html.ActionLink(Resources.ReturnBasketTDES_INDEX, "Index", "ReturnBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-danger" })
+                                @Html.ActionLink(Resources.LookForArticleSelt_INDEX, "LookForSpell", "BranchSpellHst", routeValues: new { redirectContriller = "ReturnBasketArticle", redirectAction = "GetReturnArticuleForCreate" }, htmlAttributes: new { @class = "btn btn-sm  btn-danger" })
+
+
+                                @Html.ActionLink(Resources.BranchGuestProfileTDES_INDEX, "Index", "BranchGuestProfile", routeValues: new { }, htmlAttributes: new { @class = "btn btn-sm  btn-primary" })
+                                @Html.ActionLink(Resources.BranchOrderTDES_INDEX, "Index", "BranchOrderSearch", routeValues: new { }, htmlAttributes: new { @class = "btn btn-sm  btn-primary" })
+
+                                @Html.ActionLink(Resources.MakeOrderReply, "DoMakeOrdersReply", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-warning" })
+                                @Html.ActionLink(Resources.MakeBranchReply, "DoMakeReply", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-warning" })
+
+                                @Html.ActionLink(Resources.BranchSpell_INDEX, "Index", "BranchSpell", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-info" })
+                                @Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-info" })
+                                @Html.ActionLink(Resources.User2WorkPlace_INDEX, "Index", "User2WorkPlace", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-info" })
+                                @Html.ActionLink(Resources.User2WorkPlaceHstTDES_INDEX, "Index", "User2WorkPlaceHst", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-info" })
+                                @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-info" })
+                                @Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-info" })
+                                @Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-info" })
+
+                                @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-default" })
+                                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-default" })
+                                @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-default" })
+                                @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-sm  btn-default" })
+                                @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+
+
+
+
+
+
+                                @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", "EnterpriseBranchRate", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+
+
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                //                offsetVarClass = "col-md-3";
+            }
+            @if (IsBranchBooker)
+            {
+                <div class="@offsetVarClass">
+                    <div class="panel panel-default ">
+                        <div class="panel-heading">@Resources.BranchBookerName:</div>
+                        <div class="panel-body text-center">
+                            <div class="btn-group-vertical">
+                                @Html.ActionLink(Resources.BranchSpell_INDEX, "Index", "BranchSpell", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success" })
+                                @Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success" })
+
+                                @Html.ActionLink(Resources.User2WorkPlace_INDEX, "Index", "User2WorkPlace", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-primary" })
+                                @Html.ActionLink(Resources.User2WorkPlaceHstTDES_INDEX, "Index", "User2WorkPlaceHst", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-primary" })
+
+                                @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-info" })
+                                @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-info" })
+
+
+                                @Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-warning" })
+                                @Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-warning" })
+
+
+                                @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+
+
+
+                                @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", "EnterpriseBranchRate", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                //                offsetVarClass = "col-md-3";
+            }
+            @if (IsBranchAdmin)
+            {
+                <div class="@offsetVarClass">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">@Resources.BranchAdminName:</div>
+                        <div class="panel-body text-center">
+                            <div class="btn-group-vertical">
+                                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success" })
+                                @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success" })
+                                @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success" })
+                                @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-success" })
+
+                                @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-info" })
+                                @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-default" })
+
+                                @Html.ActionLink(Resources.GuestBranchTDES_INDEX, "Index", "GuestBranch", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-primary" })
+                                @Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", "EnterpriseBranchRate", routeValues: null, htmlAttributes: new { @class = "btn btn-sm btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                //                offsetVarClass = "col-md-3";
+            }
+            @if (IsBranchAudit)
+            {
+                <div class="@offsetVarClass">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">@Resources.BranchAuditName:</div>
+                        <div class="panel-body text-center">
+                            Права роли "Аудитор подразделения" дают возможность только просматривать ресурсы доступные другим ролям подразделения.
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+
+    if (IsEnterpriseAdmin || IsEnterpriseAudit || IsEcoSystemAdmin)
+    {
+        int offsetVar = 0;
+        if (IsEnterpriseAdmin) { offsetVar += 1; }
+        if (IsEnterpriseAudit) { offsetVar += 1; }
+        if (IsEcoSystemAdmin) { offsetVar += 1; }
+        offsetVar = 12 / offsetVar;
+        var offsetVarClass = "col-md-" + offsetVar.ToString();
+
+
+        <div class="row">
+            @if (IsEnterpriseAdmin)
+            {
+                <div class="@offsetVarClass">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">@Resources.EnterpriseAdminName:</div>
+                        <div class="panel-body">
+                            Первое, что должен делать Администратор предприятия после получения логина и пароля -- это войти в систему и изменить свой пароль входа.
+                            При необходимости администратор предприятия может изменить наименование предприятия.
+                            Следующей шаг -- это создание записей для одного или нескольких подразделений предприятия. Одно подразделение необходимо создать в любом случае.
+                            Роль администратора предприятия позволяет изменять штат своего предприятия: "администраторы предприятия" и "аудиторы предприятия".
+                            Нельзя блокировать свой профиль, иначе вы не сожете войти в систему.
+                            <ul>
+                                <li>
+                                    @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn   btn-primary" })
+                                    Профиль предприятия к которому вы прикреплены<p />
+                                </li>
+                                <li>
+                                    @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn   btn-primary" })
+                                    Адреса предприятия к которому вы прикреплены<p />
+                                </li>
+                                <li>
+                                    @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn   btn-primary" })
+                                    Исполнители уровня предприятия (админы и аудиторы)<p />
+                                </li>
+                                <li>
+                                    @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn   btn-primary" })
+                                    Ваши бизнес-партнеры или оптовые поставщики товара. Право вносить (изменять, удалять) записи по бизнес партнерам предоставлено только администратору предприятия
+                                    Записи по бизнес партнерам используется при создании заголовков приходных ведомостей<p />
+                                </li>
+                                <li>
+                                    @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn   btn-primary" })
+                                    Мировые брэнды товаров, которыми торгует ваше предприятие. Право вносить (изменять, удалять) записи по брэндам товаров предоставлено только администратору предприятия.
+                                    При отсутствии брэндов нельзя создать артикул предприятия<p />
+                                </li>
+                                <li>
+                                    @Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", routeValues: null, htmlAttributes: new { @class = "btn   btn-primary" })
+                                    Категории товаров предприятия<p />
+                                </li>
+                                <li>
+                                    @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn   btn-primary" })
+                                    Артикулы товаров, которыми торгует ваше предприятиею. Право вносить (изменять, удалять) записи по артикулам предприятия предоставлено только администратору предприятия.
+                                    Описание каждого артикула состоит из двух пар. Первая пара (Id, Брэнд)- это нумерация,
+                                    которую закрепило ваше предприятие за наименованием товара. Вторая пара (Id, Брэнд) - это нумерация, которая ведется в TecDoc (т.е. то, что написано на упаковке).
+                                    Как правило, эти пары (ваш нумератор и нумератор TecDoc) должны совпадать. Но если предприятие работает давно и так сложилось, что была заведена своя собственная нумерация.
+                                    При отсутствии такого ресурса в учетной системе, предприятия со своей собственной нумерацией товаров не смогут воспользоваться данным решением.
+                                    Другими словами, наличие данного ресурса позволяет предприятию вести свою собственную нумерацию, но при обслуживании клиентов использовать нумерацию TecDoc.
+                                    Покупателю понятны слова (B31991-00, GLASER), т.к. это он найдет на упаковке товара "Комплекта прокладок, блок-картер двигателя". На этой же упаковке он найдет европейский штрих-код=8429020262113.
+                                    Все это отнисится к нумерации TecDoc. Внутренняя нумерация вашего предприятия наверное интересует только вашего бухгалтера и только до тех пор пока тот находится на работе.
+                                    <span style="font-weight:bold">Этот ресурс учетной системы один из важнейших.</span> И причины следующие: это и определение аналогов, это и определение соответсвия европейских штрих-кодов вашей собственной нумерации и
+                                    это определение соответсвия конструкционных номеров деталей и вашей собственной нумерации
+                                </li>
+                                <li>
+                                    @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn   btn-primary" })
+                                    Настройка поиска в оригинальных каталогах для стола заказов<p />
+                                </li>
+
+
+
+
+
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (IsEnterpriseAudit)
+            {
+                <div class="@offsetVarClass">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">@Resources.EnterpriseAuditName:</div>
+                        <div class="panel-body text-center">
+                            <div class="btn-group-vertical">
+                                @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+                                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+                                @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+                                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+                                @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+                                @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+                                @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (IsEcoSystemAdmin)
+            {
+                <div class="@offsetVarClass">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">@Resources.EcoSystemAdminName:</div>
+                        <div class="panel-body text-center">
+                            <div class="btn-group-vertical">
+                                @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+                                @Html.ActionLink(Resources.AddressType_INDEX, "Index", "AddressType", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.SettlementType_INDEX, "Index", "SettlementType", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.Soato_INDEX, "Index", "Soato", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.StreetType_INDEX, "Index", "StreetType", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.ContactType_INDEX, "Index", "ContactTypes", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.EnterpriseTecDocSrcTypeTDES_TITLE, "Index", "EnterpriseTecDocSrcType", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.BranchType_INDEX, "Index", "BranchTypes", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.Currency_INDEX, "Index", "Currency", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.Country_INDEX, "Index", "Country", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-info" })
+                                @Html.ActionLink(Resources.GuestBranchTDES_INDEX, "Index", "GuestBranch", routeValues: null, htmlAttributes: new { @class = "btn btn-sm   btn-primary" })
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+}

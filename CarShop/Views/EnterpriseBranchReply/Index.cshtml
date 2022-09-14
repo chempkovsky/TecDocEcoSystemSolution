@@ -1,0 +1,198 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.EnterpriseBranchReplyTDES>
+
+@{
+    ViewBag.Title = Resources.EnterpriseBranchReplyTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Если для привлечения покупателей вы решили публиковать остатки и цены ваших товаров в интернет, вам необходимо настроить репликатор на <b>ВНЕШНИЙ интернет сайт.</b>
+        С точки зрения программного обеспечения - этот сайт является точной копией вашего локального решения. С точки зрения данных, внешний сайт хранит только остатки товаров и профиль
+        подразделения. Внешний сайт не держит ни приходные ведомости, ни расход, ни переоценку. Реплицируются только остатки!!!<br />
+
+        Администратор <b>внешнего сайта</b>
+        <ul>
+            <li>регистрирует ваше предприятие и подразделение (двухуровневая инфраструктура). </li>
+            <li>регистрирует штат вашего подразделения </li>
+            <li>передает вам <b>внешнюю учетную запись (и пароль).</b> </li>
+        </ul>
+        Через переданную учетную запись вы будете реплицировать данные на <b>внешний сайт</b>
+        или используя web-интерфейс <b>внешнего интернет сайта</b> редактировать рукми опубликованные остатки вашего подразделения.
+        <br />
+        Важно понимать, что <b>внешняя учетная запись</b> - это учетная запись для входа на внешний сайт, но не учетная запись для входа в ваше локальное решение.
+        Передача данных из вашего локального решения на <b>внешний сайт</b> проводится с использованием WebApi сервисов реализованных на внейшем сайте.
+
+        @Html.ActionLink("Спецификацию по реализованному WebApi интерфейсу можно получить перейдя по этой ссылке.", "Index", "Help", new { }, new { })
+        В рамках спецификации сервис <b>api/BranchLogInSvc</b> используется для входа на <b>внешний сайт</b>. И сервис <b>api/BranchRestSvc</b> используется для выполнения репликации.
+        Кроме указания точек доступа к сервисам необходимо указать сам внешний сайт. Url внешнего сайта вносится а поле <b>Http адрес</b>. Внешняя учетная запись вносится в поля
+        <b>пользователь</b> и <b>пароль</b>. Кликните по ссылке <b>создать</b> для внесения настроек репликации. Ссылка <b>создать</b>
+        доступна ролям администраторов предприятия и подразделения.
+        <br />
+        Чтобы начать репликацию вы должны на вашем локальном сайте перейти на страницу <b>Детально</b> для вашего подразделения и кликнуть <b>Реплицировать данные</b>.
+        Вы перейдете на страницу, с которой можно запустить репликацию. После запуска процесса репликации управление передается обратно на вашу страницу.
+        Вы можете выполнить выход из системы, но процесс будет продолжаться. С другой стороны, нельзя запустить два паралельных процесса репликации для одного и того же подразделения.
+        Если возникает ошибка, процесс останавливается. Ошибка держится в памяти вашего локального решения не более 20 минут.    </div>
+</div>
+
+
+<h2>@Resources.EnterpriseBranchReplyTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+</ol>
+
+
+
+@Html.ValidationSummary(true)
+
+@if ( SearchEntBranchGuid.HasValue)
+{
+if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker)) {
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", new {searchEntGuid = SearchEntGuid,  searchEntBranchGuid = SearchEntBranchGuid}, new { @class="btn btn-primary" })
+    </p>
+}
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReplyType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseHttpAddress)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.HttpUser)
+        </th>
+
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+
+  
+            @switch(item.ReplyType) {
+                case 1: {
+                <td>@Resources.ReplyRests</td> ;  break; }
+                case 2: {
+                    <td>@Resources.ReplyProfile</td> ; break; }
+                case 3: {
+                    <td>@Resources.ReplyOrders</td> ; break; }
+                case 4: {
+                    <td>@Resources.ReplyArticles</td> ; break; }
+            }
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseHttpAddress)
+        </td>
+        <td class="hidden-xs">
+            @Html.DisplayFor(modelItem => item.HttpUser)
+        </td>
+
+
+
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchReplyType = item.ReplyType }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchReplyType = item.ReplyType }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchReplyType = item.ReplyType }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+    
+        <tr class="warning">
+            <td colspan="2">
+                <dl class="dl-horizontal">
+                    <dt class="visible-xs">
+                        @Html.DisplayNameFor(model => model.HttpUser)
+                    </dt>
+                    <dd class="visible-xs">
+                        @Html.DisplayFor(modelItem => item.HttpUser)
+                    </dd>
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HttpLoginUrl)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.HttpLoginUrl)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HttpGetUrl)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.HttpGetUrl)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HttpPostUrl)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.HttpPostUrl)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HttpPutUrl)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.HttpPutUrl)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HttpDeleteUrl)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.HttpDeleteUrl)
+                    </dd>
+
+
+                </dl>
+            </td>
+        </tr>
+    
+    
+        <tr class="visible-xs visible-sm active">
+            <td colspan="2" class="btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+            {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchReplyType = item.ReplyType }, new { @class = "btn btn-primary" })
+            }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchReplyType = item.ReplyType }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+            {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchReplyType = item.ReplyType }, new { @class = "btn btn-danger" })
+            }
+            </td>
+        </tr>
+    
+}
+
+</table>
+}

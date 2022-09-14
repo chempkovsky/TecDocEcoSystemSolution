@@ -1,0 +1,137 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.IncomePayRollTDES
+
+@{
+    ViewBag.Title = Resources.CREATENEW_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Приход на магазин", "Income", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.CREATENEW_ACTION</h2>
+
+@if (  !SearchEntBranchGuid.HasValue )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+    </ol>
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+
+using (Html.BeginForm("Create", "IncomePayRoll")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>IncomePayRollTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                        <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                }
+            }
+        </ol>
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.EntBranchGuid)
+        @Html.HiddenFor(model => model.EntGuid)
+        @Html.HiddenFor(model => model.EntUserNic)
+        @Html.HiddenFor(model => model.IsReversed)
+        @Html.HiddenFor(model => model.IsProcessed)
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IncomePayRollTDESGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IncomePayRollTDESGuid)
+                @Html.ValidationMessageFor(model => model.IncomePayRollTDESGuid)
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedAt, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreatedAt)
+                @Html.ValidationMessageFor(model => model.CreatedAt)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntSupplierId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntSupplierId)
+                <input type="submit" name="EntSupplierIdLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.EntSupplierId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntSupplierDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntSupplierDescription)
+                <input type="submit" name="EntSupplierDescriptionLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.EntSupplierDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.CREATE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocompleteVal")
+}
+
+}        

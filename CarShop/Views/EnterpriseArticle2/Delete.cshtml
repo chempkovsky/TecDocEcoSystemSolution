@@ -1,0 +1,115 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseArticleTDES
+
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseArticleHelp1<br>@Resources.EnterpriseArticleHelp2<br>
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Каталог артикулов", "Articles", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+    </div>
+</div>
+
+
+<h2>@Resources.DELETE_ACTION</h2>
+
+@if (! SearchEntGuid.HasValue )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", new { searchEntGuid = SearchEntGuid }, new { })</li>
+        }
+    </ol>
+
+    @Html.ValidationSummary(true)
+} else {
+
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>EnterpriseArticleTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", new { searchEntGuid = SearchEntGuid }, new { })</li>
+        }
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntArticle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntArticle)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnterpriseArticleDescriptionTDES.EntArticleDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnterpriseArticleDescriptionTDES.EntArticleDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntBrandNic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntBrandNic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExternArticle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExternArticle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExternBrandNic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExternBrandNic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExternArticleEAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExternArticleEAN)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.EntGuid)
+        @Html.HiddenFor(model => model.EntBrandNic)
+        @Html.HiddenFor(model => model.EntArticle)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "EnterpriseArticle2", new { searchEntGuid = SearchEntGuid }, new { })
+        </div>
+    }
+</div>
+}

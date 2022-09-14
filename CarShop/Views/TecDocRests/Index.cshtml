@@ -1,0 +1,204 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@using Newtonsoft.Json;
+
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPETREEITEMS_REST_TD>
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREEITEMDETAIL_INDEX;
+    SelectList slisrchTp = ViewBag.slisrchTp as SelectList;
+
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+
+    string redirecData = ViewBag.redirecData;
+    string redirectContriller = ViewBag.redirectContriller;
+    string redirectAction = ViewBag.redirectAction;
+}
+
+<h2>@Resources.CARMODELTYPETREEITEMDETAIL_INDEX</h2>
+
+@using (Html.BeginForm("Index", "TecDocRests", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+
+
+    <div class="form-group">
+    @Html.DropDownList("srchTp", slisrchTp,  new { @class="form-control" })
+    </div>
+    <div class="form-group">
+    @Html.TextBox("artId", ViewBag.artId as string, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+
+}
+
+@Html.ValidationSummary(true)
+
+
+@using (Html.BeginForm("IndexSelected", "TecDocRests", FormMethod.Post))
+{
+
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+
+
+if ((Model != null) && (Model.Count() > 0))
+{
+
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+}
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Resources.TECDOC_ART_ARTICLE_NR
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SUP_TEXT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtAmount) : @Html.DisplayNameFor(model => model.ArtPrice)
+            </th>
+            <th class="hidden-xs">
+                @Html.DisplayNameFor(model => model.ART_ID)
+            </th>
+        </tr>
+        @{
+            var selected = true;
+            //System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+        }
+
+        @foreach (var item in Model)
+        {
+
+
+            <tr>
+                <td>
+                    @Html.RadioButton("SimpleArticle", JsonConvert.SerializeObject(new SimpleArticle_REST_TD() { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, ArtPrice = item.ArtPrice }), selected, selected)
+                    @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUP_ID) : @Html.DisplayFor(modelItem => item.SUP_TEXT)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtAmount) : @Html.DisplayFor(modelItem => item.ArtPrice)
+                </td>
+                <td class="hidden-xs btn-group btn-group-xs">
+                    @Html.ActionLink(
+                     Html.DisplayFor(modelItem => item.ART_ID).ToHtmlString(),
+                       "Index", "TecDocRests",
+                       new
+                       {
+                           redirecData = redirecData,
+                           redirectContriller = redirectContriller,
+                           redirectAction = redirectAction,
+                           searchEntGuid = SearchEntGuid,
+                           searchEntBranchGuid = SearchEntBranchGuid,
+                           artId = item.ART_ID,
+                           srchTp = "1"
+                       }, new { @class = "btn btn-primary" })
+
+                    @Html.ActionLink(Resources.DETAILS_ACTION, "Details", "TecDocRests",
+                    new
+                    {
+                        redirecData = redirecData,
+                        redirectContriller = redirectContriller,
+                        redirectAction = redirectAction,
+                        searchEntGuid = SearchEntGuid,
+                        searchEntBranchGuid = SearchEntBranchGuid,
+                        ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                        artId = item.ART_ID,
+                        GA_NR = item.GA_NR
+                    }, new { @class = "btn btn-info" })
+                    @Html.ActionLink(Resources.TECDOC_APPLICABLE,
+                    "AppliedTo", "TecDocRests",
+                    new
+                    {
+                       redirecData = redirecData,
+                       redirectContriller = redirectContriller,
+                       redirectAction = redirectAction,
+                       searchEntGuid = SearchEntGuid,
+                       searchEntBranchGuid = SearchEntBranchGuid,
+                       artId = item.ART_ID,
+                       ART_ARTICLE_NR = item.ART_ARTICLE_NR
+                    }, new { @class = "btn btn-warning" })
+
+
+                </td>
+
+            </tr>
+            <tr class="warning">
+                <td colspan="3"> @Html.DisplayFor(modelItem => item.GA_NR) : @*@Html.DisplayFor(modelItem => item.GA_TEXT) :*@ @Html.DisplayFor(modelItem => item.MASTER_BEZ)</td>
+            </tr>
+
+            <tr class="visible-xs btn-group-xs active">
+                <td colspan="3">
+                    @Html.ActionLink(
+                     Html.DisplayFor(modelItem => item.ART_ID).ToHtmlString(),
+                       "Index", "TecDocRests",
+                       new
+                       {
+                           redirecData = redirecData,
+                           redirectContriller = redirectContriller,
+                           redirectAction = redirectAction,
+                           searchEntGuid = SearchEntGuid,
+                           searchEntBranchGuid = SearchEntBranchGuid,
+                           artId = item.ART_ID,
+                           srchTp = "1"
+                       }, new { @class = "btn btn-primary" })
+
+                    @Html.ActionLink(Resources.DETAILS_ACTION, "Details", "TecDocRests",
+                    new
+                    {
+                        redirecData = redirecData,
+                        redirectContriller = redirectContriller,
+                        redirectAction = redirectAction,
+                        searchEntGuid = SearchEntGuid,
+                        searchEntBranchGuid = SearchEntBranchGuid,
+                        ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                        artId = item.ART_ID,
+                        GA_NR = item.GA_NR
+                    }, new { @class = "btn btn-info" })
+                    @Html.ActionLink(Resources.TECDOC_APPLICABLE,
+                    "AppliedTo", "TecDocRests",
+                    new
+                    {
+                        redirecData = redirecData,
+                        redirectContriller = redirectContriller,
+                        redirectAction = redirectAction,
+                        searchEntGuid = SearchEntGuid,
+                        searchEntBranchGuid = SearchEntBranchGuid,
+                        artId = item.ART_ID,
+                        ART_ARTICLE_NR = item.ART_ARTICLE_NR
+                    }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+            selected = false;
+        }
+
+    </table>
+
+    if ((Model != null) && (Model.Count() > 0))
+    {
+
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+}
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+
+}
+    

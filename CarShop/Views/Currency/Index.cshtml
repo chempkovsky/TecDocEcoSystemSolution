@@ -1,0 +1,141 @@
+﻿@model IEnumerable<TecDocEcoSystemDbClassLibrary.Currency>
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.Currency_INDEX;
+}
+
+<h2>@Resources.Currency_INDEX</h2>
+
+@if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+{
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+    </p>
+}
+
+<input type="button" class="btn btn-info visible-xs visible-sm" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrencyIso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrencyName)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.CurrencyCode3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FractionalUnit)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.FractionalUnitName)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.IssuerName)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.IsNational)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.IsOperational)
+        </th>
+        <th class="hidden-xs"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrencyIso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrencyName)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.CurrencyCode3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FractionalUnit)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.FractionalUnitName)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.IssuerName)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.IsNational)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.IsOperational)
+            </td>
+            <td class="hidden-xs btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.CurrencyIso }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.CurrencyIso }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.CurrencyIso }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+        
+        
+        <tr class="warning">
+            <td colspan="3" class="visible-xs visible-sm">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CurrencyCode3)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.CurrencyCode3)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FractionalUnitName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.FractionalUnitName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsNational)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsNational)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsOperational)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsOperational)
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        
+        
+        <tr class="visible-xs active">
+            <td colspan="3" class="btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.CurrencyIso }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.CurrencyIso }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.CurrencyIso }, new { @class = "btn btn-danger" })
+                }
+
+            </td>
+        </tr>
+
+    }
+
+</table>

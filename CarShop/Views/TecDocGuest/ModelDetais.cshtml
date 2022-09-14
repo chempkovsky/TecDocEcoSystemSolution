@@ -1,0 +1,305 @@
+﻿@using CarShop.Properties;
+
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPE_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPE_INDEX;
+    int? MFA_ID = ViewBag.MFA_ID;
+    int? MOD_ID = ViewBag.MOD_ID;
+    SelectList sliFUELS = ViewBag.sliFUELS;
+    
+    //string redirecData = ViewBag.redirecData;
+    //string redirectContriller = ViewBag.redirectContriller;
+    //string redirectAction = ViewBag.redirectAction;
+    //Guid? searchEntGuid = ViewBag.searchEntGuid;
+    //Guid? searchEntBranchGuid = ViewBag.searchEntBranchGuid;
+
+}
+
+<h2>@Resources.CARMODELTYPE_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(Resources.BRANDS_INDEX, "Manufact", "TecDocGuest", new
+       {
+           //redirecData = redirecData,
+           //redirectContriller = redirectContriller,
+           //redirectAction = redirectAction,
+           //searchEntGuid = searchEntGuid,
+           //searchEntBranchGuid = searchEntBranchGuid
+       }, new { })
+    </li>
+
+    @if (MFA_ID.HasValue)
+    {
+        <li>
+            @Html.ActionLink(Resources.TecDocModel_INDEX, "ModelTypes", "TecDocGuest", new
+       {
+           //redirecData = redirecData,
+           //redirectContriller = redirectContriller,
+           //redirectAction = redirectAction,
+           //searchEntGuid = searchEntGuid,
+           //searchEntBranchGuid = searchEntBranchGuid,
+           MFA_ID = MFA_ID
+       }, new { })
+        </li>
+    }
+</ol>
+
+<ul class="nav nav-pills nav-justified">
+    <li>@Html.ActionLink(Resources.InStock, "Index", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.UnderTheOrder, "IndexUTO", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li class="active">@Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })</li>
+</ul>
+
+<hr />
+
+
+@using (Html.BeginForm("ModelDetais", "TecDocGuest", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE_FLUEL</h3>
+    @*@Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+    @Html.Hidden("searchEntGuid", searchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", searchEntBranchGuid)*@
+    
+    @Html.Hidden("MFA_ID", MFA_ID)
+    @Html.Hidden("MOD_ID", MOD_ID)
+
+    <div class="form-group">
+        @Html.DropDownList("fluelId", sliFUELS, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+<table class="table table-condensed">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.TYP_ID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.TEX_TEXT)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.TYP_KV_ENGINE)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.TYP_KV_BODY)
+        </th>
+        @*<th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.TYP_DOORS)
+        </th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td class="btn-group btn-group-xs">
+                @Html.ActionLink(
+                                item.TYP_ID.ToString(), //@Html.DisplayFor(modelItem => item.TYP_ID),
+                                "ModelDetaisTree",
+                                new
+                                {
+                                    //redirecData = redirecData,
+                                    //redirectContriller = redirectContriller,
+                                    //redirectAction = redirectAction,
+                                    //searchEntGuid = searchEntGuid,
+                                    //searchEntBranchGuid = searchEntBranchGuid,
+                                    MFA_ID = MFA_ID,
+                                    MOD_ID = MOD_ID,
+                                    fluelId = ViewBag.FluelId,
+                                    TYP_ID = item.TYP_ID
+                                }, new { @class = "btn btn-info" })
+            </td>*@
+
+            <td>  @*class="btn-group btn-group-xs">*@
+                @*@Html.DisplayFor(modelItem => item.TEX_TEXT)*@
+                @*@Html.ActionLink(
+                                item.TEX_TEXT.ToString(), //@Html.DisplayFor(modelItem => item.TYP_ID),
+                                "ModelDetaisTree",
+                                new
+                                {
+                                    //redirecData = redirecData,
+                                    //redirectContriller = redirectContriller,
+                                    //redirectAction = redirectAction,
+                                    //searchEntGuid = searchEntGuid,
+                                    //searchEntBranchGuid = searchEntBranchGuid,
+                                    MFA_ID = MFA_ID,
+                                    MOD_ID = MOD_ID,
+                                    fluelId = ViewBag.FluelId,
+                                    TYP_ID = item.TYP_ID
+                                }, new { @class = "btn btn-info btn-xs" })*@
+                
+
+                <a class="btn btn-success btn-xs" href="@Url.Action("ModelDetaisTree", "TecDocGuest", new
+                                            {
+                                                MFA_ID = MFA_ID,
+                                                MOD_ID = MOD_ID,
+                                                fluelId = ViewBag.FluelId,
+                                                TYP_ID = item.TYP_ID
+                                            })">
+                    <i class="glyphicon glyphicon-ok-sign" style="font-size:1.5em;"></i> &nbsp;&nbsp;   @item.TEX_TEXT.ToString()
+                    @*<span class="sr-only"></span>*@
+
+                </a>
+
+
+            </td>
+
+
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.TYP_KV_ENGINE)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.TYP_KV_BODY)
+            </td>
+            @*<td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.TYP_DOORS)
+            </td>*@
+        </tr>
+
+        <tr class="warning">
+            <td colspan="2">
+                <dl class="dl-horizontal">
+
+
+                    <dt class="visible-xs visible-sm">
+                        @Html.DisplayNameFor(model => model.TYP_KV_ENGINE)
+                    </dt>
+                    <dd class="visible-xs visible-sm">
+                        @Html.DisplayFor(modelItem => item.TYP_KV_ENGINE)
+                    </dd>
+
+
+                    <dt class="visible-xs visible-sm">
+                        @Html.DisplayNameFor(model => model.TYP_KV_BODY)
+                    </dt>
+                    <dd class="visible-xs visible-sm">
+                        @Html.DisplayFor(modelItem => item.TYP_KV_BODY)
+                    </dd>
+
+
+                    @*@if (!string.IsNullOrEmpty(item.TYP_DOORS))
+                    {
+                        <dt class="visible-xs visible-sm">
+                            @Html.DisplayNameFor(model => model.TYP_DOORS)
+                        </dt>
+                        <dd class="visible-xs visible-sm">
+                            @Html.DisplayFor(modelItem => item.TYP_DOORS)
+                        </dd>
+                    }*@
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_PCON_START) / @Html.DisplayNameFor(model => model.TYP_PCON_END)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_PCON_START) / @Html.DisplayFor(modelItem => item.TYP_PCON_END)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_KW_FROM) / @Html.DisplayNameFor(model => model.TYP_HP_FROM)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_KW_FROM) / @Html.DisplayFor(modelItem => item.TYP_HP_FROM)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_VALVES) * @Html.DisplayNameFor(model => model.TYP_CYLINDERS)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_VALVES) * @Html.DisplayFor(modelItem => item.TYP_CYLINDERS)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_CCM)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_CCM)
+                    </dd>
+
+                    @if (!string.IsNullOrEmpty(item.TYP_KV_ABS))
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TYP_KV_ABS)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KV_ABS)
+                        </dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.TYP_KV_ASR))
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TYP_KV_ASR)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KV_ASR)
+                        </dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.TYP_KV_BRAKE_TYPE))
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TYP_KV_BRAKE_TYPE)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KV_BRAKE_TYPE)
+                        </dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.TYP_KV_BRAKE_SYST))
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TYP_KV_BRAKE_SYST)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KV_BRAKE_SYST)
+                        </dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.TYP_KV_FUEL_SUPPLY))
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TYP_KV_FUEL_SUPPLY)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KV_FUEL_SUPPLY)
+                        </dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.TYP_KV_CATALYST))
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TYP_KV_CATALYST)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KV_CATALYST)
+                        </dd>
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.TYP_KV_TRANS))
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TYP_KV_TRANS)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KV_TRANS)
+                        </dd>
+                    }
+
+                </dl>
+
+            </td>
+        </tr>
+
+    }
+
+</table>

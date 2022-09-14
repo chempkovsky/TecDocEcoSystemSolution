@@ -1,0 +1,169 @@
+﻿@using CarShop.Properties;
+@using PagedList.Mvc;
+
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.SuppRestTDES>
+
+@{
+    ViewBag.Title = Resources.ReplyRests;
+
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    String SearchEntSupplierId = ViewBag.SearchEntSupplierId as String;
+    String EntSupplierDescription = ViewBag.EntSupplierDescription as String;
+
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy;
+}
+
+<h2>@Resources.ReplyRests</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+        if (!String.IsNullOrEmpty(SearchEntSupplierId))
+        {
+            <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+        }
+    }
+</ol>
+
+@if (String.IsNullOrEmpty(SearchEntSupplierId))
+{
+    @Html.ValidationSummary(true)
+} else {
+
+if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", "EnterpriseSupplierRest", routeValues: new { searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, htmlAttributes: new { @class = "btn btn-primary" })
+    </p>
+}
+
+
+using (Html.BeginForm("Index", "EnterpriseSupplierRest", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntSupplierId", SearchEntSupplierId)
+    <div class="form-group">
+                @Html.DropDownList("searchStringBy", sliSearchStringBy, new {
+                        @class = "form-control",
+                        data_autocomplete_selector = "data-autocomplete-url",
+                        sel1 = Url.Action("Autocomplete", new { currentFilterBy = "1", searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }),
+                        sel2 = Url.Action("Autocomplete", new { currentFilterBy = "2", searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }),
+                        sel3 = Url.Action("Autocomplete", new { currentFilterBy = "3", searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }),
+                        sel4 = Url.Action("Autocomplete", new { currentFilterBy = "4", searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }),
+                        sel5 = Url.Action("Autocomplete", new { currentFilterBy = "5", searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }),
+                        sel6 = Url.Action("Autocomplete", new { currentFilterBy = "6", searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }) 
+                })
+    </div>
+    <div class="form-group">
+                @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new {
+                        @class = "form-control",
+                        data_autocomplete_url = Url.Action("Autocomplete", "EnterpriseSupplierRest", new { currentFilterBy = ViewBag.currentFilterBy, searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId })
+           })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+var dummy = Model.FirstOrDefault();
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => dummy.EntBranchArticle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.EntBranchSup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.ExternArticleEAN)
+            </th>
+            <th class="hidden-xs btn-group btn-group-xs"></th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntBranchArticle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntBranchSup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternArticleEAN)
+        </td>
+        <td class="hidden-xs btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntArticle = item.EntBranchArticle, searchEntBrandNic = item.EntBranchSup, searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntArticle = item.EntBranchArticle, searchEntBrandNic = item.EntBranchSup, searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntArticle = item.EntBranchArticle, searchEntBrandNic = item.EntBranchSup, searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+    <tr class="warning">
+        <td colspan="3">
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(model => dummy.BranchRestArticleDescriptionTDES.EntArticleDescription)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.BranchRestArticleDescriptionTDES.EntArticleDescription)</dd>
+
+
+                <dt>@Html.DisplayNameFor(model => dummy.ART_ARTICLE_NR)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.SUP_TEXT)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.SUP_TEXT)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.ArtAmount)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.ArtAmount)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.ArtPrice)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.ArtPrice)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.LastUpdated)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.LastUpdated)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.LastReplicated)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.LastReplicated)</dd>
+            </dl>
+        </td>
+    </tr>
+
+    <tr class="visible-xs active">
+        <td colspan="2" class="btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntArticle = item.EntBranchArticle, searchEntBrandNic = item.EntBranchSup, searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntArticle = item.EntBranchArticle, searchEntBrandNic = item.EntBranchSup, searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntArticle = item.EntBranchArticle, searchEntBrandNic = item.EntBranchSup, searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+        
+
+    }
+
+    </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId, currentFilter = ViewBag.CurrentFilter, currentFilterBy = ViewBag.currentFilterBy, page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+    
+@section Scripts {
+    @Scripts.Render("~/bundles/autocompleteEx")
+}
+    
+}    

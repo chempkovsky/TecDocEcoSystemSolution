@@ -1,0 +1,92 @@
+﻿@model TecDocEcoSystemDbClassLibrary.Currency
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+}
+
+<h2>@Resources.DELETE_ACTION <small>@Resources.Currency_INDEX</small></h2>
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>Currency</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.Currency_INDEX, "Index")</li>
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrencyIso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrencyIso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrencyCode3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrencyCode3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrencyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrencyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FractionalUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FractionalUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FractionalUnitName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FractionalUnitName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssuerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssuerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsNational)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsNational)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOperational)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOperational)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,248 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.ANALOGOUS_REST_TD>
+@{
+    ViewBag.Title = "Details";
+    List<FUEL_TD> Eans = ViewBag.Eans;
+    List<MODELTYPETREEITEMDESCR_TD> Modeltypetreeitemdescr = ViewBag.Modeltypetreeitemdescr;
+    //    List<ANALOGOUS_REST_TD> Analoglist = ViewBag.Analoglist;
+    List<MODELTYPETREEITEMMANID_TD> ManufIds = ViewBag.ManufIds;
+
+
+    string ART_ID = ViewBag.ART_ID;
+    string ART_ARTICLE_NR = ViewBag.ART_ARTICLE_NR;
+
+
+}
+
+
+<h2>@Resources.CARMODELTYPETREEITEMDETAIL_INDEX  <small>@Resources.DETAILS_ACTION</small></h2>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(ART_ID + " : " + ART_ARTICLE_NR,
+                      "IndexUTO", "TecDocGuest",
+               new
+               {
+                   artId = ART_ID,
+                   srchTp = "1"
+               }, new { })
+    </li>
+</ol>
+
+
+<ul class="nav nav-pills nav-justified">
+    <li>@Html.ActionLink(Resources.InStock, "Index", "TecDocGuest", new { artId = ART_ID, srchTp = "1" }, new { @class = "btn btn-warning" })</li>
+    <li class="active">@Html.ActionLink(Resources.UnderTheOrder, "IndexUTO", "TecDocGuest", new { artId = ART_ID, srchTp = "1" }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })</li>
+</ul>
+
+
+<hr />
+
+
+@Html.ActionLink(Resources.TECDOC_APPLICABLE,
+                 "AppliedToUTO", "TecDocGuest",
+               new
+               {
+                   artId = ART_ID,
+                   ART_ARTICLE_NR = ART_ARTICLE_NR
+               }, new { @class = "btn btn-primary" })
+
+<h3>@Resources.TECDOC_EAN_INDEX</h3>
+@if ((Eans != null) && (Eans.Count > 0))
+{
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Resources.TECDOC_TEX_TEXT
+            </th>
+        </tr>
+        @foreach (var item in Eans)
+        {
+            <tr>
+                <td class="btn-group btn-group-xs">
+                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.TEX_TEXT).ToHtmlString(),
+                     "IndexUTO", "TecDocGuest",
+                        new
+                        {
+                            artId = item.TEX_TEXT,
+                            srchTp = "3"
+                        }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}
+
+<h3>@Resources.DETAILS_ACTION</h3>
+@if ((Modeltypetreeitemdescr != null) && (Modeltypetreeitemdescr.Count() > 0))
+{
+    var dummy = Modeltypetreeitemdescr[0];
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Resources.TECDOC_TEX_TEXT
+            </th>
+            <th>
+                @Resources.TECDOC_TEX_UNIT
+            </th>
+            <th>
+                @Resources.TECDOC_TEX_VALUE
+            </th>
+        </tr>
+
+        @foreach (var item in Modeltypetreeitemdescr)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_TEXT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_VALUE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_UNIT)
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}
+
+<h3>@Resources.MANUF_IDS_INDEX</h3>
+@if ((ManufIds != null) && (ManufIds.Count > 0))
+{
+    <table class="table table-condensed">
+
+        <tr>
+            <th>
+                @Resources.BRANDS_INDEX
+            </th>
+            <th>
+                @Resources.MANUF_IDS_INDEX
+            </th>
+        </tr>
+
+        @foreach (var item in ManufIds)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUP_TEXT)
+                </td>
+                <td class="btn-group btn-group-xs">
+                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.TEX_VALUE).ToHtmlString(),
+                     "IndexUTO", "TecDocGuest",
+                        new
+                        {
+                            artId = item.TEX_VALUE,
+                            srchTp = "2"
+                        }, new { @class = "btn btn-info" })
+
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}
+
+
+<h3>@Resources.CARMODELTYPETREEITEMANALOG_INDEX</h3>
+@if ((Model != null) && (Model.Count() > 0))
+{
+    int currGroup = 0;
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Resources.TECDOC_ART_ID : @Resources.TECDOC_ART_ARTICLE_NR
+            </th>
+            <th>
+                @Resources.TECDOC_SUP_TEXT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtAmount)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ArtPrice)
+            </th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (currGroup != item.GA_NR)
+            {
+                currGroup = item.GA_NR;
+                <tr class="warning">
+                    <td colspan="4">
+                        @*@Html.DisplayFor(modelItem => item.GA_NR) : @Html.DisplayFor(modelItem => item.GA_TEXT) :*@ @Html.DisplayFor(modelItem => item.MASTER_BEZ)
+                    </td>
+                </tr>
+
+            }
+
+            <tr>
+                <td class="btn-group btn-group-xs">
+                    @Html.ActionLink(@Html.DisplayFor(modelItem => item.ART_ID).ToHtmlString(),
+                     "IndexUTO", "TecDocGuest",
+                        new
+                        {
+                            artId = item.ART_ID,
+                            srchTp = "1"
+                        }, new { @class = "btn btn-info" })
+                    @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUP_TEXT)
+                </td>
+
+                <td class="btn-group btn-group-xs">
+                    @*@Html.ActionLink(@Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString(),
+                                "ArticleShopIndexUTO", "TecDocGuest",
+                             new { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, artId = item.ART_ID, srchTp = "1" }, new { @class = "btn btn-primary" })*@
+                    @if (item.ArtAmount > 0) { 
+                        <a class="btn btn-success" href="@Url.Action("ArticleShopIndexUTO", 
+                                   new { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, artId = item.ART_ID, srchTp = 1 })">
+                       
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString()
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" href="@Url.Action("ArticleShopIndexUTO", 
+                                   new { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, artId = item.ART_ID, srchTp = 1 })">
+                       
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString()
+                        </a>
+                    }
+                 </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.MinArtPrice) : @Html.DisplayFor(modelItem => item.ArtPrice)
+                </td>*@
+            </tr>
+        }
+
+    </table>
+
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}
+

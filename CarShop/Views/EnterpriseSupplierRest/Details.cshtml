@@ -1,0 +1,149 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.SuppRestTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    String SearchEntSupplierId = ViewBag.SearchEntSupplierId as String;
+    String EntSupplierDescription = ViewBag.EntSupplierDescription as String;
+    
+}
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+@if (String.IsNullOrEmpty(SearchEntSupplierId))
+{
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+        if (!String.IsNullOrEmpty(SearchEntSupplierId))
+        {
+            <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.ReplyRests, "Index", "EnterpriseSupplierRest", new { searchEntSupplierId = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+        }
+    }
+    </ol>
+
+    @Html.ValidationSummary(true)
+} else {
+
+
+<div>
+    @*<h4>SuppRestTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+            {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+                if (!String.IsNullOrEmpty(SearchEntSupplierId))
+                {
+                    <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.ReplyRests, "Index", "EnterpriseSupplierRest", new { searchEntSupplierId = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+
+                }
+            }
+    </ol>
+
+
+	<hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntBranchArticle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntBranchArticle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntBranchSup)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntBranchSup)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchRestArticleDescriptionTDES.EntArticleDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BranchRestArticleDescriptionTDES.EntArticleDescription)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ART_ARTICLE_NR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUP_TEXT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUP_TEXT)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastReplicated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastReplicated)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExternArticleEAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExternArticleEAN)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", "EnterpriseSupplierRest", new { searchEntArticle = Model.EntBranchArticle, searchEntBrandNic = Model.EntBranchSup, searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "EnterpriseSupplierRest", new { searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { })
+</p>
+
+}

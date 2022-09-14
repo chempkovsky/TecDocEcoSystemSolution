@@ -1,0 +1,68 @@
+﻿
+@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.AddressType>
+
+@{
+    ViewBag.Title = Resources.AddressType_INDEX;
+}
+
+
+<h2>@Resources.AddressType_INDEX</h2>
+
+@if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+{
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues:null, htmlAttributes:new { @class = "btn btn-primary" })
+    </p>
+}
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressTypeDescription)
+        </th>
+        <th class="hidden-xs"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressTypeDescription)
+            </td>
+            <td class="hidden-xs btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.AddressTypeId }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.AddressTypeId }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.AddressTypeId }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+        <tr class="visible-xs active">
+            <td colspan="2" class="btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.AddressTypeId }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.AddressTypeId }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.AddressTypeId }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+
+    }
+
+</table>

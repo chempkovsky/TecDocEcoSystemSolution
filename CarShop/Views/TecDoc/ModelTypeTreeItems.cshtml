@@ -1,0 +1,114 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPETREEITEMS_REST_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREEITEMS_INDEX;
+    int CountryId = ViewBag.CountryId;
+    int LangId = ViewBag.LangId;
+    int BandId = ViewBag.BandId;
+    int ModelId = ViewBag.ModelId;
+    int ModelTypeId = ViewBag.ModelTypeId;
+    int TopicId = ViewBag.TopicId;
+    int FluelId = ViewBag.FluelId;
+
+    int curGA_NR = 0;
+
+    SelectList sliTof_assembly = ViewBag.sliTof_assembly as SelectList;
+    SelectList sliTof_suppliers = ViewBag.sliTof_suppliers as SelectList;
+}
+
+
+<h2>@Resources.CARMODELTYPETREEITEMS_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.TecDocModel_INDEX, "Index", "TecDoc", new { countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId }, new { })</li>
+    @if (!String.IsNullOrEmpty(ViewBag.ModelDescription))
+    {
+        <li>@Html.ActionLink(ViewBag.ModelDescription as string, "ModelType", "TecDoc", new { modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId }, new { })</li>
+        <li>@Html.ActionLink(Resources.CARMODELTYPETREE_INDEX, "ModelTypeTree", "TecDoc", new { modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId, topicId = ViewBag.TopicId }, new { })</li>
+    }
+</ol>
+
+@using (Html.BeginForm("ModelTypeTreeItems", "TecDoc", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("topicId", TopicId)
+    @Html.Hidden("modelTypeId", ModelTypeId)
+    @Html.Hidden("modelId", ModelId)
+    @Html.Hidden("countryId", CountryId)
+    @Html.Hidden("langId", LangId)
+    @Html.Hidden("bandId", BandId)
+    @Html.Hidden("fluelId", FluelId)
+    <div class="form-group">
+    @Html.DropDownList("tof_assemblyId", sliTof_assembly)
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("tof_suppliersId", sliTof_suppliers)
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+<table class="table table-condensed">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.MASTER_BEZ)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.SUP_TEXT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ART_ID) : @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+        </th>
+        @*<th class="hidden-xs hidden-sm"></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (curGA_NR != item.GA_NR)
+        {
+            curGA_NR = item.GA_NR;
+            <tr class="warning">
+                <th colspan="2"> @Html.DisplayFor(modelItem => item.GA_NR) : @Html.DisplayFor(modelItem => item.GA_TEXT) : @Html.DisplayFor(modelItem => item.MASTER_BEZ)</th>
+            </tr>
+        }
+
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.MASTER_BEZ)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.SUP_ID) : @Html.DisplayFor(modelItem => item.SUP_TEXT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ART_ID) : @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+            </td>
+            <td class="btn-group-xs">
+                @Html.ActionLink(Resources.DETAILS_ACTION, "ModelTypeTreeItemDetails", new { laId = item.LA_ID, artId = item.ART_ID, topicId = ViewBag.TopicId, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId, tof_assemblyId = ViewBag.Tof_assemblyId, tof_suppliersId = ViewBag.Tof_suppliersId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(Resources.CARMODELTYPETREEITEMANALOG_INDEX, "ModelTypeTreeItemAnalogs", new { artNr = item.ART_ARTICLE_NR, gaNr = item.GA_NR, laId = item.LA_ID, artId = item.ART_ID, topicId = ViewBag.TopicId, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId, tof_assemblyId = ViewBag.Tof_assemblyId, tof_suppliersId = ViewBag.Tof_suppliersId }, new { @class = "btn btn-info" })
+
+            </td>
+        </tr>
+        @*<tr>
+                <td colspan="2" class="btn-group btn-group-xs">
+                    @Html.ActionLink(Resources.DETAILS_ACTION, "ModelTypeTreeItemDetails", new { laId = item.LA_ID, artId = item.ART_ID, topicId = ViewBag.TopicId, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId, tof_assemblyId = ViewBag.Tof_assemblyId, tof_suppliersId = ViewBag.Tof_suppliersId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink(Resources.CARMODELTYPETREEITEMANALOG_INDEX, "ModelTypeTreeItemAnalogs", new { artNr = item.ART_ARTICLE_NR, gaNr = item.GA_NR, laId = item.LA_ID, artId = item.ART_ID, topicId = ViewBag.TopicId, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId, tof_assemblyId = ViewBag.Tof_assemblyId, tof_suppliersId = ViewBag.Tof_suppliersId }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MASTER_BEZ)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.MASTER_BEZ)
+                        </dd>
+                    </dl>
+                </td>
+            </tr>*@
+
+    }
+
+</table>

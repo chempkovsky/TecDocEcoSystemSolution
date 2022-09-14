@@ -1,0 +1,154 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.GuestProfileTDES
+
+@{
+    ViewBag.Title = Resources.GuestProfileTDES_INDEX;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Вы создали профиль. Будьте аккуратны заполняя поля <b>адрес и контакт</b>, чтобы исполнитель магазина смог связаться с вами и точно доставить выбранный вами товар.<p />
+        <p />
+
+        Выбор товара по ссылке @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" }) позволит вам
+        провести поиск, если вам известен или Штрих-код или Артикул производителя или Конструкционный номер или номер TecDoc.<p />
+        
+        Выбор товара по ссылке @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" }) -- это 
+        последовательность Web-страниц позволяющая выбрать Брэнд, Модель, Тип модели (по году выпуска, топливу, двигателю ).
+        Далее идет страница с деревом категорий деталей и по узлу в дереве вы переходите к перечню деталей с остатками и ценами.<p />
+
+        При выборе товара автоматически формируется заказ.<br />
+
+        <b>Правила формирования заказов следующие:</b><br />
+        Товар может предлагаться несколькими магазинами. Выбирая товар вы вибираете и магазин. <br />
+        Если заказ на выбранный магазин отсутствует в перечне ваших заказов, то будет оформлен новый заказ с указанием магазина и товар будет помещен в этот заказ.<br />
+        Если уже существует заказ на выбранный магазин, то товар будет помещен в этот заказ.<br />
+        Если при выборе товара, у ранее созданного заказа выставлен статус <b>Уже в обработке </b>, то будет оформлен новый заказ.<p />
+
+
+        Перейдите по ссылке @Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", new { }, new { @class = "btn btn-info" }), чтобы 
+        просмотреть перечень уже оформленных вами заказов.<p />
+
+        Кроме того, вы можете изменить ваш профиль или даже удалить и профиль и все ваши заказы.
+
+        <hr />
+
+        Важным ограничением является, то что количество наименований товаров в рамках одного заказа не может превышать 20.<p />
+        Вторым важным ограничением является, то что вы не можете создать более 20 заказов.
+        Если вы достигли предела, то удалите ранее сформированные заказы. Можно без страха удалять заказы со статусом <b>Уже в обработке </b>.
+        Копия такого заказа уже сформирована на стороне магазина и операция удаления на вашей стороне не повлияет на информацию на стороне магазина.
+        <hr />
+
+
+        <button type="button" class="btn btn-info" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-remove-sign"></span> @Resources.HideHelp
+        </button>
+
+</div>
+</div>
+
+
+<h2>@Resources.GuestProfileTDES_INDEX</h2>
+
+@Html.ValidationSummary(true)
+
+@if  (Model == null)  {
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create")
+    </p>
+}
+
+@if (Model != null)
+{
+
+<p>
+    @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+    @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+    <button type="button" class="btn btn-warning" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+        <span class="glyphicon glyphicon-question-sign"></span>
+    </button>
+
+</p>
+    
+    <div>
+        @*<h4>GuestProfileTDES</h4>*@
+        <hr />
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8">
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GestUserNic)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GestUserNic)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MiddleName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.MiddleName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Contact)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Contact)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ContactEmail)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ContactEmail)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                </dl>
+
+            </div>
+
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="btn-group-vertical">
+                    @Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", new { }, new { @class = "btn btn-info" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+            <p>
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id=Model.GestUserNic }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id=Model.GestUserNic }, new { @class = "btn btn-danger" })
+            </p>
+}

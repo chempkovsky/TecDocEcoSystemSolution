@@ -1,0 +1,137 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.GuestProfileTDES
+
+@{
+    ViewBag.Title = Resources.BranchGuestProfileTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Создание заказов по телефону", "BranchGuestProfile", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.BranchGuestProfileTDES_INDEX</h2>
+
+
+
+@if (!SearchEntBranchGuid.HasValue)
+{
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchGuestProfileTDES_INDEX, "Index", "BranchGuestProfile", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchString = Model.GestUserNic, searchStringBy = "1" }, new { })</li>   
+        }
+    }
+</ol>
+@Html.ValidationSummary(true)
+
+} else {
+
+
+
+    <div>
+        @*<h4>GuestProfileTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                    if (Model != null)
+                    {
+                        <li>@Html.ActionLink(Model.GestUserNic, "Index", "BranchGuestProfile", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchString = Model.GestUserNic, searchStringBy = "1" }, new { })</li>
+                    }
+                }
+            }
+        </ol>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8">
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GestUserNic)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GestUserNic)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MiddleName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.MiddleName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Contact)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Contact)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                </dl>
+
+            </div>
+
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="btn-group-vertical">
+                    @Html.ActionLink(Resources.BranchOrderTDES_INDEX, "Index", "BranchOrder", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic = Model.GestUserNic }, new { @class = "btn btn-info" })
+                    @Html.ActionLink(Resources.LookForArticleRest_INDEX, "Index", "EnterpriseArticleAndRest", routeValues: new { redirecData = Model.GestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-primary" })
+                    @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocRests", routeValues: new { redirecData = Model.GestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-primary" })
+                    @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocRests", routeValues: new { redirecData = Model.GestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-primary" })
+                </div>
+            </div>
+
+        </div>
+
+</div>
+<p>
+    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic=Model.GestUserNic }, new { @class = "btn btn-primary" })
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</p>
+
+}

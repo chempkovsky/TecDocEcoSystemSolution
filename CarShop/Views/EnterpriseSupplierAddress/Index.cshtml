@@ -1,0 +1,170 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.EnterpriseSupplierAddressTDES>
+
+@{
+    ViewBag.Title = Resources.Address_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    String SearchEntSupplierId = ViewBag.SearchEntSupplierId as String;
+    String EntSupplierDescription = ViewBag.EntSupplierDescription as String;
+    SelectList sliIsActive = ViewBag.sliIsActive as SelectList;
+    SelectList sliIsVisible = ViewBag.sliIsVisible as SelectList;
+    SelectList sliAddressType = ViewBag.sliAddressType as SelectList;
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseAddressHelp1
+    </div>
+</div>
+
+
+
+<h2>@Resources.Address_INDEX</h2>
+
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if ( SearchEntGuid.HasValue )
+        {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+            if (!String.IsNullOrEmpty(SearchEntSupplierId))
+            {
+                <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+            }
+        }
+</ol>
+
+@if (String.IsNullOrEmpty(SearchEntSupplierId))
+{
+    @Html.ValidationSummary(true)
+} else {
+
+
+if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+<p>
+    @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues: new {searchEntGuid = SearchEntGuid,  searchEntSupplierId = SearchEntSupplierId}, htmlAttributes:new { @class = "btn btn-primary" })
+</p>
+}
+    
+
+using (Html.BeginForm("Index", "EnterpriseSupplierAddress", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>    
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntSupplierId", SearchEntSupplierId)
+    
+    <div class="form-group">
+    @Resources.FILTER_ISACTIVE     
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsActive", sliIsActive, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Resources.FILTER_ISVISIBLE
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsVisible", sliIsVisible, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Resources.FILTER_ADDRESSTYPE
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showAddressTypeId", sliAddressType, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressTypeId)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.AddressSettlementName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.AddressStreetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressHouse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressBuilding)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressOffice)
+        </th>
+
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.IsVisible)
+        </th>
+    <th class="hidden-xs"></th>
+
+</tr>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressType.AddressTypeDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressSettlementName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressStreetName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressHouse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressBuilding)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressOffice)
+        </td>
+        <td class="hidden-xs">
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td class="hidden-xs">
+            @Html.DisplayFor(modelItem => item.IsVisible)
+        </td>
+        <td class="hidden-xs btn-group btn-group-xs">
+            @if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid=SearchEntGuid,  searchEntSupplierId = SearchEntSupplierId, id=item.AddressGuid }, new { @class = "btn btn-primary" })
+            }
+
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid=SearchEntGuid,  searchEntSupplierId = SearchEntSupplierId, id=item.AddressGuid }, new { @class = "btn btn-info" })
+
+            @if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid=SearchEntGuid,  searchEntSupplierId = SearchEntSupplierId, id=item.AddressGuid }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+    
+        <tr class="visible-xs active">
+            <td colspan="3" class="btn-group btn-group-xs">
+                @if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid=SearchEntGuid,  searchEntSupplierId = SearchEntSupplierId, id=item.AddressGuid }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid=SearchEntGuid,  searchEntSupplierId = SearchEntSupplierId, id=item.AddressGuid }, new { @class = "btn btn-info" })
+                @if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid=SearchEntGuid,  searchEntSupplierId = SearchEntSupplierId, id=item.AddressGuid }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+    
+}
+
+</table>
+}

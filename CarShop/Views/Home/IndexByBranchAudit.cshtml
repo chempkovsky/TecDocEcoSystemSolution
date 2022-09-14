@@ -1,0 +1,37 @@
+﻿@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.BranchAuditName;
+}
+
+<h2>@Resources.IndexByRoles</h2>
+<h3>@Resources.SolutionRoles</h3>
+
+
+
+<ul class="nav nav-pills">
+    <li class="active"><a href="#">Подразделение</a></li>
+    <li>@Html.ActionLink("Предприятие", "IndexByEnterpriseAdmin", "Home")</li>
+</ul>
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(Resources.BranchSellerName, "IndexByRoles", "Home")</li>
+    <li>@Html.ActionLink(Resources.BranchBookerName, "IndexByBooker", "Home")</li>
+    <li>@Html.ActionLink(Resources.BranchAdminName, "IndexByBranchAdmin", "Home")</li>
+    <li class="active"><a href="#">@Resources.BranchAuditName</a></li>
+</ul>
+
+@*<ul class="nav nav-pills">
+        <li><a href="#">@Resources.EnterpriseAdminName</a></li>
+        <li><a href="#">@Resources.EnterpriseAuditName</a></li>
+        <li><a href="#">@Resources.EcoSystemAdminName</a></li>
+    </ul>*@
+
+<p />
+
+<div class="panel panel-default">
+    <div class="panel-heading">В обязанности роли "@Resources.BranchAuditName" входит</div>
+    <div class="panel-body">
+        Права роли "@Resources.BranchAuditName" дают возможность только просматривать ресурсы доступные другим ролям подразделения.
+    </div>
+</div>
+

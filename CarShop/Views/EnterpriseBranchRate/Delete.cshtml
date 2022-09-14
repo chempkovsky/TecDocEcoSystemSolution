@@ -1,0 +1,88 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseBranchRateTDES
+
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+    
+}
+
+<h2>@Resources.DELETE_ACTION</h2>
+@if (!SearchEntBranchGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })</li>
+            }
+        }
+    </ol>
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>EnterpriseBranchRateTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })</li>
+            }
+        }
+    </ol>
+
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrencyIso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrencyIso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExchRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExchRate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+        @Html.Hidden("searchEntGuid", SearchEntGuid)
+        @Html.Hidden("searchCurrencyIso", Model.CurrencyIso)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+        </div>
+    }
+</div>
+
+}

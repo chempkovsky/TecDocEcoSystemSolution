@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddressBuilding" xml:space="preserve">
+    <value>Корп.</value>
+  </data>
+  <data name="AddressDistrict" xml:space="preserve">
+    <value>Район</value>
+  </data>
+  <data name="AddressGuid" xml:space="preserve">
+    <value>Guid</value>
+  </data>
+  <data name="AddressHouse" xml:space="preserve">
+    <value>Дом</value>
+  </data>
+  <data name="AddressLatitude" xml:space="preserve">
+    <value>Широта</value>
+  </data>
+  <data name="AddressLongitude" xml:space="preserve">
+    <value>Долгота</value>
+  </data>
+  <data name="AddressOffice" xml:space="preserve">
+    <value>Кв.</value>
+  </data>
+  <data name="AddressPostCode" xml:space="preserve">
+    <value>Индекс</value>
+  </data>
+  <data name="AddressRegion" xml:space="preserve">
+    <value>Область (Край, Автономия)</value>
+  </data>
+  <data name="AddressRural" xml:space="preserve">
+    <value>Наименование сельского совета</value>
+  </data>
+  <data name="AddressSettlementName" xml:space="preserve">
+    <value>Насел.пункт</value>
+  </data>
+  <data name="AddressStreetName" xml:space="preserve">
+    <value>Улица</value>
+  </data>
+  <data name="AddressType" xml:space="preserve">
+    <value>Тип адреса</value>
+  </data>
+  <data name="AddressTypeDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="AddressTypeId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="AddressValidFrom" xml:space="preserve">
+    <value>Дата регистрации</value>
+  </data>
+  <data name="AddressValidTo" xml:space="preserve">
+    <value>Дата снятия с регистрации</value>
+  </data>
+  <data name="BranchRestTDES_ArtAmount" xml:space="preserve">
+    <value>Остаток</value>
+  </data>
+  <data name="BranchRestTDES_ArtPrice" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="BranchRestTDES_ART_ARTICLE_NR" xml:space="preserve">
+    <value>Арт.Внешн.</value>
+  </data>
+  <data name="BranchRestTDES_EntBranchArticle" xml:space="preserve">
+    <value>Арт.Внутр.</value>
+  </data>
+  <data name="BranchRestTDES_EntBranchGuid" xml:space="preserve">
+    <value>Подразделение</value>
+  </data>
+  <data name="BranchRestTDES_EntBranchSup" xml:space="preserve">
+    <value>Брэнд Внутр.</value>
+  </data>
+  <data name="BranchRestTDES_LastReplicated" xml:space="preserve">
+    <value>Реплиц.</value>
+  </data>
+  <data name="BranchRestTDES_LastUpdated" xml:space="preserve">
+    <value>Обновл.</value>
+  </data>
+  <data name="BranchRestTDES_SUP_TEXT" xml:space="preserve">
+    <value>Брэнд Внешн.</value>
+  </data>
+  <data name="BranchRestTDES_TSConcClmn" xml:space="preserve">
+    <value>Concurency</value>
+  </data>
+  <data name="BranchRestTDES_TSConcClmn_Prompt" xml:space="preserve">
+    <value>Concurency</value>
+  </data>
+  <data name="BranchSpellTDES_CloseAt" xml:space="preserve">
+    <value>Дата Закр.</value>
+  </data>
+  <data name="BranchSpellTDES_ClosedBy" xml:space="preserve">
+    <value>Кем Закрыто</value>
+  </data>
+  <data name="BranchSpellTDES_IsActive" xml:space="preserve">
+    <value>Открыта</value>
+  </data>
+  <data name="BranchSpellTDES_OpenAt" xml:space="preserve">
+    <value>Дата Откр.</value>
+  </data>
+  <data name="BranchSpellTDES_OpenedBy" xml:space="preserve">
+    <value>Кем Открыта</value>
+  </data>
+  <data name="BranchSpellTDES_SpellGuid" xml:space="preserve">
+    <value>ID Смены</value>
+  </data>
+  <data name="BranchType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="BranchTypeDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="BranchTypeId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Заметки</value>
+  </data>
+  <data name="ContactTypeDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="ContactTypeId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="CountryCapital" xml:space="preserve">
+    <value>Столица</value>
+  </data>
+  <data name="CountryCode2" xml:space="preserve">
+    <value>2б Код</value>
+  </data>
+  <data name="CountryCode3" xml:space="preserve">
+    <value>3б Код</value>
+  </data>
+  <data name="CountryEngName" xml:space="preserve">
+    <value>Англ.Название</value>
+  </data>
+  <data name="CountryIso" xml:space="preserve">
+    <value>Iso</value>
+  </data>
+  <data name="CountryName" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="CountryPhone" xml:space="preserve">
+    <value>Тел.</value>
+  </data>
+  <data name="CribFromIncome" xml:space="preserve">
+    <value>Спис.с ост.</value>
+  </data>
+  <data name="CurrencyCode3" xml:space="preserve">
+    <value>3б Код</value>
+  </data>
+  <data name="CurrencyIso" xml:space="preserve">
+    <value>Iso</value>
+  </data>
+  <data name="CurrencyName" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Доп. инфо</value>
+  </data>
+  <data name="EntBranchDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EnterpriseArticleTDES_EntArticle" xml:space="preserve">
+    <value>Артикул</value>
+  </data>
+  <data name="EnterpriseArticleTDES_EntArticleDescription" xml:space="preserve">
+    <value>Наим.Арт.</value>
+  </data>
+  <data name="EnterpriseArticleTDES_EntBrandNic" xml:space="preserve">
+    <value>Брэнд</value>
+  </data>
+  <data name="EnterpriseArticleTDES_EntGuid" xml:space="preserve">
+    <value>Предприятие</value>
+  </data>
+  <data name="EnterpriseArticleTDES_ExternArticle" xml:space="preserve">
+    <value>Внеш.Арт.</value>
+  </data>
+  <data name="EnterpriseArticleTDES_ExternArticleEAN" xml:space="preserve">
+    <value>Внеш.EAN</value>
+  </data>
+  <data name="EnterpriseArticleTDES_ExternBrandNic" xml:space="preserve">
+    <value>Внеш.Брэнд</value>
+  </data>
+  <data name="EnterpriseBranchTDES_ArticleCatalog" xml:space="preserve">
+    <value>Каталог Артикулов</value>
+  </data>
+  <data name="EnterpriseBranchTDES_EntBranchGuid" xml:space="preserve">
+    <value>Guid</value>
+  </data>
+  <data name="EnterpriseBranchTDES_IncomeCatalog" xml:space="preserve">
+    <value>Каталог прихода</value>
+  </data>
+  <data name="EnterpriseBranchTDES_SalesCatalog" xml:space="preserve">
+    <value>Каталог продаж</value>
+  </data>
+  <data name="EnterpriseBranchTDES_TecDocCatalog" xml:space="preserve">
+    <value>Каталог остатков</value>
+  </data>
+  <data name="EnterpriseBrandTDES_EntBrandDescription" xml:space="preserve">
+    <value>Наименование Брэнда</value>
+  </data>
+  <data name="EnterpriseBrandTDES_EntBrandNic" xml:space="preserve">
+    <value>Брэнд</value>
+  </data>
+  <data name="EnterpriseBrandTDES_EntGuid" xml:space="preserve">
+    <value>Предприятие</value>
+  </data>
+  <data name="EnterpriseCategoryItemDescriptionTDES_EntCategoryItemDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EnterpriseCategoryItemTDES_CategoryItemId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="EnterpriseCategoryItemTDES_EntCategoryDescriptionId" xml:space="preserve">
+    <value>Подгруппа</value>
+  </data>
+  <data name="EnterpriseCategoryItemTDES_EntCategoryItemDescriptionId" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EnterpriseCategoryItemTmp_EntCategoryDescription" xml:space="preserve">
+    <value>Наименование подгруппы</value>
+  </data>
+  <data name="EnterpriseCategoryTDES_CategoryDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EnterpriseCategoryTDES_CategoryId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="EnterpriseCategoryTDES_CategoryParent" xml:space="preserve">
+    <value>Id родителя</value>
+  </data>
+  <data name="EnterpriseCategoryTDES_EntGuid" xml:space="preserve">
+    <value>EntGuid</value>
+  </data>
+  <data name="EnterpriseSupplierTDES_EntSupplierId" xml:space="preserve">
+    <value>Nic</value>
+  </data>
+  <data name="EnterpriseTDES_EntDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EnterpriseTDES_EntGuid" xml:space="preserve">
+    <value>Guid</value>
+  </data>
+  <data name="EnterpriseUserContactTDES_Contact" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="EnterpriseUserContactTDES_ContactGuid" xml:space="preserve">
+    <value>Guid</value>
+  </data>
+  <data name="EnterpriseUserContactTDES_ContactTypeId" xml:space="preserve">
+    <value>Тип контакта</value>
+  </data>
+  <data name="EnterpriseUserTDES_EntUserNic" xml:space="preserve">
+    <value>Nic</value>
+  </data>
+  <data name="EntSupplierDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>Поле {0} является обязательным</value>
+  </data>
+  <data name="FieldStringLengthMessage" xml:space="preserve">
+    <value>Поле {0} не должно быть больше чем {1}</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="FractionalUnit" xml:space="preserve">
+    <value>Дроб.един</value>
+  </data>
+  <data name="FractionalUnitName" xml:space="preserve">
+    <value>Назв.Дроб.един</value>
+  </data>
+  <data name="IncomeArticleTDES_ArtAmount" xml:space="preserve">
+    <value>Кол-во</value>
+  </data>
+  <data name="IncomeArticleTDES_ArtAmountRest" xml:space="preserve">
+    <value>Ост.</value>
+  </data>
+  <data name="IncomeArticleTDES_ArtPrice" xml:space="preserve">
+    <value>Цена продаж.</value>
+  </data>
+  <data name="IncomeArticleTDES_CurrArtPrice" xml:space="preserve">
+    <value>Тек.Цена</value>
+  </data>
+  <data name="IncomeArticleTDES_IsRevaluate" xml:space="preserve">
+    <value>С переоц.</value>
+  </data>
+  <data name="IncomeArticleTDES_PurchasePrice" xml:space="preserve">
+    <value>Цена закуп.</value>
+  </data>
+  <data name="IncomeArticleTDES_SupArticle" xml:space="preserve">
+    <value>Арт.Пост.</value>
+  </data>
+  <data name="IncomeArticleTDES_SupBrandNic" xml:space="preserve">
+    <value>Брэнд.Пост.</value>
+  </data>
+  <data name="IncomePayRollTDES_CreatedAt" xml:space="preserve">
+    <value>Дата проведения</value>
+  </data>
+  <data name="IncomePayRollTDES_Description" xml:space="preserve">
+    <value>Заметка</value>
+  </data>
+  <data name="IncomePayRollTDES_EntSupplierDescription" xml:space="preserve">
+    <value>Поставщик</value>
+  </data>
+  <data name="IncomePayRollTDES_EntSupplierId" xml:space="preserve">
+    <value>ID поставщ.</value>
+  </data>
+  <data name="IncomePayRollTDES_IncomePayRollTDES" xml:space="preserve">
+    <value>Guid</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Акт.</value>
+  </data>
+  <data name="IsActive_Prompt" xml:space="preserve">
+    <value>Выставить Актуальность</value>
+  </data>
+  <data name="IsAdmin" xml:space="preserve">
+    <value>Админ</value>
+  </data>
+  <data name="IsAdmin_Prompt" xml:space="preserve">
+    <value>Выставить администрирование</value>
+  </data>
+  <data name="IsAudit" xml:space="preserve">
+    <value>Аудит</value>
+  </data>
+  <data name="IsAudit_Prompt" xml:space="preserve">
+    <value>Выставить аудирование</value>
+  </data>
+  <data name="IsBlocked" xml:space="preserve">
+    <value>Блокир</value>
+  </data>
+  <data name="IsBooker" xml:space="preserve">
+    <value>Бухгалтер</value>
+  </data>
+  <data name="IsBooker_Prompt" xml:space="preserve">
+    <value>Выставить бухгалтер</value>
+  </data>
+  <data name="IsNational" xml:space="preserve">
+    <value>Нац.</value>
+  </data>
+  <data name="IsOperational" xml:space="preserve">
+    <value>Исп.</value>
+  </data>
+  <data name="IsPaid" xml:space="preserve">
+    <value>Оплач</value>
+  </data>
+  <data name="IsProcessed" xml:space="preserve">
+    <value>Оприх</value>
+  </data>
+  <data name="IsReverse" xml:space="preserve">
+    <value>Сторн</value>
+  </data>
+  <data name="IsReversed" xml:space="preserve">
+    <value>Сторн</value>
+  </data>
+  <data name="IsSeller" xml:space="preserve">
+    <value>Продавец</value>
+  </data>
+  <data name="IsSeller_Prompt" xml:space="preserve">
+    <value>Выставить продавец</value>
+  </data>
+  <data name="IssuerName" xml:space="preserve">
+    <value>Эмитент</value>
+  </data>
+  <data name="IsVisible" xml:space="preserve">
+    <value>Доступ.</value>
+  </data>
+  <data name="IsVisible_Prompt" xml:space="preserve">
+    <value>Выставить видимость</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>Отчество</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="PCDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="PCId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="RevaluationArticleTDES_Comments" xml:space="preserve">
+    <value>Ошибки обработки</value>
+  </data>
+  <data name="RevaluationArticleTDES_IncomePayRollTDES" xml:space="preserve">
+    <value>ID прихода</value>
+  </data>
+  <data name="RevaluationArticleTDES_NewArtPrice" xml:space="preserve">
+    <value>Нов.Цена</value>
+  </data>
+  <data name="RevaluationArticleTDES_OperSum" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="ReverseAmount" xml:space="preserve">
+    <value>Возврат</value>
+  </data>
+  <data name="SaleBasketArticleTDES_CreatedAt" xml:space="preserve">
+    <value>Создана</value>
+  </data>
+  <data name="SaleBasketArticleTDES_SalePrice" xml:space="preserve">
+    <value>Цена продажи</value>
+  </data>
+  <data name="SaleBasketArticleTDES_WorkPlaceGuid" xml:space="preserve">
+    <value>Раб.место</value>
+  </data>
+  <data name="SaleBasketArticle_ArtAmount" xml:space="preserve">
+    <value>Кол-во</value>
+  </data>
+  <data name="SaleBasketArticle_ArtPrice" xml:space="preserve">
+    <value>Цена закупки</value>
+  </data>
+  <data name="SaleBasketTDES_ArtAmount" xml:space="preserve">
+    <value>Кол</value>
+  </data>
+  <data name="SaleBasketTDES_CreatedAt" xml:space="preserve">
+    <value>Создана</value>
+  </data>
+  <data name="SaleBasketTDES_Description" xml:space="preserve">
+    <value>Раб.Место</value>
+  </data>
+  <data name="SaleBasketTDES_EntBasketGuid" xml:space="preserve">
+    <value>ID корзины</value>
+  </data>
+  <data name="SaleBasketTDES_PaidAt" xml:space="preserve">
+    <value>Дата оплаты</value>
+  </data>
+  <data name="SaleBasketTDES_PaymentSum" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="SettlementType" xml:space="preserve">
+    <value>Тип Насел.пункта</value>
+  </data>
+  <data name="SettlementTypeDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="SettlementTypeId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="SettlementTypeShortDescription" xml:space="preserve">
+    <value>Сокращ.Тип Насел.пункта</value>
+  </data>
+  <data name="SheetRevaluationTDES_SheetRevaluationTDESGuid" xml:space="preserve">
+    <value>ID ведомости</value>
+  </data>
+  <data name="SoatoId" xml:space="preserve">
+    <value>Соато</value>
+  </data>
+  <data name="SoatoSettlementName" xml:space="preserve">
+    <value>Нас.пункт</value>
+  </data>
+  <data name="SoatoSettlementType" xml:space="preserve">
+    <value>Тип Насел.пункта</value>
+  </data>
+  <data name="StreetType" xml:space="preserve">
+    <value>Тип улицы</value>
+  </data>
+  <data name="StreetTypeDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="StreetTypeId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="TecDocModel_INDEX" xml:space="preserve">
+    <value>Модели по брэндам</value>
+  </data>
+  <data name="TECDOC_ART_ARTICLE_NR" xml:space="preserve">
+    <value>Aрткл.Пост.</value>
+  </data>
+  <data name="TECDOC_ART_ID" xml:space="preserve">
+    <value>Aрткл.</value>
+  </data>
+  <data name="TECDOC_COU_ID" xml:space="preserve">
+    <value>ID страны</value>
+  </data>
+  <data name="TECDOC_DES_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="TECDOC_EAN_TEXT" xml:space="preserve">
+    <value>Ean</value>
+  </data>
+  <data name="TECDOC_GA_NR" xml:space="preserve">
+    <value>Группа</value>
+  </data>
+  <data name="TECDOC_GA_TEXT" xml:space="preserve">
+    <value>Наим.групп</value>
+  </data>
+  <data name="TECDOC_LA_ID" xml:space="preserve">
+    <value>Внутренний Id</value>
+  </data>
+  <data name="TECDOC_LNG_ID" xml:space="preserve">
+    <value>ID языка</value>
+  </data>
+  <data name="TECDOC_MASTER_BEZ" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="TECDOC_MFA_BRAND" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="TECDOC_MFA_ID" xml:space="preserve">
+    <value>ID брэнда</value>
+  </data>
+  <data name="TECDOC_MOD_ID" xml:space="preserve">
+    <value>ID мод.ряда</value>
+  </data>
+  <data name="TECDOC_STR_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="TECDOC_SUP_ID" xml:space="preserve">
+    <value>Пр.Id</value>
+  </data>
+  <data name="TECDOC_SUP_TEXT" xml:space="preserve">
+    <value>Производитель</value>
+  </data>
+  <data name="TECDOC_TEX_TEXT" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="TECDOC_TEX_UNIT" xml:space="preserve">
+    <value>Единица</value>
+  </data>
+  <data name="TECDOC_TEX_VALUE" xml:space="preserve">
+    <value>Значение</value>
+  </data>
+  <data name="TECDOC_TYP_CCM" xml:space="preserve">
+    <value>куб.см.</value>
+  </data>
+  <data name="TECDOC_TYP_CYLINDERS" xml:space="preserve">
+    <value>Цил.</value>
+  </data>
+  <data name="TECDOC_TYP_DOORS" xml:space="preserve">
+    <value>Дверей</value>
+  </data>
+  <data name="TECDOC_TYP_HP_FROM" xml:space="preserve">
+    <value>ЛС</value>
+  </data>
+  <data name="TECDOC_TYP_HP_UPTO" xml:space="preserve">
+    <value>Мощ.ЛС</value>
+  </data>
+  <data name="TECDOC_TYP_ID" xml:space="preserve">
+    <value>ID типа</value>
+  </data>
+  <data name="TECDOC_TYP_KV_ABS" xml:space="preserve">
+    <value>ABS</value>
+  </data>
+  <data name="TECDOC_TYP_KV_ASR" xml:space="preserve">
+    <value>ASR</value>
+  </data>
+  <data name="TECDOC_TYP_KV_BODY" xml:space="preserve">
+    <value>Кузов</value>
+  </data>
+  <data name="TECDOC_TYP_KV_BRAKE_SYST" xml:space="preserve">
+    <value>Сист. Торм.</value>
+  </data>
+  <data name="TECDOC_TYP_KV_BRAKE_TYPE" xml:space="preserve">
+    <value>Тип Торм.</value>
+  </data>
+  <data name="TECDOC_TYP_KV_CATALYST" xml:space="preserve">
+    <value>Катализ.</value>
+  </data>
+  <data name="TECDOC_TYP_KV_ENGINE" xml:space="preserve">
+    <value>Двигатель</value>
+  </data>
+  <data name="TECDOC_TYP_KV_FUEL" xml:space="preserve">
+    <value>Топливо</value>
+  </data>
+  <data name="TECDOC_TYP_KV_FUEL_SUPPLY" xml:space="preserve">
+    <value>Впрыск</value>
+  </data>
+  <data name="TECDOC_TYP_KV_TRANS" xml:space="preserve">
+    <value>Трансм.</value>
+  </data>
+  <data name="TECDOC_TYP_KW_FROM" xml:space="preserve">
+    <value>Kw</value>
+  </data>
+  <data name="TECDOC_TYP_KW_UPTO" xml:space="preserve">
+    <value>Мощн.по Kw</value>
+  </data>
+  <data name="TECDOC_TYP_PCON_END" xml:space="preserve">
+    <value>Кон.Пр.</value>
+  </data>
+  <data name="TECDOC_TYP_PCON_START" xml:space="preserve">
+    <value>Нач.Пр.</value>
+  </data>
+  <data name="TECDOC_TYP_VALVES" xml:space="preserve">
+    <value>Клап.</value>
+  </data>
+  <data name="User2WorkPlaceTDES_ReSetAt" xml:space="preserve">
+    <value>Снят</value>
+  </data>
+  <data name="User2WorkPlaceTDES_SetAt" xml:space="preserve">
+    <value>Размещен</value>
+  </data>
+  <data name="WorkPlaceGuid" xml:space="preserve">
+    <value>Guid</value>
+  </data>
+  <data name="EnterpriseCarBrandId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="EnterpriseCarBrandName" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EnterpriseCarModelTypeId" xml:space="preserve">
+    <value>Id типа модели</value>
+  </data>
+  <data name="EnterpriseCarModelTypeName" xml:space="preserve">
+    <value>Наим. типа модели</value>
+  </data>
+  <data name="EnterpriseCarModelTypeTDES_EnterpriseCarBrandId" xml:space="preserve">
+    <value>Производитель авто</value>
+  </data>
+  <data name="EnterpriseCarModelId" xml:space="preserve">
+    <value>Id модели</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>EnterpriseArticleCategoryItemTDES_ArticleId</value>
+  </data>
+  <data name="EnterpriseArticleBrandTDES_ArticleBrandId" xml:space="preserve">
+    <value>Id Брэнда</value>
+  </data>
+  <data name="EnterpriseArticleBrandTDES_ArticleBrandNic" xml:space="preserve">
+    <value>Наименование брэнда</value>
+  </data>
+  <data name="EnterpriseArticleBrandTDES_ArticleSearchKind" xml:space="preserve">
+    <value>Тип ресурса</value>
+  </data>
+  <data name="EnterpriseArticleLookUpTDES_ArticleDysplay" xml:space="preserve">
+    <value>Актуальный номер</value>
+  </data>
+  <data name="EnterpriseArticleLookUpTDES_ArticleSearch" xml:space="preserve">
+    <value>Строка поиска</value>
+  </data>
+  <data name="EnterpriseTDES_TecDocSrcTypeId" xml:space="preserve">
+    <value>Источник TecDoc</value>
+  </data>
+  <data name="EnterpriseTecDocSrcTypeTDES_Descr" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EnterpriseTecDocSrcTypeTDES_Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="ReturnBasketTDES_ArtAmount" xml:space="preserve">
+    <value>Кол-во</value>
+  </data>
+  <data name="ReturnBasketTDES_CreatedAt" xml:space="preserve">
+    <value>Создана</value>
+  </data>
+  <data name="ReturnBasketTDES_Description" xml:space="preserve">
+    <value>Заметка</value>
+  </data>
+  <data name="ReturnBasketTDES_PaidAt" xml:space="preserve">
+    <value>Дата проведения</value>
+  </data>
+  <data name="ReturnBasketTDES_PaymentSum" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="ReturnBasketArticleTDES_ArtAmount" xml:space="preserve">
+    <value>Вернуть</value>
+  </data>
+  <data name="ReturnBasketArticleTDES_ReverseAmount" xml:space="preserve">
+    <value>Сторно</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_BaseHttpAddress" xml:space="preserve">
+    <value>Http адрес</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_HttpDeleteUrl" xml:space="preserve">
+    <value>DeleteUrl</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_HttpGetUrl" xml:space="preserve">
+    <value>GetUrl</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_HttpPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_HttpPostUrl" xml:space="preserve">
+    <value>PostUrl</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_HttpPutUrl" xml:space="preserve">
+    <value>PutUrl</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_HttpUser" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_ReplyType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_HttpLoginUrl" xml:space="preserve">
+    <value>LoginUrl</value>
+  </data>
+  <data name="BranchRestTDES_IsReplicated" xml:space="preserve">
+    <value>Раплицирован</value>
+  </data>
+  <data name="GuestOrderTDES_EntBranchDescription" xml:space="preserve">
+    <value>Магазин</value>
+  </data>
+  <data name="GuestOrderTDES_EntBranchGuid" xml:space="preserve">
+    <value>Id магазина</value>
+  </data>
+  <data name="BranchRestTDES_MinArtPrice" xml:space="preserve">
+    <value>Мин.Цена</value>
+  </data>
+  <data name="WorkingDays" xml:space="preserve">
+    <value>Раб.Дни</value>
+  </data>
+  <data name="WorkingTime" xml:space="preserve">
+    <value>Раб.Время</value>
+  </data>
+  <data name="EnterpriseBranchTDES_OrderCatalog" xml:space="preserve">
+    <value>Каталог заказов</value>
+  </data>
+</root>

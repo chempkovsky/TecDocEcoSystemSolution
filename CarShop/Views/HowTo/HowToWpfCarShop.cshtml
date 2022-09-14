@@ -1,0 +1,160 @@
+﻿@using CarShop.Helpers;
+@{
+    ViewBag.Title = "3. Создание баз данных с использованием утилиты WpfCarShop";
+    Layout = "~/Views/HowTo/_Layout.cshtml";
+}
+
+@section headerscripts {
+    <h2>3. Создание баз данных с использованием утилиты WpfCarShop</h2>
+}
+
+
+<h2>3.1. Создание баз данных при стартовом развертывании решения</h2>
+3.1.1. Скачайте архив с утилитой  <p />
+@Html.ActionLink("WpfCarShop", "WpfCarShop", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })<p />
+3.1.2. Извлеките из архива все содержимое в какую-либо папку, (к примеру, с именем WpfCarShop)<br />
+3.1.3. Найдите в содержимом файл c именем <b>WpfCarShop.exe.config</b> <br />
+3.1.4. Программой <b>Блокнот</b> откройте файл и именем <b>WpfCarShop.exe.config</b>
+(для этого правым кликом мыши на файле вызвать меню, в появившемся меню выбрать <b>"Открыть с помощью"</b>, затем <b>"Выбрать программу"</b> и выбрать <b>Блокнот</b>) <br />
+
+
+<pre><b>
+@HttpUtility.HtmlDecode("<connectionStrings>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShop;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopArticleContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopArticle;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopRestContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopRest;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopIncomeContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopIncome;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopSalesContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopSales;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopOrdersContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopOrders;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopMsTecDocContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopMsTecDoc2013Q4;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("</connectionStrings>") 
+</b></pre>
+<br />
+3.1.5.Вам необходимо отредактировать настройки в этом блоке:<br />
+(3.1.5.1.)<br />
+<b>ТУТ_ПАРОЛЬ</b> изменить на пароль, который вы используете для входа в MSSQL-Server с помощью <b>MSSQL Management Studio</b><br />
+(3.1.5.2.)<br />
+<b>ИМЯ_КОМПЬЮТЕРА\ИМЯ_SQL_СЕРВЕРА</b> изменить на настройки, которые вы вносили в поле "Имя сервера" для входа в MSSQL-Server с помощью <b>MSSQL Management Studio</b><p />
+
+<b>ЗАМЕЧАНИЕ:</b> Запрещается изменять два имени<br />
+1. Запрещается изменять <b>name="CarShopContext"</b><br />
+2. Запрещается изменять <b>name="CarShopMsTecDocContext"</b><br />
+т.к. эти две базы данных не могут дублироваться в системе и их имена зашиты в код. Если изменить, то система не запустится.<p />
+
+3.1.6. Сохранить изменения, которые вы сделали через меню "Файл" и затем "Сохранить". После этого закройте блокнот <br />
+3.1.7. Найти файл c именем <b>WpfCarShop.exe</b> и дважды кликнуть по этому файл. Это запустит утилиту WpfCarShop.<br />
+3.1.8. Из среды <b>WpfCarShop.exe</b> вызовите меню "Создание баз данных" и затем <b>"Создать БД"</b><br />
+3.1.9. На появившейся форме кликните по кнопке <b>"Создать БД"</b> для той базы данных, которую вы хотите создать. Если вы только разворачиваете решение, то кликнуть по каждой кнопке.
+Перед созданием очередной БД дождитесь появления блока диалога с сообщением <b>"БД создана успешно"</b>.<br />
+<b>Замечание:</b> Создавать бузу данных CarShopMsTecDocContext не требуется!!!</b>
+Необходимость в создании этой БД возникает лишь в том случае, если вы собираетесь создать свою копию каталога TecDoc в формате Ms Sql.<br />
+
+3.1.10. Запустите утили <b>"MSSQL Management Studio"</b>, подключитесь к Sql серверу и убедитесь, что базы данных созданы. Для этого
+в середе <b>"MSSQL Management Studio"</b> разверните узел <b>"Базы данных"</b> и убедитесь, что приведены следующие имена:
+<ul>
+    <li>
+        CarShopContext (инфраструктура данных)
+    </li>
+    <li>
+        CarShopArticleContext (БД артикулов товаров, которыми торгует ваша сеть магазинов)
+    </li>
+    <li>
+        CarShopRestContext (БД остатков)
+    </li>
+    <li>
+        CarShopIncomeContext (БД прихода)
+    </li>
+    <li>
+        CarShopSalesContext (БД продаж)
+    </li>
+    <li>
+        CarShopOrdersContext (БД заказов)
+    </li>
+    <li>
+        CarShopMsTecDocContext (БД артикулов TecDoc)
+    </li>
+</ul>
+Если при создании баз данных ошибок не было, но имена не появились в списке баз данных, то в <b>"MSSQL Management Studio"</b> станьте на узел <b>"Базы данных"</b>
+и воспользуйтесь пунктом меню "Вид" и затем "Обновить".
+
+<h2>3.2. Создание нескольких копий одной и той же БД</h2>
+Необходимость во второй копии одной и той же БД возникает по двум причинам.<br />
+<b>Первая причина:</b> отведенное место полностью исчерпано и возникла необходимость в новой БД. Это будет случаться для
+<ul>
+    <li>
+        CarShopRestContext (БД остатков)
+    </li>
+    <li>
+        CarShopIncomeContext (БД прихода)
+    </li>
+    <li>
+        CarShopSalesContext (БД продаж)
+    </li>
+    <li>
+        CarShopOrdersContext (БД заказов)
+    </li>
+    <li>
+        CarShopMsTecDocContext (БД артикулов TecDoc в формате MSSQL, если вы переходите на каталог нового квартала)
+    </li>
+</ul>
+
+<b>Вторая причина:</b> вы хотите, чтобы ваш информационный ресурс обслуживал второй магазин, но так, чтобы базы данных для разных магазинов были разными.
+Это возможно настроить для всех БД кроме <b>CarShopContext (инфраструктура данных)</b>. База данных CarShopContext является единственной общей БД для всех,
+которую нельзя задублировать.<p />
+
+Разберем на примере CarShopIncomeContext процесс создания второй копии. Прием состоит в редактировании фрагмента файла <b>WpfCarShop.exe.config</b>
+<pre><b>
+@HttpUtility.HtmlDecode("    <add name=\"CarShopIncomeContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopIncomeContext;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+</b></pre>
+<br />
+Изменим <b>Initial Catalog=CarShopIncomeContext;</b> на <b>Initial Catalog=CarShopIncomeContextZZZZ;</b>, сохраним <b>WpfCarShop.exe.config</b>,
+выполним шаги 3.7.-3.8. Далее на появившейся форме кликнуть по кнопке <b>"Создать БД"</b> для базы данных <b>CarShopIncomeContext (БД прихода).</b>
+Используя <b>MSSQL Management Studio</b> убедимся, что создана БД с именем <b>CarShopIncomeContextZZZZ</b>.<p />
+
+Разберем на примере CarShopMsTecDocContext процесс создания второй копии. Прием состоит в редактировании фрагмента файла <b>WpfCarShop.exe.config</b>
+<pre><b>
+@HttpUtility.HtmlDecode("    <add name=\"CarShopMsTecDocContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopMsTecDoc2014Q1;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+</b></pre>
+<br />
+Изменим <b>Initial Catalog=CarShopMsTecDocContext;</b> на <b>Initial Catalog=CarShopMsTecDoc2014Q1;</b>, сохраним <b>WpfCarShop.exe.config</b>,
+выполним шаги 3.7.-3.8. Далее на появившейся форме кликнуть по кнопке <b>"Создать БД"</b> для базы данных <b>
+    CarShopMsTecDocContext
+    (БД артикулов TecDoc в формате MSSQL, если вы переходите на каталог нового квартала).
+</b>
+Используя <b>MSSQL Management Studio</b> убедимся, что создана БД с именем <b>CarShopMsTecDoc2014Q1</b>. Заметим, что имя БД <b>CarShopMsTecDoc2014Q1</b> подсказывает нам,
+что каталог будет содержать 1-й квартал 2014 года.
+
+
+<h2>3.3. Важные шаги после создания (Но можно и не выполнять)</h2>
+Чтобы избежать возможных проблем с совместимостью необходимо удалить соответствующую информацию из созданных БД. Для этого:<br />
+3.3.1. Запустить <b>MSSQL Management Studio</b> и подсоединиться к вашему SQL-серверу<br />
+3.3.2. В пенале слева развернуть узел <b>"Базы данных"</b>. Далее развернуть узел <b>каждой базы данных</b>. Далее развернуть узел <b>"Таблицы"</b>.
+Далее развернуть узел <b>"Системные таблицы"</b> и удалить таблицу "dbo.__MigrationHistory"
+(чтобы удалить необходимо сделать правый клик на узле таблицы и в появившемся меню выбрать пункт "Удалить").

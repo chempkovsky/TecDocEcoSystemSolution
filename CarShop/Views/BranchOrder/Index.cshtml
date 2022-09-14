@@ -1,0 +1,108 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.GuestOrderTDES>
+
+
+@{
+    ViewBag.Title = Resources.BranchOrderTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+    String SearchGestUserNic = ViewBag.SearchGestUserNic;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Создание заказов по телефону", "BranchGuestProfile", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.BranchOrderTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            if (!string.IsNullOrEmpty(SearchGestUserNic)) {
+                <li>@Html.ActionLink(Resources.BranchGuestProfileTDES_INDEX, "Index", "BranchGuestProfile", new {searchEntGuid=SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchString = SearchGestUserNic, searchStringBy = "1"}, new { })</li>   
+                <li>@Html.ActionLink(SearchGestUserNic, "Details", "BranchGuestProfile", new {searchEntGuid=SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic = SearchGestUserNic}, new { })</li>   
+            }
+        }
+    }
+</ol>
+
+@if ((!string.IsNullOrEmpty(SearchGestUserNic)) && (Model != null))
+{
+
+    <div class="btn-group">
+        @Html.ActionLink(Resources.LookForArticleRest_INDEX, "Index", "EnterpriseArticleAndRest", routeValues: new { redirecData = SearchGestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-info" })
+        @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocRests", routeValues: new { redirecData = SearchGestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-info" })
+        @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocRests", routeValues: new { redirecData = SearchGestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-info" })
+    </div>
+
+    var dummy = Model.FirstOrDefault();
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => dummy.LastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsDone)
+        </th>
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDone)
+        </td>
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic = SearchGestUserNic, searchGuestOrderGuid = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic = SearchGestUserNic, searchGuestOrderGuid = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic = SearchGestUserNic, searchGuestOrderGuid = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+    
+    <tr class="visible-xs visible-sm active">
+        <td colspan="2" class="btn-group btn-group-xs">
+            @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic = SearchGestUserNic, searchGuestOrderGuid = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic = SearchGestUserNic, searchGuestOrderGuid = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic = SearchGestUserNic, searchGuestOrderGuid = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+    
+}
+
+</table>
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new {searchEntGuid=SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid, searchGestUserNic=SearchGestUserNic, page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+<p/>    
+    <div class="btn-group">
+        @Html.ActionLink(Resources.LookForArticleRest_INDEX, "Index", "EnterpriseArticleAndRest", routeValues: new { redirecData = SearchGestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-info" })
+        @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocRests", routeValues: new { redirecData = SearchGestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-info" })
+        @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocRests", routeValues: new { redirecData = SearchGestUserNic, redirectContriller = "BranchOrderArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-info" })
+    </div>
+    
+}        

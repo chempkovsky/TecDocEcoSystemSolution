@@ -1,0 +1,46 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.AddressType
+
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+}
+
+<h2>@Resources.DELETE_ACTION <small>@Resources.AddressType_INDEX</small></h2>
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>AddressType</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.AddressType_INDEX, "Index")</li>
+    </ol>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressTypeId)
+        </dd>
+    </dl>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressTypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressTypeDescription)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+        </div>
+    }
+</div>

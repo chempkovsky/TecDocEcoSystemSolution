@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddressType_INDEX" xml:space="preserve">
+    <value>Address Types</value>
+  </data>
+  <data name="Address_INDEX" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
+  <data name="BranchType_INDEX" xml:space="preserve">
+    <value>Branch Type</value>
+  </data>
+  <data name="ContactType_INDEX" xml:space="preserve">
+    <value>Contact Type</value>
+  </data>
+  <data name="Country_INDEX" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Currency_INDEX" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="DeleteCommand" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DetailTab" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="EditTab" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="InsertTab" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NewCommand" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="of_ITEMS" xml:space="preserve">
+    <value>  of  </value>
+  </data>
+  <data name="ReloadCommand" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="SaveCommand" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SettlementType_INDEX" xml:space="preserve">
+    <value>Settlement Type</value>
+  </data>
+  <data name="StreetType_INDEX" xml:space="preserve">
+    <value>Street Type</value>
+  </data>
+  <data name="to_ITEMS" xml:space="preserve">
+    <value>  to  </value>
+  </data>
+  <data name="UndoCommand" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Delete record ?</value>
+  </data>
+  <data name="EditCommand" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Soato_INDEX" xml:space="preserve">
+    <value>Soato</value>
+  </data>
+  <data name="EnterpriseNavigation_INDEX" xml:space="preserve">
+    <value>Enterprises</value>
+  </data>
+  <data name="EnterpriseUserNavigation_INDEX" xml:space="preserve">
+    <value>Enterprise User</value>
+  </data>
+  <data name="EnterpriseBranchTDES_INDEX" xml:space="preserve">
+    <value>Enterprise Branches</value>
+  </data>
+  <data name="EnterpriseAddressTDES_INDEX" xml:space="preserve">
+    <value>Enterprise Addresses</value>
+  </data>
+  <data name="EnterpriseUserContactTDES_INDEX" xml:space="preserve">
+    <value>Enterprise User Contact</value>
+  </data>
+  <data name="EnterpriseBranchContactsTDES_INDEX" xml:space="preserve">
+    <value>Enterprise Branch Contacts</value>
+  </data>
+  <data name="EnterpriseBranchUserTDES_INDEX" xml:space="preserve">
+    <value>Enterprise Branch Users</value>
+  </data>
+  <data name="EnterpriseBranchUserContactTDES_INDEX" xml:space="preserve">
+    <value>Enterprise Branch User Contacts</value>
+  </data>
+  <data name="EnterpriseBranchWorkPlaceTDES_INDEX" xml:space="preserve">
+    <value>Enterprise Branch Work Places</value>
+  </data>
+  <data name="EnterpriseProductCategoryTDES_INDEX" xml:space="preserve">
+    <value>Product Category</value>
+  </data>
+  <data name="Error_FileEmpty" xml:space="preserve">
+    <value>FileName is empty</value>
+  </data>
+  <data name="Error_FileIncorrect" xml:space="preserve">
+    <value>File Name is incorrect</value>
+  </data>
+  <data name="FromFile" xml:space="preserve">
+    <value>From File</value>
+  </data>
+  <data name="SimpleTypesLoadUnload_INDEX" xml:space="preserve">
+    <value>Simple Types Load and Unload</value>
+  </data>
+  <data name="ToFile" xml:space="preserve">
+    <value>To File</value>
+  </data>
+  <data name="Error_FILENOTEXISTS" xml:space="preserve">
+    <value>File not exists</value>
+  </data>
+  <data name="Error_TITLE" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Error_FILEREWRITE" xml:space="preserve">
+    <value>Such File exists. ReWrite ?</value>
+  </data>
+  <data name="Confirmation_TITLE" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="Info_OperationIsDone" xml:space="preserve">
+    <value>Operation Is Done</value>
+  </data>
+  <data name="Info_TITLE" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Operation_NotImplemented" xml:space="preserve">
+    <value>Operation is not Implemented</value>
+  </data>
+  <data name="InProcess_TITLE" xml:space="preserve">
+    <value>In Process   </value>
+  </data>
+  <data name="Error_ProcessIsBroken" xml:space="preserve">
+    <value>Process Is Broken</value>
+  </data>
+  <data name="MakeSelection" xml:space="preserve">
+    <value>Select Item</value>
+  </data>
+  <data name="EnterpriseSupplier_INDEX" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="PassengerCarsFile_TITLE" xml:space="preserve">
+    <value>Passenger Cars File Name</value>
+  </data>
+  <data name="ArticuleTree" xml:space="preserve">
+    <value>Enterprise Articules</value>
+  </data>
+  <data name="ContextName" xml:space="preserve">
+    <value>Target DB</value>
+  </data>
+  <data name="EnterpriseDataLoadUnload" xml:space="preserve">
+    <value>Load (Unload) Enterprise Data</value>
+  </data>
+  <data name="CommercialVehicles" xml:space="preserve">
+    <value>Commercial vehicles</value>
+  </data>
+  <data name="Motors" xml:space="preserve">
+    <value>Motors</value>
+  </data>
+  <data name="Axles" xml:space="preserve">
+    <value>Axles</value>
+  </data>
+  <data name="Universals" xml:space="preserve">
+    <value>Universals</value>
+  </data>
+  <data name="FromTecDoc" xml:space="preserve">
+    <value>From TecDoc</value>
+  </data>
+  <data name="Fuel_Title" xml:space="preserve">
+    <value>Fuel</value>
+  </data>
+  <data name="CarBrand_Title" xml:space="preserve">
+    <value>Car manufactures</value>
+  </data>
+  <data name="CarModelType_Title" xml:space="preserve">
+    <value>Car model types</value>
+  </data>
+  <data name="CarModel_Title" xml:space="preserve">
+    <value>Car models</value>
+  </data>
+  <data name="Article2Category" xml:space="preserve">
+    <value>Articles by Group</value>
+  </data>
+  <data name="ArticleBrand" xml:space="preserve">
+    <value>Article Brand</value>
+  </data>
+  <data name="ArticleLookUp" xml:space="preserve">
+    <value>Analogous</value>
+  </data>
+  <data name="GetMax" xml:space="preserve">
+    <value>Get Max</value>
+  </data>
+  <data name="LessThanZero" xml:space="preserve">
+    <value>Boundary less than zero</value>
+  </data>
+  <data name="UpperLessThanLower" xml:space="preserve">
+    <value>Upper Boundary less than Lower</value>
+  </data>
+  <data name="Error_ProcessWithException" xml:space="preserve">
+    <value>Process With Exception</value>
+  </data>
+  <data name="ArticleApplic" xml:space="preserve">
+    <value>Article Appliece</value>
+  </data>
+  <data name="ArticleTecDoc" xml:space="preserve">
+    <value>TecDoc Articles</value>
+  </data>
+  <data name="CategotyTecDoc" xml:space="preserve">
+    <value>Categoty TecDoc</value>
+  </data>
+  <data name="CategotyItemTecDoc" xml:space="preserve">
+    <value>Category Items TecDoc</value>
+  </data>
+  <data name="TecDocSrcType_INDEX" xml:space="preserve">
+    <value>TecDoc Src Type</value>
+  </data>
+</root>

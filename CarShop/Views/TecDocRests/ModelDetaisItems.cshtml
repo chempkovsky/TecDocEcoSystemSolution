@@ -1,0 +1,353 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@using Newtonsoft.Json;
+
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPETREEITEMS_REST_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREEITEMS_INDEX;
+    Guid? searchEntGuid = ViewBag.searchEntGuid;
+    Guid? searchEntBranchGuid = ViewBag.searchEntBranchGuid;
+    int? MFA_ID = ViewBag.MFA_ID;
+    int? MOD_ID = ViewBag.MOD_ID;
+    int? TYP_ID = ViewBag.TYP_ID;
+    int? FluelId = ViewBag.FluelId;
+    int? topicId = ViewBag.topicId;
+    int? treeKindId = ViewBag.treeKindId;
+
+    int curGA_NR = 0;
+
+    SelectList sliTof_assembly = ViewBag.sliTof_assembly as SelectList;
+    SelectList sliTof_suppliers = ViewBag.sliTof_suppliers as SelectList;
+
+    int? tof_assemblyId = ViewBag.tof_assemblyId;
+    int? tof_suppliersId = ViewBag.tof_suppliersId;
+
+    string redirecData = ViewBag.redirecData;
+    string redirectContriller = ViewBag.redirectContriller;
+    string redirectAction = ViewBag.redirectAction;
+
+    bool showRests = false;
+}
+
+<h2>@Resources.CARMODELTYPETREEITEMS_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(Resources.BRANDS_INDEX, "Manufact", "TecDocRests", new
+   {
+       redirecData = redirecData,
+       redirectContriller = redirectContriller,
+       redirectAction = redirectAction,
+       searchEntGuid = searchEntGuid,
+       searchEntBranchGuid = searchEntBranchGuid
+   }, new { })
+</li>
+@if (MFA_ID.HasValue)
+{
+    <li>
+        @Html.ActionLink(Resources.TecDocModel_INDEX, "ModelTypes", "TecDocRests", new
+       {
+           redirecData = redirecData,
+           redirectContriller = redirectContriller,
+           redirectAction = redirectAction,
+           searchEntGuid = searchEntGuid,
+           searchEntBranchGuid = searchEntBranchGuid,
+           MFA_ID = MFA_ID
+       }, new { })
+</li>
+    if (MOD_ID.HasValue)
+    {
+        <li>
+            @Html.ActionLink(Resources.CARMODELTYPE_INDEX, "ModelDetais", "TecDocRests", new
+           {
+               redirecData = redirecData,
+               redirectContriller = redirectContriller,
+               redirectAction = redirectAction,
+               searchEntGuid = searchEntGuid,
+               searchEntBranchGuid = searchEntBranchGuid,
+               MFA_ID = MFA_ID,
+               MOD_ID = MOD_ID,
+               fluelId = FluelId
+           }, new { })
+    </li>
+        if (TYP_ID.HasValue)
+        {
+            <li>
+                @Html.ActionLink(Resources.CARMODELTYPETREE_INDEX, "ModelDetaisTree", "TecDocRests", new
+               {
+                   redirecData = redirecData,
+                   redirectContriller = redirectContriller,
+                   redirectAction = redirectAction,
+                   searchEntGuid = searchEntGuid,
+                   searchEntBranchGuid = searchEntBranchGuid,
+                   MFA_ID = MFA_ID,
+                   MOD_ID = MOD_ID,
+                   fluelId = FluelId,
+                   TYP_ID = TYP_ID,
+                   topicId = topicId,
+                   treeKindId = treeKindId
+               }, new { })
+        </li>
+        }
+    }
+}
+</ol>
+
+@using (Html.BeginForm("ModelDetaisItems", "TecDocRests", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+    @Html.Hidden("searchEntGuid", searchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", searchEntBranchGuid)
+    @Html.Hidden("topicId", topicId)
+    @Html.Hidden("TYP_ID", TYP_ID)
+    @Html.Hidden("MOD_ID", MOD_ID)
+    @Html.Hidden("MFA_ID", MFA_ID)
+    @Html.Hidden("fluelId", FluelId)
+    @Html.Hidden("treeKindId", treeKindId)
+
+
+    <div class="form-group">
+    @Html.DropDownList("tof_assemblyId", sliTof_assembly, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("tof_suppliersId", sliTof_suppliers, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+@using (Html.BeginForm("IndexSelected", "TecDocRests", FormMethod.Post))
+{
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+    @Html.Hidden("searchEntGuid", searchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", searchEntBranchGuid)
+
+
+
+    if ((tof_assemblyId.HasValue) && (tof_assemblyId.Value > 0))
+    {
+        showRests = true;
+    }
+    else
+    {
+        if ((tof_suppliersId.HasValue) && (tof_suppliersId.Value > 0))
+        {
+            showRests = true;
+        }
+    }
+
+
+if (showRests) {
+if ((Model != null) && (Model.Count() > 0))
+{
+
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+}
+<input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+}
+
+
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ART_ID) : @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUP_TEXT)
+        </th>
+        @if (showRests) {
+            <th>
+                @Html.DisplayNameFor(model => model.ArtAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtPrice)
+            </th>
+        }
+        <th class="hidden-xs hidden-sm" >
+        </th>
+    </tr>
+
+    @{
+    var selected = true;
+   // System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+    }
+
+
+    @foreach (var item in Model)
+{
+    if (curGA_NR != item.GA_NR)
+    {
+        curGA_NR = item.GA_NR;
+        <tr class="warning">
+            <th colspan="4"> @Html.DisplayFor(modelItem => item.GA_NR) : @Html.DisplayFor(modelItem => item.GA_TEXT) : @Html.DisplayFor(modelItem => item.MASTER_BEZ)</th>
+        </tr>
+    }
+    <tr>
+        <td>
+            @if (showRests) {
+                @Html.RadioButton("SimpleArticle", JsonConvert.SerializeObject(new SimpleArticle_REST_TD() { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, ArtPrice = item.ArtPrice }), selected, selected)
+            }
+            @Html.DisplayFor(modelItem => item.ART_ID) : @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SUP_TEXT)
+        </td>
+
+        @if (showRests) {
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtPrice)
+            </td>
+        }
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @Html.ActionLink(Resources.CARMODELTYPETREEITEMANALOG_INDEX, "ModelDetaisAnalog", new
+            {
+                redirecData = redirecData,
+                redirectContriller = redirectContriller,
+                redirectAction = redirectAction,
+                searchEntGuid = searchEntGuid,
+                searchEntBranchGuid = searchEntBranchGuid,
+
+                ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                GA_NR = item.GA_NR,
+                ART_ID = item.ART_ID,
+
+                topicId = topicId,
+                TYP_ID = TYP_ID,
+                MOD_ID = MOD_ID,
+                fluelId = FluelId,
+                treeKindId = treeKindId,
+                tof_assemblyId = tof_assemblyId
+            }, new { @class = "btn btn-primary" })
+            @Html.ActionLink(Resources.DETAILS_ACTION,
+              "ModelItemDetais", new
+              {
+                  redirecData = redirecData,
+                  redirectContriller = redirectContriller,
+                  redirectAction = redirectAction,
+                  searchEntGuid = searchEntGuid,
+                  searchEntBranchGuid = searchEntBranchGuid,
+                  ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                  GA_NR = item.GA_NR,
+                  ART_ID = item.ART_ID,
+                  topicId = topicId,
+                  TYP_ID = TYP_ID,
+                  MOD_ID = MOD_ID,
+                  fluelId = FluelId,
+                  treeKindId = treeKindId,
+                  tof_assemblyId = tof_assemblyId
+              }, new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.TECDOC_APPLICABLE,
+             "ModelDetaisAppliedTo", "TecDocRests",
+               new
+               {
+                   redirecData = redirecData,
+                   redirectContriller = redirectContriller,
+                   redirectAction = redirectAction,
+                   searchEntGuid = searchEntGuid,
+                   searchEntBranchGuid = searchEntBranchGuid,
+                   MFA_ID = MFA_ID,
+                   MOD_ID = MOD_ID,
+                   TYP_ID = TYP_ID,
+                   fluelId = FluelId,
+                   topicId = topicId,
+                   ART_ID = item.ART_ID,
+                   ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                   treeKindId = treeKindId,
+                   tof_assemblyId = tof_assemblyId
+               }, new { @class = "btn btn-warning" })
+
+
+        </td>
+        </tr>
+    <tr class="visible-xs visible-sm">
+        <td colspan=" 2" class="visible-xs visible-sm btn-group btn-group-xs">
+            @Html.ActionLink(Resources.CARMODELTYPETREEITEMANALOG_INDEX, "ModelDetaisAnalog", new
+            {
+                redirecData = redirecData,
+                redirectContriller = redirectContriller,
+                redirectAction = redirectAction,
+                searchEntGuid = searchEntGuid,
+                searchEntBranchGuid = searchEntBranchGuid,
+
+                ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                GA_NR = item.GA_NR,
+                ART_ID = item.ART_ID,
+
+                topicId = topicId,
+                TYP_ID = TYP_ID,
+                MOD_ID = MOD_ID,
+                fluelId = FluelId,
+                treeKindId = treeKindId,
+                tof_assemblyId = tof_assemblyId
+            }, new { @class = "btn btn-primary" })
+            @Html.ActionLink(Resources.DETAILS_ACTION,
+              "ModelItemDetais", new
+              {
+                  redirecData = redirecData,
+                  redirectContriller = redirectContriller,
+                  redirectAction = redirectAction,
+                  searchEntGuid = searchEntGuid,
+                  searchEntBranchGuid = searchEntBranchGuid,
+                  ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                  GA_NR = item.GA_NR,
+                  ART_ID = item.ART_ID,
+                  topicId = topicId,
+                  TYP_ID = TYP_ID,
+                  MOD_ID = MOD_ID,
+                  fluelId = FluelId,
+                  treeKindId = treeKindId,
+                  tof_assemblyId = tof_assemblyId
+              }, new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.TECDOC_APPLICABLE,
+             "ModelDetaisAppliedTo", "TecDocRests",
+               new
+               {
+                   redirecData = redirecData,
+                   redirectContriller = redirectContriller,
+                   redirectAction = redirectAction,
+                   searchEntGuid = searchEntGuid,
+                   searchEntBranchGuid = searchEntBranchGuid,
+                   MFA_ID = MFA_ID,
+                   MOD_ID = MOD_ID,
+                   TYP_ID = TYP_ID,
+                   fluelId = FluelId,
+                   topicId = topicId,
+                   ART_ID = item.ART_ID,
+                   ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                   treeKindId = treeKindId,
+                   tof_assemblyId = tof_assemblyId
+               }, new { @class = "btn btn-warning" })
+
+        </td>
+
+    </tr>
+
+        selected = false;
+}
+</table>
+
+
+
+if (showRests) {
+if ((Model != null) && (Model.Count() > 0))
+{
+
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+}
+<input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+}
+
+}

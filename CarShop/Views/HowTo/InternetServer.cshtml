@@ -1,0 +1,183 @@
+﻿@using CarShop.Helpers;
+@{
+    ViewBag.Title = "Добавление роли Internet Server";
+    Layout = "~/Views/HowTo/_Layout.cshtml";
+}
+
+@section headerscripts {
+<h2>8. Добавление роли Internet Server</h2>
+}
+
+
+
+<h2>8.1. Если у вас операционная система Windows 8 или Server 2012</h2>
+
+Вам необходимо установить (если это еще не сделано) .Net Framework 3.5.  Для этого</b><br />
+1. Перейдите в <b>Панель управления</b>. <br />
+2. Выберите просмотр = <b>"Крупные значки" или "Мелкие значки"</b>. <br />
+3. Далее кликните ссылку <b>"Программы и компоненты"</b>. <br />
+4. Далее <b>"Включение или отключение компонентов Windows"</b>. <br />
+5. Появится блок диалога.  Поставьте флаг на узле <b>Net framework 3.5 (включает 2.0 и 3.0)</b>.<p />
+
+
+Для установки роли <b>"Web-сервер (IIS)"</b> и конфигурирования запустите Windows PowerShell с правами администратора и выполнить следующий скрипт <br />
+
+<b>Для Server 2012</b><br />
+    <input type="text" class="form-control"
+           value="Add-WindowsFeature Web-Server,Web-Mgmt-Tools,Web-Mgmt-Console,Web-WebServer,Web-Common-Http,Web-Default-Doc,Web-Static-Content,Web-Performance,Web-Stat-Compression,Web-Dyn-Compression,Web-Security,Web-Filtering,Web-Windows-Auth,Web-App-Dev,Web-Net-Ext45,Web-Asp-Net45,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Includes,InkandHandwritingServices,NET-Framework-Features,NET-Framework-Core" />
+    <br />
+
+    И затем<br />
+    <input type="text" class="form-control"
+           value="dism /online /enable-feature /featurename:IIS-ASPNET45" />
+    <p />
+
+
+
+    <b>Для Windows 8</b><br />
+
+    <input type="text" class="form-control"
+           value="Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole" />
+    <br />
+
+    И затем
+
+    <input type="text" class="form-control"
+           value="dism /online /enable-feature /featurename:IIS-ISAPIFilter" />
+    <br />
+
+    <input type="text" class="form-control"
+           value="dism /online /enable-feature /featurename:IIS-ISAPIExtensions" />
+    <br />
+
+    <input type="text" class="form-control"
+           value="dism /online /enable-feature /featurename:IIS-NetFxExtensibility45" />
+    <br />
+
+
+    <input type="text" class="form-control"
+           value="dism /online /enable-feature /featurename:IIS-ASPNET45" />
+    <br />
+
+
+
+    В результате установки в случае <b>Server 2012</b> в диспетчере серверов появится ссылка IIS. Кликните по ней.
+    В правом пенале появится список включающий ваш сервер.Кликните правой кнопкой мыши по вашему серверу и появившемся меню выберите пункт "Диспетчер служб IIS". Появится окно.
+    С помощью данной оснастки будет выполняться развертывание нашего Web-приложения.<p />
+
+
+    В результате установки в случае <b>Windows 8</b> на рабочем столе появится ссылка <b>диспетчер служб IIS</b>. Кликните по ней.  Появится окно.
+    С помощью данной оснастки будет выполняться развертывание нашего Web-приложения.<p />
+
+    <b>Замечание:</b> В случае <b>Windows 8</b>  запуск <b>Windows PowerShell</b> выполняется следующим образом:<br />
+    1. Шарм кнопки<br />
+    2. Кликнуть кнопку Поиск<br />
+    3. В поле для поиска ввести Windows PowerShell<br />
+    4. Появится пикторграмма Windows PowerShell. Правой кнопкой мыши выбрать "Запустить как администратор"<p />
+
+    <b>Замечание:</b> В случае <b>Server 2012</b>  запуск <b>Windows PowerShell</b> выполняется следующим образом:<br />
+    1. На панели задач всегда доступна ссылка "Windows PowerShell"<br />
+    2. На пиктограмме "Windows PowerShell". Правой кнопкой мыши выбрать "Запустить как администратор"<br />
+
+    <h2>8.2. Если у вас операционная система Windows 7 или Server 2008</h2>
+    <h3>8.2.1. .Net Framework 3.5.</h3>
+    Вам необходимо установить <b>(если это еще не сделано) .Net Framework 3.5.</b>  Для этого</b><br />
+    1. Перейдите в <b>Панель управления</b>. <br />
+    2. Выберите просмотр = <b>"Крупные значки" или "Мелкие значки"</b>. <br />
+    3. Далее кликните ссылку <b>"Программы и компоненты"</b>. <br />
+    4. Далее <b>"Включение или отключение компонентов Windows"</b>. <br />
+    5. Появится блок диалога.  Поставьте флаг на узле <b>Net framework 3.5 (включает 2.0 и 3.0)</b>.<p />
+
+    <h3>8.2.2. .Net Framework 4.0.</h3>
+    Вам необходимо установить <b>(если это еще не сделано) .Net Framework 4.0.</b>  Для этого</b><br />
+    1. скачать инсталяцию по ссылке
+    @Html.ExternalLink("http://www.microsoft.com/ru-ru/download/details.aspx?id=17718", ".Net Framework 4.0.", new { target = "_blank" }, new { }) и установить (Запустить саморазворачивающийся архив)<br />
+    2. скачать инсталяцию языкового пакета по ссылке
+    @Html.ExternalLink("http://www.microsoft.com/ru-ru/download/details.aspx?id=3324", "языковой пакет .Net Framework 4.0.", new { target = "_blank" }, new { })
+    и установить (Запустить саморазворачивающийся архив)<p />
+
+
+    <h3>8.2.3. .Net Framework 4.5 и обновления.</h3>
+    <b>Вам необходимо скачать и установить </b><br />
+    1.
+    @Html.ExternalLink("http://www.microsoft.com/ru-ru/download/details.aspx?id=5842", "Пакет обновления 1 (SP1) для Windows 7 и Windows Server 2008 R2", new { target = "_blank" }, new { })
+    лишь в том случае, если установлена операционная система Windows без SP1. Стоит ли у вас SP1 можно определить следующим образом. Кнопка пуск, далее компьютер, далее свойства и смотреть редакцию Windows.<br />
+    2.
+    @Html.ExternalLink("http://www.microsoft.com/ru-ru/download/details.aspx?id=30653", "Microsoft .NET Framework 4.5", new { target = "_blank" }, new { })<br />
+    3.
+    @Html.ExternalLink("http://www.microsoft.com/en-us/download/details.aspx?id=34595", "Windows Management Framework 3.0", new { target = "_blank" }, new { })<br />
+<pre>
+    Для  <b>Windows 7 Service Pack 1</b> 
+        64-бита: Windows6.1-KB2506143-x64.msu
+        32-бита: Windows6.1-KB2506143-x86.msu
+    Для  <b>Windows Server 2008 R2 SP1</b> 
+        64-бита: Windows6.1-KB2506143-x64.msu
+    Для  <b>Windows Server 2008 Service Pack 2</b> 
+        64-бита: Windows6.0-KB2506146-x64.msu
+        32-бита: Windows6.0-KB2506146-x86.msu
+</pre>
+
+    4.
+    @Html.ExternalLink("http://www.microsoft.com/en-us/download/details.aspx?id=36805", "Platform update for Windows 7 SP1 and Windows Server 2008 R2 SP1 (KB2670838)", new { target = "_blank" }, new { })<br />
+<pre>
+64-бита: Windows6.1-KB2670838-x64.msu
+32-бита: Windows6.1-KB2670838-x86.msu
+</pre>
+
+    <h3>8.2.4. Развернуть экземпляр Интернет сервера</h3>
+    <h4>8.2.4.1 Server 2008R2</h4>
+    Откройте окно <b>Windows PowerShell</b> от имени администратора и <b>исполните два скрипта</b><br />
+    @*<b>Замечание:</b> Для операционной системы <b>Windows 7</b> окно <b>Windows PowerShell</b> открывается следующей последовательностью действий:<br />
+        1. Кнопка Пуск<br />
+        2. Папка Все программы<br />
+        3. Папка Аксесуары<br />
+        4. Папка Windows PowerShell<br />
+        5. На пункте меню "Windows PowerShell" правой кнопкой мыши выбрать "Запустить как администратор"<p />*@
+
+    <b>Замечание:</b> Для операционной системы <b>Server 2008</b> окно <b>Windows PowerShell</b> открывается из панели задач (правее кнопки пуск)<p />
+    Первый скрипт установит необходимые роли и сервисы для развертывания Web-узла</br/>
+    <input type="text" class="form-control"
+           value="Import-Module ServerManager" />
+    <br />
+    Второй скрипт развернет и сконфигурирует web-узел<br />
+    <input type="text" class="form-control"
+           value="Add-WindowsFeature Web-Server,Web-WebServer,Web-Common-Http,Web-Static-Content,Web-App-Dev,Web-Asp-Net,Web-Net-Ext,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Includes,Web-Security,Web-Windows-Auth,Web-Filtering,Web-Stat-Compression,Web-Dyn-Compression,Web-Mgmt-Console,Ink-Handwriting,IH-Ink-Support" />
+    <br />
+    После выполнения этого скрипта перегрузите компьютер.<p />
+
+    <h4>8.2.4.2 Windows 7</h4>
+    Разверните роль стандартными средствами windows<br />
+    Для этого проведите следующие действия:<br />
+    1. Кнопка Пуск<br />
+    2. Панель управления (Control Panal)<br />
+    3. Программы и компоненты (Programs and Features)<br />
+    4. Включение или отключение компонентов Windows<br />
+    В появившемся блоке диалога включите флаг <b>Службы IIS</b> и кликните Ok<br />
+
+    <h4>8.2.4.3 Для Server 2008R2 и Windows 7</h4>
+
+    Для 32 битовой операционной системы последний шаг состоит в выполнеии команды из окна коммандной строки<br />
+    <input type="text" class="form-control"
+           value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe -iru" />
+    <br />
+    Для 64 битовой операционной системы последний шаг состоит в выполнеии команды из окна коммандной строки<br />
+    <input type="text" class="form-control"
+           value="C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_regiis.exe -iru" />
+    <br />
+
+    Окно коммандной строки можно запустить через кнопку пуск, далее Все программы, Аксесуары, Коммандная строка (Command prompt).<br />
+    После выполнения этого скрипта перегрузите компьютер.<p />
+
+    <h3>8.2.5. Диспетчер служб IIS</h3>
+    В результате установки станет доступным <b>диспетчер служб IIS</b>. Чтобы ее запустить необходимо: <br />
+    перейти в <b>Панель управления</b>. <br />
+    Перейти в <b>Средства администрирования</b>.<br />
+    Кликнуть по ссылке <b>"Менеджер IIS"</b>.<br />
+    С помощью данной оснастки будет выполняться развертывание нашего Web-приложения.<p />
+
+    <h3>8.2.6. Изменение версии Net c 2.0 на 4.0 для defaultAppPool</h3>
+    1. Запустите Диспетчер служб IIS. <br />
+    2. В левом пенале разверните узел вашего сервера. <br />
+    3. Станьте на узел "Пул приложений"(Application pool) <br />
+    4. В правом пенале выполните двойной клик на узле "Пул приложений по умолчанию" (defaultAppPool)<br />
+    5. Измените переключатель ".Net framework версия" со значения  "V2.0..." на значение "V4.0..."<br />

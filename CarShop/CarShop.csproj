@@ -1,0 +1,1211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FD0B784C-39A0-44D2-BBDB-1221B456D428}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarShop</RootNamespace>
+    <AssemblyName>CarShop</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44303</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Owin, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.7\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\ArticleSvc\ArticleSvcAreaRegistration.cs" />
+    <Compile Include="Areas\ArticleSvc\Controllers\ArticleSvcController.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\MsTecDoc\Controllers\MsNoTecDocSvcController.cs" />
+    <Compile Include="Areas\MsTecDoc\Controllers\MsTecDocLogInSvcController.cs" />
+    <Compile Include="Areas\MsTecDoc\Controllers\MsTecDocSvcController.cs" />
+    <Compile Include="Areas\MsTecDoc\MsTecDocAreaRegistration.cs" />
+    <Compile Include="Areas\OrderSvc\Controllers\BranchOrderArticleController.cs" />
+    <Compile Include="Areas\OrderSvc\Controllers\BranchOrderSvcController.cs" />
+    <Compile Include="Areas\OrderSvc\Controllers\BranchProfileSvcController.cs" />
+    <Compile Include="Areas\OrderSvc\OrderSvcAreaRegistration.cs" />
+    <Compile Include="Areas\RestSvc\Controllers\BranchLogInSvcController.cs" />
+    <Compile Include="Areas\RestSvc\Controllers\BranchRestSvcController.cs" />
+    <Compile Include="Areas\RestSvc\Controllers\BranchRestSvcExController.cs" />
+    <Compile Include="Areas\RestSvc\RestSvcAreaRegistration.cs" />
+    <Compile Include="Areas\SuppRestSvc\Controllers\SuppRestSvcController.cs" />
+    <Compile Include="Areas\SuppRestSvc\SuppRestSvcAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountController_old.cs" />
+    <Compile Include="Controllers\AddressTypeController.cs" />
+    <Compile Include="Controllers\BranchGuestProfileController.cs" />
+    <Compile Include="Controllers\BranchOrderArticleController.cs" />
+    <Compile Include="Controllers\BranchOrderArticleSearchController.cs" />
+    <Compile Include="Controllers\BranchOrderController.cs" />
+    <Compile Include="Controllers\BranchOrderSearchController.cs" />
+    <Compile Include="Controllers\BranchSpellController.cs" />
+    <Compile Include="Controllers\BranchSpellHstController.cs" />
+    <Compile Include="Controllers\BranchSuppController.cs" />
+    <Compile Include="Controllers\BranchTypesController.cs" />
+    <Compile Include="Controllers\ByTasksController.cs" />
+    <Compile Include="Controllers\ContactTypesController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\CurrencyController.cs" />
+    <Compile Include="Controllers\EnterpriseAddressController.cs" />
+    <Compile Include="Controllers\EnterpriseArticle2Controller.cs" />
+    <Compile Include="Controllers\EnterpriseArticleAndRestController.cs" />
+    <Compile Include="Controllers\EnterpriseArticleController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchAddressController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchContactsController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchesController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchRateController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchReplyController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchRestController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchRestDistribController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchUserContactController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchUsersController.cs" />
+    <Compile Include="Controllers\EnterpriseBranchWorkPlacesController.cs" />
+    <Compile Include="Controllers\EnterpriseBrandController.cs" />
+    <Compile Include="Controllers\EnterpriseCategoryController.cs" />
+    <Compile Include="Controllers\EnterpriseCategoryItemController.cs" />
+    <Compile Include="Controllers\EnterpriseProductCategoryController.cs" />
+    <Compile Include="Controllers\EnterprisesController.cs" />
+    <Compile Include="Controllers\EnterpriseSuppArticleAndRestController.cs" />
+    <Compile Include="Controllers\EnterpriseSupplierAddressController.cs" />
+    <Compile Include="Controllers\EnterpriseSupplierContactController.cs" />
+    <Compile Include="Controllers\EnterpriseSupplierController.cs" />
+    <Compile Include="Controllers\EnterpriseSupplierRestController.cs" />
+    <Compile Include="Controllers\EnterpriseTecDocSrcTypeController.cs" />
+    <Compile Include="Controllers\EnterpriseUserContactController.cs" />
+    <Compile Include="Controllers\EnterpriseUsersController.cs" />
+    <Compile Include="Controllers\GuestBranchController.cs" />
+    <Compile Include="Controllers\GuestOrderArticleController.cs" />
+    <Compile Include="Controllers\GuestOrderController.cs" />
+    <Compile Include="Controllers\GuestProfileController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HowToController.cs" />
+    <Compile Include="Controllers\IncomeArticleController.cs" />
+    <Compile Include="Controllers\IncomePayRollController.cs" />
+    <Compile Include="Controllers\IncomePayRollReportController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OriginalCatalogController.cs" />
+    <Compile Include="Controllers\ReturnArticleController.cs" />
+    <Compile Include="Controllers\ReturnBasketArticleController.cs" />
+    <Compile Include="Controllers\ReturnBasketController.cs" />
+    <Compile Include="Controllers\ReturnReportController.cs" />
+    <Compile Include="Controllers\RevaluationArticleController.cs" />
+    <Compile Include="Controllers\RevaluationReportController.cs" />
+    <Compile Include="Controllers\SaleArticleController.cs" />
+    <Compile Include="Controllers\SaleBasketArticleController.cs" />
+    <Compile Include="Controllers\SaleBasketController.cs" />
+    <Compile Include="Controllers\SaleReportController.cs" />
+    <Compile Include="Controllers\SettlementTypeController.cs" />
+    <Compile Include="Controllers\SheetRevaluationController.cs" />
+    <Compile Include="Controllers\SoatoController.cs" />
+    <Compile Include="Controllers\StreetTypeController.cs" />
+    <Compile Include="Controllers\TecDocController.cs" />
+    <Compile Include="Controllers\TecDocGuestController.cs" />
+    <Compile Include="Controllers\TecDocRestsController.cs" />
+    <Compile Include="Controllers\User2WorkPlaceController.cs" />
+    <Compile Include="Controllers\User2WorkPlaceHstController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\CustomApplicationDbContextInitializer.cs" />
+    <Compile Include="Models\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\LookUpSoatoForEnterpriseAddress.cs" />
+    <Compile Include="Models\ManageUserViewModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
+    <Compile Include="MvcForumIdentity\AuthenticationService.cs" />
+    <Compile Include="MvcForumIdentity\IdentityBuilder.cs" />
+    <Compile Include="MvcForumIdentity\IdentityUserProvider.cs" />
+    <Compile Include="MvcForumIdentity\MembershipService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="Utility\CreateSheetRevaluation.cs" />
+    <Compile Include="Utility\CreateSheetRevaluationData.cs" />
+    <Compile Include="Utility\EntAdminActions.cs" />
+    <Compile Include="Utility\MakeIncomePayRoll.cs" />
+    <Compile Include="Utility\MakeIncomePayRollData.cs" />
+    <Compile Include="Utility\MakeSheetRevaluation.cs" />
+    <Compile Include="Utility\MakeSheetRevaluationData.cs" />
+    <Compile Include="Utility\MakeSpellClosed.cs" />
+    <Compile Include="Utility\MakeSpellClosedData.cs" />
+    <Compile Include="Utility\ReplyOrders.cs" />
+    <Compile Include="Utility\ReplyOrdersData.cs" />
+    <Compile Include="Utility\ReplyRests.cs" />
+    <Compile Include="Utility\ReplyRestsdData.cs" />
+    <Compile Include="Utility\Rest2Income.cs" />
+    <Compile Include="Utility\Rest2IncomeData.cs" />
+    <Compile Include="Utility\SwitcherListUtil.cs" />
+    <Compile Include="Utility\TecDocSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\texts\MVCForum.AddOns.xml" />
+    <Content Include="App_Data\texts\MVCForum.SearchProvider.Lucene.xml" />
+    <Content Include="App_Data\texts\MVCForum.Web.xml" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\forum\forum.css" />
+    <Content Include="Content\css\forum\print.css" />
+    <Content Include="Content\css\forum\tweaks_ie.css" />
+    <Content Include="Content\css\markitup\images\bg-container.png" />
+    <Content Include="Content\css\markitup\images\bg-editor-bbcode.png" />
+    <Content Include="Content\css\markitup\images\bg-editor-dotclear.png" />
+    <Content Include="Content\css\markitup\images\bg-editor-html.png" />
+    <Content Include="Content\css\markitup\images\bg-editor-json.png" />
+    <Content Include="Content\css\markitup\images\bg-editor-markdown.png" />
+    <Content Include="Content\css\markitup\images\bg-editor-textile.png" />
+    <Content Include="Content\css\markitup\images\bg-editor-wiki.png" />
+    <Content Include="Content\css\markitup\images\bg-editor-xml.png" />
+    <Content Include="Content\css\markitup\images\bg-editor.png" />
+    <Content Include="Content\css\markitup\images\handle.png" />
+    <Content Include="Content\css\markitup\images\menu.png" />
+    <Content Include="Content\css\markitup\images\submenu.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\bold.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\clean.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\code.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\fonts.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\italic.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\link.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\list-bullet.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\list-item.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\list-numeric.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\picture.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\preview.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\quotes.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\stroke.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\images\underline.png" />
+    <Content Include="Content\css\markitup\sets\bbcode\style.css" />
+    <Content Include="Content\css\markitup\sets\markdown\images\bold.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\code.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\h1.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\h2.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\h3.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\h4.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\h5.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\h6.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\italic.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\link.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\list-bullet.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\list-numeric.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\picture.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\preview.png" />
+    <Content Include="Content\css\markitup\sets\markdown\images\quotes.png" />
+    <Content Include="Content\css\markitup\sets\markdown\style.css" />
+    <Content Include="Content\css\markitup\style.css" />
+    <Content Include="Content\Images\1.jpg" />
+    <Content Include="Content\Images\2.jpg" />
+    <Content Include="Content\Images\3.jpg" />
+    <Content Include="Content\Images\4.jpg" />
+    <Content Include="Content\img\forum\arrow_down.gif" />
+    <Content Include="Content\img\forum\arrow_left.gif" />
+    <Content Include="Content\img\forum\arrow_right.gif" />
+    <Content Include="Content\img\forum\arrow_up.gif" />
+    <Content Include="Content\img\forum\bb_attach.gif" />
+    <Content Include="Content\img\forum\bb_bg.gif" />
+    <Content Include="Content\img\forum\bb_code.gif" />
+    <Content Include="Content\img\forum\bb_expand.gif" />
+    <Content Include="Content\img\forum\bb_quote.gif" />
+    <Content Include="Content\img\forum\bb_select.gif" />
+    <Content Include="Content\img\forum\bg_block.gif" />
+    <Content Include="Content\img\forum\bg_h3.gif" />
+    <Content Include="Content\img\forum\bg_navbar.gif" />
+    <Content Include="Content\img\forum\bg_poll.gif" />
+    <Content Include="Content\img\forum\bg_popup.gif" />
+    <Content Include="Content\img\forum\bg_post.gif" />
+    <Content Include="Content\img\forum\bg_row.gif" />
+    <Content Include="Content\img\forum\bg_row_hover.gif" />
+    <Content Include="Content\img\forum\bg_row_hover2.gif" />
+    <Content Include="Content\img\forum\bg_tabs1.gif" />
+    <Content Include="Content\img\forum\bg_tabs2.gif" />
+    <Content Include="Content\img\forum\bg_th.gif" />
+    <Content Include="Content\img\forum\en\button_pm_forward.gif" />
+    <Content Include="Content\img\forum\en\button_pm_new.gif" />
+    <Content Include="Content\img\forum\en\button_pm_reply.gif" />
+    <Content Include="Content\img\forum\en\button_quick_reply.gif" />
+    <Content Include="Content\img\forum\en\button_topic_locked.gif" />
+    <Content Include="Content\img\forum\en\button_topic_new.gif" />
+    <Content Include="Content\img\forum\en\button_topic_reply.gif" />
+    <Content Include="Content\img\forum\en\icon_contact_pm.gif" />
+    <Content Include="Content\img\forum\en\icon_post_edit.gif" />
+    <Content Include="Content\img\forum\en\icon_post_quote.gif" />
+    <Content Include="Content\img\forum\en\icon_user_online.gif" />
+    <Content Include="Content\img\forum\en\spacer.gif" />
+    <Content Include="Content\img\forum\feed.gif" />
+    <Content Include="Content\img\forum\forum_link.gif" />
+    <Content Include="Content\img\forum\forum_read.gif" />
+    <Content Include="Content\img\forum\forum_read_locked.gif" />
+    <Content Include="Content\img\forum\forum_read_subforum.gif" />
+    <Content Include="Content\img\forum\forum_unread.gif" />
+    <Content Include="Content\img\forum\forum_unread_locked.gif" />
+    <Content Include="Content\img\forum\forum_unread_subforum.gif" />
+    <Content Include="Content\img\forum\icon_back_top.gif" />
+    <Content Include="Content\img\forum\icon_contact_aim.gif" />
+    <Content Include="Content\img\forum\icon_contact_email.gif" />
+    <Content Include="Content\img\forum\icon_contact_icq.gif" />
+    <Content Include="Content\img\forum\icon_contact_jabber.gif" />
+    <Content Include="Content\img\forum\icon_contact_msnm.gif" />
+    <Content Include="Content\img\forum\icon_contact_www.gif" />
+    <Content Include="Content\img\forum\icon_contact_yahoo.gif" />
+    <Content Include="Content\img\forum\icon_fontsize.gif" />
+    <Content Include="Content\img\forum\icon_home.gif" />
+    <Content Include="Content\img\forum\icon_offline.gif" />
+    <Content Include="Content\img\forum\icon_online.gif" />
+    <Content Include="Content\img\forum\icon_pages.gif" />
+    <Content Include="Content\img\forum\icon_post_delete.gif" />
+    <Content Include="Content\img\forum\icon_post_info.gif" />
+    <Content Include="Content\img\forum\icon_post_report.gif" />
+    <Content Include="Content\img\forum\icon_post_target.gif" />
+    <Content Include="Content\img\forum\icon_post_target_unread.gif" />
+    <Content Include="Content\img\forum\icon_rate_bad.gif" />
+    <Content Include="Content\img\forum\icon_rate_good.gif" />
+    <Content Include="Content\img\forum\icon_textbox_search.gif" />
+    <Content Include="Content\img\forum\icon_textbox_search2.gif" />
+    <Content Include="Content\img\forum\icon_topic_attach.gif" />
+    <Content Include="Content\img\forum\icon_topic_reported.gif" />
+    <Content Include="Content\img\forum\icon_topic_unapproved.gif" />
+    <Content Include="Content\img\forum\icon_user_warn.gif" />
+    <Content Include="Content\img\forum\layout\bg_body.gif" />
+    <Content Include="Content\img\forum\layout\bg_content.gif" />
+    <Content Include="Content\img\forum\layout\bg_left.gif" />
+    <Content Include="Content\img\forum\layout\bg_right.gif" />
+    <Content Include="Content\img\forum\layout\bottom_bg.gif" />
+    <Content Include="Content\img\forum\layout\bottom_left.gif" />
+    <Content Include="Content\img\forum\layout\bottom_right.gif" />
+    <Content Include="Content\img\forum\layout\corner_left.gif" />
+    <Content Include="Content\img\forum\layout\corner_right.gif" />
+    <Content Include="Content\img\forum\layout\hdr_bg.gif" />
+    <Content Include="Content\img\forum\layout\hdr_left.gif" />
+    <Content Include="Content\img\forum\layout\hdr_right.gif" />
+    <Content Include="Content\img\forum\no_avatar.gif" />
+    <Content Include="Content\img\forum\post_hide.gif" />
+    <Content Include="Content\img\forum\post_show.gif" />
+    <Content Include="Content\img\forum\site_logo.gif" />
+    <Content Include="Content\img\forum\spacer.gif" />
+    <Content Include="Content\img\forum\sticky_read.gif" />
+    <Content Include="Content\img\forum\sticky_read_locked.gif" />
+    <Content Include="Content\img\forum\sticky_read_locked_mine.gif" />
+    <Content Include="Content\img\forum\sticky_read_mine.gif" />
+    <Content Include="Content\img\forum\sticky_unread.gif" />
+    <Content Include="Content\img\forum\sticky_unread_locked.gif" />
+    <Content Include="Content\img\forum\sticky_unread_locked_mine.gif" />
+    <Content Include="Content\img\forum\sticky_unread_mine.gif" />
+    <Content Include="Content\img\forum\subforum_link.gif" />
+    <Content Include="Content\img\forum\subforum_read.gif" />
+    <Content Include="Content\img\forum\subforum_unread.gif" />
+    <Content Include="Content\img\forum\topic_moved.gif" />
+    <Content Include="Content\img\forum\topic_moved_mine.gif" />
+    <Content Include="Content\img\forum\topic_read.gif" />
+    <Content Include="Content\img\forum\topic_read_hot.gif" />
+    <Content Include="Content\img\forum\topic_read_hot_mine.gif" />
+    <Content Include="Content\img\forum\topic_read_locked.gif" />
+    <Content Include="Content\img\forum\topic_read_locked_mine.gif" />
+    <Content Include="Content\img\forum\topic_read_mine.gif" />
+    <Content Include="Content\img\forum\topic_unread.gif" />
+    <Content Include="Content\img\forum\topic_unread_hot.gif" />
+    <Content Include="Content\img\forum\topic_unread_hot_mine.gif" />
+    <Content Include="Content\img\forum\topic_unread_locked.gif" />
+    <Content Include="Content\img\forum\topic_unread_locked_mine.gif" />
+    <Content Include="Content\img\forum\topic_unread_mine.gif" />
+    <Content Include="Content\img\forum\ucp_item.gif" />
+    <Content Include="Content\img\forum\ucp_section.gif" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\maincss\bootstrap.css" />
+    <Content Include="Content\maincss\bootstrap.min.css" />
+    <Content Include="Content\maincss\Site.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\ArticleSvc\Views\web.config" />
+    <Content Include="Areas\ForumAdmin\Views\accessmask\update.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\antispam\index.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\basicinstall\index.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\basicinstall\status.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\board\newaccessmaskmodal.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\board\newcategorymodal.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\board\update.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\category\newforummodal.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\category\update.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\forum\newsubforummodal.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\forum\update.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\group\index.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\group\newgroupmodal.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\group\update.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\home\index.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\home\newboardmodal.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\search\index.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\settings\index.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\settings\userregistration.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\shared\accessflag.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\shared\adminlayout.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\shared\breadcrumbnavigation.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\shared\pageheader.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\shared\topnavigation.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\user\index.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\user\newmembershipmodal.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\user\newusermodal.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\user\update.cshtml" />
+    <Content Include="Areas\ForumAdmin\Views\web.config" />
+    <Content Include="Areas\Forum\Views\Account\Activate.cshtml" />
+    <Content Include="Areas\Forum\Views\Account\External.cshtml" />
+    <Content Include="Areas\Forum\Views\Account\LogOn.cshtml" />
+    <Content Include="Areas\Forum\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Forum\Views\Account\Success.cshtml" />
+    <Content Include="Areas\Forum\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\File\Attach.cshtml" />
+    <Content Include="Areas\Forum\Views\Forum\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\Message\Create.cshtml" />
+    <Content Include="Areas\Forum\Views\Message\Delete.cshtml" />
+    <Content Include="Areas\Forum\Views\Message\Edit.cshtml" />
+    <Content Include="Areas\Forum\Views\Message\Moderate.cshtml" />
+    <Content Include="Areas\Forum\Views\Message\Report.cshtml" />
+    <Content Include="Areas\Forum\Views\Message\Undelete.cshtml" />
+    <Content Include="Areas\Forum\Views\Moderate\Delete.cshtml" />
+    <Content Include="Areas\Forum\Views\Moderate\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\Moderate\Merge.cshtml" />
+    <Content Include="Areas\Forum\Views\Moderate\Move.cshtml" />
+    <Content Include="Areas\Forum\Views\Moderate\Report.cshtml" />
+    <Content Include="Areas\Forum\Views\Moderate\ReportList.cshtml" />
+    <Content Include="Areas\Forum\Views\Moderate\Split.cshtml" />
+    <Content Include="Areas\Forum\Views\Moderate\Topic.cshtml" />
+    <Content Include="Areas\Forum\Views\NoAccess\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\Profile\Update.cshtml" />
+    <Content Include="Areas\Forum\Views\Search\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\Search\Unanswered Topics.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\AttachmentPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\BBCodeEditor.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\BottomScripts.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\Breadcrumb.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\CategoryPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\Footer.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\ForumButtonsPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\forumlayout.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\ForumPagingPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\ForumPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\LastMessagePartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\LastTopicPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\MarkDownEditor.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\MessagePosterPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\ModelStateErrors.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\OlderPosts.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\RegularEditor.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\TopicPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Shared\TopNavigation.cshtml" />
+    <Content Include="Areas\Forum\Views\Topic\Create.cshtml" />
+    <Content Include="Areas\Forum\Views\Topic\Edit.cshtml" />
+    <Content Include="Areas\Forum\Views\Topic\Index.cshtml" />
+    <Content Include="Areas\Forum\Views\Topic\MessagePartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Topic\Moderate.cshtml" />
+    <Content Include="Areas\Forum\Views\Topic\TopicButtonsPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\Topic\TopicPagingPartial.cshtml" />
+    <Content Include="Areas\Forum\Views\web.config" />
+    <Content Include="Areas\HelpPage\Views\web.config" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\MsTecDoc\Views\web.config" />
+    <Content Include="Areas\OrderSvc\Views\web.config" />
+    <Content Include="Areas\RestSvc\Views\web.config" />
+    <Content Include="Areas\SuppRestSvc\Views\web.config" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\markitup\jquery.markitup.js" />
+    <Content Include="Scripts\markitup\sets\bbcode\set.js" />
+    <Content Include="Scripts\markitup\sets\markdown\set.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\ByOriginalCatalogs.cshtml" />
+    <Content Include="Views\Home\IndexByBooker.cshtml" />
+    <Content Include="Views\Home\IndexByBranchAdmin.cshtml" />
+    <Content Include="Views\Home\IndexByBranchAudit.cshtml" />
+    <Content Include="Views\Home\IndexByEcoSystemAdmin.cshtml" />
+    <Content Include="Views\Home\IndexByEnterpriseAdmin.cshtml" />
+    <Content Include="Views\Home\IndexByEnterpriseAudit.cshtml" />
+    <Content Include="Views\Home\IndexByRoles.cshtml" />
+    <Content Include="Views\Home\OnLineCatalogs.cshtml" />
+    <Content Include="Views\Home\ToBusinessMan.cshtml" />
+    <Content Include="Views\Home\ToExternals.cshtml" />
+    <Content Include="Views\Home\WhyItsFree.cshtml" />
+    <Content Include="Views\AddressType\Create.cshtml" />
+    <Content Include="Views\AddressType\Delete.cshtml" />
+    <Content Include="Views\AddressType\Details.cshtml" />
+    <Content Include="Views\AddressType\Edit.cshtml" />
+    <Content Include="Views\BranchGuestProfile\Create.cshtml" />
+    <Content Include="Views\BranchGuestProfile\Details.cshtml" />
+    <Content Include="Views\BranchGuestProfile\Edit.cshtml" />
+    <Content Include="Views\BranchGuestProfile\Index.cshtml" />
+    <Content Include="Views\BranchOrderArticle\Create.cshtml" />
+    <Content Include="Views\BranchOrderArticle\Delete.cshtml" />
+    <Content Include="Views\BranchOrderArticle\Details.cshtml" />
+    <Content Include="Views\BranchOrderArticle\Edit.cshtml" />
+    <Content Include="Views\BranchOrderArticle\Index.cshtml" />
+    <Content Include="Views\BranchOrderArticleSearch\Index.cshtml" />
+    <Content Include="Views\BranchOrder\Delete.cshtml" />
+    <Content Include="Views\BranchOrder\Details.cshtml" />
+    <Content Include="Views\BranchOrder\Edit.cshtml" />
+    <Content Include="Views\BranchOrder\Index.cshtml" />
+    <Content Include="Views\BranchOrderSearch\Details.cshtml" />
+    <Content Include="Views\BranchOrderSearch\Index.cshtml" />
+    <Content Include="Views\BranchSpell\Create.cshtml" />
+    <Content Include="Views\BranchSpell\Delete.cshtml" />
+    <Content Include="Views\BranchSpell\Details.cshtml" />
+    <Content Include="Views\BranchSpell\Edit.cshtml" />
+    <Content Include="Views\BranchSpell\Index.cshtml" />
+    <Content Include="Views\BranchSpellHst\Details.cshtml" />
+    <Content Include="Views\BranchSpellHst\DoMakeSpellClosed.cshtml" />
+    <Content Include="Views\BranchSpellHst\Edit.cshtml" />
+    <Content Include="Views\BranchSpellHst\Index.cshtml" />
+    <Content Include="Views\BranchSpellHst\LookForSpell.cshtml" />
+    <Content Include="Views\BranchSupp\Create.cshtml" />
+    <Content Include="Views\BranchSupp\Delete.cshtml" />
+    <Content Include="Views\BranchSupp\Details.cshtml" />
+    <Content Include="Views\BranchSupp\Edit.cshtml" />
+    <Content Include="Views\BranchSupp\Index.cshtml" />
+    <Content Include="Views\BranchTypes\Create.cshtml" />
+    <Content Include="Views\BranchTypes\Delete.cshtml" />
+    <Content Include="Views\BranchTypes\Details.cshtml" />
+    <Content Include="Views\BranchTypes\Edit.cshtml" />
+    <Content Include="Views\BranchTypes\Index.cshtml" />
+    <Content Include="Views\ByTasks\Articles.cshtml" />
+    <Content Include="Views\ByTasks\BranchGuestProfile.cshtml" />
+    <Content Include="Views\ByTasks\BranchOrderSearch.cshtml" />
+    <Content Include="Views\ByTasks\BranchSpell.cshtml" />
+    <Content Include="Views\ByTasks\BranchSpellHst.cshtml" />
+    <Content Include="Views\ByTasks\CarShopRestToWeb.cshtml" />
+    <Content Include="Views\ByTasks\CarShopRestToWeb2.cshtml" />
+    <Content Include="Views\ByTasks\CarShopRestToWeb3.cshtml" />
+    <Content Include="Views\ByTasks\CarShopRestToWeb4.cshtml" />
+    <Content Include="Views\ByTasks\CarShopRestToWeb5.cshtml" />
+    <Content Include="Views\ByTasks\DoMakeOrdersReply.cshtml" />
+    <Content Include="Views\ByTasks\DoMakeReply.cshtml" />
+    <Content Include="Views\ByTasks\Dounloads.cshtml" />
+    <Content Include="Views\ByTasks\EnterpriseBranchRest.cshtml" />
+    <Content Include="Views\ByTasks\ExternalRests.cshtml" />
+    <Content Include="Views\ByTasks\Income.cshtml" />
+    <Content Include="Views\ByTasks\Index.cshtml" />
+    <Content Include="Views\ByTasks\InternetShop.cshtml" />
+    <Content Include="Views\ByTasks\OriginalCatalogs.cshtml" />
+    <Content Include="Views\ByTasks\ReturnBasket.cshtml" />
+    <Content Include="Views\ByTasks\SaleBasket.cshtml" />
+    <Content Include="Views\ByTasks\SheetRevaluation.cshtml" />
+    <Content Include="Views\ByTasks\SupplierRests.cshtml" />
+    <Content Include="Views\ByTasks\TableOfOrders.cshtml" />
+    <Content Include="Views\ByTasks\TecDocExpansion.cshtml" />
+    <Content Include="Views\ByTasks\User2WorkPlace.cshtml" />
+    <Content Include="Views\ByTasks\_Layout.cshtml" />
+    <Content Include="Views\ContactTypes\Create.cshtml" />
+    <Content Include="Views\ContactTypes\Delete.cshtml" />
+    <Content Include="Views\ContactTypes\Details.cshtml" />
+    <Content Include="Views\ContactTypes\Edit.cshtml" />
+    <Content Include="Views\ContactTypes\Index.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Currency\Create.cshtml" />
+    <Content Include="Views\Currency\Delete.cshtml" />
+    <Content Include="Views\Currency\Details.cshtml" />
+    <Content Include="Views\Currency\Edit.cshtml" />
+    <Content Include="Views\Currency\Index.cshtml" />
+    <Content Include="Views\EnterpriseAddress\Create.cshtml" />
+    <Content Include="Views\EnterpriseAddress\Delete.cshtml" />
+    <Content Include="Views\EnterpriseAddress\Details.cshtml" />
+    <Content Include="Views\EnterpriseAddress\Edit.cshtml" />
+    <Content Include="Views\EnterpriseAddress\Index.cshtml" />
+    <Content Include="Views\EnterpriseArticle2\Create.cshtml" />
+    <Content Include="Views\EnterpriseArticle2\Delete.cshtml" />
+    <Content Include="Views\EnterpriseArticle2\Details.cshtml" />
+    <Content Include="Views\EnterpriseArticle2\Edit.cshtml" />
+    <Content Include="Views\EnterpriseArticle2\Index.cshtml" />
+    <Content Include="Views\EnterpriseArticleAndRest\Index.cshtml" />
+    <Content Include="Views\EnterpriseArticle\Create.cshtml" />
+    <Content Include="Views\EnterpriseArticle\Delete.cshtml" />
+    <Content Include="Views\EnterpriseArticle\Details.cshtml" />
+    <Content Include="Views\EnterpriseArticle\Edit.cshtml" />
+    <Content Include="Views\EnterpriseArticle\Index.cshtml" />
+    <Content Include="Views\EnterpriseArticle\LookUpArticleByID.cshtml" />
+    <Content Include="Views\EnterpriseBranchAddress\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranchAddress\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranchAddress\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranchAddress\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranchAddress\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranchContacts\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranchContacts\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranchContacts\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranchContacts\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranchContacts\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranches\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranches\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranches\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranches\DoMakeOrdersReply.cshtml" />
+    <Content Include="Views\EnterpriseBranches\DoMakeReply.cshtml" />
+    <Content Include="Views\EnterpriseBranches\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranches\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranchRate\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranchRate\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranchRate\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranchRate\DistribureRates.cshtml" />
+    <Content Include="Views\EnterpriseBranchRate\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranchRate\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranchReply\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranchReply\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranchReply\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranchReply\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranchReply\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranchRest\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranchRest\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranchRest\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranchRest\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranchRest\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranchRestDistrib\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranchRestDistrib\Returns.cshtml" />
+    <Content Include="Views\EnterpriseBranchRestDistrib\Revaluations.cshtml" />
+    <Content Include="Views\EnterpriseBranchRestDistrib\Sales.cshtml" />
+    <Content Include="Views\EnterpriseBranchUserContact\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranchUserContact\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranchUserContact\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranchUserContact\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranchUserContact\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranchUsers\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranchUsers\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranchUsers\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranchUsers\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranchUsers\Index.cshtml" />
+    <Content Include="Views\EnterpriseBranchWorkPlaces\Create.cshtml" />
+    <Content Include="Views\EnterpriseBranchWorkPlaces\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBranchWorkPlaces\Details.cshtml" />
+    <Content Include="Views\EnterpriseBranchWorkPlaces\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBranchWorkPlaces\Index.cshtml" />
+    <Content Include="Views\EnterpriseBrand\Create.cshtml" />
+    <Content Include="Views\EnterpriseBrand\Delete.cshtml" />
+    <Content Include="Views\EnterpriseBrand\Details.cshtml" />
+    <Content Include="Views\EnterpriseBrand\Edit.cshtml" />
+    <Content Include="Views\EnterpriseBrand\Index.cshtml" />
+    <Content Include="Views\EnterpriseBrand\LookUpEnterpriseBrand.cshtml" />
+    <Content Include="Views\EnterpriseCategory\Create.cshtml" />
+    <Content Include="Views\EnterpriseCategory\Delete.cshtml" />
+    <Content Include="Views\EnterpriseCategory\Details.cshtml" />
+    <Content Include="Views\EnterpriseCategory\Edit.cshtml" />
+    <Content Include="Views\EnterpriseCategory\Index.cshtml" />
+    <Content Include="Views\EnterpriseCategoryItem\Create.cshtml" />
+    <Content Include="Views\EnterpriseCategoryItem\Delete.cshtml" />
+    <Content Include="Views\EnterpriseCategoryItem\Details.cshtml" />
+    <Content Include="Views\EnterpriseCategoryItem\Edit.cshtml" />
+    <Content Include="Views\EnterpriseCategoryItem\Index.cshtml" />
+    <Content Include="Views\EnterpriseProductCategory\Create.cshtml" />
+    <Content Include="Views\EnterpriseProductCategory\Delete.cshtml" />
+    <Content Include="Views\EnterpriseProductCategory\Details.cshtml" />
+    <Content Include="Views\EnterpriseProductCategory\Edit.cshtml" />
+    <Content Include="Views\EnterpriseProductCategory\Index.cshtml" />
+    <Content Include="Views\Enterprises\Create.cshtml" />
+    <Content Include="Views\Enterprises\Delete.cshtml" />
+    <Content Include="Views\Enterprises\Details.cshtml" />
+    <Content Include="Views\Enterprises\Edit.cshtml" />
+    <Content Include="Views\Enterprises\Index.cshtml" />
+    <Content Include="Views\EnterpriseSuppArticleAndRest\Index.cshtml" />
+    <Content Include="Views\EnterpriseSupplierAddress\Create.cshtml" />
+    <Content Include="Views\EnterpriseSupplierAddress\Delete.cshtml" />
+    <Content Include="Views\EnterpriseSupplierAddress\Details.cshtml" />
+    <Content Include="Views\EnterpriseSupplierAddress\Edit.cshtml" />
+    <Content Include="Views\EnterpriseSupplierAddress\Index.cshtml" />
+    <Content Include="Views\EnterpriseSupplierContact\Create.cshtml" />
+    <Content Include="Views\EnterpriseSupplierContact\Delete.cshtml" />
+    <Content Include="Views\EnterpriseSupplierContact\Details.cshtml" />
+    <Content Include="Views\EnterpriseSupplierContact\Edit.cshtml" />
+    <Content Include="Views\EnterpriseSupplierContact\Index.cshtml" />
+    <Content Include="Views\EnterpriseSupplier\Create.cshtml" />
+    <Content Include="Views\EnterpriseSupplier\Delete.cshtml" />
+    <Content Include="Views\EnterpriseSupplier\Details.cshtml" />
+    <Content Include="Views\EnterpriseSupplier\Edit.cshtml" />
+    <Content Include="Views\EnterpriseSupplier\Index.cshtml" />
+    <Content Include="Views\EnterpriseSupplier\LookUpSupplierByID.cshtml" />
+    <Content Include="Views\EnterpriseSupplierRest\Create.cshtml" />
+    <Content Include="Views\EnterpriseSupplierRest\Delete.cshtml" />
+    <Content Include="Views\EnterpriseSupplierRest\Details.cshtml" />
+    <Content Include="Views\EnterpriseSupplierRest\Edit.cshtml" />
+    <Content Include="Views\EnterpriseSupplierRest\Index.cshtml" />
+    <Content Include="Views\EnterpriseTecDocSrcType\Create.cshtml" />
+    <Content Include="Views\EnterpriseTecDocSrcType\Delete.cshtml" />
+    <Content Include="Views\EnterpriseTecDocSrcType\Details.cshtml" />
+    <Content Include="Views\EnterpriseTecDocSrcType\Edit.cshtml" />
+    <Content Include="Views\EnterpriseTecDocSrcType\Index.cshtml" />
+    <Content Include="Views\EnterpriseUserContact\Create.cshtml" />
+    <Content Include="Views\EnterpriseUserContact\Delete.cshtml" />
+    <Content Include="Views\EnterpriseUserContact\Details.cshtml" />
+    <Content Include="Views\EnterpriseUserContact\Edit.cshtml" />
+    <Content Include="Views\EnterpriseUserContact\Index.cshtml" />
+    <Content Include="Views\EnterpriseUsers\Create.cshtml" />
+    <Content Include="Views\EnterpriseUsers\Delete.cshtml" />
+    <Content Include="Views\EnterpriseUsers\Details.cshtml" />
+    <Content Include="Views\EnterpriseUsers\Edit.cshtml" />
+    <Content Include="Views\EnterpriseUsers\Index.cshtml" />
+    <Content Include="Views\GuestBranch\Create.cshtml" />
+    <Content Include="Views\GuestBranch\Delete.cshtml" />
+    <Content Include="Views\GuestBranch\Details.cshtml" />
+    <Content Include="Views\GuestBranch\Edit.cshtml" />
+    <Content Include="Views\GuestBranch\Index.cshtml" />
+    <Content Include="Views\GuestOrderArticle\Create.cshtml" />
+    <Content Include="Views\GuestOrderArticle\Delete.cshtml" />
+    <Content Include="Views\GuestOrderArticle\Details.cshtml" />
+    <Content Include="Views\GuestOrderArticle\Edit.cshtml" />
+    <Content Include="Views\GuestOrderArticle\Index.cshtml" />
+    <Content Include="Views\GuestOrder\Create.cshtml" />
+    <Content Include="Views\GuestOrder\Delete.cshtml" />
+    <Content Include="Views\GuestOrder\Details.cshtml" />
+    <Content Include="Views\GuestOrder\Edit.cshtml" />
+    <Content Include="Views\GuestOrder\Index.cshtml" />
+    <Content Include="Views\GuestProfile\Create.cshtml" />
+    <Content Include="Views\GuestProfile\Delete.cshtml" />
+    <Content Include="Views\GuestProfile\Edit.cshtml" />
+    <Content Include="Views\GuestProfile\Index.cshtml" />
+    <Content Include="Views\HowTo\AspNetSecurity.cshtml" />
+    <Content Include="Views\HowTo\CarShopArticleContext.cshtml" />
+    <Content Include="Views\HowTo\CarShopRestToWeb.cshtml" />
+    <Content Include="Views\HowTo\Dounloads.cshtml" />
+    <Content Include="Views\HowTo\Enterprise.cshtml" />
+    <Content Include="Views\HowTo\FirewallSettings.cshtml" />
+    <Content Include="Views\HowTo\FirewallSettingsHttp.cshtml" />
+    <Content Include="Views\HowTo\FirstStartApp.cshtml" />
+    <Content Include="Views\HowTo\HowToMSSQL.cshtml" />
+    <Content Include="Views\HowTo\HowToMSSQLManagementStudio.cshtml" />
+    <Content Include="Views\HowTo\HowToWpfCarShop.cshtml" />
+    <Content Include="Views\HowTo\IESettings.cshtml" />
+    <Content Include="Views\HowTo\Index.cshtml" />
+    <Content Include="Views\HowTo\InstallonIIS.cshtml" />
+    <Content Include="Views\HowTo\InternetServer.cshtml" />
+    <Content Include="Views\HowTo\MinStepToGetWork.cshtml" />
+    <Content Include="Views\HowTo\MsDts.cshtml" />
+    <Content Include="Views\HowTo\ODBCTecDoc.cshtml" />
+    <Content Include="Views\HowTo\RegAdvanceOrders.cshtml" />
+    <Content Include="Views\HowTo\TecDocMsSql.cshtml" />
+    <Content Include="Views\HowTo\WpfCarShopDict.cshtml" />
+    <Content Include="Views\HowTo\_Layout.cshtml" />
+    <Content Include="Views\IncomeArticle\Create.cshtml" />
+    <Content Include="Views\IncomeArticle\Delete.cshtml" />
+    <Content Include="Views\IncomeArticle\Details.cshtml" />
+    <Content Include="Views\IncomeArticle\Edit.cshtml" />
+    <Content Include="Views\IncomeArticle\Index.cshtml" />
+    <Content Include="Views\IncomeArticle\LookUpIncomeArticle.cshtml" />
+    <Content Include="Views\IncomePayRollReport\Index.cshtml" />
+    <Content Include="Views\IncomePayRoll\Create.cshtml" />
+    <Content Include="Views\IncomePayRoll\Delete.cshtml" />
+    <Content Include="Views\IncomePayRoll\Details.cshtml" />
+    <Content Include="Views\IncomePayRoll\Edit.cshtml" />
+    <Content Include="Views\IncomePayRoll\Index.cshtml" />
+    <Content Include="Views\IncomePayRoll\MakeIncome.cshtml" />
+    <Content Include="Views\IncomePayRoll\MakeRestToIncome.cshtml" />
+    <Content Include="Views\IncomePayRoll\ReverseIncome.cshtml" />
+    <Content Include="Views\IncomePayRoll\SheetRevaluation.cshtml" />
+    <Content Include="Views\OriginalCatalog\Create.cshtml" />
+    <Content Include="Views\OriginalCatalog\Delete.cshtml" />
+    <Content Include="Views\OriginalCatalog\Details.cshtml" />
+    <Content Include="Views\OriginalCatalog\Edit.cshtml" />
+    <Content Include="Views\OriginalCatalog\Index.cshtml" />
+    <Content Include="Views\ReturnArticle\Index.cshtml" />
+    <Content Include="Views\ReturnBasketArticle\Create.cshtml" />
+    <Content Include="Views\ReturnBasketArticle\Delete.cshtml" />
+    <Content Include="Views\ReturnBasketArticle\Details.cshtml" />
+    <Content Include="Views\ReturnBasketArticle\Edit.cshtml" />
+    <Content Include="Views\ReturnBasketArticle\Index.cshtml" />
+    <Content Include="Views\ReturnBasket\Create.cshtml" />
+    <Content Include="Views\ReturnBasket\Delete.cshtml" />
+    <Content Include="Views\ReturnBasket\Details.cshtml" />
+    <Content Include="Views\ReturnBasket\Edit.cshtml" />
+    <Content Include="Views\ReturnBasket\Index.cshtml" />
+    <Content Include="Views\ReturnReport\Index.cshtml" />
+    <Content Include="Views\RevaluationArticle\Create.cshtml" />
+    <Content Include="Views\RevaluationArticle\Delete.cshtml" />
+    <Content Include="Views\RevaluationArticle\Details.cshtml" />
+    <Content Include="Views\RevaluationArticle\Edit.cshtml" />
+    <Content Include="Views\RevaluationArticle\Index.cshtml" />
+    <Content Include="Views\RevaluationReport\Index.cshtml" />
+    <Content Include="Views\SaleArticle\Index.cshtml" />
+    <Content Include="Views\SaleArticle\LookForSpellArticle.cshtml" />
+    <Content Include="Views\SaleBasketArticle\Create.cshtml" />
+    <Content Include="Views\SaleBasketArticle\Delete.cshtml" />
+    <Content Include="Views\SaleBasketArticle\Details.cshtml" />
+    <Content Include="Views\SaleBasketArticle\Edit.cshtml" />
+    <Content Include="Views\SaleBasketArticle\Index.cshtml" />
+    <Content Include="Views\SaleBasket\Create.cshtml" />
+    <Content Include="Views\SaleBasket\Delete.cshtml" />
+    <Content Include="Views\SaleBasket\Details.cshtml" />
+    <Content Include="Views\SaleBasket\Edit.cshtml" />
+    <Content Include="Views\SaleBasket\Index.cshtml" />
+    <Content Include="Views\SaleReport\Index.cshtml" />
+    <Content Include="Views\SettlementType\Create.cshtml" />
+    <Content Include="Views\SettlementType\Delete.cshtml" />
+    <Content Include="Views\SettlementType\Details.cshtml" />
+    <Content Include="Views\SettlementType\Edit.cshtml" />
+    <Content Include="Views\SettlementType\Index.cshtml" />
+    <Content Include="Views\SheetRevaluation\Create.cshtml" />
+    <Content Include="Views\SheetRevaluation\Delete.cshtml" />
+    <Content Include="Views\SheetRevaluation\Details.cshtml" />
+    <Content Include="Views\SheetRevaluation\DoMakeSheetRevaluation.cshtml" />
+    <Content Include="Views\SheetRevaluation\Edit.cshtml" />
+    <Content Include="Views\SheetRevaluation\Index.cshtml" />
+    <Content Include="Views\SheetRevaluation\ReverseSheetRevaluation.cshtml" />
+    <Content Include="Views\Soato\Create.cshtml" />
+    <Content Include="Views\Soato\Delete.cshtml" />
+    <Content Include="Views\Soato\Details.cshtml" />
+    <Content Include="Views\Soato\Edit.cshtml" />
+    <Content Include="Views\Soato\Index.cshtml" />
+    <Content Include="Views\Soato\LookUpForEnterpriseAddress.cshtml" />
+    <Content Include="Views\StreetType\Create.cshtml" />
+    <Content Include="Views\StreetType\Delete.cshtml" />
+    <Content Include="Views\StreetType\Details.cshtml" />
+    <Content Include="Views\StreetType\Edit.cshtml" />
+    <Content Include="Views\StreetType\Index.cshtml" />
+    <Content Include="Views\TecDoc\ArticleByID.cshtml" />
+    <Content Include="Views\TecDoc\Index.cshtml" />
+    <Content Include="Views\TecDoc\LookUpArticleByID.cshtml" />
+    <Content Include="Views\TecDoc\ModelType.cshtml" />
+    <Content Include="Views\TecDoc\ModelTypeTree.cshtml" />
+    <Content Include="Views\TecDoc\ModelTypeTreeItemAnalogs.cshtml" />
+    <Content Include="Views\TecDoc\ModelTypeTreeItemDetails.cshtml" />
+    <Content Include="Views\TecDoc\ModelTypeTreeItems.cshtml" />
+    <Content Include="Views\TecDoc\TrVwItemView.cshtml" />
+    <Content Include="Views\TecDocGuest\AppliedTo.cshtml" />
+    <Content Include="Views\TecDocGuest\AppliedToUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\ArticleShopDetaisItems.cshtml" />
+    <Content Include="Views\TecDocGuest\ArticleShopDetaisItemsUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\ArticleShopIndex.cshtml" />
+    <Content Include="Views\TecDocGuest\ArticleShopIndexUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\Details.cshtml" />
+    <Content Include="Views\TecDocGuest\DetailsUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\DoSelectArticle.cshtml" />
+    <Content Include="Views\TecDocGuest\Index.cshtml" />
+    <Content Include="Views\TecDocGuest\IndexUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\Manufact.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelDetais.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelDetaisAnalog.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelDetaisAnalogUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelDetaisAppliedTo.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelDetaisAppliedToUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelDetaisItems.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelDetaisItemsUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelDetaisTree.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelItemDetais.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelItemDetaisUTO.cshtml" />
+    <Content Include="Views\TecDocGuest\ModelTypes.cshtml" />
+    <Content Include="Views\TecDocGuest\TrVwDetailsView.cshtml" />
+    <Content Include="Views\TecDocRests\AppliedTo.cshtml" />
+    <Content Include="Views\TecDocRests\Details.cshtml" />
+    <Content Include="Views\TecDocRests\Index.cshtml" />
+    <Content Include="Views\TecDocRests\MakeSelection.cshtml" />
+    <Content Include="Views\TecDocRests\Manufact.cshtml" />
+    <Content Include="Views\TecDocRests\ModelDetais.cshtml" />
+    <Content Include="Views\TecDocRests\ModelDetaisAnalog.cshtml" />
+    <Content Include="Views\TecDocRests\ModelDetaisAppliedTo.cshtml" />
+    <Content Include="Views\TecDocRests\ModelDetaisItems.cshtml" />
+    <Content Include="Views\TecDocRests\ModelDetaisTree.cshtml" />
+    <Content Include="Views\TecDocRests\ModelItemDetais.cshtml" />
+    <Content Include="Views\TecDocRests\ModelTypes.cshtml" />
+    <Content Include="Views\TecDocRests\ReSettings.cshtml" />
+    <Content Include="Views\TecDocRests\TrVwDetailsView.cshtml" />
+    <Content Include="Views\User2WorkPlaceHst\Details.cshtml" />
+    <Content Include="Views\User2WorkPlaceHst\Index.cshtml" />
+    <Content Include="Views\User2WorkPlace\Create.cshtml" />
+    <Content Include="Views\User2WorkPlace\Delete.cshtml" />
+    <Content Include="Views\User2WorkPlace\Details.cshtml" />
+    <Content Include="Views\User2WorkPlace\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\ArticleSvc\Models\" />
+    <Folder Include="Areas\ArticleSvc\Views\Shared\" />
+    <Folder Include="Areas\Forum\Controllers\" />
+    <Folder Include="Areas\MsTecDoc\Models\" />
+    <Folder Include="Areas\MsTecDoc\Views\Shared\" />
+    <Folder Include="Areas\OrderSvc\Models\" />
+    <Folder Include="Areas\OrderSvc\Views\Shared\" />
+    <Folder Include="Areas\RestSvc\Models\" />
+    <Folder Include="Areas\RestSvc\Views\Shared\" />
+    <Folder Include="Areas\SuppRestSvc\Models\" />
+    <Folder Include="Areas\SuppRestSvc\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationBoilerplate\ApplicationBoilerplate.csproj">
+      <Project>{9fb40b62-7c81-4731-b45f-76d034191b2d}</Project>
+      <Name>ApplicationBoilerplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarShopDataService45\CarShopDataService45.csproj">
+      <Project>{7891570c-b8c5-4d07-a7ea-35519a3018c4}</Project>
+      <Name>CarShopDataService45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commons.Web.Mvc.PrecompiledViews\Commons.Web.Mvc.PrecompiledViews.csproj">
+      <Project>{4d5db4be-cb2e-437e-bd19-89c807fd9054}</Project>
+      <Name>Commons.Web.Mvc.PrecompiledViews</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreativeMinds.Security\CreativeMinds.Security.csproj">
+      <Project>{f66bd1d4-be1a-44ee-821b-a01b5b32b520}</Project>
+      <Name>CreativeMinds.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreativeMinds.StopForumSpam\CreativeMinds.StopForumSpam.csproj">
+      <Project>{eb4b93a8-3b4b-4a42-b3c0-e02ef0ff14cc}</Project>
+      <Name>CreativeMinds.StopForumSpam</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCBootstrap.Ninject\MVCBootstrap.Ninject.csproj">
+      <Project>{2cda93d5-fad9-464f-a335-68664d3f7d80}</Project>
+      <Name>MVCBootstrap.Ninject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCBootstrap\MVCBootstrap.csproj">
+      <Project>{41f6fb33-f149-4756-bdd9-d030895f4ba6}</Project>
+      <Name>MVCBootstrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mvcForum.AddOns\mvcForum.AddOns.csproj">
+      <Project>{2330388d-1b58-47b8-aa47-502b9f13d18c}</Project>
+      <Name>mvcForum.AddOns</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mvcForum.Core\mvcForum.Core.csproj">
+      <Project>{15979f66-ee2e-4879-b3c7-77943006a9c6}</Project>
+      <Name>mvcForum.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mvcForum.DataProvider.EntityFramework\mvcForum.DataProvider.EntityFramework.csproj">
+      <Project>{cb0f0ef7-4d1d-4182-b363-9e1d279f53d8}</Project>
+      <Name>mvcForum.DataProvider.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mvcForum.SearchProvider.Lucene\mvcForum.SearchProvider.Lucene.csproj">
+      <Project>{afacdb8d-5cef-48eb-819d-26971f940cc4}</Project>
+      <Name>mvcForum.SearchProvider.Lucene</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mvcForum.Web\mvcForum.Web.csproj">
+      <Project>{57255541-aaba-4042-80d3-565af10bf4ab}</Project>
+      <Name>mvcForum.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCThemes\MVCThemes.csproj">
+      <Project>{4aac459a-0f66-4f00-b12d-0f996ff3442c}</Project>
+      <Name>MVCThemes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleAuthentication.Core\SimpleAuthentication.Core.csproj">
+      <Project>{f94e2140-8262-4463-8054-0b1dce8abe03}</Project>
+      <Name>SimpleAuthentication.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleAuthentication.Mvc\SimpleAuthentication.Mvc.csproj">
+      <Project>{02c40d4a-17f3-465b-88d6-64d238a32396}</Project>
+      <Name>SimpleAuthentication.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleLocalisation.Web\SimpleLocalisation.Web.csproj">
+      <Project>{6d1508af-88a4-427c-bc11-3561ce717006}</Project>
+      <Name>SimpleLocalisation.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleLocalisation\SimpleLocalisation.csproj">
+      <Project>{a0e9c395-6613-4148-b716-de259ff812aa}</Project>
+      <Name>SimpleLocalisation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62119</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44303/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

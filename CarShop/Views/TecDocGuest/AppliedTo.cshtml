@@ -1,0 +1,233 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+
+@using PagedList.Mvc;
+
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.MODELTYPE_TD>
+
+
+
+
+@{
+    ViewBag.Title = Resources.TECDOC_APPLICABLE;
+    string ART_ID = ViewBag.ART_ID;
+    string ART_ARTICLE_NR = ViewBag.ART_ARTICLE_NR;
+    
+}
+
+<h3>@Resources.CARMODELTYPETREEITEMDETAIL_INDEX  <small>@Resources.TECDOC_APPLICABLE</small></h3>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(ART_ID + " : " + ART_ARTICLE_NR,
+                      "Index", "TecDocGuest",
+               new
+               {
+                   artId = ART_ID,
+                   srchTp = "1"
+               }, new { })
+    </li>
+</ol>
+
+
+<ul class="nav nav-pills nav-justified">
+    <li class="active">@Html.ActionLink(Resources.InStock, "Index", "TecDocGuest", new { artId = ART_ID, srchTp = "1" }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.UnderTheOrder, "IndexUTO", "TecDocGuest", new { artId = ART_ID, srchTp = "1" }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })</li>
+</ul>
+
+<hr />
+
+
+@if ((Model != null) && (Model.Count() > 0))
+{
+    var dummy = Model.FirstOrDefault();
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => dummy.TEX_TEXT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.TYP_KV_ENGINE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.TYP_KV_BODY)
+            </th>
+            <th class="hidden-xs hidden-sm">
+                @Html.DisplayNameFor(model => dummy.TYP_DOORS)
+            </th>
+
+
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.TYP_KV_FUEL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FUEL_ID)
+                </th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="active">
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_TEXT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TYP_KV_ENGINE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TYP_KV_BODY)
+                </td>
+                <td class="hidden-xs hidden-sm">
+                    @Html.DisplayFor(modelItem => item.TYP_DOORS)
+                </td>
+
+
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.TYP_KV_FUEL)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FUEL_ID)
+                    </td>*@
+            </tr>
+
+            <tr class="warning">
+                <td colspan="3">
+                    <dl class="dl-horizontal">
+
+
+                        @if (!string.IsNullOrEmpty(item.TYP_DOORS))
+                        {
+                            <dt class="visible-xs visible-sm">
+                                @Html.DisplayNameFor(model => dummy.TYP_DOORS)
+                            </dt>
+                            <dd class="visible-xs visible-sm">
+                                @Html.DisplayFor(modelItem => item.TYP_DOORS)
+                            </dd>
+                        }
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.TYP_PCON_START) / @Html.DisplayNameFor(model => dummy.TYP_PCON_END)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_PCON_START) / @Html.DisplayFor(modelItem => item.TYP_PCON_END)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.TYP_KW_FROM) / @Html.DisplayNameFor(model => dummy.TYP_HP_FROM)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KW_FROM) / @Html.DisplayFor(modelItem => item.TYP_HP_FROM)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.TYP_VALVES) * @Html.DisplayNameFor(model => dummy.TYP_CYLINDERS)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_VALVES) * @Html.DisplayFor(modelItem => item.TYP_CYLINDERS)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.TYP_CCM)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_CCM)
+                        </dd>
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_ABS))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_ABS)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_ABS)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_ASR))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_ASR)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_ASR)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_BRAKE_TYPE))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_BRAKE_TYPE)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_BRAKE_TYPE)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_BRAKE_SYST))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_BRAKE_SYST)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_BRAKE_SYST)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_FUEL_SUPPLY))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_FUEL_SUPPLY)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_FUEL_SUPPLY)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_CATALYST))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_CATALYST)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_CATALYST)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_TRANS))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_TRANS)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_TRANS)
+                            </dd>
+                        }
+
+                    </dl>
+
+                </td>
+            </tr>
+
+        }
+
+    </table>
+
+@Html.PagedListPager(Model, page => Url.Action("AppliedTo", new { 
+                   artId = ART_ID,
+                   ART_ARTICLE_NR = ART_ARTICLE_NR,
+                   page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}

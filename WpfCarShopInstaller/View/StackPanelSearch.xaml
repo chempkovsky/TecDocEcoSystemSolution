@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="WpfCarShopInstaller.View.StackPanelSearch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+xmlns:wpftk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+xmlns:utilities="clr-namespace:WpfCarShopInstaller.Utility"
+             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="500">
+    
+    <StackPanel UseLayoutRounding="False" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0" >
+        <ComboBox HorizontalAlignment="Left" 
+						ItemsSource="{Binding SearchColumnList}"
+						SelectedValuePath="Key"
+                                         
+						SelectedValue="{Binding SearchColumn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="10,0,10,5">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Value}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+
+        </ComboBox>
+
+        <TextBox x:Name="MyAutoCompleteBox" Text="{Binding SearchFilter,Mode=TwoWay}" HorizontalAlignment="Left"  Height="23" Width="300" Margin="10,0,10,5"/>
+        <!--<wpftk:AutoCompleteBox  x:Name="MyAutoCompleteBox"
+						HorizontalAlignment="Left"  Height="23" 
+						MinimumPopulateDelay="600"
+						ItemsSource="{Binding AutocompleteItems, Mode=OneWay}"
+						ValueMemberPath="Key" 
+						Width="300" Margin="10,0,10,5"
+						IsTextCompletionEnabled="False"
+						Text="{Binding SearchFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                            >
+            <wpftk:AutoCompleteBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Value}" />
+                </DataTemplate>
+            </wpftk:AutoCompleteBox.ItemTemplate>
+            <i:Interaction.Behaviors>
+                <utilities:AutoCompleteBehavior   FilterAutoCompleteCommand="{Binding ExecuteFilterAsyncCommand}" />
+            </i:Interaction.Behaviors>
+        </wpftk:AutoCompleteBox>-->
+
+    </StackPanel>
+
+</UserControl>

@@ -1,0 +1,48 @@
+﻿@model TecDocEcoSystemDbClassLibrary.OriginalCatalogTDES
+@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+}
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.OriginalCatalog, "Index")</li>
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.OriginalCatalogId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OriginalCatalogName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OriginalCatalogName)
+                @Html.ValidationMessageFor(model => model.OriginalCatalogName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OriginalCatalogURI, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OriginalCatalogURI)
+                @Html.ValidationMessageFor(model => model.OriginalCatalogURI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+</div>

@@ -1,0 +1,233 @@
+﻿@using CarShop.Properties;
+@using PagedList.Mvc;
+@using TecDocEcoSystemDbClassLibrary;
+@using Newtonsoft.Json;
+
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.IncomeArticleTDES>
+
+@{
+    ViewBag.Title = Resources.IncomeArticleTDES_INDEX;
+
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+
+    SelectList sliSearchBy = ViewBag.sliSearchBy;
+
+    String RedirecData = ViewBag.RedirecData;
+    String RedirectContriller = ViewBag.RedirectContriller;
+    String RedirectAction = ViewBag.RedirectAction;
+
+}
+
+
+<h2>@Resources.IncomeArticleTDES_INDEX</h2>
+
+@if (SearchEntBranchGuid.HasValue)
+{
+
+using (Html.BeginForm("LookUpIncomeArticle", "IncomeArticle", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("redirecData",  RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+    <div class="form-group">
+    @Html.DropDownList("searchStringBy", sliSearchBy,  new { @class="form-control" })
+    </div>
+    <div class="form-group">
+    @Html.TextBox("searchString", ViewBag.CurrentFilter as string,  new { @class="form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+using (Html.BeginForm("LookUpIncomeArticleSelected", "IncomeArticle", FormMethod.Post))
+{
+
+    @Html.Hidden("redirecData",  RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+
+    if ((Model != null) && (Model.Count > 0))
+    {
+        <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+    }
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+
+
+var dummy = Model.FirstOrDefault();
+
+    <input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => dummy.SupArticle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.SupBrandNic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.IsProcessed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.IsReversed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.IsRevaluate)
+            </th>
+
+            <th class="hidden-xs hidden-sm"></th>
+        </tr>
+@{
+    var selected = true;
+//    System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+}
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.RadioButton("SimpleArticle", JsonConvert.SerializeObject(
+                    new IncomeArticleTDES() {
+                        EntArticle = item.EntArticle,
+                        EntBrandNic = item.EntBrandNic,
+                        EntArticleDescription = item.EntArticleDescription,
+                        CurrArtPrice = item.CurrArtPrice,
+                        ArtAmountRest = item.ArtAmountRest,
+                        EntGuid = item.EntGuid,
+                        EntBranchGuid = item.EntBranchGuid,
+                        IncomePayRollTDESGuid = item.IncomePayRollTDESGuid
+                    }
+
+                 ), selected, selected )
+
+                    @Html.DisplayFor(modelItem => item.SupArticle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupBrandNic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsProcessed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsReversed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsRevaluate)
+                </td>
+
+            </tr>
+
+            <tr class="warning">
+                <td colspan="2">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.IncomePayRollTDESGuid)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.IncomePayRollTDESGuid)
+                        </dd>
+
+                        <dt class="alert-info">
+                            @Html.DisplayNameFor(model => dummy.ArtAmount)
+                        </dt>
+                        <dd class="alert-info">
+                            @Html.DisplayFor(model => item.ArtAmount)
+                        </dd>
+
+                        <dt class="alert-success">
+                            @Html.DisplayNameFor(model => dummy.ArtAmountRest)
+                        </dt>
+                        <dd class="alert-success">
+                            @Html.DisplayFor(model => item.ArtAmountRest)
+                        </dd>
+
+                        <dt class="alert-info">
+                            @Html.DisplayNameFor(model => dummy.PurchasePrice)
+                        </dt>
+                        <dd class="alert-info">
+                            @Html.DisplayFor(model => item.PurchasePrice)
+                        </dd>
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.ArtPrice)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.ArtPrice)
+                        </dd>
+
+
+                        <dt class="alert-success">
+                            @Html.DisplayNameFor(model => dummy.CurrArtPrice)
+                        </dt>
+                        <dd class="alert-success">
+                            @Html.DisplayFor(model => item.CurrArtPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.EntArticle)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.EntArticle)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.EntBrandNic)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.EntBrandNic)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.EntArticleDescription)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.EntArticleDescription)
+                        </dd>
+                        @if (!string.IsNullOrEmpty(item.Comments))
+                        {
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.Comments)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => item.Comments)
+                        </dd>
+                        }
+
+                    </dl>
+                </td>
+            </tr>
+
+
+        }
+
+    </table>
+
+<p/>
+    if ((Model != null) && (Model.Count > 0))
+    {
+        <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+    }
+    else
+    {
+        <h4>@Resources.NO_ANY_DATA</h4>
+    }
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+
+}
+
+<p/>
+   
+@Html.PagedListPager( Model, page => Url.Action("LookUpIncomeArticle", new { redirecData=RedirecData, redirectContriller=RedirectContriller, redirectAction=RedirectAction,  searchEntGuid=SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, currentFilter=ViewBag.CurrentFilter, currentFilterBy=ViewBag.CurrentFilterBy, page=page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+    
+    
+}
+}

@@ -1,0 +1,218 @@
+﻿@using CarShop.Properties;
+@using PagedList.Mvc;
+@using TecDocEcoSystemDbClassLibrary;
+@using Newtonsoft.Json;
+@model PagedList.IPagedList<SuppRestTDES>
+
+@{
+    ViewBag.Title = Resources.SuppRestTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+
+    //String RedirecData = ViewBag.RedirecData;
+    //String RedirectContriller = ViewBag.RedirectContriller;
+    //String RedirectAction = ViewBag.RedirectAction;
+
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy;
+}
+
+<h2>@Resources.SuppRestTDES_INDEX</h2>
+
+@if (!SearchEntBranchGuid.HasValue)
+{
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+    using (Html.BeginForm("Index", "EnterpriseSuppArticleAndRest", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+    {
+        <h3>@Resources.FILTER_TITLE</h3>
+        @Html.Hidden("searchEntGuid", SearchEntGuid)
+        @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+@*
+        @Html.Hidden("redirecData", RedirecData)
+        @Html.Hidden("redirectContriller", RedirectContriller)
+        @Html.Hidden("redirectAction", RedirectAction)
+*@
+        <div class="form-group">
+            @Html.DropDownList("searchStringBy", sliSearchStringBy, new
+           {
+               @class = "form-control",
+               data_autocomplete_selector = "data-autocomplete-url",
+               sel1 = Url.Action("Autocomplete", new { currentFilterBy = "1", searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }),
+               sel2 = Url.Action("Autocomplete", new { currentFilterBy = "2", searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }),
+               sel3 = Url.Action("Autocomplete", new { currentFilterBy = "3", searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }),
+               sel4 = Url.Action("Autocomplete", new { currentFilterBy = "4", searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }),
+               sel5 = Url.Action("Autocomplete", new { currentFilterBy = "5", searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }),
+               sel6 = Url.Action("Autocomplete", new { currentFilterBy = "6", searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })
+           })
+        </div>
+        <div class="form-group">
+            @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new
+           {
+               @class = "form-control",
+               data_autocomplete_url = Url.Action("Autocomplete", "EnterpriseSuppArticleAndRest", new { currentFilterBy = ViewBag.currentFilterBy, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })
+           })
+        </div>
+        <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+    }
+
+@*    
+    using (Html.BeginForm("IndexSelected", "EnterpriseArticleAndRest", FormMethod.Post))
+    {
+
+
+    @Html.Hidden("redirecData", RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+
+
+    if ((Model != null) && (Model.Count > 0))
+    {
+
+        <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+    }
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+*@
+    
+        <input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+        var dummy = Model.FirstOrDefault();
+
+
+        <table class="table table-condensed">
+            <tr>
+
+
+
+                <th>
+                    @Html.DisplayNameFor(modelItem => dummy.EntSupplierId)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(modelItem => dummy.EntBranchArticle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => dummy.EntBranchSup)
+                </th>
+                <th class="hidden-xs hidden-sm">
+                    @Html.DisplayNameFor(model => dummy.ArtAmount)
+                </th>
+                <th class="hidden-xs hidden-sm">
+                    @Html.DisplayNameFor(model => dummy.ArtPrice)
+                </th>
+
+
+            </tr>
+            @{
+        //var selected = true;
+        //System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+            }
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+@*
+                        <td>
+                        @Html.RadioButton("SimpleBranchRest", JsonConvert.SerializeObject(new BranchRestTmp()
+                       {
+                           EntBranchArticle = item.EntBranchArticle,
+                           EntBranchSup = item.EntBranchSup,
+                           EntBranchGuid = item.EntBranchGuid,
+                           //EntArticleDescriptionId = item.EntArticleDescriptionId,
+                           //EntArticleDescription = item.BranchRestArticleDescriptionTDES.EntArticleDescription,
+                           //ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                           //SUP_TEXT = item.SUP_TEXT,
+                           //ExternArticleEAN = item.ExternArticleEAN,
+                           //ArtPrice = item.ArtPrice
+                       }), selected, selected)
+                    </td>
+*@
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntSupplierId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntBranchArticle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntBranchSup)
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+                        @Html.DisplayFor(modelItem => item.ArtAmount)
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+                        @Html.DisplayFor(modelItem => item.ArtPrice)
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td colspan="3">
+                        <dl class="dl-horizontal">
+                            <dt class="visible-xs visible-sm">@Html.DisplayNameFor(model => dummy.ArtAmount)</dt>
+                            <dd class="visible-xs visible-sm">@Html.DisplayFor(modelItem => item.ArtAmount)</dd>
+
+                            <dt class="visible-xs visible-sm">@Html.DisplayNameFor(model => dummy.ArtPrice)</dt>
+                            <dd class="visible-xs visible-sm">@Html.DisplayFor(modelItem => item.ArtPrice)</dd>
+
+
+                            <dt>@Html.DisplayNameFor(model => dummy.EntArticleDescriptionId)</dt>
+                            <dd>@Html.DisplayFor(modelItem => item.BranchRestArticleDescriptionTDES.EntArticleDescription)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => dummy.ART_ARTICLE_NR)</dt>
+                            <dd>@Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => dummy.SUP_TEXT)</dt>
+                            <dd>@Html.DisplayFor(modelItem => item.SUP_TEXT)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => dummy.ExternArticleEAN)</dt>
+                            <dd>@Html.DisplayFor(modelItem => item.ExternArticleEAN)</dd>
+
+                            @*<dt>@Html.DisplayNameFor(model => dummy.ExternArticleEAN)</dt>
+                                <dd>@Html.DisplayFor(modelItem => item.ExternArticleEAN)</dd>*@
+
+                        </dl>
+                    </td>
+                </tr>
+                //selected = false;
+            }
+
+        </table>
+
+@*      
+        <p />
+
+  
+        if ((Model != null) && (Model.Count > 0))
+        {
+            <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+        }
+        else
+        {
+            <h4>@Resources.NO_ANY_DATA</h4>
+        }
+        <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+
+}
+*@
+
+    <p />
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { // redirecData = RedirecData, redirectContriller = RedirectContriller, redirectAction = RedirectAction, 
+    searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, currentFilter = ViewBag.CurrentFilter, currentFilterBy = ViewBag.currentFilterBy, page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocompleteEx")
+}
+
+
+}
+

@@ -1,0 +1,134 @@
+﻿@using CarShop.Properties;
+
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.BRAND_TD>
+
+@{
+    ViewBag.Title = Resources.BRANDS_INDEX;
+    //Guid? searchEntGuid = ViewBag.searchEntGuid;
+    //Guid? searchEntBranchGuid = ViewBag.searchEntBranchGuid;
+    //string redirecData = ViewBag.redirecData;
+    //string redirectContriller = ViewBag.redirectContriller;
+    //string redirectAction = ViewBag.redirectAction;
+
+}
+
+<h2>@Resources.BRANDS_INDEX</h2>
+
+
+
+@*<table class="table  table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MFA_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MFA_BRAND)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MFA_ID)
+            </td>
+            <td class="btn-group btn-group-xs">
+                @Html.ActionLink(
+              Html.DisplayFor(modelItem => item.MFA_BRAND).ToHtmlString(),
+             "ModelTypes", new
+             {
+                 MFA_ID = item.MFA_ID,
+                 MFA_BRAND = item.MFA_BRAND
+             }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+</table>*@
+
+
+<ul class="nav nav-pills nav-justified">
+    <li>@Html.ActionLink(Resources.InStock, "Index", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.UnderTheOrder, "IndexUTO", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li class="active">@Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })</li>
+</ul>
+
+
+<hr />
+
+
+
+@{ 
+    string firstLetter = "";
+    string curfirstLetter = "";
+    Boolean RowStarted = false;
+    Boolean ColumnStarted = false;
+    int column = 0;
+}
+@foreach (var item in Model)
+{
+    firstLetter = item.MFA_BRAND.Substring(0,1);
+    if (!(firstLetter == curfirstLetter))
+    {
+        curfirstLetter = firstLetter;
+        if (ColumnStarted)
+        {
+            ColumnStarted = false;
+            @Html.Raw("</div>");
+            @Html.Raw("</div>");
+            @Html.Raw("</div>");
+            if (column < 4) { column++; } else { column = 0; }
+        }
+                
+        if ((RowStarted) && (column == 0))
+        {
+            RowStarted = false;
+            ColumnStarted = false;
+            @Html.Raw("</div>");
+        }
+
+        if (!RowStarted)
+        {
+            RowStarted = true;
+            column = 0;
+            ColumnStarted = false;
+            @Html.Raw("<div class=\"row\">");
+        }
+
+        if (!ColumnStarted)
+        {
+            ColumnStarted = true;
+            if (column == 0) { column++; }
+            @Html.Raw("<div class=\"col-xs-12 col-sm-3 col-md-3\">");
+            @Html.Raw("<div class=\"panel panel-default\">");
+            @Html.Raw("<div class=\"panel-heading\">" + curfirstLetter + "</div>");
+            @Html.Raw("<div class=\"panel-body\">");
+            
+        }
+                
+    }
+    
+    @Html.ActionLink(
+              Html.DisplayFor(modelItem => item.MFA_BRAND).ToHtmlString(),
+             "ModelTypes", new
+             {
+                 MFA_ID = item.MFA_ID,
+                 MFA_BRAND = item.MFA_BRAND
+             }, new { @class = "btn btn-xs" })    <br/>
+    
+
+}
+
+@if (ColumnStarted)
+{
+    @Html.Raw("</div>");
+    @Html.Raw("</div>");
+    @Html.Raw("</div>");    
+}
+
+@if (RowStarted) 
+{
+    @Html.Raw("</div>");
+}

@@ -1,0 +1,80 @@
+﻿@model TecDocEcoSystemDbClassLibrary.Currency
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+}
+
+<h2>@Resources.DETAILS_ACTION <small>@Resources.Currency_INDEX</small></h2>
+
+<div>
+    @*<h4>Currency</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.Currency_INDEX, "Index")</li>
+    </ol>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrencyCode3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrencyCode3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrencyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrencyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FractionalUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FractionalUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FractionalUnitName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FractionalUnitName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssuerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssuerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsNational)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsNational)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOperational)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOperational)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+    {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = Model.CurrencyIso }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+</p>

@@ -1,0 +1,83 @@
+﻿@model TecDocEcoSystemDbClassLibrary.Country
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+}
+
+<h2>@Resources.DELETE_ACTION <small>@Resources.Country_INDEX</small></h2>
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>Country</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.Country_INDEX, "Index")</li>
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryIso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryIso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryCode2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryCode2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryCode3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryCode3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryEngName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryEngName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryCapital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryCapital)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryPhone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+        </div>
+    }
+</div>

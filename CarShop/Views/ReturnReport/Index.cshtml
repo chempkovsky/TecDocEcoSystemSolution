@@ -1,0 +1,117 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.SaleBasketReportTDES>
+
+@{
+    ViewBag.Title = "Index";
+
+    ViewBag.Title = Resources.ReturnBasketReportTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription;
+
+    Guid? SpellGuid = ViewBag.SpellGuid;
+
+    int GoodsCount = 0;
+    Double GoodsPrice = 0;
+
+    SelectList sliReportType = ViewBag.sliReportType;
+}
+
+
+<h2>@Resources.ReturnBasketReportTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            if (SpellGuid.HasValue)
+            {
+                <li>@Html.ActionLink(SpellGuid.Value.ToString(), "Details", "BranchSpellHst", new { id = SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            }
+        }
+    }
+</ol>
+
+@Html.ValidationSummary(true)
+
+@if (SpellGuid.HasValue)
+{
+
+using (Html.BeginForm("Index", "ReturnReport", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+    @Html.Hidden("SpellGuid", SpellGuid)
+    <div class="form-group">
+    @Html.DropDownList("reportType", sliReportType, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EntUserNic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentSum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtAmount)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntUserNic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentSum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtAmount)
+                </td>
+            </tr>
+    <tr class="warning">
+        <td colspan="3">
+            <dl class="dl-horizontal">
+
+                <dt>@Html.DisplayNameFor(model => model.SpellGuid)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.SpellGuid)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.WorkPlaceGuid)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.WorkPlaceGuid)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.Description)</dd>
+
+            </dl>
+        </td>
+    </tr>
+            
+            
+            
+    GoodsCount += item.ArtAmount;
+    GoodsPrice += item.PaymentSum;
+    
+}
+
+</table>
+    
+<div class="alert alert-success">
+    @Resources.Results_TITLE : @Html.DisplayNameFor(model => model.ArtAmount) = @GoodsCount.ToString(); @Html.DisplayNameFor(model => model.PaymentSum) = @GoodsPrice.ToString()
+</div>    
+
+}            

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Development\WebCarShop\mvcForum.AddOns.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2330388D-1B58-47B8-AA47-502B9F13D18C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>mvcForum.AddOns</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>1.4.5.40417</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>mvcForum.AddOns</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="mvcForum.Core">
+      <HintPath>lib\mvcForum.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="mvcForum.Web">
+      <HintPath>lib\mvcForum.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="CodeKicker.BBCode">
+      <HintPath>lib\CodeKicker.BBCode.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="Joel.Net.Akismet">
+      <HintPath>lib\Joel.Net.Akismet.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownSharp">
+      <HintPath>lib\MarkdownSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddOnBuilder.cs" />
+    <Compile Include="HTMLSanitizer.cs" />
+    <Compile Include="Views\StopForumSpamConfiguration\_Page_Views_StopForumSpamConfiguration_Index_cshtm.cs" />
+    <Compile Include="Views\MultiPostConfiguration\_Page_Views_MultiPostConfiguration_Index_cshtml.cs" />
+    <Compile Include="Views\AkismetConfiguration\_Page_Views_AkismetConfiguration_Index_cshtml.cs" />
+    <Compile Include="Views\NewUserTrialConfiguration\_Page_Views_NewUserTrialConfiguration_Index_cshtml.cs" />
+    <Compile Include="ViewModels\StopForumSpamViewModel.cs" />
+    <Compile Include="ViewModels\AkismetViewModel.cs" />
+    <Compile Include="ViewModels\NewUserTrialViewModel.cs" />
+    <Compile Include="ViewModels\MultiPostViewModel.cs" />
+    <Compile Include="Akismet\AkismetAddOn.cs" />
+    <Compile Include="Akismet\AkismetBuilder.cs" />
+    <Compile Include="Akismet\AkismetInstall.cs" />
+    <Compile Include="Akismet\AkismetConfiguration.cs" />
+    <Compile Include="NewUserTrial\NewUserTrialInstall.cs" />
+    <Compile Include="NewUserTrial\NewUserTrialAddOn.cs" />
+    <Compile Include="NewUserTrial\NewUserTrialBuilder.cs" />
+    <Compile Include="NewUserTrial\NewUserTrialConfiguration.cs" />
+    <Compile Include="MultiPost\MultiPostBuilder.cs" />
+    <Compile Include="MultiPost\MultiPostInstall.cs" />
+    <Compile Include="MultiPost\MultiPostConfiguration.cs" />
+    <Compile Include="MultiPost\MultiPostAddOn.cs" />
+    <Compile Include="ContentParsing\BBCParser.cs" />
+    <Compile Include="ContentParsing\RegularParser.cs" />
+    <Compile Include="ContentParsing\MarkDownParser.cs" />
+    <Compile Include="ContentParsing\MarkDown\MarkDownConfiguration.cs" />
+    <Compile Include="StopForumSpam\StopForumSpamAddOn.cs" />
+    <Compile Include="StopForumSpam\StopForumSpamBuilder.cs" />
+    <Compile Include="StopForumSpam\StopForumSpamConfiguration.cs" />
+    <Compile Include="StopForumSpam\StopForumSpamInstall.cs" />
+    <Compile Include="Controllers\MultiPostConfigurationController.cs" />
+    <Compile Include="Controllers\StopForumSpamConfigurationController.cs" />
+    <Compile Include="Controllers\AkismetConfigurationController.cs" />
+    <Compile Include="Controllers\NewUserTrialConfigurationController.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationBoilerplate\ApplicationBoilerplate.csproj">
+      <Project>{9fb40b62-7c81-4731-b45f-76d034191b2d}</Project>
+      <Name>ApplicationBoilerplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commons.Web.Mvc.PrecompiledViews\Commons.Web.Mvc.PrecompiledViews.csproj">
+      <Project>{4d5db4be-cb2e-437e-bd19-89c807fd9054}</Project>
+      <Name>Commons.Web.Mvc.PrecompiledViews</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreativeMinds.Security\CreativeMinds.Security.csproj">
+      <Project>{f66bd1d4-be1a-44ee-821b-a01b5b32b520}</Project>
+      <Name>CreativeMinds.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreativeMinds.StopForumSpam\CreativeMinds.StopForumSpam.csproj">
+      <Project>{eb4b93a8-3b4b-4a42-b3c0-e02ef0ff14cc}</Project>
+      <Name>CreativeMinds.StopForumSpam</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCBootstrap\MVCBootstrap.csproj">
+      <Project>{41f6fb33-f149-4756-bdd9-d030895f4ba6}</Project>
+      <Name>MVCBootstrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleLocalisation\SimpleLocalisation.csproj">
+      <Project>{a0e9c395-6613-4148-b716-de259ff812aa}</Project>
+      <Name>SimpleLocalisation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

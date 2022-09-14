@@ -1,0 +1,135 @@
+﻿@model IEnumerable<TecDocEcoSystemDbClassLibrary.Country>
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.Country_INDEX;
+}
+
+<h2>@Resources.Country_INDEX</h2>
+
+@if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+{
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+    </p>
+}
+
+<input type="button" class="btn btn-info visible-xs visible-sm" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+<table class="table table-condensed">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CountryIso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryCapital)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.CountryCode2)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.CountryCode3)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.CountryEngName)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.CountryPhone)
+        </th>
+        <th class="hidden-xs"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryIso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryCapital)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.CountryCode2)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.CountryCode3)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.CountryEngName)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.CountryPhone)
+            </td>
+            <td class="hidden-xs btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.CountryIso }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.CountryIso }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.CountryIso }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+        
+        <tr class="warning">
+            <td colspan="3" class="warning visible-xs visible-sm">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CountryCode2)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.CountryCode2)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CountryCode3)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.CountryCode3)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CountryEngName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.CountryEngName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CountryPhone)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.CountryPhone)
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        
+        
+        
+        <tr class="visible-xs active">
+            <td colspan="3" class="btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.CountryIso }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.CountryIso }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.CountryIso }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+
+
+    }
+
+</table>

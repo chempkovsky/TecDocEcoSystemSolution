@@ -1,0 +1,52 @@
+﻿@model TecDocEcoSystemDbClassLibrary.SettlementType
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+}
+
+<h2>@Resources.DELETE_ACTION</h2>
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>SettlementType</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.SettlementType_INDEX, "Index")</li>
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SettlementTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettlementTypeId)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettlementTypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettlementTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettlementTypeShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettlementTypeShortDescription)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Localizations>
+	<Namespace Name="mvcForum.SearchProvider.Lucene">
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Lucene]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Лицензия]]></Translation>
+    </Text>
+		<Text Key="Description">
+			<Translation Language="en-GB"><![CDATA[This search provider for MVC Forum uses the open source Lucene.Net library for indexing and searching posts.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Этот провайдер поиск MVC форума использует исходный библиотеку открытой Lucene.Net для индексации и поиска сообщений.]]></Translation>
+    </Text>
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Lucene.Net search add-on]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Lucene.Net поиска add-on]]></Translation>
+    </Text>
+		<Text Key="Button">
+			<Translation Language="en-GB"><![CDATA[Save]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сохранить]]></Translation>
+    </Text>
+		<Text Key="Enabled">
+			<Translation Language="en-GB"><![CDATA[Enabled]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Включено]]></Translation>
+    </Text>
+		<Text Key="RunAsync">
+			<Translation Language="en-GB"><![CDATA[Run asynchronously]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Запустить асинхронно]]></Translation>
+    </Text>
+		<Text Key="Delay">
+			<Translation Language="en-GB"><![CDATA[Index delay]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Задержка Index]]></Translation>
+    </Text>
+		<Text Key="TitleWeight">
+			<Translation Language="en-GB"><![CDATA[Title weight (in percent)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вес заглавия (в процентах)]]></Translation>
+    </Text>
+		<Text Key="TopicWeight">
+			<Translation Language="en-GB"><![CDATA[Topic weight (in percent)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вес темы (в процентах)]]></Translation>
+    </Text>
+		<Text Key="StickyWeight">
+			<Translation Language="en-GB"><![CDATA[Sticky weight (in percent)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вес Важно (в процентах)]]></Translation>
+    </Text>
+		<Text Key="AnnouncementWeight">
+			<Translation Language="en-GB"><![CDATA[Announcement weight (in percent)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вес Объявление (в процентах)]]></Translation>
+    </Text>
+		<Text Key="UpdateForm">
+			<Translation Language="en-GB"><![CDATA[Lucene Configuration]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Конфигурация Lucene]]></Translation>
+    </Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Changes Saved]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменения сохранены]]></Translation>
+    </Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The changes has been saved]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменения были сохранены]]></Translation>
+    </Text>
+	</Namespace>
+</Localizations>

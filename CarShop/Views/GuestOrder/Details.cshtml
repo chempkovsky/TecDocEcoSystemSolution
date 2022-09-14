@@ -1,0 +1,142 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.GuestOrderTDES
+
+@{
+    ViewBag.Title = Resources.GuestOrderTDES_DETAIL;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Существенной информацией на данной странице является <b>Магазин</b>, на который вы оформили заказ, и два флага:<p />
+
+        <b>@Html.DisplayNameFor(model => model.IsReplicated)</b> -- указывает на то, просмотрел ли магазин информацию о вашем заказе.
+        Если исполнитель на площадке мегазина выполнил просмотр вновь оформленных заказов (другими словами реплицировал новые заказы), то вы узнаете об этом по включенному флагу.<p />
+
+        @*<b>@Html.DisplayNameFor(model => model.IsDone)</b> -- указывает на то, что магазин исполнил ваш заказ. <p />*@
+
+        Перейдите по ссылке <b>@Resources.GuestOrderArticleTDES_INDEX</b>, чтобы просмотреть перечень товаров в рамках заказа.<p />
+
+        Выбор товара по ссылке @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" }) позволит вам
+        провести поиск, если вам известен или Штрих-код или Артикул производителя или Конструкционный номер или номер TecDoc.<p />
+
+        Выбор товара по ссылке @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" }) -- это
+        последовательность Web-страниц позволяющая выбрать Брэнд, Модель, Тип модели (по году выпуска, топливу, двигателю ).
+        Далее идет страница с деревом категорий деталей и по узлу в дереве вы переходите к перечню деталей с остатками и ценами.<p />
+
+        <b>Правила формирования заказов следующие:</b><br />
+        Товар может предлагаться несколькими магазинами. Выбирая товар вы вибираете и магазин. <br />
+        Если заказ на выбранный магазин отсутствует в перечне ваших заказов, то будет оформлен новый заказ с указанием магазина и товар будет помещен в этот заказ.<br />
+        Если уже существует заказ на выбранный магазин, то товар будет помещен в этот заказ.<br />
+        Если при выборе товара, у ранее созданного заказа выставлен статус <b>Уже в обработке </b>, то будет оформлен новый заказ.
+        <hr />
+
+        Важным ограничением является, то что количество наименований товаров в рамках одного заказа не может превышать 20.<p />
+        Вторым важным ограничением является, то что вы не можете создать более 20 заказов.
+        Если вы достигли предела, то удалите ранее сформированные заказы. Можно без страха удалять заказы со статусом <b>Уже в обработке </b>.
+        Копия такого заказа уже сформирована на стороне магазина и операция удаления на вашей стороне не повлияет на информацию на стороне магазина.
+        <hr />
+
+
+        <button type="button" class="btn btn-info" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-remove-sign"></span> @Resources.HideHelp
+        </button>
+
+    </div>
+</div>
+
+
+<h2>@Resources.GuestOrderTDES_DETAIL <small>@Resources.GuestOrderTDES_INDEX</small></h2>
+
+
+
+@if(Model == null) {
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile")</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder")</li>
+</ol>
+    @Html.ValidationSummary(true)
+} else {
+
+    <div>
+        @*<h4>GuestOrderTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile")</li>
+            <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder")</li>
+        </ol>
+        <hr />
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                <dl class="dl-horizontal">
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EntBranchDescription)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.EntBranchDescription)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
+
+                    @*<dt>
+                        @Html.DisplayNameFor(model => model.IsDone)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IsDone)
+                    </dd>*@
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastUpdated)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.LastUpdated)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastReplicated)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.LastReplicated)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsReplicated)
+                    </dt>
+                    <dd>
+                        @if (Model.IsReplicated > 0) {
+                            @Resources.Boolean_NO
+            } else {
+                            @Resources.Boolean_YES
+            }
+                    </dd>
+
+                </dl>
+            </div>
+
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="btn-group-vertical">
+                    @Html.ActionLink(Resources.GuestOrderArticleTDES_INDEX, "Index", "GuestOrderArticle", routeValues: new { searchGuestOrderGuid = Model.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-warning" })
+                    @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+                    @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+                    <button type="button" class="btn btn-warning" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+                        <span class="glyphicon glyphicon-question-sign"></span> Справка
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<p>
+    @if ( (Model != null) && (!Model.IsDone) && (Model.IsReplicated > 0)) {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id=Model.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+</p>
+}

@@ -1,0 +1,46 @@
+﻿@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.EnterpriseAuditName;
+}
+
+<h2>@Resources.IndexByRoles</h2>
+<h3>@Resources.SolutionRoles</h3>
+
+
+
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Подразделение", "IndexByRoles", "Home")</li>
+    <li class="active"><a href="#">Предприятие</a></li>
+</ul>
+
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(Resources.EnterpriseAdminName, "IndexByEnterpriseAdmin", "Home")</li>
+    <li class="active"><a href="#">@Resources.EnterpriseAuditName</a></li>
+    <li>@Html.ActionLink(Resources.EcoSystemAdminName, "IndexByEcoSystemAdmin", "Home")</li>
+</ul>
+
+<p />
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">В обязанности роли "@Resources.EnterpriseAuditName" входит</div>
+    <div class="panel-body">
+
+        <span style="font-weight:bold;font-size:1.4em">@Resources.EnterpriseAuditName</span><p />
+        Права роли "@Resources.EnterpriseAuditName" дают возможность просматривать все дерево данных предприятия, к которому аудитор привязан.
+        Для каждого узла данных аудитору предоставляется ссылка "Детально", позволяющая погружаться на всю глубину дерева данных.
+        К примеру, перейдя на форму "Детально" для узла "Предприятие", аудитор получает возможности перейти к списку пользователей.
+        И опять перейдя на форму "Детально" выбранного пользователя аудитор получает доступ к списку контактов пользователя.
+        <p>
+            @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+    </div>
+</div>

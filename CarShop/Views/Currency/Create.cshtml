@@ -1,0 +1,100 @@
+﻿@model TecDocEcoSystemDbClassLibrary.Currency
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.CREATENEW_ACTION;
+}
+
+<h2>@Resources.CREATENEW_ACTION <small>@Resources.Currency_INDEX</small></h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>Currency</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.Currency_INDEX, "Index")</li>
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrencyIso, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CurrencyIso)
+                @Html.ValidationMessageFor(model => model.CurrencyIso)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrencyCode3, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CurrencyCode3)
+                @Html.ValidationMessageFor(model => model.CurrencyCode3)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrencyName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CurrencyName)
+                @Html.ValidationMessageFor(model => model.CurrencyName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FractionalUnit, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FractionalUnit)
+                @Html.ValidationMessageFor(model => model.FractionalUnit)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FractionalUnitName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FractionalUnitName)
+                @Html.ValidationMessageFor(model => model.FractionalUnitName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IssuerName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IssuerName)
+                @Html.ValidationMessageFor(model => model.IssuerName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsNational, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsNational)
+                @Html.ValidationMessageFor(model => model.IsNational)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsOperational, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsOperational)
+                @Html.ValidationMessageFor(model => model.IsOperational)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.CREATE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

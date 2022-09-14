@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7891570C-B8C5-4D07-A7EA-35519A3018C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarShopDataService</RootNamespace>
+    <AssemblyName>CarShopDataService45</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\CarShopArticleContext.cs" />
+    <Compile Include="Models\CarShopArticleContextInitializer.cs" />
+    <Compile Include="Models\CarShopContext.cs" />
+    <Compile Include="Models\CarShopIncomeContext.cs" />
+    <Compile Include="Models\CarShopMsTecDocContext.cs" />
+    <Compile Include="Models\CarShopMsTecDocContextInitializer.cs" />
+    <Compile Include="Models\CarShopOrdersContext.cs" />
+    <Compile Include="Models\CarShopRestContext.cs" />
+    <Compile Include="Models\CarShopRestContextInitializer.cs" />
+    <Compile Include="Models\CarShopSalesContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TecDocEcoSystemDbClassLibrary\Address.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\AddressType.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\ANALOGOUS_REST_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\ANALOGOUS_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\ArticleGroup_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\ARTICLE_LOOKUP_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BranchRestArticleDescriptionTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BranchRestSumTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BranchRestTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BranchRestTmp.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BranchSpellHstTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BranchSpellTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BranchSuppTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BranchType.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\BRAND_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\ContactType.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\COUNTRIES_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\Country.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\Currency.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\DICT_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseAddressTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleApplicTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleBrandTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleCategoryItemTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleDescriptionTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleLookUpTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleTecDocDescriptionTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleTecDocTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseArticleTmp.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchAddressTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchContactsTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchDownLoadRepTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchDownLoadTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchDownLoadTmpTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchIdsTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchRateTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchReplaceTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchReplyTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchUserContactTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchUserTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBranchWorkPlaceTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseBrandTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCarBrandTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCarModelFuelTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCarModelTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCarModelTypeTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryApplicTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryDescriptionTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryItemApplicTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryItemDescriptionTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryItemTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryItemTecDocDescriptionTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryItemTecDocTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryItemTmp.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseCategoryTecDocTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseProductCategoryTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseSupplierAddressTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseSupplierContactTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseSupplierDownLoadRepTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseSupplierDownLoadTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseSupplierReplaceTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseSupplierTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseTecDocSrcTypeTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseUserContactTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\EnterpriseUserTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\FUEL_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\GuestBranchSumTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\GuestBranchTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\GuestOrderArticleTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\GuestOrderArticleTmp.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\GuestOrderTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\GuestOrderTmp.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\GuestProfileTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\IncomeArticleTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\IncomePayRollTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\LANGUAGES_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\MODELTYPESTREE_PARENT_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\MODELTYPESTREE_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\MODELTYPETREEITEMDESCR_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\MODELTYPETREEITEMMANID_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\MODELTYPETREEITEMS_REST_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\MODELTYPETREEITEMS_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\MODELTYPE_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\MODEL_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\OriginalCatalogTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\PagedListExExtensions.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\PagedListEx.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\ReturnBasketArticleTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\ReturnBasketArticleTmp.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\ReturnBasketTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\RevaluationArticleTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SaleArticleDescriptionTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SaleBasketArticleTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SaleBasketArticleTmp.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SaleBasketReportTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SaleBasketTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SettlementType.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SheetRevaluationTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SimpleArticle_REST_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SimpleArticle_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SIMPLEMODELTYPES_TD.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\Soato.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\StreetType.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SuppRestTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\SuppRestTDESTmp.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\TecDocContext.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\User2WorkPlaceHstTDES.cs" />
+    <Compile Include="TecDocEcoSystemDbClassLibrary\User2WorkPlaceTDES.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru-Ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

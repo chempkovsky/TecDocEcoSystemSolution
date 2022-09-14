@@ -1,0 +1,129 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPETREEITEMDESCR_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREEITEMDETAIL_INDEX;
+    int CountryId = ViewBag.CountryId;
+    int LangId = ViewBag.LangId;
+    int BandId = ViewBag.BandId;
+    int ModelId = ViewBag.ModelId;
+    int ModelTypeId = ViewBag.ModelTypeId;
+    int TopicId = ViewBag.TopicId;
+    List<MODELTYPETREEITEMMANID_TD> ManufIds = ViewBag.ManufIds as List<MODELTYPETREEITEMMANID_TD>;
+    List<FUEL_TD> Eans = ViewBag.Eans as List<FUEL_TD>;
+}
+
+<h2>@Resources.CARMODELTYPETREEITEMDETAIL_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.TecDocModel_INDEX, "Index", "TecDoc", new { countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId }, new { })</li>
+    @if (!String.IsNullOrEmpty(ViewBag.ModelDescription))
+    {
+        <li>@Html.ActionLink(ViewBag.ModelDescription as string, "ModelType", "TecDoc", new { modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId }, new { })</li>
+        <li>@Html.ActionLink(Resources.CARMODELTYPETREE_INDEX, "ModelTypeTree", "TecDoc", new { modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId, topicId = ViewBag.TopicId }, new { })</li>
+
+
+        if (TopicId != 0)
+        {
+            <li>@Html.ActionLink(Resources.CARMODELTYPETREEITEMS_INDEX, "ModelTypeTreeItems", "TecDoc", new { topicId = ViewBag.TopicId, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId, tof_assemblyId = ViewBag.Tof_assemblyId, tof_suppliersId = ViewBag.Tof_suppliersId }, new { })</li>
+        }
+    }
+</ol>
+
+@if ((Model != null) && (Model.Count() > 0))
+{
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TEX_TEXT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TEX_VALUE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TEX_UNIT)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_TEXT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_VALUE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_UNIT)
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}
+
+
+<h3>@Resources.TECDOC_EAN_INDEX</h3>
+@if ((Eans != null) && (Eans.Count() > 0))
+{
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TEX_TEXT)
+            </th>
+        </tr>
+        @foreach (var item in Eans)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_TEXT)
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}
+
+<h3>@Resources.MANUF_IDS_INDEX</h3>
+@if ((ManufIds != null) && (ManufIds.Count > 0))
+{
+    MODELTYPETREEITEMMANID_TD dummyItem = ManufIds[0];
+
+    <table class="table table-condensed">
+
+        <tr>
+            <th>
+                @Resources.BRANDS_INDEX
+            </th>
+            <th>
+                @Resources.MANUF_IDS_INDEX
+            </th>
+        </tr>
+
+        @foreach (var item in ManufIds)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUP_TEXT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_VALUE)
+                </td>
+            </tr>
+        }
+    </table>
+
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}
+

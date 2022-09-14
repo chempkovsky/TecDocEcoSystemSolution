@@ -1,0 +1,141 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@using Newtonsoft.Json;
+
+@model IEnumerable<BranchRestTDES>
+@{
+    ViewBag.Title = Resources.BranchRest_INDEXDetail;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    string redirecData = ViewBag.redirecData;
+    string redirectContriller = ViewBag.redirectContriller;
+    string redirectAction = ViewBag.redirectAction;
+
+}
+
+<h2>@Resources.BranchRest_INDEXDetail</h2>
+
+@Html.ValidationSummary(true)
+
+@using (Html.BeginForm("MakeSelection", "TecDocRests", FormMethod.Post))
+{
+
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+
+if ((Model != null) && (Model.Count() > 0))
+{
+
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" />
+}
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" />
+
+
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EntBranchArticle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntBranchSup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtPrice)
+            </th>
+        </tr>
+
+        @{
+            var selected = true;
+//            System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+        }
+
+        @foreach (var item in Model)
+        {
+            <tr class="boldfonttextclass">
+                <td>
+                    @Html.RadioButton("SimpleBranchRest", JsonConvert.SerializeObject(new BranchRestTmp()
+                       {
+                           EntBranchArticle = item.EntBranchArticle,
+                           EntBranchSup = item.EntBranchSup,
+                           EntBranchGuid = item.EntBranchGuid
+                       }), selected, selected)
+                    @Html.DisplayFor(modelItem => item.EntBranchArticle)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntBranchSup)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtPrice)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    @Html.DisplayNameFor(model => model.EntArticleDescriptionId) :
+                    @Html.DisplayFor(modelItem => item.BranchRestArticleDescriptionTDES.EntArticleDescription)
+                </td>
+            </tr>
+
+            <tr class="warning">
+                <td colspan="3">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.EntArticleDescriptionId)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.BranchRestArticleDescriptionTDES.EntArticleDescription)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SUP_TEXT)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.SUP_TEXT)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ExternArticleEAN)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.ExternArticleEAN)
+                        </dd>
+                    </dl>
+                </td>
+            </tr>
+
+
+            selected = false;
+        }
+
+    </table>
+
+
+
+
+    
+    
+if ((Model != null) && (Model.Count() > 0))
+{
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" />
+} else {
+    <h4>@Resources.NO_ANY_DATA</h4>   
+}
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" />    
+   
+}
+    
+    
+    

@@ -1,0 +1,129 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.GuestOrderArticleTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? searchGuestOrderGuid = ViewBag.GuestOrderGuid;
+    bool CanBeModified = ViewBag.CanBeModified;
+}
+
+
+<h2>@Resources.DETAILS_ACTION <small>@Resources.GuestOrderArticleTDES_INDEX</small></h2>
+
+@if(Model == null) {
+    @Html.ValidationSummary(true)
+    
+<ul class="breadcrumb">
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile")</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder")</li>
+    @if (searchGuestOrderGuid.HasValue) {
+        <li>@Html.ActionLink(Resources.GuestOrderTDES_DETAIL, "Details", "GuestOrder",  routeValues: new {id=searchGuestOrderGuid},  htmlAttributes: new {} )</li>
+        <li>@Html.ActionLink(Resources.GuestOrderArticleTDES_INDEX, "Index", "GuestOrderArticle", new {searchGuestOrderGuid = searchGuestOrderGuid}, new {} )</li>
+    }
+</ul>
+    
+} else {
+
+
+<div>
+    @*<h4>GuestOrderArticleTDES</h4>*@
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile")</li>
+        <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder")</li>
+        @if (searchGuestOrderGuid.HasValue) {
+            <li>@Html.ActionLink(Resources.GuestOrderTDES_DETAIL, "Details", "GuestOrder",  routeValues: new {id=searchGuestOrderGuid},  htmlAttributes: new {} )</li>
+            <li>@Html.ActionLink(Resources.GuestOrderArticleTDES_INDEX, "Index", "GuestOrderArticle", new {searchGuestOrderGuid = searchGuestOrderGuid}, new {} )</li>
+    }
+    </ul>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtPrice)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ART_ARTICLE_NR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUP_TEXT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SUP_TEXT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntArticleDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntArticleDescription)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExternArticleEAN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ExternArticleEAN)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastReplicated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastReplicated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReplicated)
+        </dt>
+
+        <dd>
+            @if (Model != null)
+            {
+                if (Model.IsReplicated > 0)
+                {
+                    @Resources.Boolean_NO
+                }
+                else
+                {
+                    @Resources.Boolean_YES
+                }
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (CanBeModified && (Model != null) && (Model.IsReplicated > 0))
+    {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchGuestOrderGuid = Model.GuestOrderGuid, searchEntBranchArticle = Model.EntBranchArticle, searchEntBranchSup = Model.EntBranchSup }, htmlAttributes: new { @class = "btn btn-primary" })
+    }
+    @if (searchGuestOrderGuid.HasValue)
+    {
+        @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "GuestOrderArticle", new { searchGuestOrderGuid = searchGuestOrderGuid }, new { })
+    }
+</p>
+}

@@ -1,0 +1,91 @@
+﻿@model TecDocEcoSystemDbClassLibrary.EnterpriseBrandTDES
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.CREATENEW_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseBrandHelp1
+        <br>
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Каталог артикулов", "Articles", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+    </div>
+</div>
+
+
+<h2>@Resources.CREATENEW_ACTION</h2>
+
+@Html.ValidationSummary(true)
+
+@if (!SearchEntGuid.HasValue)
+{
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", new { searchEntGuid = SearchEntGuid }, new { })</li>
+            }
+        </ol>
+
+} else {
+
+using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>EnterpriseBrandTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", new { searchEntGuid = SearchEntGuid }, new { })</li>
+            }
+        </ol>
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.EntGuid)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBrandNic, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntBrandNic)
+                @Html.ValidationMessageFor(model => model.EntBrandNic)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group">
+                @Html.LabelFor(model => model.EntBrandDescription, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EntBrandDescription)
+                    @Html.ValidationMessageFor(model => model.EntBrandDescription)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Resources.CREATE_ACTION" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+        <div>
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid }, new { })
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+}

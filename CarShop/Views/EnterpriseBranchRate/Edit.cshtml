@@ -1,0 +1,95 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseBranchRateTDES
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    SelectList sliCurrencyIso = ViewBag.sliCurrencyIso as SelectList;
+
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+
+}
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+@if (!SearchEntBranchGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })</li>
+            }
+        }
+    </ol>
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @*<h4>EnterpriseBranchRateTDES</h4>*@
+            <ol class="breadcrumb">
+                <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+                @if (SearchEntGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+                    if (SearchEntBranchGuid.HasValue)
+                    {
+                        <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                        <li>@Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid })</li>
+                    }
+                }
+            </ol>
+
+            <hr />
+            @Html.ValidationSummary(true)
+
+            @Html.Hidden("EntBranchGuid", SearchEntBranchGuid)
+            @Html.Hidden("EntGuid", SearchEntGuid)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CurrencyIso, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.CurrencyIso)*@
+                    @Html.DropDownListFor(model => model.CurrencyIso, sliCurrencyIso, String.Empty)
+                    @Html.ValidationMessageFor(model => model.CurrencyIso)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExchRate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ExchRate)
+                    @Html.ValidationMessageFor(model => model.ExchRate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+    </div>
+
+}

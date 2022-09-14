@@ -1,0 +1,155 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.BranchSpellHstTDES
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Списание с прихода после закрытия смены", "BranchSpellHst", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.EDIT_ACTION <small>@Resources.BranchSpellHstTDES_INDEX</small></h2>
+
+@if ( !SearchEntBranchGuid.HasValue )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", new { searchEntGuid = SearchEntGuid, SearchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+    </ol>
+
+    @Html.ValidationSummary(true)
+} else {
+
+
+using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>BranchSpellHstTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", new { searchEntGuid = SearchEntGuid, SearchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                }
+            }
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.EntBranchGuid)
+        @Html.HiddenFor(model => model.EntGuid)
+
+        @Html.HiddenFor(model => model.IsActive)
+        @Html.HiddenFor(model => model.IsBlocked)
+        @Html.HiddenFor(model => model.IsCribFromIncome)
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpellGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.SpellGuid, new { @readonly="true"})
+                @Html.ValidationMessageFor(model => model.SpellGuid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.IsActive)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsBlocked, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.IsBlocked)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsCribFromIncome, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.IsCribFromIncome)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OpenAt, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.OpenAt, new { @readonly="true"})
+                @Html.ValidationMessageFor(model => model.OpenAt)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CloseAt, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CloseAt)
+                @Html.ValidationMessageFor(model => model.CloseAt)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OpenedBy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.OpenedBy, new { @readonly="true"})
+                @Html.ValidationMessageFor(model => model.OpenedBy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClosedBy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ClosedBy, new { @readonly="true"})
+                @Html.ValidationMessageFor(model => model.ClosedBy)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+}    

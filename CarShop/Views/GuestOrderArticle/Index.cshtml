@@ -1,0 +1,167 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.GuestOrderArticleTDES>
+
+@{
+    ViewBag.Title = Resources.GuestOrderArticleTDES_INDEX;
+    Guid? searchGuestOrderGuid = ViewBag.GuestOrderGuid;
+    bool CanBeModified = ViewBag.CanBeModified;
+    string CreateOrUpdateMsg = ViewBag.CreateOrUpdate;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Важным ограничением является, то что количество наименований товаров в рамках одного заказа не может превышать 20.<p />
+        Вторым важным ограничением является, то что вы не можете создать более 20 заказов. 
+        Если вы достигли предела, то удалите ранее сформированные заказы. Можно без страха удалять заказы со статусом <b>Уже в обработке </b>.
+        Копия такого заказа уже сформирована на стороне магазина и операция удаления на вашей стороне не повлияет на информацию на стороне магазина.
+        <hr />
+
+
+
+        Выбор товара по ссылке @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" }) позволит вам
+        провести поиск, если вам известен или Штрих-код или Артикул производителя или Конструкционный номер или номер TecDoc.<p />
+
+        Выбор товара по ссылке @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" }) -- это
+        последовательность Web-страниц позволяющая выбрать Брэнд, Модель, Тип модели (по году выпуска, топливу, двигателю ).
+        Далее идет страница с деревом категорий деталей и по узлу в дереве вы переходите к перечню деталей с остатками и ценами.<p />
+
+        <b>Правила формирования заказов следующие:</b><br />
+        Товар может предлагаться несколькими магазинами. Выбирая товар вы вибираете и магазин. <br />
+        Если заказ на выбранный магазин отсутствует в перечне ваших заказов, то будет оформлен новый заказ с указанием магазина и товар будет помещен в этот заказ.<br />
+        Если уже существует заказ на выбранный магазин, то товар будет помещен в этот заказ.<br />
+        Если при выборе товара, у ранее созданного заказа выставлен статус <b>Уже в обработке </b>, то будет оформлен новый заказ.
+        <hr />
+
+        <button type="button" class="btn btn-info" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-remove-sign"></span> @Resources.HideHelp
+        </button>
+
+    </div>
+</div>
+
+
+<h2>@Resources.GuestOrderArticleTDES_INDEX</h2>
+
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile")</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder")</li>
+    @if (searchGuestOrderGuid.HasValue)
+    {
+        <li>@Html.ActionLink(Resources.GuestOrderTDES_DETAIL, "Details", "GuestOrder", routeValues: new { id = searchGuestOrderGuid }, htmlAttributes: new { })</li>
+    }
+</ul>
+
+
+@if(Model == null) {
+    @Html.ValidationSummary(true)
+} else {
+
+    <p>
+        @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new {@class="btn btn-primary" })
+        @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+        <button type="button" class="btn btn-warning" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-question-sign"></span>
+        </button>
+        <input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+    </p>
+    
+    
+    if (!string.IsNullOrEmpty(CreateOrUpdateMsg))
+    {
+        <div class="alert alert-success" role="alert">
+            @CreateOrUpdateMsg
+        </div>
+    }
+    
+    
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUP_TEXT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtPrice)
+        </th>
+        <th class="hidden-xs"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SUP_TEXT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtPrice)
+        </td>
+
+
+        <td class="hidden-xs btn-group btn-group-xs">
+            @if ((item.IsReplicated > 0) && (CanBeModified)) {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchGuestOrderGuid = item.GuestOrderGuid, searchEntBranchArticle=item.EntBranchArticle, searchEntBranchSup=item.EntBranchSup }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchGuestOrderGuid = item.GuestOrderGuid, searchEntBranchArticle=item.EntBranchArticle, searchEntBranchSup=item.EntBranchSup }, new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchGuestOrderGuid = item.GuestOrderGuid, searchEntBranchArticle=item.EntBranchArticle, searchEntBranchSup=item.EntBranchSup }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+    
+    
+    <tr class="warning">
+        <td colspan="3">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntArticleDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.EntArticleDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExternArticleEAN)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.ExternArticleEAN)
+                </dd>
+
+            </dl>
+        </td>
+    </tr>
+    
+    
+    <tr class="visible-xs active">
+        <td colspan="3" class="btn-group btn-group-xs">
+            @if ((item.IsReplicated > 0) && (CanBeModified)) {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchGuestOrderGuid = item.GuestOrderGuid, searchEntBranchArticle=item.EntBranchArticle, searchEntBranchSup=item.EntBranchSup }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchGuestOrderGuid = item.GuestOrderGuid, searchEntBranchArticle=item.EntBranchArticle, searchEntBranchSup=item.EntBranchSup }, new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchGuestOrderGuid = item.GuestOrderGuid, searchEntBranchArticle=item.EntBranchArticle, searchEntBranchSup=item.EntBranchSup }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+    
+}
+
+</table>
+
+    if (!string.IsNullOrEmpty(CreateOrUpdateMsg))
+    {
+        <div class="alert alert-success" role="alert">
+            @CreateOrUpdateMsg
+        </div>
+    }
+    
+    
+}

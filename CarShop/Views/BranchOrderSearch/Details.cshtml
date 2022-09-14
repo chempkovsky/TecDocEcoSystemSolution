@@ -1,0 +1,155 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.GuestOrderTDES
+
+@{
+    ViewBag.Title = Resources.BranchOrderTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Обработка заказов", "BranchOrderSearch", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.DETAILS_ACTION <small>@Resources.BranchOrderTDES_INDEX</small></h2>
+
+@if (Model == null)
+{
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchOrderTDES_INDEX, "Index", "BranchOrderSearch", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li> 
+        }
+    }
+</ol>
+
+@Html.ValidationSummary(true)    
+} else {
+
+    <div>
+        @*<h4>GuestOrderTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+        {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchOrderTDES_INDEX, "Index", "BranchOrderSearch", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            }
+        }
+        </ol>
+        @Html.ValidationSummary(true)
+        <hr />
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8">
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GestUserNic)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GestUserNic)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GuestProfileTDES.FirstName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GuestProfileTDES.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GuestProfileTDES.LastName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GuestProfileTDES.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GuestProfileTDES.MiddleName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GuestProfileTDES.MiddleName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GuestProfileTDES.Contact)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GuestProfileTDES.Contact)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GuestProfileTDES.Address)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GuestProfileTDES.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsDone)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IsDone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastUpdated)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.LastUpdated)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastReplicated)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.LastReplicated)
+                    </dd>
+                </dl>
+
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                @using (Html.BeginForm("Details", "BranchOrderSearch"))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.Hidden("searchEntGuid", SearchEntGuid)
+                    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+                    @Html.Hidden("id", Model.GuestOrderGuid)
+                    <div class="btn-group-vertical">
+                        @Html.ActionLink(Resources.GuestOrderArticleTDES_INDEX, "Index", "BranchOrderArticleSearch", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGuestOrderGuid = Model.GuestOrderGuid }, new { @class = "btn btn-info" })
+
+                        <input type="submit" name="CREATESALE" value="@Resources.GuestOrderTDES_CREATESALE" class="btn btn-primary" />
+                        @if (!Model.IsDone) {
+                        <input type="submit" name="RESETPRICES" value="@Resources.GuestOrderTDES_RESETPRICES" class="btn btn-warning" />
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
+</div>
+<p>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</p>
+
+}

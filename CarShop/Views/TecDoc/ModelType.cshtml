@@ -1,0 +1,213 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPE_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPE_INDEX;
+    int CountryId = ViewBag.CountryId;
+    int LangId = ViewBag.LangId;
+    int BandId = ViewBag.BandId;
+    int ModelId = ViewBag.ModelId;
+    SelectList sliFUELS = ViewBag.sliFUELS as SelectList;
+}
+
+<h2>@Resources.CARMODELTYPE_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.TecDocModel_INDEX, "Index", "TecDoc", new { countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId=ViewBag.BandId, fluelId = ViewBag.FluelId }, new { })</li>
+    @if (!String.IsNullOrEmpty(ViewBag.ModelDescription))
+    {
+        <li>@Html.ActionLink(ViewBag.ModelDescription as string, "Index", "TecDoc", new { countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId=ViewBag.BandId, fluelId = ViewBag.FluelId }, new { })</li>
+    }
+</ol>
+
+
+@if (! String.IsNullOrEmpty( ViewBag.ModelDescription ) ) {
+
+using (Html.BeginForm("ModelType", "TecDoc", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("modelId", ModelId)
+    @Html.Hidden("countryId", CountryId)
+    @Html.Hidden("langId", LangId)
+    @Html.Hidden("BandId", BandId)
+    <div class="form-group">
+    @Html.DropDownList("fluelId", sliFUELS)
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TYP_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TEX_TEXT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TYP_KV_ENGINE)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.TYP_KV_BODY)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.TYP_DOORS)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(
+                    item.TYP_ID.ToString(), //@Html.DisplayFor(modelItem => item.TYP_ID),
+                    "ModelTypeTree",
+                    new {modelTypeId= item.TYP_ID, modelId = ViewBag.ModelId, CountryId = ViewBag.CountryId, langId=ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId}, new { @class="btn btn-info" } )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEX_TEXT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TYP_KV_ENGINE)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.TYP_KV_BODY)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.TYP_DOORS)
+            </td>
+        </tr>
+
+    <tr class="warning">
+        <td colspan="3">
+            <dl class="dl-horizontal">
+
+
+                <dt class="visible-xs visible-sm">
+                    @Html.DisplayNameFor(model => model.TYP_KV_BODY)
+                </dt>
+                <dd class="visible-xs visible-sm">
+                    @Html.DisplayFor(modelItem => item.TYP_KV_BODY)
+                </dd>
+
+
+                @if (!string.IsNullOrEmpty(item.TYP_DOORS))
+                {
+                    <dt class="visible-xs visible-sm">
+                        @Html.DisplayNameFor(model => model.TYP_DOORS)
+                    </dt>
+                    <dd class="visible-xs visible-sm">
+                        @Html.DisplayFor(modelItem => item.TYP_DOORS)
+                    </dd>
+                }
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TYP_PCON_START) / @Html.DisplayNameFor(model => model.TYP_PCON_END)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.TYP_PCON_START) / @Html.DisplayFor(modelItem => item.TYP_PCON_END)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TYP_KW_FROM) / @Html.DisplayNameFor(model => model.TYP_HP_FROM)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.TYP_KW_FROM) / @Html.DisplayFor(modelItem => item.TYP_HP_FROM)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TYP_VALVES) * @Html.DisplayNameFor(model => model.TYP_CYLINDERS)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.TYP_VALVES) * @Html.DisplayFor(modelItem => item.TYP_CYLINDERS)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TYP_CCM)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.TYP_CCM)
+                </dd>
+
+                @if (!string.IsNullOrEmpty(item.TYP_KV_ABS))
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_KV_ABS)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_KV_ABS)
+                    </dd>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TYP_KV_ASR))
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_KV_ASR)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_KV_ASR)
+                    </dd>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TYP_KV_BRAKE_TYPE))
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_KV_BRAKE_TYPE)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_KV_BRAKE_TYPE)
+                    </dd>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TYP_KV_BRAKE_SYST))
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_KV_BRAKE_SYST)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_KV_BRAKE_SYST)
+                    </dd>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TYP_KV_FUEL_SUPPLY))
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_KV_FUEL_SUPPLY)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_KV_FUEL_SUPPLY)
+                    </dd>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TYP_KV_CATALYST))
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_KV_CATALYST)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_KV_CATALYST)
+                    </dd>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TYP_KV_TRANS))
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TYP_KV_TRANS)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.TYP_KV_TRANS)
+                    </dd>
+                }
+
+            </dl>
+
+        </td>
+    </tr>
+
+    }
+
+</table>
+
+}

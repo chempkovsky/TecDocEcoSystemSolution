@@ -1,0 +1,141 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseBranchUserContactTDES
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+    String SearchEntUserNic = ViewBag.SearchEntUserNic as String;
+    String EntUserDescription = ViewBag.EntUserDescription as String;
+    SelectList ContactTypes = ViewBag.ContactTypes;
+}
+
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+@if (String.IsNullOrEmpty(SearchEntUserNic))
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                if (!String.IsNullOrEmpty(SearchEntUserNic))
+                {
+                    <li>@Html.ActionLink(EntUserDescription, "Details", "EnterpriseBranchUsers", new { userId = SearchEntUserNic }, new { })</li>
+                    <li>@Html.ActionLink(Resources.MYCONTACTS, "Index", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid , searchEntUserNic = SearchEntUserNic })</li>
+                }
+            }
+        }
+    </ol>
+
+    @Html.ValidationSummary(true)
+} else {
+
+
+using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>EnterpriseBranchUserContactTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                    if (!String.IsNullOrEmpty(SearchEntUserNic))
+                    {
+                        <li>@Html.ActionLink(EntUserDescription, "Details", "EnterpriseBranchUsers", new { userId = SearchEntUserNic }, new { })</li>
+                        <li>@Html.ActionLink(Resources.MYCONTACTS, "Index", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid , searchEntUserNic = SearchEntUserNic })</li>
+                    }
+                }
+            }
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.EntGuid)
+        @Html.HiddenFor(model => model.EntUserNic)
+        @Html.HiddenFor(model => model.EntBranchGuid)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ContactGuid, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.ContactGuid)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Contact, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Contact)
+                @Html.ValidationMessageFor(model => model.Contact)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsVisible, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsVisible)
+                @Html.ValidationMessageFor(model => model.IsVisible)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactTypeId,  new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ContactTypeId, ContactTypes, String.Empty)
+                @Html.ValidationMessageFor(model => model.ContactTypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchEntUserNic = SearchEntUserNic })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+}    

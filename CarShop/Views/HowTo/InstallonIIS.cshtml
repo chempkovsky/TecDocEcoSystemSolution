@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Развертывание решения на узле интернет сервер";
+    Layout = "~/Views/HowTo/_Layout.cshtml";
+}
+
+@section headerscripts {
+<h2>11. Развертывание решения на узле интернет сервер</h2>
+}
+
+
+
+<h2>11.1. Скачать архив с решением</h2>
+11.1.1. Скачайте архив с решением<p />
+@Html.ActionLink("CarShop", "InstallCarShopZip", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })<p />
+<h2>11.2. Редактирование web.config</h2>
+11.2.1. Извлеките из архива все содержимое в какую-либо папку, (к примеру, с именем <b>CarShop</b>)<br />
+11.2.2. Найдите в содержимом файл c именем <b>web.config</b> <br />
+11.2.3. Программой <b>Блокнот</b> откройте файл и именем <b>web.config</b>
+(для этого правым кликом мыши на файле вызвать меню, в появившемся меню выбрать <b>"Открыть с помощью"</b>, затем <b>"Выбрать программу"</b> и выбрать <b>Блокнот</b>) <br />
+
+<pre><b>
+@HttpUtility.HtmlDecode("<connectionStrings>")
+@HttpUtility.HtmlDecode("    <add name=\"DefaultConnection\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=ТУТ_ИМЯ_БД;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopContext;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopArticleContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopArticleContext;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopRestContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopRestContext;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopIncomeContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopIncomeContext;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopSalesContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopSalesContext;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopOrdersContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopOrdersContext;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopMsTecDocContext\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopMsTecDoc2013Q4;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("</connectionStrings>") 
+</b></pre>
+<br />
+
+11.2.4. Вам необходимо отредактировать настройки в этом блоке:<br />
+(11.2.4.1.)<br />
+<b>ТУТ_ПАРОЛЬ</b> изменить на пароль, который вы используете для входа в MSSQL-Server с помощью <b>MSSQL Management Studio</b><br />
+(11.2.4.2.)<br />
+<b>ИМЯ_КОМПЬЮТЕРА\ИМЯ_SQL_СЕРВЕРА</b> изменить на настройки, которые вы вносили в поле "Имя сервера" для входа в MSSQL-Server с помощью <b>MSSQL Management Studio</b><p />
+
+11.2.5. Для <b>DefaultConnection</b> необходимо изменить <b>ТУТ_ИМЯ_БД</b> на имя БД, которая была создана <p />
+на шаге 9. @Html.ActionLink("Создание экземпляра БД для поддержки учетных записей и безопасности", "AspNetSecurity", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" }) :<br />
+<pre><b>
+@HttpUtility.HtmlDecode("    <add name=\"DefaultConnection\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=ТУТ_ИМЯ_БД;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+</b></pre>
+<br />
+
+11.2.6. <b>ЗАМЕЧАНИЕ:</b> Если при развертывании <p />
+на шаге 3. @Html.ActionLink("Создание баз данных с использованием утилиты WpfCarShop", "HowToWpfCarShop", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })<br />
+для какой-либо базы данных было изменено имя, то эти изменения должны быть внесены в файл <b>web.config</b> <p />
+3.2.7. Сохранить изменения, которые вы сделали через меню "Файл" и затем "Сохранить". После этого закройте блокнот <br />
+
+<h2>11.3. Развертывание инфраструктуры для второго магазина или второй торговой сети</h2>
+Если вам понадобилось зарегистрировать второй магазин в данном web-решении, то у вас есть выбор:<br />
+1. Второй мангазин хранит свои данные в тех же базах данных, что и исходный<br />
+2. Второй мангазин хранит свои данные в отдельных базак данных (является предпочтительным вариантом)<p />
+
+В первом случае нет необходимости в проведении дополнительных работ по развертыванию решения. <p />
+
+Во втором случае вы должны создать дубли баз данных. Дубли баз данных будут отличаться именами.<br />
+К примеру, дубль для <b>Initial Catalog=CarShopRestContext</b> вы решили назвать <b>Initial Catalog=CarShopRestZZZ</b>.<br />
+Для того чтобы решение смогло использовать эту новую БД вы должны:<br />
+1. Создать БД<br />
+2. Зарегистроровать эту БД в web-решении.<p />
+Как создать вторую копию БД с другим именем описано в пункте 3. @Html.ActionLink("Создание баз данных с использованием утилиты WpfCarShop", "HowToWpfCarShop", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })<br />
+
+Для того чтобы зарегистроровать эту БД в web-решении необходимо: <br />
+1. Открыть Блокнотом файл <b>web.config</b><br />
+2. В блок данных<br />
+<pre><b>
+@HttpUtility.HtmlDecode("<connectionStrings>")
+...
+...
+@HttpUtility.HtmlDecode("</connectionStrings>") 
+</b></pre>
+<br />
+Внести  еще одну дополнительную запись
+<pre><b>
+@HttpUtility.HtmlDecode("    <add name=\"CarShopRestZZZ\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopRestZZZ;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+</b></pre>
+<br />
+
+Обратим внимание  <b>чем отличается</b> дополнительная запись от исходной:<br />
+В дополнительной записи имеем <b> @HttpUtility.HtmlDecode("    <add name=\"CarShopRestZZZ\" ")</b> <br />
+В в исходной записи имеем <b> @HttpUtility.HtmlDecode("    <add name=\"CarShopRestContext\" ") </b><p />
+
+В дополнительной записи имеем <b> @HttpUtility.HtmlDecode("Initial Catalog=CarShopRestZZZ;")</b> <br />
+В в исходной записи имеем <b> @HttpUtility.HtmlDecode("Initial Catalog=CarShopRestContext;")</b><p />
+
+Сохраните изменения через меню "Файл" и затем "Сохранить". После этого закройте блокнот.<p />
+
+Приведем перечень баз данных, которые можно дублировать описанным выше способом для <b>второго магазина одной и той же торговой сети</b><br />
+<b>CarShopRestContext</b> (каталог остатков)<br />
+<b>CarShopIncomeContext</b> (каталог приходных ведомостей и переоценки)<br />
+<b>CarShopSalesContext</b> (каталог продаж)<br />
+<b>CarShopOrdersContext</b> (каталог заказов)<p />
+
+Приведем перечень баз данных, которые можно дублировать описанным выше способом для <b>магазина другой торговой сети</b><br />
+<b>CarShopArticleContext</b> (каталог артикулов)<br />
+<b>CarShopRestContext</b> (каталог остатков)<br />
+<b>CarShopIncomeContext</b> (каталог приходных ведомостей и переоценки)<br />
+<b>CarShopSalesContext</b> (каталог продаж)<br />
+<b>CarShopOrdersContext</b> (каталог заказов)<p />
+
+<b>Замечание:</b> <br />
+<b>CarShopContext</b> (каталог инфраструктуры) не может иметь дублей!!!<br />
+<b>CarShopMsTecDocContext</b> (каталог TecDoc в формате MSSQL) дублировать можно, если нагрузка на один SQL-сервер превышает возможности сервера.
+
+<h2>11.4. Регистрация приложения в среде интернет сервер</h2>
+
+11.4.1. Скопируйте всю папку <b>CarShop</b>, которая создана на шаге (11.2.1.) в папку с именем<br />
+<b>C:\inetpub\wwwroot</b><br />
+11.4.2. Запустите Диспетчер служб IIS. <br />
+11.4.3. В левом пенале разверните узел вашего сервера. <br />
+11.4.4. В левом пенале разверните узел <b>Сайты (Sites)</b> <br />
+11.4.5. В левом пенале разверните узел <b>Default Web Site</b><br />
+11.4.6. Станьте на узел <b>CarShop</b><br />
+11.4.7. Правым кликом мыши вызовите меню и выберите пункт <b>Конвертировать в приложение</b><p />
+Чтобы получить URL вашего решения в третьем пенале <b>Действия</b> кликните по ссылке  <b>Browse * (80) http</b><br />
+Будет запущен web-браузер с URL=<b>@HttpUtility.HtmlDecode("http://localhost/CarShop/")</b><br />
+Чтобы подключиться с другого компьютера к вашему решению в URL измените <b>localhost</b> на имя компьютера, где развернут ваш web-сервер.

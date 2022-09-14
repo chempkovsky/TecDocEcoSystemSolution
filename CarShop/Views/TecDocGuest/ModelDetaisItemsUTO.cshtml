@@ -1,0 +1,409 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPETREEITEMS_REST_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREEITEMS_INDEX;
+    int? MFA_ID = ViewBag.MFA_ID;
+    int? MOD_ID = ViewBag.MOD_ID;
+    int? TYP_ID = ViewBag.TYP_ID;
+    int? FluelId = ViewBag.FluelId;
+    int? topicId = ViewBag.topicId;
+    int? treeKindId = ViewBag.treeKindId;
+
+    int curGA_NR = 0;
+
+    SelectList sliTof_assembly = ViewBag.sliTof_assembly as SelectList;
+    SelectList sliTof_suppliers = ViewBag.sliTof_suppliers as SelectList;
+
+    int? tof_assemblyId = ViewBag.tof_assemblyId;
+    int? tof_suppliersId = ViewBag.tof_suppliersId;
+
+    //string redirecData = ViewBag.redirecData;
+    //string redirectContriller = ViewBag.redirectContriller;
+    //string redirectAction = ViewBag.redirectAction;
+    //Guid? searchEntGuid = ViewBag.searchEntGuid;
+    //Guid? searchEntBranchGuid = ViewBag.searchEntBranchGuid;
+
+    bool showRests = false;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+
+        Если список поиска не пуст, <b>кликните @Resources.DETAILS_ACTION</b>, чтобы получить доп. информацию, включающую: <br>
+        <b>Штрих-код (или EAN)</b><br>
+        <b>Конструкционные номера</b> (если деталь устанавливается на несколько моделей, то и конструкционных номеров будет больше одного)
+        <p />
+
+        Если список поиска не пуст, <b>кликните @Resources.TECDOC_APPLICABLE</b> , чтобы просмотреть на какие модели можно устанавливать данную деталь.
+        <p />
+        Если список поиска не пуст, <b>кликните Аналоги</b> , чтобы просмотреть артикулы других производителей этой детали.
+
+        <hr />
+        Если список поиска не пуст, <b>кликните по остатку</b> детали, чтобы получить перечень магазинов, предлагающих изделие и установленные ими цены.
+        На этой же странице (с перечнем маазинов) вы можете перенести артикул в корзину Ваших заказов, если вы уже зарегистрировались в системе.<br>
+        <hr />
+
+        Режим поиска <b>В наличии</b> покажет остатки и цены товаров, которые уже находятся на полках магазинов розничных продавцов.
+        <br />
+        Режим поиска <b>Под заказ</b> покажет остатки и цены товаров, которые находятся на складах оптовых поставщиков,
+        с которыми розница заключила договора на закупку товара.
+        Каждый магазин розничной продажи указывается свое время реализации заявки на товар <b>Под заказ</b>.
+        <hr />
+
+
+        <button type="button" class="btn btn-info" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-remove-sign"></span> @Resources.HideHelp
+        </button>
+
+    </div>
+</div>
+
+
+
+<h2>@Resources.CARMODELTYPETREEITEMS_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(Resources.BRANDS_INDEX, "Manufact", "TecDocGuest", new
+   {
+   }, new { })
+    </li>
+    @if (MFA_ID.HasValue)
+    {
+        <li>
+            @Html.ActionLink(Resources.TecDocModel_INDEX, "ModelTypes", "TecDocGuest", new
+       {
+           MFA_ID = MFA_ID
+       }, new { })
+        </li>
+        if (MOD_ID.HasValue)
+        {
+            <li>
+                @Html.ActionLink(Resources.CARMODELTYPE_INDEX, "ModelDetais", "TecDocGuest", new
+           {
+               MFA_ID = MFA_ID,
+               MOD_ID = MOD_ID,
+               fluelId = FluelId
+           }, new { })
+            </li>
+            if (TYP_ID.HasValue)
+            {
+                <li>
+                    @Html.ActionLink(Resources.CARMODELTYPETREE_INDEX, "ModelDetaisTree", "TecDocGuest", new
+               {
+                   MFA_ID = MFA_ID,
+                   MOD_ID = MOD_ID,
+                   fluelId = FluelId,
+                   TYP_ID = TYP_ID,
+                   topicId = topicId,
+                   treeKindId = treeKindId
+               }, new { })
+                </li>
+            }
+        }
+    }
+</ol>
+
+
+<ul class="nav nav-pills nav-justified">
+    <li>@Html.ActionLink(Resources.InStock, "Index", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.UnderTheOrder, "IndexUTO", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li class="active">@Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })</li>
+</ul>
+
+<hr />
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(Resources.InStock, "ModelDetaisItems", "TecDocGuest", new { topicId = topicId, TYP_ID = TYP_ID, MFA_ID = MFA_ID, fluelId = FluelId, treeKindId = treeKindId, tof_assemblyId = tof_assemblyId, tof_suppliersId = tof_suppliersId }, new { })</li>
+    <li class="active"><a href="#">@Resources.UnderTheOrder</a></li>
+</ul>
+
+    
+
+
+@using (Html.BeginForm("ModelDetaisItemsUTO", "TecDocGuest", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    @*<h3>@Resources.FILTER_TITLE</h3>*@
+    <p/>
+    @Html.Hidden("topicId", topicId)
+    @Html.Hidden("TYP_ID", TYP_ID)
+    @Html.Hidden("MOD_ID", MOD_ID)
+    @Html.Hidden("MFA_ID", MFA_ID)
+    @Html.Hidden("fluelId", FluelId)
+    @Html.Hidden("treeKindId", treeKindId)
+
+
+    <div class="form-group">
+        @Html.DropDownList("tof_assemblyId", sliTof_assembly, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.DropDownList("tof_suppliersId", sliTof_suppliers, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+    
+        <button type="button" class="btn btn-warning" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-question-sign"></span>
+        </button>
+    
+}
+
+
+
+
+@if ((tof_assemblyId.HasValue) && (tof_assemblyId.Value > 0))
+{
+    showRests = true;
+}
+else
+{
+    if ((tof_suppliersId.HasValue) && (tof_suppliersId.Value > 0))
+    {
+        showRests = true;
+    }
+}
+
+
+<table class="table table-condensed">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.ART_ID) : @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+            </th>*@
+
+        @if (showRests)
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.ArtAmount)
+            </th>
+        }
+
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.SUP_TEXT)*@
+            @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+        </th>
+        @*@if (showRests)
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.ArtPrice) min:max
+            </th>
+        }*@
+        <th class="hidden-xs hidden-sm">
+        </th>
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        if (curGA_NR != item.GA_NR)
+        {
+            curGA_NR = item.GA_NR;
+            <tr class="warning">
+                <th colspan="4"> @*@Html.DisplayFor(modelItem => item.GA_NR) :*@ @Html.DisplayFor(modelItem => item.MASTER_BEZ)</th>
+            </tr>
+        }
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ART_ID) : @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+                </td>*@
+            @if (showRests)
+            {
+                <td class="btn-group btn-group-xs">
+                    @*@Html.ActionLink(Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString(),
+                        "ArticleShopDetaisItems", new
+                        {
+                            ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                            SUP_TEXT = item.SUP_TEXT,
+                            MFA_ID = MFA_ID,
+                            MOD_ID = MOD_ID,
+                            fluelId = FluelId,
+                            TYP_ID = TYP_ID,
+                            topicId = topicId,
+                            tof_assemblyId = tof_assemblyId,
+                            tof_suppliersId = tof_suppliersId,
+                            treeKindId = treeKindId
+                        }, new { @class = "btn btn-success" })*@
+                    @if (item.ArtAmount > 0) { 
+                        <a class="btn btn-success" href="@Url.Action("ArticleShopDetaisItemsUTO",  new {
+                                                            ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                                                            SUP_TEXT = item.SUP_TEXT,
+                                                            MFA_ID = MFA_ID,
+                                                            MOD_ID = MOD_ID,
+                                                            fluelId = FluelId,
+                                                            TYP_ID = TYP_ID,
+                                                            topicId = topicId,
+                                                            tof_assemblyId = tof_assemblyId,
+                                                            tof_suppliersId = tof_suppliersId,
+                                                            treeKindId = treeKindId
+                                                        })">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            @*<span class="sr-only"></span>*@
+                            @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString()
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" href="@Url.Action("ArticleShopDetaisItemsUTO",  new {
+                                                            ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                                                            SUP_TEXT = item.SUP_TEXT,
+                                                            MFA_ID = MFA_ID,
+                                                            MOD_ID = MOD_ID,
+                                                            fluelId = FluelId,
+                                                            TYP_ID = TYP_ID,
+                                                            topicId = topicId,
+                                                            tof_assemblyId = tof_assemblyId,
+                                                            tof_suppliersId = tof_suppliersId,
+                                                            treeKindId = treeKindId
+                                                        })">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            @*<span class="sr-only"></span>*@
+                            @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString()
+                        </a>
+                    }
+
+
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR) : @Html.DisplayFor(modelItem => item.SUP_TEXT)
+            </td>
+
+            @if (showRests)
+            {
+                @*<td class="btn-group btn-group-xs">
+                                    @Html.ActionLink(Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString(),
+                        "ArticleShopDetaisItems", new
+                        {
+                        ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                        SUP_TEXT = item.SUP_TEXT,
+                        MFA_ID = MFA_ID,
+                        MOD_ID = MOD_ID,
+                        fluelId = FluelId,
+                        TYP_ID = TYP_ID,
+                        topicId = topicId,
+                        tof_assemblyId = tof_assemblyId,
+                        tof_suppliersId = tof_suppliersId,
+                        treeKindId = treeKindId
+                        }, new { @class = "btn btn-primary" })
+
+
+                    </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.MinArtPrice) : @Html.DisplayFor(modelItem => item.ArtPrice)
+                </td>*@
+            }
+            <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+                @Html.ActionLink(Resources.CARMODELTYPETREEITEMANALOG_INDEX, "ModelDetaisAnalogUTO", new
+            {
+
+                ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                GA_NR = item.GA_NR,
+                ART_ID = item.ART_ID,
+
+                topicId = topicId,
+                TYP_ID = TYP_ID,
+                MOD_ID = MOD_ID,
+                fluelId = FluelId,
+                treeKindId = treeKindId,
+                tof_assemblyId = tof_assemblyId
+            }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(Resources.DETAILS_ACTION,
+              "ModelItemDetaisUTO", new
+              {
+                  ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                  GA_NR = item.GA_NR,
+                  ART_ID = item.ART_ID,
+                  topicId = topicId,
+                  TYP_ID = TYP_ID,
+                  MOD_ID = MOD_ID,
+                  fluelId = FluelId,
+                  treeKindId = treeKindId,
+                  tof_assemblyId = tof_assemblyId
+              }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.TECDOC_APPLICABLE,
+            "ModelDetaisAppliedToUTO", "TecDocGuest",
+               new
+               {
+                   MFA_ID = MFA_ID,
+                   MOD_ID = MOD_ID,
+                   TYP_ID = TYP_ID,
+                   fluelId = FluelId,
+                   topicId = topicId,
+                   ART_ID = item.ART_ID,
+                   ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                   treeKindId = treeKindId,
+                   tof_assemblyId = tof_assemblyId
+               }, new { @class = "btn btn-warning" })
+
+
+            </td>
+        </tr>
+        <tr class="visible-xs visible-sm">
+            <td colspan=" 2" class="visible-xs visible-sm btn-group btn-group-xs">
+                @Html.ActionLink(Resources.CARMODELTYPETREEITEMANALOG_INDEX, "ModelDetaisAnalogUTO", new
+            {
+
+                ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                GA_NR = item.GA_NR,
+                ART_ID = item.ART_ID,
+
+                topicId = topicId,
+                TYP_ID = TYP_ID,
+                MOD_ID = MOD_ID,
+                fluelId = FluelId,
+                treeKindId = treeKindId,
+                tof_assemblyId = tof_assemblyId
+            }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(Resources.DETAILS_ACTION,
+              "ModelItemDetaisUTO", new
+              {
+                  ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                  GA_NR = item.GA_NR,
+                  ART_ID = item.ART_ID,
+                  topicId = topicId,
+                  TYP_ID = TYP_ID,
+                  MOD_ID = MOD_ID,
+                  fluelId = FluelId,
+                  treeKindId = treeKindId,
+                  tof_assemblyId = tof_assemblyId
+              }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.TECDOC_APPLICABLE,
+            "ModelDetaisAppliedToUTO", "TecDocGuest",
+               new
+               {
+                   MFA_ID = MFA_ID,
+                   MOD_ID = MOD_ID,
+                   TYP_ID = TYP_ID,
+                   fluelId = FluelId,
+                   topicId = topicId,
+                   ART_ID = item.ART_ID,
+                   ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                   treeKindId = treeKindId,
+                   tof_assemblyId = tof_assemblyId
+               }, new { @class = "btn btn-warning" })
+
+            </td>
+
+        </tr>
+
+    }
+</table>
+
+
+@if ((Model != null) && (Model.Count() > 0))
+{
+
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}

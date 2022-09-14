@@ -1,0 +1,97 @@
+﻿@model TecDocEcoSystemDbClassLibrary.EnterpriseTDES
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterprisesHelp7 <br> @Resources.EnterprisesHelp8 <br> @Resources.EnterprisesHelp9
+    </div>
+</div>
+
+<h2>@Resources.DETAILS_ACTION <small>@Resources.EnterpriseTDES_INDEX</small></h2>
+
+
+<div>
+    @*<h4>EnterpriseTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    </ol>
+
+	<hr />
+    <div class="row">
+
+
+        <div class="col-xs-12 col-sm-9 col-md-9">
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntGuid)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EntGuid)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EntDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EnterpriseTecDocSrcTypeTDES.TecDocSrcTypeDescr)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EnterpriseTecDocSrcTypeTDES.TecDocSrcTypeDescr)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ArticleCatalog)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ArticleCatalog)
+                </dd>
+
+            </dl>
+        </div>
+
+        <div class="col-xs-8 col-sm-3 col-md-3">
+            <div class="btn-group-vertical">
+                @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", new { searchEntGuid = Model.EntGuid }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = Model.EntGuid }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", new { searchEntGuid = Model.EntGuid }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = Model.EntGuid }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", new { searchEntGuid = Model.EntGuid }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", new { searchEntGuid = Model.EntGuid }, new { @class = "btn btn-info" })
+
+                @Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", new { searchEntGuid = Model.EntGuid }, new { @class = "btn btn-info" })
+            </div>
+        </div>
+
+        </div>
+    </div>
+<p/>
+<p>
+    @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+    {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = Model.EntGuid }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index") 
+</p>

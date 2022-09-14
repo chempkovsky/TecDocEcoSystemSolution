@@ -1,0 +1,123 @@
+﻿@using CarShop.Properties;
+
+@model TecDocEcoSystemDbClassLibrary.User2WorkPlaceHstTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Размещение исполнителей по рабочим местам", "User2WorkPlace", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+@if (  ! SearchEntBranchGuid.HasValue )
+{
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.User2WorkPlaceHstTDES_INDEX, "Index", "User2WorkPlaceHst", new { searchEntGuid = SearchEntGuid, SearchEntBranchGuid = SearchEntBranchGuid }, new { })</li>   
+        }
+    }
+</ol>
+@Html.ValidationSummary(true)    
+
+} else {    
+
+<div>
+    @*<h4>User2WorkPlaceHstTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.User2WorkPlaceHstTDES_INDEX, "Index", "User2WorkPlaceHst", new { searchEntGuid = SearchEntGuid, SearchEntBranchGuid = SearchEntBranchGuid }, new { })</li>   
+            }
+        }
+    </ol>
+
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkPlaceGuid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WorkPlaceGuid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SetAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SetAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReSetAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReSetAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntUserNic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntUserNic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</p>
+
+}    

@@ -1,0 +1,167 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.SuppRestTDESTmp
+
+@{
+    ViewBag.Title = Resources.CREATENEW_ACTION;
+    
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    String SearchEntSupplierId = ViewBag.SearchEntSupplierId as String;
+    String EntSupplierDescription = ViewBag.EntSupplierDescription as String;
+    
+}
+
+<h2>@Resources.CREATENEW_ACTION</h2>
+
+@if (String.IsNullOrEmpty(SearchEntSupplierId))
+{
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+        if (!String.IsNullOrEmpty(SearchEntSupplierId))
+        {
+            <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.ReplyRests, "Index", "EnterpriseSupplierRest", new { searchEntSupplierId = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+        
+        }
+    }
+</ol>
+
+    @Html.ValidationSummary(true)
+} else {
+
+@Html.ValidationSummary(true)
+    
+using (Html.BeginForm("Create", "EnterpriseSupplierRest")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>SuppRestTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+                if (!String.IsNullOrEmpty(SearchEntSupplierId))
+                {
+                    <li>@Html.ActionLink(EntSupplierDescription, "Details", "EnterpriseSupplier", new { id = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.ReplyRests, "Index", "EnterpriseSupplierRest", new { searchEntSupplierId = SearchEntSupplierId, searchEntGuid = SearchEntGuid }, new { })</li>
+                
+                }
+            }
+        </ol>
+
+
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.EntSupplierId)
+        @Html.HiddenFor(model => model.EntGuid);
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBranchArticle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntBranchArticle)
+                @Html.ValidationMessageFor(model => model.EntBranchArticle)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBranchSup, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntBranchSup)
+                @Html.ValidationMessageFor(model => model.EntBranchSup)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntArticleDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntArticleDescription)
+                @Html.ValidationMessageFor(model => model.EntArticleDescription)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ART_ARTICLE_NR, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ART_ARTICLE_NR)
+                <input type="submit" name="ART_ARTICLE_NRLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.ART_ARTICLE_NR)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SUP_TEXT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SUP_TEXT)
+                <input type="submit" name="ART_ARTICLE_NRLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.SUP_TEXT)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtAmount)
+                @Html.ValidationMessageFor(model => model.ArtAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtPrice)
+                @Html.ValidationMessageFor(model => model.ArtPrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastUpdated, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastUpdated)
+                @Html.ValidationMessageFor(model => model.LastUpdated)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastReplicated, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastReplicated)
+                @Html.ValidationMessageFor(model => model.LastReplicated)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternArticleEAN, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExternArticleEAN)
+                @Html.ValidationMessageFor(model => model.ExternArticleEAN)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.CREATE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "EnterpriseSupplierRest", new { searchEntGuid = SearchEntGuid, searchEntSupplierId = SearchEntSupplierId }, new { })
+</div>
+}

@@ -1,0 +1,261 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.ReturnBasketTDES>
+
+@{
+    ViewBag.Title = Resources.ReturnBasketTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription;
+
+    String SearchEntUserNic = ViewBag.SearchEntUserNic;
+
+    SelectList sliIsActive = ViewBag.sliIsActive;
+    SelectList sliIsReverse = ViewBag.sliIsReverse;
+    SelectList sliIsPaid = ViewBag.sliIsPaid;
+
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Возврат товара", "ReturnBasket", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.ReturnBasketTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            if (!String.IsNullOrEmpty(SearchEntUserNic))
+            {
+                <li>@Html.ActionLink(SearchEntUserNic, "Details", "EnterpriseBranchUsers", new { userId = SearchEntUserNic }, new { })</li>
+            }
+        }
+    }
+</ol>
+
+@if ( !String.IsNullOrEmpty(SearchEntUserNic) )
+{
+
+if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker) || (ViewBag.IsBranchSeller))
+{
+    <p>
+        @Html.ActionLink(Resources.CREATE_ACTION, "Create", "ReturnBasket", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchEntUserNic=SearchEntUserNic}, new { @class = "btn btn-primary" })
+    </p>
+}
+
+using (Html.BeginForm("Index", "ReturnBasket", FormMethod.Post, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+    @Html.Hidden("searchEntUserNic", SearchEntUserNic)
+    
+    <div class="form-group">
+    @Resources.FILTER_ISACTIVE     
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsActive", sliIsActive, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Resources.FILTER_ISPAID     
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsPaid", sliIsPaid, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Resources.FILTER_ISREVERSE     
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsReverse", sliIsReverse, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+TecDocEcoSystemDbClassLibrary.ReturnBasketTDES dummy = null;
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+<table class="table table-condensed">
+    <tr>
+
+        @*<th>
+                @Html.DisplayNameFor(model => dummy.WorkPlaceGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.EntUserNic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.SetAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.SpellGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.EntBranchGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.EntGuid)
+            </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => dummy.CreatedAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsPaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsReverse)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => dummy.PaidAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.ArtAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.PaymentSum)
+        </th>*@
+
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+    @if (Model != null) { 
+    foreach (var item in Model) {
+        <tr>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.WorkPlaceGuid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntUserNic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SetAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpellGuid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntBranchGuid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntGuid)
+                </td>*@
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsReverse)
+            </td>
+
+            @*<td>
+                @Html.DisplayFor(modelItem => item.PaidAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentSum)
+            </td>*@
+
+            <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker) || (ViewBag.IsBranchSeller))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntBasketGuid = item.RetBasketGuid, searchEntGuid = item.EntGuid, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntBasketGuid = item.RetBasketGuid, searchEntGuid = item.EntGuid, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker) || (ViewBag.IsBranchSeller))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntBasketGuid = item.RetBasketGuid, searchEntGuid = item.EntGuid, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+
+        <tr class="warning">
+            <td colspan="3">
+                <dl class="dl-horizontal">
+                    <dt class="alert-info">@Html.DisplayNameFor(model => dummy.ArtAmount)</dt>
+                    <dd class="alert-info">@Html.DisplayFor(modelItem => item.ArtAmount)</dd>
+
+                    <dt class="alert-success">@Html.DisplayNameFor(model => dummy.PaymentSum)</dt>
+                    <dd class="alert-success">@Html.DisplayFor(modelItem => item.PaymentSum)</dd>
+
+
+                    <dt>@Html.DisplayNameFor(model => dummy.Description)</dt>
+                    <dd>@Html.DisplayFor(modelItem => item.Description)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => dummy.PaidAt)</dt>
+                    <dd>@Html.DisplayFor(modelItem => item.PaidAt)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => dummy.Comments)</dt>
+                    <dd>@Html.DisplayFor(modelItem => item.Comments)</dd>
+
+                </dl>
+            </td>
+        </tr>
+
+        <tr class="visible-xs  visible-sm active">
+            <td colspan="3" class="btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker) || (ViewBag.IsBranchSeller))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntBasketGuid = item.RetBasketGuid, searchEntGuid = item.EntGuid, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntBasketGuid = item.RetBasketGuid, searchEntGuid = item.EntGuid, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker) || (ViewBag.IsBranchSeller))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntBasketGuid = item.RetBasketGuid, searchEntGuid = item.EntGuid, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+    }
+}
+
+</table>
+
+if (Model != null)    {
+@Html.PagedListPager( Model, page => Url.Action("Index", new {searchEntGuid=SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid, SearchEntUserNic=SearchEntUserNic, 
+    currentIsActive=ViewBag.currentIsActive, currentIsPaid = ViewBag.currentIsPaid, currentIsIsReverse=ViewBag.currentIsIsReverse, page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+}    
+    
+}    

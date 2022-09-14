@@ -1,0 +1,213 @@
+﻿@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.BranchAdminName;
+}
+
+<h2>@Resources.IndexByRoles</h2>
+<h3>@Resources.SolutionRoles</h3>
+
+
+
+<ul class="nav nav-pills">
+    <li class="active"><a href="#">Подразделение</a></li>
+    <li>@Html.ActionLink("Предприятие", "IndexByEnterpriseAdmin", "Home")</li>
+</ul>
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(Resources.BranchSellerName, "IndexByRoles", "Home")</li>
+    <li>@Html.ActionLink(Resources.BranchBookerName, "IndexByBooker", "Home")</li>
+    <li class="active"><a href="#">@Resources.BranchAdminName</a></li>
+    <li>@Html.ActionLink(Resources.BranchAuditName, "IndexByBranchAudit", "Home")</li>
+</ul>
+
+@*<ul class="nav nav-pills">
+        <li><a href="#">@Resources.EnterpriseAdminName</a></li>
+        <li><a href="#">@Resources.EnterpriseAuditName</a></li>
+        <li><a href="#">@Resources.EcoSystemAdminName</a></li>
+    </ul>*@
+
+<p />
+
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="btn-group-vertical">
+
+            @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+            @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", "EnterpriseBranchRate", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+
+
+            @Html.ActionLink(Resources.GuestBranchTDES_INDEX, "Index", "GuestBranch", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+        </div>
+
+    </div>
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">В обязанности роли "@Resources.BranchAdminName" входит</div>
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" }) Данная форма позволяет управлять адресами подразделения<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" }) Данная форма позволяет управлять контактами подразделения<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Данная форма позволяет управлять персоналом подразделенияю: добавлять новых пользователей, изменять роли и профили, блокировать учетные записи выбывших.
+                        Кликнув по ссылке подробно администратор перейдет на форму, где присутствует кнопка "Применить настройки".
+                        Дело в том что редактирование профиля пользователя и его ролей - это редактирование записей в БД.
+                        Чтобы эти настройки активировать необходимо кликнуть по указанной кнопке.
+                        Важно то, что если пользователь был ранее зарегистрирован в системе функция "Применить настройки" пароль пользователя не меняет.
+                        Порядок работы следующий: Администратор создает учетную запись и сам вносит пароль. Далее активирует функцию "Применить настройки".
+                        После этого сообщает исполнителю его login и пароль. Пользователь входит в систему и изменяет пароль.
+                        В результате этого системный администратор не сможет войти в решение через учетную запись исполнителя.<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Данная форма позволяет управлять перечнем рабочих мест подразделения: добавлять новые, блокировать существующие рабочие места, изменять профиль (наименование).<p />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">@Resources.PartialControl</div>
+            <div class="panel-body">
+                @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" }) данная форма позволяет изменить профиль подразделения (наименование)
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Просмотр данных предприятия без права изменять</div>
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Профиль предприятия к которому вы прикреплены<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Адреса предприятия к которому вы прикреплены<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Исполнители уровня предприятия (админы и аудиторы)<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Ваши бизнес-партнеры или оптовые поставщики товара<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Мировые брэнды товаров, которыми торгует ваше предприятие<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Артикулы товаров, которыми торгует ваше предприятиею.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">В обязанности роли "@Resources.BranchAdminName" входит</div>
+    <div class="panel-body">
+        После того как на удаленном интернет сервере развернуто <b>предприятие</b> с <b>GUID=00000000-0000-0000-1111-111111111111</b> и <b>для этого предприятия развернуто подразделение</b>
+        с таким же <b>GUID=00000000-0000-0000-1111-111111111111</b> администратор экосистемы удаленного узла обязан предоставить вам логин и пароль для формирования профиля вашего
+        магазина на сервере в интернет. Вы можете зарегистрировать профиль своего магазина по ссылке
+        <p>
+            @Html.ActionLink(Resources.GuestBranchTDES_INDEX, "Index", "GuestBranch", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+        </p>
+        Данный ресурс является инструментом настройки удаленного интернет сервера в части обработки запросов
+        покупателей на <b>ПОИСК</b> товаров для автомобиля с просмотром остатков и цен в разрезе по магазинам,
+        зарегистрированным в системе.
+        Эта информация используется и при обработке запросов покупателей на формирование <b>ЗАКАЗОВ</b> на магазин.
+        <p />
+        Напомним, условия, когда это требуется. Пусть вы в своей локальной сети (или на одном компьютере) на площадке
+        вашего магазина развернули решение и проводите продажи. Такой узел мы назовем <b>локальным узлом</b>.
+        Теперь вы захотели опубликовать информацию о наличии товара и ценах в интернет. Сервер в интернет мы назовем
+        <b>удаленным узлом</b>. <br />
+        Системный  администратор удаленного узла регистрирует ваше подразделение и высылает вам логин и пароль,
+        а так же URL адреса сервисов для репликации остатков и цен с вашего <b>локального</b> узла на <b>удаленный</b>.
+        Кроме этого сервисы используются и для получения информации об оформленных в интернет заказах на ваш магазин с <b>удаленного</b> узла на ваш <b>локальный узел</b>.
+        <br />
+        Помимо остатков на даленном сервере должна быть информация о местонахождении вашего магазина, рабочих днях и т.д.
+        Внесение таких данных является разовым действием и выполняется с использованием этой страницы и кнопок <b>Создать (редактировать).</b>
+        <p />
+        Еще раз, информация о подразделении, отображаемая на этой странице размещается ТОЛЬКО на удаленном сервере в интернет
+        или на том сервере,  который обслуживает запросы покупателей на наличие товара, опубликованного вашим подразделением (магазином).
+        Эту информацию покупатель будет видеть просматривая остатки и цены по выбраным автозапчастям.
+        <br />
+        Для внесения (изменения) информации о своем подразделении вы должны от администратора удаленного интернет сервера
+        получить логин и пароль. Вносимая информация размещается в модуле работы с остатками (<b>CarShopRest</b>).<br />
+        Если вы не внесли информацию о подразделении в данный ресурс, удаленный покупатель
+        не сможет увидеть ни ваше подразделение, ни остатки, ни цены по вашему магазину.
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">В обязанности роли "@Resources.BranchAdminName" входит</div>
+    <div class="panel-body">
+        Важной задачей является расширение каталога TecDoc товарными позициями, которых там нет, но которыми активно торгует ваш магазин.<br />
+        К перечню таких товаров отнисится клей, домкраты, авто-детали производителей, которые не публикуют свою продукцию в TecDoc.<p />
+
+        Товарные позиции или артикулы можно поделить на три группы:<p />
+        1. товарные позиции опубликованы в TecDoc<br />
+        2. товарные позиции не опубликованы в TecDoc, но есть аналоги, опубликованные в TecDoc<br />
+        3. товарные позиции не опубликованы в TecDoc и нет аналогов в TecDoc<p />
+
+        <b>Замечание:</b> Расширять TecDoc можно лишь в случае, если вы настроили решение на использование TecDoc в формате MSSQL.<p />
+
+        Расширяется каталог с помощью специального инструмента -- утилиты CarShopRestToWeb.exe<p />
+        @Html.ActionLink("Утилита CarShopRestToWeb.exe", "CarShopRestToWeb", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+        Перейдите по ссылке, чтобы прочесть о том, где скачать и как развернуть утилиту CarShopRestToWeb.exe<p />
+
+        @Html.ActionLink("19. Утилита CarShopRestToWeb.exe (1)", "CarShopRestToWeb", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+        Перейдите по ссылке, чтобы прочесть о том, что такое расширение каталога TecDoc артикулами, имеющими TecDoc-аналоги, и как этим манипулировать.
+        Заметим, что данная картотека может формироваться автоматически при загрузке остатков поставщиков и остатков вашего магазина.<p />
+        @Html.ActionLink("22. Утилита CarShopRestToWeb.exe (4)", "CarShopRestToWeb", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+        Перейдите по ссылке, чтобы прочесть о том, что такое расширение каталога TecDoc артикулами, не имеющими TecDoc-аналогов, и как этим манипулировать.
+        Заметим, что данная картотека может формироваться автоматически при загрузке остатков поставщиков и остатков вашего магазина.<p />
+
+        Мы рекомендуем слежующую стратегию. <p />
+        Вы получаете товар от оптового поставщика. Все оптовые поставщики на своих сайтах публикуют остатки и цены в виде CSV или EXCEL файлов.
+        Используя утилиту CarShopRestToWeb.exe импортируйте остатки поставщика во внутреннюю картотеку утилиты. При этом будут автоматически сформированы
+        картотека артикулов, имеющих TecDoc-аналоги и картотека артикулов не имеющих TecDoc-аналогов.
+        Загрузите сформированные картотеки в расширение TecDoc и в каталог вашего предприятия.
+
+        <b>Замечание:</b> Первичный импорт остатков поставщиков выполняется очень медленно, т.к. для каждой товарной позиции делается проверка, что она присутствует в TecDoc.
+        Если не найдена, то выполняется поиск в интернет аналогов. Если аналог найден, то выполняется проверка аналога на наличие в TecDoc.
+        Чтобы ускорить процесс обработки, помимо утилиты скачайте архив с MySQL-базой данных. В ней находятся данные по остатка многих поставщиков РБ
+        и уже сформированы картотека артикулов, имеющих TecDoc-аналоги (более 220 тысяч) и картотека артикулов, не имеющих TecDoc-аналоги (более 200 тысяч).
+        Все это сильно облегчит вашу нелегкую жизнь.
+
+
+
+    </div>
+</div>
+

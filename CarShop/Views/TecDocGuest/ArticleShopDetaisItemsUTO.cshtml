@@ -1,0 +1,305 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.GuestBranchSumTDES>
+
+@{
+    ViewBag.Title = Resources.GuestBranchSumTDES_INDEX;
+
+    string ART_ARTICLE_NR = ViewBag.ART_ARTICLE_NR;
+    string SUP_TEXT = ViewBag.SUP_TEXT;
+
+
+    int? MFA_ID = ViewBag.MFA_ID;
+    int? MOD_ID = ViewBag.MOD_ID;
+    int? TYP_ID = ViewBag.TYP_ID;
+    int? FluelId = ViewBag.FluelId;
+    int? topicId = ViewBag.topicId;
+    int? treeKindId = ViewBag.treeKindId;
+
+    int? tof_assemblyId = ViewBag.tof_assemblyId;
+    int? tof_suppliersId = ViewBag.tof_suppliersId;
+
+    SelectList slisearchTown = ViewBag.slisearchTown;
+    string searchTown = ViewBag.searchTown;
+
+
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        На этой же странице (с перечнем маазинов) вы можете перенести артикул в корзину Ваших заказов, <b>если вы уже зарегистрировались</b> в системе и выполнили <b>вход</b>.<p />
+
+        При выборе товара автоматически формируется заказ.<br />
+
+        <b>Правила формирования заказов следующие:</b><br />
+        Товар может предлагаться несколькими магазинами. Выбирая товар вы вибираете и магазин. <br />
+        Если заказ на выбранный магазин отсутствует в перечне ваших заказов, то будет оформлен новый заказ с указанием магазина и товар будет помещен в этот заказ.<br />
+        Если уже существует заказ на выбранный магазин, то товар будет помещен в этот ранее созданный заказ.<br />
+        Если при выборе товара, у ранее созданного заказа выставлен статус <b>Уже в обработке</b>, то будет оформлен новый заказ.<p />
+
+
+        Перейдите по ссылке @Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", new { }, new { @class = "btn btn-warning btn-xs" }), чтобы
+        просмотреть перечень уже оформленных вами заказов.<p />
+        Перейдите по ссылке @Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning btn-xs" }), чтобы
+        просмотреть ваш профиль.<p />
+        <hr />
+
+        Режим поиска <b>В наличии</b> покажет остатки и цены товаров, которые уже находятся на полках магазинов розничных продавцов.
+        <p />
+        Режим поиска <b>Под заказ</b> покажет остатки и цены товаров, которые находятся на складах оптовых поставщиков,
+        с которыми розница заключила договора на закупку товара.
+        Каждый магазин розничной продажи указывается свое время реализации заявки на товар <b>Под заказ</b>.<br />
+        При просмотре остатков и цен на вкладке <b>Под заказ</b> вы можете обнаружить <b>дублирование</b> как остатков так и цен
+        по одной и той же товарной позиции. Это не является ошибкой. Связано это с тем,
+        что разные оптовые поставщики могут предлагать один и тот же товар, но по разным ценам и иметь разные остатки.
+        Если магазин розничной продажи имеет договора более чем с одним оптовым поставщиком, то будут опубликованы остатки и цены в разрезе
+        по каждому поставщику.
+        <hr />
+
+
+        <button type="button" class="btn btn-info" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-remove-sign"></span> @Resources.HideHelp
+        </button>
+
+    </div>
+</div>
+
+
+<h2>@Resources.GuestBranchSumTDES_INDEX   :   @ViewBag.ART_ARTICLE_NR  :  @ViewBag.SUP_TEXT</h2>
+
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(Resources.BRANDS_INDEX, "Manufact", "TecDocGuest", new { }, new { })
+    </li>
+    @if (MFA_ID.HasValue)
+    {
+        <li>
+            @Html.ActionLink(Resources.TecDocModel_INDEX, "ModelTypes", "TecDocGuest", new
+            {
+                MFA_ID = MFA_ID
+            }, new { })
+        </li>
+        if (MOD_ID.HasValue)
+        {
+            <li>
+                @Html.ActionLink(Resources.CARMODELTYPE_INDEX, "ModelDetais", "TecDocGuest", new
+                {
+                    MFA_ID = MFA_ID,
+                    MOD_ID = MOD_ID,
+                    fluelId = FluelId
+                }, new { })
+            </li>
+            if (TYP_ID.HasValue)
+            {
+                <li>
+                    @Html.ActionLink(Resources.CARMODELTYPETREE_INDEX, "ModelDetaisTree", "TecDocGuest", new
+                    {
+                        MFA_ID = MFA_ID,
+                        MOD_ID = MOD_ID,
+                        fluelId = FluelId,
+                        TYP_ID = TYP_ID,
+                        topicId = topicId,
+                        treeKindId = treeKindId
+                    }, new { })
+                </li>
+
+                <li>
+                    @Html.ActionLink(ART_ARTICLE_NR + " : " + SUP_TEXT,
+                    "ModelDetaisItemsUTO", "TecDocGuest",
+                    new
+                    {
+                        MFA_ID = MFA_ID,
+                        MOD_ID = MOD_ID,
+                        TYP_ID = TYP_ID,
+                        fluelId = FluelId,
+                        topicId = topicId,
+                        treeKindId = treeKindId,
+                        tof_assemblyId = tof_assemblyId
+                    }, new { })
+                </li>
+            }
+        }
+    }
+</ol>
+
+
+<ul class="nav nav-tabs">
+    <li>
+        @Html.ActionLink(Resources.InStock, "ArticleShopDetaisItems", "TecDocGuest", new
+   {
+       ART_ARTICLE_NR = ART_ARTICLE_NR,
+       SUP_TEXT = SUP_TEXT,
+
+       MFA_ID = MFA_ID,
+       MOD_ID = MOD_ID,
+       TYP_ID = TYP_ID,
+       fluelId = FluelId,
+       topicId = topicId,
+       treeKindId = treeKindId,
+       tof_assemblyId = tof_assemblyId,
+       searchTown = searchTown
+
+
+
+   }, new { })
+    </li>
+    <li class="active"><a href="#">@Resources.UnderTheOrder</a></li>
+
+
+</ul>
+
+
+@if (Model != null)
+{
+
+using (Html.BeginForm("ArticleShopDetaisItemsUTO", "TecDocGuest", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE_TOWN</h3>
+        @Html.Hidden("ART_ARTICLE_NR", ART_ARTICLE_NR)
+        @Html.Hidden("SUP_TEXT", SUP_TEXT)
+       
+        @Html.Hidden("MFA_ID", MFA_ID)
+        @Html.Hidden("MOD_ID", MOD_ID)
+        @Html.Hidden("TYP_ID", TYP_ID)
+        @Html.Hidden("fluelId", FluelId)
+        @Html.Hidden("topicId", topicId)
+        @Html.Hidden("treeKindId", treeKindId)
+        @Html.Hidden("tof_assemblyId", tof_assemblyId)
+    <div class="form-group">
+        @Html.DropDownList("searchTown", slisearchTown, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+        <button type="button" class="btn btn-warning" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-question-sign"></span>
+        </button>
+    
+}
+    
+    
+    using (Html.BeginForm("DoSelectArticle", "TecDocGuest", FormMethod.Post))
+    {
+
+        @Html.Hidden("ART_ARTICLE_NR", ART_ARTICLE_NR)
+        @Html.Hidden("SUP_TEXT", SUP_TEXT)
+
+
+        var dummy = Model.FirstOrDefault();
+
+        if ((Model != null) && (Model.Count() > 0))
+        {
+
+            @*<input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-primary" />*@
+            <button type="submit"  name="DOSELECT_TITLE" class="btn btn-primary">
+                <span class="glyphicon glyphicon-shopping-cart"></span> @Resources.DOSELECT_TITLE
+            </button>
+    
+        }
+
+        var selected = true;
+
+
+        <table class="table table-condensed">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => dummy.ArtAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => dummy.ArtPrice)
+                </th>
+                <th>
+                    @Resources.ShopAttribute
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.RadioButton("EntBranchGuid", item.EntBranchGuid, selected, selected)
+
+                        @Html.DisplayFor(modelItem => item.ArtAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArtPrice)
+                    </td>
+                    <td>
+                        <b>
+                            @Html.DisplayFor(modelItem => item.EntBranchDescription)
+                            @if (!string.IsNullOrEmpty(item.ShopLicense))
+                            {
+                                <br />@Html.DisplayFor(modelItem => item.ShopLicense)
+                            }
+
+
+                            <br />@Html.DisplayNameFor(model => dummy.SuppTime) : @Html.DisplayFor(modelItem => item.SuppTime)
+
+                    </b><br />
+                    @Html.DisplayFor(modelItem => item.AddressPostCode)
+                    @Html.DisplayFor(modelItem => item.AddressRegion)
+                    @Html.DisplayFor(modelItem => item.AddressSettlementName)
+                    @Html.DisplayFor(modelItem => item.AddressStreetName)
+                    ( @Html.DisplayFor(modelItem => item.AddressLongitude), @Html.DisplayFor(modelItem => item.AddressLatitude)) <br />
+                    @Html.DisplayFor(modelItem => item.WorkingDays)
+                    @Html.DisplayFor(modelItem => item.WorkingTime)
+
+                    @if (!string.IsNullOrEmpty(item.Phones))
+                    {
+                        <br />@Html.DisplayFor(modelItem => item.Phones)
+                    }
+                    @if (!string.IsNullOrEmpty(item.SiteUrl))
+                    {
+                        <br />
+                        @*@Html.DisplayFor(modelItem => item.SiteUrl)*@
+                        <a href="@item.SiteUrl" target="_blank">@item.SiteUrl</a>
+                    }
+                    @if (!string.IsNullOrEmpty(item.ShopSupply))
+                    {
+                        <br />@Html.DisplayFor(modelItem => item.ShopSupply)
+                    }
+
+
+
+
+                    </td>
+                </tr>
+                selected = false;
+            }
+
+        </table>
+
+        if ((Model != null) && (Model.Count() > 0))
+        {
+            @*<input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-primary" />*@
+            <button type="submit"  name="DOSELECT_TITLE" class="btn btn-primary">
+                <span class="glyphicon glyphicon-shopping-cart"></span> @Resources.DOSELECT_TITLE
+            </button>
+    
+        }
+        else
+        {
+            <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+        }
+
+
+        @Html.PagedListPager(Model, page => Url.Action("ArticleShopIndexUTO", new
+        {
+            ART_ARTICLE_NR = ART_ARTICLE_NR,
+            SUP_TEXT = SUP_TEXT,
+            MFA_ID = MFA_ID,
+            MOD_ID = MOD_ID,
+            fluelId = FluelId,
+            TYP_ID = TYP_ID,
+            topicId = topicId,
+            tof_assemblyId = tof_assemblyId,
+            tof_suppliersId = tof_suppliersId,
+            treeKindId = treeKindId,
+            page,
+            searchTown = searchTown
+        }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+    }
+}

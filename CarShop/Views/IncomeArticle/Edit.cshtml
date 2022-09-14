@@ -1,0 +1,260 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.IncomeArticleTDES
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+
+    Guid? SearchIncomePayRollTDESGuid = ViewBag.searchIncomePayRollTDESGuid;
+    String SearchIncomePayRollDescr = ViewBag.searchIncomePayRollDescr;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Приход на магазин", "Income", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+@if ( !SearchIncomePayRollTDESGuid.HasValue )
+{
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            if (SearchIncomePayRollTDESGuid.HasValue)
+            {
+                <li>@Html.ActionLink(SearchIncomePayRollDescr, "Details", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = SearchIncomePayRollTDESGuid }, new {  })</li>
+                <li>@Html.ActionLink(Resources.IncomeArticleTDES_INDEX, "Index", "IncomeArticle", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchIncomePayRollTDESGuid = SearchIncomePayRollTDESGuid}, new { })</li>
+            }
+        }
+    }
+    </ol>
+
+
+    @Html.ValidationSummary(true)
+} else {
+
+
+
+using (Html.BeginForm("Edit", "IncomeArticle"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>IncomeArticleTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                    if (SearchIncomePayRollTDESGuid.HasValue)
+                    {
+                        <li>@Html.ActionLink(SearchIncomePayRollDescr, "Details", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = SearchIncomePayRollTDESGuid }, new { })</li>
+                        <li>@Html.ActionLink(Resources.IncomeArticleTDES_INDEX, "Index", "IncomeArticle", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchIncomePayRollTDESGuid = SearchIncomePayRollTDESGuid }, new { })</li>
+                    }
+                }
+            }
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.EntGuid)
+        @Html.HiddenFor(model => model.EntBranchGuid)
+        @Html.HiddenFor(model => model.IsProcessed)
+        @Html.HiddenFor(model => model.IsReversed)
+        @Html.HiddenFor(model => model.IncomePayRollTDESGuid)
+        @Html.HiddenFor(model => model.ArtAmountRest)
+        @Html.HiddenFor(model => model.CurrArtPrice)
+        @Html.HiddenFor(model => model.ProcessedState)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SupArticle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.SupArticle)*@
+                @Html.TextBoxFor(model => model.SupArticle, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.SupArticle)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SupBrandNic, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.SupBrandNic)*@
+                @Html.TextBoxFor(model => model.SupBrandNic, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.SupBrandNic)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntArticle, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntArticle)
+                <input type="submit" name="EnterpriseArticleLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.EntArticle)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBrandNic, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntBrandNic)
+                <input type="submit" name="EnterpriseBrandLookUp" value="..." data-look-up-input="data-look-up-input" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.EntBrandNic)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntArticleDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntArticleDescription)
+                @Html.ValidationMessageFor(model => model.EntArticleDescription)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.IsProcessed, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsProcessed)
+                @Html.ValidationMessageFor(model => model.IsProcessed)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsReversed, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsReversed)
+                @Html.ValidationMessageFor(model => model.IsReversed)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtAmount)
+                @Html.ValidationMessageFor(model => model.ArtAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PurchasePrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PurchasePrice)
+                @Html.ValidationMessageFor(model => model.PurchasePrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtPrice)
+                @Html.ValidationMessageFor(model => model.ArtPrice)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsRevaluate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsRevaluate)
+                @Html.ValidationMessageFor(model => model.IsRevaluate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comments, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Comments)*@
+                @Html.TextBoxFor(model => model.Comments, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.Comments)
+            </div>
+        </div>
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.ArtAmountRest, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtAmountRest)
+                @Html.ValidationMessageFor(model => model.ArtAmountRest)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrArtPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CurrArtPrice)
+                @Html.ValidationMessageFor(model => model.CurrArtPrice)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBranchGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntBranchGuid)
+                @Html.ValidationMessageFor(model => model.EntBranchGuid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntGuid)
+                @Html.ValidationMessageFor(model => model.EntGuid)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProcessedState, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProcessedState)
+                @Html.ValidationMessageFor(model => model.ProcessedState)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "IncomeArticle", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchIncomePayRollTDESGuid = SearchIncomePayRollTDESGuid }, new { })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocompleteVal")
+}
+    
+}    

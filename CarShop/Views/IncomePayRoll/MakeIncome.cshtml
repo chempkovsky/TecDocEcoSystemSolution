@@ -1,0 +1,177 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.IncomePayRollTDES
+
+@{
+    ViewBag.Title = Resources.MakeIncome_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Приход на магазин", "Income", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.MakeIncome_INDEX</h2>
+
+@if (  !SearchEntBranchGuid.HasValue )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            if (Model != null)
+            {
+                <li>@Html.ActionLink(Model.Description, "Details", "IncomePayRoll", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = Model.IncomePayRollTDESGuid}, new { })</li>
+            }
+        }
+    }
+    </ol>
+    <div class="alert alert-warning">@Html.ValidationSummary(true)</div>
+}
+else
+{
+
+
+
+<div>
+    @*<h4>IncomePayRollTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+            {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                   if (Model != null)
+                   {
+                    <li>@Html.ActionLink(Model.Description, "Details", "IncomePayRoll", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = Model.IncomePayRollTDESGuid}, new { })</li>
+                   }
+
+                }
+            }
+    </ol>
+    <div class="alert alert-warning">@Html.ValidationSummary(true)</div>
+
+	<hr />
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.IncomePayRollTDESGuid)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IncomePayRollTDESGuid)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntUserNic)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EntUserNic)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsProcessed)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsProcessed)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsReversed)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsReversed)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntSupplierId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EntSupplierId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntSupplierDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EntSupplierDescription)
+                </dd>
+            </dl>
+
+        </div>
+
+        <div class="col-xs-8 col-sm-4 col-md-4">
+            
+
+                @using (Html.BeginForm("MakeIncome", "IncomePayRoll"))
+                {
+                @Html.AntiForgeryToken()
+
+                @Html.Hidden("Id", Model.IncomePayRollTDESGuid)
+                @Html.Hidden("searchEntGuid", SearchEntGuid)
+                @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+                <div class="btn-group-vertical">
+                    @Html.ActionLink(Resources.GETSTATEINFO, "MakeIncome", "IncomePayRoll", new { Id = Model.IncomePayRollTDESGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-info" })
+                    <input type="submit" value="@Resources.MakeIncome_INDEX" class="btn btn-primary" />
+                </div>
+                }
+
+
+
+            
+        </div>
+
+    </div>
+
+</div>
+    
+    
+
+<p/>    
+
+<p>
+@if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+{
+    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = Model.IncomePayRollTDESGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-primary" })
+}
+@Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</p>
+
+    
+    
+}    

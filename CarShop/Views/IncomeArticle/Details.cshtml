@@ -1,0 +1,191 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.IncomeArticleTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+
+    Guid? SearchIncomePayRollTDESGuid = ViewBag.searchIncomePayRollTDESGuid;
+    String SearchIncomePayRollDescr = ViewBag.searchIncomePayRollDescr;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Приход на магазин", "Income", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+@if ( !SearchIncomePayRollTDESGuid.HasValue )
+{
+    
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            if (SearchIncomePayRollTDESGuid.HasValue)
+            {
+                <li>@Html.ActionLink(SearchIncomePayRollDescr, "Details", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = SearchIncomePayRollTDESGuid }, new {  })</li>
+                <li>@Html.ActionLink(Resources.IncomeArticleTDES_INDEX, "Index", "IncomeArticle", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchIncomePayRollTDESGuid = SearchIncomePayRollTDESGuid}, new { })</li>  
+            }
+        }
+    }
+</ol>
+    
+    
+    @Html.ValidationSummary(true)
+} else {
+
+
+<div>
+    @*<h4>IncomeArticleTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                if (SearchIncomePayRollTDESGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(SearchIncomePayRollDescr, "Details", "IncomePayRoll", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = SearchIncomePayRollTDESGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.IncomeArticleTDES_INDEX, "Index", "IncomeArticle", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchIncomePayRollTDESGuid = SearchIncomePayRollTDESGuid }, new { })</li>
+                }
+            }
+        }
+    </ol>
+
+	<hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SupArticle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SupArticle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupBrandNic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SupBrandNic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntArticle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntArticle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntBrandNic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntBrandNic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntArticleDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntArticleDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsProcessed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsProcessed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReversed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsReversed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtAmountRest)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtAmountRest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchasePrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PurchasePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrArtPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrArtPrice)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsRevaluate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsRevaluate)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { SupArticle = Model.SupArticle, SupBrandNic = Model.SupBrandNic, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchIncomePayRollTDESGuid = SearchIncomePayRollTDESGuid }, new { @class = "btn btn-primary" })
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "IncomeArticle", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchIncomePayRollTDESGuid = SearchIncomePayRollTDESGuid }, new { })
+</p>
+
+}    

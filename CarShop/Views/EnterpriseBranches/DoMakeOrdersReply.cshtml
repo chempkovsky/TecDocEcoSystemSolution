@@ -1,0 +1,157 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseBranchTDES
+
+@{
+    ViewBag.Title = Resources.MakeOrderReply;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Репликации заказов", "DoMakeOrdersReply", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.MakeOrderReply</h2>
+
+@if (!SearchEntGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+            if (Model != null)
+            {
+                <li>@Html.ActionLink(Model.EntBranchDescription, "Details", "EnterpriseBranches", new { id = Model.EntBranchGuid }, new { })</li> 
+            }
+            
+        }
+    </ol>
+
+    <div class="alert alert-warning">
+        @Html.ValidationSummary(true)
+    </div>
+} else {
+
+    <div class="alert alert-warning">
+        @Html.ValidationSummary(true)
+    </div>
+    
+<div>
+    @*<h4>EnterpriseBranchTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+            if (Model != null)
+            {
+                if (Model != null)
+                {
+                    <li>@Html.ActionLink(Model.EntBranchDescription, "Details", "EnterpriseBranches", new { id = Model.EntBranchGuid }, new { })</li> 
+                }
+            
+            }
+
+        }
+    </ol>
+    <hr />
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntBranchGuid)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EntBranchGuid)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntBranchDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EntBranchDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BranchTypeId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BranchType.BranchTypeDescription)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsVisible)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsVisible)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TecDocCatalog)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TecDocCatalog)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SalesCatalog)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SalesCatalog)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IncomeCatalog)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IncomeCatalog)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderCatalog)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrderCatalog)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="col-xs-8 col-sm-4 col-md-4">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker))
+            {
+                using (Html.BeginForm("DoMakeOrdersReply", "EnterpriseBranches"))
+                {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("id", Model.EntBranchGuid)
+                <div class="btn-group-vertical">
+                    @Html.ActionLink(Resources.GETSTATEINFO, "DoMakeOrdersReply", "EnterpriseBranches", new { id = Model.EntBranchGuid }, new { @class = "btn btn-info" })
+                    <input type="submit" value="@Resources.MakeOrderReply" class="btn btn-primary" />
+                </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+    
+}

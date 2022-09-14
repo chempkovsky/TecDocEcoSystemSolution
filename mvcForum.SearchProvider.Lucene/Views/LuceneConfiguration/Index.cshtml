@@ -1,0 +1,72 @@
+﻿@model mvcForum.SearchProvider.Lucene.ViewModels.LuceneViewModel
+@using MVCBootstrap.Web.Mvc.Extensions;
+@{
+	String ns = "mvcForum.SearchProvider.Lucene";
+	ViewBag.Title = Html.LocalizedHtmlString("PageTitle", ns);
+	Layout = "~/Areas/ForumAdmin/Views/Shared/adminlayout.cshtml";
+}
+<section id="lucene">
+	<div class="row-fluid">
+		<div class="span12">
+@if (TempData.ContainsKey("Saved") && ((Boolean)TempData["Saved"])) {
+			<div class="alert alert-success">
+				<h4 class="alert-heading">@Html.LocalizedString("SuccessHeading", ns)</h4>
+				@Html.LocalizedString("SuccessBody", ns)
+			</div>
+}
+			@using (Html.BeginForm("index", "luceneconfiguration", new { area = "forumadmin" }, FormMethod.Post, new { @class = "form-horizontal" })) {
+				<fieldset>
+					<legend>@Html.LocalizedString("UpdateForm", ns)</legend>
+					@Html.ValidationSummary()
+					<div class="control-group">
+						@Html.LabelFor(x => x.Enabled, new { @class = "control-label" })
+						<div class="controls">
+							@Html.CheckBoxFor(x => x.Enabled)
+							@*<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>*@
+						</div>
+					</div>
+					<div class="control-group">
+						@Html.LabelFor(x => x.RunAsynchronously, new { @class = "control-label" })
+						<div class="controls">
+							@Html.CheckBoxFor(x => x.RunAsynchronously)
+						</div>
+					</div>
+					<div class="control-group">
+						@Html.LabelFor(x => x.Delay, new { @class = "control-label" })
+						<div class="controls">
+							@Html.TextBoxFor(x => x.Delay, new { @class = "input-small" })
+							@*<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>*@
+						</div>
+					</div>
+					<div class="control-group">
+						@Html.LabelFor(x => x.TitleWeight, new { @class = "control-label" })
+						<div class="controls">
+							@Html.TextBoxFor(x => x.TitleWeight, new { @class = "input-small" })
+						</div>
+					</div>
+					<div class="control-group">
+						@Html.LabelFor(x => x.TopicWeight, new { @class = "control-label" })
+						<div class="controls">
+							@Html.TextBoxFor(x => x.TopicWeight, new { @class = "input-small" })
+						</div>
+					</div>
+					<div class="control-group">
+						@Html.LabelFor(x => x.StickyWeight, new { @class = "control-label" })
+						<div class="controls">
+							@Html.TextBoxFor(x => x.StickyWeight, new { @class = "input-small" })
+						</div>
+					</div>
+					<div class="control-group">
+						@Html.LabelFor(x => x.AnnouncementWeight, new { @class = "control-label" })
+						<div class="controls">
+							@Html.TextBoxFor(x => x.AnnouncementWeight, new { @class = "input-small" })
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">@Html.LocalizedString("Button", ns)</button>
+					</div>
+				</fieldset>
+			}
+		</div>
+	</div>
+</section>

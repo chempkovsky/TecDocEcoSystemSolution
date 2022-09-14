@@ -1,0 +1,79 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseCategoryTDES
+
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+}
+
+<h2>@Resources.DELETE_ACTION</h2>
+
+@if (! SearchEntGuid.HasValue )
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { })</li>
+    }
+    </ol>
+
+    @Html.ValidationSummary(true)
+}
+else
+{
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>EnterpriseCategoryTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+            {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { })</li>
+            }
+    </ol>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CategoryDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryParent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CategoryParent)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("categoryId", Model.CategoryId)
+        @Html.Hidden("searchEntGuid", SearchEntGuid)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { })
+        </div>
+    }
+</div>
+
+}    

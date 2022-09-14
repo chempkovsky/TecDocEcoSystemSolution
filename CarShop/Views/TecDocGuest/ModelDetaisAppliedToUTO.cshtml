@@ -1,0 +1,231 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@using PagedList.Mvc;
+
+@*@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPE_TD>*@
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.MODELTYPE_TD>
+
+@{
+    ViewBag.Title = Resources.TECDOC_APPLICABLE;
+    int? MFA_ID = ViewBag.MFA_ID;
+    int? MOD_ID = ViewBag.MOD_ID;
+    int? TYP_ID = ViewBag.TYP_ID;
+    int? FluelId = ViewBag.FluelId;
+    int? topicId = ViewBag.topicId;
+    int? ART_ID = ViewBag.ART_ID;
+    string ART_ARTICLE_NR = ViewBag.ART_ARTICLE_NR;
+    int? treeKindId = ViewBag.treeKindId;
+    int? tof_assemblyId = ViewBag.tof_assemblyId;
+    int? GA_NR = ViewBag.GA_NR;
+
+}
+
+
+<h3>@Resources.TECDOC_APPLICABLE</h3>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(ART_ID + " : " + ART_ARTICLE_NR,
+                      "ModelDetaisItemsUTO", "TecDocGuest",
+               new
+               {
+                   MFA_ID = MFA_ID,
+                   MOD_ID = MOD_ID,
+                   TYP_ID = TYP_ID,
+                   fluelId = FluelId,
+                   topicId = topicId,
+                   treeKindId = treeKindId,
+                   tof_assemblyId = tof_assemblyId
+               }, new { })
+    </li>
+</ol>
+
+
+@if ((Model != null) && (Model.Count() > 0))
+{
+    var dummy = Model.FirstOrDefault();
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => dummy.TEX_TEXT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.TYP_KV_ENGINE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.TYP_KV_BODY)
+            </th>
+            @*<th class="hidden-xs hidden-sm">
+                    @Html.DisplayNameFor(model => model.TYP_DOORS)
+                </th>*@
+
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="active">
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_TEXT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TYP_KV_ENGINE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TYP_KV_BODY)
+                </td>
+                @*<td class="hidden-xs hidden-sm">
+                        @Html.DisplayFor(modelItem => item.TYP_DOORS)
+                    </td>*@
+
+
+            </tr>
+
+            <tr class="warning">
+                <td colspan="3">
+                    <dl class="dl-horizontal">
+
+
+                        @*@if (!string.IsNullOrEmpty(item.TYP_DOORS))
+                            {
+                                <dt class="visible-xs visible-sm">
+                                    @Html.DisplayNameFor(model => model.TYP_DOORS)
+                                </dt>
+                                <dd class="visible-xs visible-sm">
+                                    @Html.DisplayFor(modelItem => item.TYP_DOORS)
+                                </dd>
+                            }*@
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.TYP_PCON_START) / @Html.DisplayNameFor(model => dummy.TYP_PCON_END)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_PCON_START) / @Html.DisplayFor(modelItem => item.TYP_PCON_END)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.TYP_KW_FROM) / @Html.DisplayNameFor(model => dummy.TYP_HP_FROM)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_KW_FROM) / @Html.DisplayFor(modelItem => item.TYP_HP_FROM)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.TYP_VALVES) * @Html.DisplayNameFor(model => dummy.TYP_CYLINDERS)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_VALVES) * @Html.DisplayFor(modelItem => item.TYP_CYLINDERS)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => dummy.TYP_CCM)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.TYP_CCM)
+                        </dd>
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_ABS))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_ABS)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_ABS)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_ASR))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_ASR)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_ASR)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_BRAKE_TYPE))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_BRAKE_TYPE)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_BRAKE_TYPE)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_BRAKE_SYST))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_BRAKE_SYST)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_BRAKE_SYST)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_FUEL_SUPPLY))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_FUEL_SUPPLY)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_FUEL_SUPPLY)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_CATALYST))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_CATALYST)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_CATALYST)
+                            </dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(item.TYP_KV_TRANS))
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => dummy.TYP_KV_TRANS)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TYP_KV_TRANS)
+                            </dd>
+                        }
+
+                    </dl>
+
+                </td>
+            </tr>
+
+        }
+
+    </table>
+
+    @Html.PagedListPager(Model, page => Url.Action("ModelDetaisAppliedToUTO", new
+{
+    MFA_ID = MFA_ID,
+    MOD_ID = MOD_ID,
+    fluelId = FluelId,
+    TYP_ID = TYP_ID,
+    topicId = topicId,
+    ART_ARTICLE_NR = ART_ARTICLE_NR,
+    GA_NR = GA_NR,
+    ART_ID = ART_ID,
+    treeKindId = treeKindId,
+    tof_assemblyId = tof_assemblyId,
+    page = page
+}), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+
+}
+else
+{
+    <div class="alert alert-warning">@Resources.NO_ANY_DATA</div>
+}

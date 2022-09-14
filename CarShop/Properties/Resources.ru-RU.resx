@@ -1,0 +1,1288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GUEST_SEARCH_EAN" xml:space="preserve">
+    <value>Штрих-Код (EAN)</value>
+  </data>
+  <data name="ENTERPRISE_NOT_DEFINED" xml:space="preserve">
+    <value>Предприятие не определено</value>
+  </data>
+  <data name="SpellNotFound" xml:space="preserve">
+    <value>Текущая смена не определена</value>
+  </data>
+  <data name="SaleBasketReportStornedTDES_INDEX" xml:space="preserve">
+    <value>Сторнированные за смену</value>
+  </data>
+  <data name="AddressType_INDEX" xml:space="preserve">
+    <value>Тип адреса</value>
+  </data>
+  <data name="ArticleSearchByEntArticleDescription" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EcoSystemAdminAction1" xml:space="preserve">
+    <value>Роль "Администратор экосистемы" дает возможность зарегистрировать в данной информационной системе одно или несколько предприятий и привязать к каждому из предприятий штат администраторов и аудиторов. После создания Администратор экосистемы передает логин и пароль администраторам предприятий.</value>
+  </data>
+  <data name="EcoSystemAdminAction2" xml:space="preserve">
+    <value>За каждым предприятием закрепляется флаг активности. Флаг в выключенном состоянии останавливает отклик экосистемы на запросы и изменение данных по этому предприятию.</value>
+  </data>
+  <data name="EcoSystemAdminAction3" xml:space="preserve">
+    <value>Тем не менее право влючить флаг активности оставляется за администраторами предприятия. Чтобы запретить администраторам предприятий повторное влючение информационных ресурсов предприятия в работу, администратор экосистемы обязан выключить аналогичный флаг на учетных записях администраторов предприятий.</value>
+  </data>
+  <data name="EcoSystemAdminAction4" xml:space="preserve">
+    <value>И наоборот, при включении ресурсов предприятия в работу. Администратор экосистемы обязан включить флаг активности хотябы у одного администратора предприятия.</value>
+  </data>
+  <data name="EcoSystemAdminAction5" xml:space="preserve">
+    <value>При отключении (или включении) флага активности для учетной записи администратора предприятия не происходит изменение ни пароля, ни учетных данных. Выполняется простая блокировка (разблокировка).</value>
+  </data>
+  <data name="EcoSystemAdminAction6" xml:space="preserve">
+    <value>Стрктура данных организована в виде дерева с вершиной в узле предприятия. Поэтому первый шаг -- это переход к списку предприятий. На появившееся странице будут даны рекомендации по работе с остальными узлами дерева.</value>
+  </data>
+  <data name="EcoSystemAdminAction7" xml:space="preserve">
+    <value>Типизаторы</value>
+  </data>
+  <data name="Boolean_YES" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="TECDOC_APPLICABLE" xml:space="preserve">
+    <value>Применяемость</value>
+  </data>
+  <data name="FILTER_TITLE_FLUEL" xml:space="preserve">
+    <value>Укажите вид топлива авто</value>
+  </data>
+  <data name="SaleBasketTDES_PAYMENT_OK" xml:space="preserve">
+    <value>Операция проведена УСПЕШНО. Остатки изменены.</value>
+  </data>
+  <data name="GuestOrderTDES_LastUpdatedLargeThan" xml:space="preserve">
+    <value>Не превышая чем</value>
+  </data>
+  <data name="EDIT_ACTION" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="EnterpriseSupplierTDES_NOTFOUND" xml:space="preserve">
+    <value>Поставщик не найден</value>
+  </data>
+  <data name="ReturnBasketArticleTDES_CANNOTCHANGE" xml:space="preserve">
+    <value>Изменение списка корзины(врзврата) допускается, если она активна и неоплачени.</value>
+  </data>
+  <data name="PutArticleInBasket" xml:space="preserve">
+    <value>Поместить в корзину</value>
+  </data>
+  <data name="EnterpriseArticle_INDEX" xml:space="preserve">
+    <value>Артикулы</value>
+  </data>
+  <data name="SaleBasketTDES_WP_ERROR" xml:space="preserve">
+    <value>Не могу провести операцию: изменилось рабочее место </value>
+  </data>
+  <data name="ArtAmountRestSum" xml:space="preserve">
+    <value>Кол.Ост.</value>
+  </data>
+  <data name="TreeAxles" xml:space="preserve">
+    <value>Подвеска</value>
+  </data>
+  <data name="SpellCloseDateLessThanOpenDate" xml:space="preserve">
+    <value>Дата закрытия смены не может быть меньше даты открытия</value>
+  </data>
+  <data name="SqlDublicateValue" xml:space="preserve">
+    <value>Дублирование записей</value>
+  </data>
+  <data name="ReplyProfile" xml:space="preserve">
+    <value>Профили</value>
+  </data>
+  <data name="BySoatoSettlementName" xml:space="preserve">
+    <value>Поиск по Насел. пункту</value>
+  </data>
+  <data name="SheetRevaluationTDES_INDEX" xml:space="preserve">
+    <value>Ведомость переоценки</value>
+  </data>
+  <data name="GuestOrderTDES_AUTOCREATE" xml:space="preserve">
+    <value>Заказ на магазин создается автоматически, при выборе товара.</value>
+  </data>
+  <data name="SEARCH_STRING_IS_EMPTY" xml:space="preserve">
+    <value>Строка поиска не задана</value>
+  </data>
+  <data name="EnterpriseBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Подразделение не найдено</value>
+  </data>
+  <data name="FILTER_ISSELLER" xml:space="preserve">
+    <value>Продавец</value>
+  </data>
+  <data name="Soato_LOOKUP" xml:space="preserve">
+    <value>Выбор Соато(Населенного пункта)</value>
+  </data>
+  <data name="BranchSpellTDES_UNBLOCKED_CANNOTCLOSE" xml:space="preserve">
+    <value>Не могу закрыть незаблокированную смену</value>
+  </data>
+  <data name="IncomeArticleTDES_INDEX" xml:space="preserve">
+    <value>Артикулы</value>
+  </data>
+  <data name="SaleBasketReportTDES_INDEX" xml:space="preserve">
+    <value>Продажи за смену</value>
+  </data>
+  <data name="EcoSystemAdminName" xml:space="preserve">
+    <value>Администратор экосистемы</value>
+  </data>
+  <data name="BranchSpellTDES_BLOCK" xml:space="preserve">
+    <value>Заблокировать</value>
+  </data>
+  <data name="BranchSpellTDES_CLOSE" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="FILTER_ISADMIN" xml:space="preserve">
+    <value>Админ.</value>
+  </data>
+  <data name="FILTER_ISAUDIT" xml:space="preserve">
+    <value>Аудит.</value>
+  </data>
+  <data name="PAGE_OF" xml:space="preserve">
+    <value> из </value>
+  </data>
+  <data name="SaleBasketArticleTDES_ROLECANNOTCHANGE" xml:space="preserve">
+    <value>Изменение списка корзины(продажи) не разрешается для текущей роли</value>
+  </data>
+  <data name="MYCONTACTS" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="SendEnterpriseBranchTDES_ISNOTACTIVE" xml:space="preserve">
+    <value>У отправляющей стороны отключена активность</value>
+  </data>
+  <data name="EnterpriseCategoryTDES_INDEX" xml:space="preserve">
+    <value>Категории товаров</value>
+  </data>
+  <data name="TecDocModel_INDEX" xml:space="preserve">
+    <value>Модели по брэндам</value>
+  </data>
+  <data name="OrderBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Стол заказов не развернут администратором</value>
+  </data>
+  <data name="ByEntSupplierId" xml:space="preserve">
+    <value>Поиск по Nic</value>
+  </data>
+  <data name="ReturnBasketTDES_PRICELESSZERO" xml:space="preserve">
+    <value>Цена меньше нуля</value>
+  </data>
+  <data name="Multiplexer" xml:space="preserve">
+    <value>Коэфф.уц.(нац.)</value>
+  </data>
+  <data name="SendEnterpriseBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Отправляющая сторона не зарегистрирована в системе</value>
+  </data>
+  <data name="LookForArticleSelt_INDEX" xml:space="preserve">
+    <value>Проданный артикул</value>
+  </data>
+  <data name="ArticleSearchByBrandNic" xml:space="preserve">
+    <value>Брэнд предприятия</value>
+  </data>
+  <data name="ReportTypeStorned" xml:space="preserve">
+    <value>Сторнированные</value>
+  </data>
+  <data name="OpenSpellDoWorkPlaceAndUnBlock" xml:space="preserve">
+    <value>Не забудьте рассадить пользователей по рабочим местам и разблокировать смену.</value>
+  </data>
+  <data name="CreateNewSpellIfCurrentClose" xml:space="preserve">
+    <value>Открыть новую смену можно, если текущая смена закрыта</value>
+  </data>
+  <data name="SearchTecDocByTree" xml:space="preserve">
+    <value>По авто</value>
+  </data>
+  <data name="TreeMotors" xml:space="preserve">
+    <value>Двигатели</value>
+  </data>
+  <data name="GuestProfileTDES_EDIT" xml:space="preserve">
+    <value>Редактировать мой профиль</value>
+  </data>
+  <data name="EnterpriseBranchTDES_ISNOTACTIVE" xml:space="preserve">
+    <value>Подразделение не Активно.</value>
+  </data>
+  <data name="ShowMarkdown" xml:space="preserve">
+    <value>С уценкой</value>
+  </data>
+  <data name="SqlError" xml:space="preserve">
+    <value>Ошибка выполнения записи в БД</value>
+  </data>
+  <data name="BranchSpell_INDEX" xml:space="preserve">
+    <value>Текущая смена</value>
+  </data>
+  <data name="IncomePayRollTDES_ISPOCESSES" xml:space="preserve">
+    <value>Не могу вносить изменения -- Ведомость уже оприходована(проведена)</value>
+  </data>
+  <data name="CANT_PARS_TO_INT" xml:space="preserve">
+    <value>Не могу преобразовать в целое</value>
+  </data>
+  <data name="ReturnBasketTDES_AMOUNTLESSZERO" xml:space="preserve">
+    <value>Кол-во к возврату меньше нуля</value>
+  </data>
+  <data name="SHOWNOTACTIVE" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="SettlementType_INDEX" xml:space="preserve">
+    <value>Тип насел.пунктов</value>
+  </data>
+  <data name="HomePageIndex" xml:space="preserve">
+    <value>Данный сайт заинтересует как покупателей так и продавцов автозапчастей.</value>
+  </data>
+  <data name="EnterpriseAdminAction1" xml:space="preserve">
+    <value>Первое, что должен делать Администратор предприятия после получения логина и пароля -- это войти в систему и изменить свой пароль входа.</value>
+  </data>
+  <data name="EnterpriseAdminAction3" xml:space="preserve">
+    <value>Следующей шаг -- это создание записей для одного или нескольких подразделений предприятия. Одно подразделение необходимо создать в любом случае.</value>
+  </data>
+  <data name="EnterpriseAdminAction2" xml:space="preserve">
+    <value>При необходимости администратор предприятия может изменить наименование предприятия.</value>
+  </data>
+  <data name="EnterpriseAdminAction4" xml:space="preserve">
+    <value>Роль администратора предприятия позволяет изменять штат своего предприятия: "администраторы предприятия" и "аудиторы предприятия"</value>
+  </data>
+  <data name="ProfileSearchByLastName" xml:space="preserve">
+    <value>Поиск по фамилии</value>
+  </data>
+  <data name="ReturnBasketTDES_ISPAYED" xml:space="preserve">
+    <value>Возврат проведен</value>
+  </data>
+  <data name="ShopAttribute" xml:space="preserve">
+    <value>Профиль магазина</value>
+  </data>
+  <data name="SiteUrl" xml:space="preserve">
+    <value>Сайт</value>
+  </data>
+  <data name="BranchSellerName" xml:space="preserve">
+    <value>Продавец подразделения</value>
+  </data>
+  <data name="GuestOrderTDES_CREATE" xml:space="preserve">
+    <value>Создать мой заказ</value>
+  </data>
+  <data name="SaleBasket_NOTDEFINED" xml:space="preserve">
+    <value>Заказ не определен</value>
+  </data>
+  <data name="EnterpriseAuditName" xml:space="preserve">
+    <value>Аудитор предприятия</value>
+  </data>
+  <data name="ReturnBasketReportIncomeTDES_INDEX" xml:space="preserve">
+    <value>Проведены по приходу</value>
+  </data>
+  <data name="ProfileSearchByNic" xml:space="preserve">
+    <value>Поиск по Nic</value>
+  </data>
+  <data name="DETAILS_ACTION" xml:space="preserve">
+    <value>Подробно</value>
+  </data>
+  <data name="NO_ANY_DATA" xml:space="preserve">
+    <value>В БД нет доп. данных по артуклу</value>
+  </data>
+  <data name="EnterpriseUserContactHelp1" xml:space="preserve">
+    <value>Контакт это или телефон или e-mail. При создании, редактировании конгтакта можно этот тип задать. Контакт имеет следующие поля Guid -- идентификатор записи уникальный на уровне интернет, Контакт -- это или телефон или e-mail, Активность -- флаг выключен если контакт устарел, Видимость -- если флаг выключен, то другие пользователи не будут видеть этот контакт.</value>
+  </data>
+  <data name="IncomePayRollTDES_NOTFOUND" xml:space="preserve">
+    <value>Ведомость не найдена</value>
+  </data>
+  <data name="LookForArticleRest_INDEX" xml:space="preserve">
+    <value>Искать в остатках</value>
+  </data>
+  <data name="StreetType_INDEX" xml:space="preserve">
+    <value>Тип улиц</value>
+  </data>
+  <data name="SaleBasketTDES_BY_GuestOrderGuid" xml:space="preserve">
+    <value>Создано через заказ:</value>
+  </data>
+  <data name="Phones" xml:space="preserve">
+    <value>Tel.</value>
+  </data>
+  <data name="TECDOC_GA_TEXT" xml:space="preserve">
+    <value>Наим.групп</value>
+  </data>
+  <data name="GuestOrderTDES_DETAIL" xml:space="preserve">
+    <value>Детальный профиль заказа</value>
+  </data>
+  <data name="CanNotParceDateFrom" xml:space="preserve">
+    <value>Не могу преобразовать строку в дату для фильтра (начиная с)</value>
+  </data>
+  <data name="BranchRestTDES_NOTFOUND" xml:space="preserve">
+    <value>Входной объект не найден в БД</value>
+  </data>
+  <data name="Results_TITLE" xml:space="preserve">
+    <value>Итог</value>
+  </data>
+  <data name="Country_INDEX" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="RevaluationArticleTDES_INDEX" xml:space="preserve">
+    <value>Артикул переоценки</value>
+  </data>
+  <data name="BranchOrderTDES_INDEX" xml:space="preserve">
+    <value>Заказ на магазин</value>
+  </data>
+  <data name="TECDOC_MASTER_BEZ" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="CategorySearchById" xml:space="preserve">
+    <value>Код категории</value>
+  </data>
+  <data name="GUEST_MANUF_IDS_INDEX" xml:space="preserve">
+    <value>Номер Конструкционный</value>
+  </data>
+  <data name="SaleBasketTDES_INDEX" xml:space="preserve">
+    <value>Продажи (корзины)</value>
+  </data>
+  <data name="GuestOrderArticleTDES_INDEX" xml:space="preserve">
+    <value>Товары в заказе</value>
+  </data>
+  <data name="GuestOrderArticleTDES_ISMAX" xml:space="preserve">
+    <value>Достигнут максимум наименований в заказе.</value>
+  </data>
+  <data name="EnterpriseSupplierHelp1" xml:space="preserve">
+    <value>Не путайте поставщика и брэнд. Примерами брэнда являются Coca-Cola,  Oriflame. Примером поставщика является Шатэ-М. Поставщик -- это ваш бизнес партнер у которого вы закупаете товар. С каждой записью поставщика связываются адреса поставщика и контакты. Чтобы редактировать(просматривать) адреса и контакты поставщика перейдите на вкладку "Подробно". Кнопки в нижней части экрана дают вам переход на соответствующие странички. Ссылка на поставщика используется при формировании ведомостей прихода.</value>
+  </data>
+  <data name="YOUAREGUESTifThan" xml:space="preserve">
+    <value>На этом сайте магазины автозапчастей публикуют свои товары и цены. И вам предоставляется возможность поиска и выполнеия заказа на один или несколько магазинов вашего города.</value>
+  </data>
+  <data name="ArticleSearchByExternBrandNic" xml:space="preserve">
+    <value>Внешний Брэнд</value>
+  </data>
+  <data name="OrderBranchTDES_ISNOTACTIVE" xml:space="preserve">
+    <value>Стол заказов заблокирован администратором</value>
+  </data>
+  <data name="WorkPlace_INDEX" xml:space="preserve">
+    <value>Рабочие места</value>
+  </data>
+  <data name="SaleBasket_ISPAYED_OR_REVERSED" xml:space="preserve">
+    <value>Заказ уже оплачен(или сторнирован)</value>
+  </data>
+  <data name="SaleBasketReportNotPayedTDES_INDEX" xml:space="preserve">
+    <value>Неплаченные за смену</value>
+  </data>
+  <data name="GuestOrderTDES_NOARTCOUNT" xml:space="preserve">
+    <value>Заказа не содержит товаров к продаже</value>
+  </data>
+  <data name="ShowHideBtn" xml:space="preserve">
+    <value>Спрятать/Показать</value>
+  </data>
+  <data name="BranchSpellHstTDES_OpenAtLargeThan" xml:space="preserve">
+    <value>Не превышая:</value>
+  </data>
+  <data name="TreeCommercialVehicles" xml:space="preserve">
+    <value>Комерческие авто</value>
+  </data>
+  <data name="SheetRevaluationTDES_CANNOTDELETE" xml:space="preserve">
+    <value>Не могу удалить уже проведенную ведомость</value>
+  </data>
+  <data name="BranchSpellTDES_NOTFOUND" xml:space="preserve">
+    <value>Нет открытой смены</value>
+  </data>
+  <data name="SHOWACTIVE" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="AmbiguousChoiceOrLackOfChoice" xml:space="preserve">
+    <value>Неоднозначный выбор (Более одного внутреннего артукула закреплено за текущ.артикулом TECDOC)</value>
+  </data>
+  <data name="ArtDistrib" xml:space="preserve">
+    <value>Движение</value>
+  </data>
+  <data name="ToPayment" xml:space="preserve">
+    <value>К оплате</value>
+  </data>
+  <data name="UnBlockSpellWhenActive" xml:space="preserve">
+    <value>(Раз)блокировать смену можно, если она открыта</value>
+  </data>
+  <data name="GuestBranchTDES_INDEX" xml:space="preserve">
+    <value>Интернет Профиль магазина</value>
+  </data>
+  <data name="GuestOrderTDES_RESETPRICES" xml:space="preserve">
+    <value>Актуализировать цены</value>
+  </data>
+  <data name="SaleBasketArticleTDES_INDEX" xml:space="preserve">
+    <value>Товары</value>
+  </data>
+  <data name="CategoryItemSearchById" xml:space="preserve">
+    <value>Поиск по ID</value>
+  </data>
+  <data name="CloseCurrentSpellFirst" xml:space="preserve">
+    <value>До открытия новой смены закройте текущую.</value>
+  </data>
+  <data name="GuestOrderTDES_ISDONE" xml:space="preserve">
+    <value>Нельзя добавить в исполненный или реплицированный заказ</value>
+  </data>
+  <data name="BrandSearchByNic" xml:space="preserve">
+    <value>По Ник</value>
+  </data>
+  <data name="BySoatoId" xml:space="preserve">
+    <value>Поиск по Соато</value>
+  </data>
+  <data name="MANUF_IDS_INDEX" xml:space="preserve">
+    <value>Конструкционный номер</value>
+  </data>
+  <data name="SaleBasketTDES_PAYMENTERROR_STATUS" xml:space="preserve">
+    <value>Ошибка БД при изменении статуса заказа</value>
+  </data>
+  <data name="SaleBasketReportIncomeTDES_INDEX" xml:space="preserve">
+    <value>Списано с прихода</value>
+  </data>
+  <data name="GUEST_SEARCH_TECDOCID" xml:space="preserve">
+    <value>Номер TecDoc</value>
+  </data>
+  <data name="BranchSpellIsBlockedOrIsNotActive" xml:space="preserve">
+    <value>Смена или блокирована или закрыта</value>
+  </data>
+  <data name="EnterpriseCategoryTDES_NOT_DEFINED" xml:space="preserve">
+    <value>Сатегория не определена</value>
+  </data>
+  <data name="ReplyOrders" xml:space="preserve">
+    <value>Заказы</value>
+  </data>
+  <data name="EnterpriseAudit1" xml:space="preserve">
+    <value>Роль аудитора предприятия позволяет просматривать все дерево данных предприятия, к которому аудитор привязан.</value>
+  </data>
+  <data name="EnterpriseAudit2" xml:space="preserve">
+    <value>Для каждого узла данных аудитору предоставляется ссылка "Детально", позволяющая погружаться на всю глубину дерева данных. К примеру, перейдя на форму "Детально" для узла "Предприятие", аудитор получает возможности перейти к списку пользователей. И опять перейдя на форму "Детально" выбранного пользователя аудитор получает доступ к списку контактов пользователя.</value>
+  </data>
+  <data name="DoSelectArticle_RESTNOTFOUND" xml:space="preserve">
+    <value>Остаток не найден</value>
+  </data>
+  <data name="NoSuchArticule" xml:space="preserve">
+    <value>Не найду артикулы по TECDOC нотации</value>
+  </data>
+  <data name="PurchasePriceSum" xml:space="preserve">
+    <value>Сумм.Закупки</value>
+  </data>
+  <data name="WorkPlace_IS_NOT_DEFINED" xml:space="preserve">
+    <value>Неопределено рабочее место</value>
+  </data>
+  <data name="ApplyOptions" xml:space="preserve">
+    <value>Применить настройки</value>
+  </data>
+  <data name="TECDOC_ART_ID" xml:space="preserve">
+    <value>Aрткл.</value>
+  </data>
+  <data name="Boolean_NO" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="SaleBasketArticleTDES_NOTHINGTOSTORN" xml:space="preserve">
+    <value>Для указанного проданного артикула кол-во для возврата == 0</value>
+  </data>
+  <data name="SEARCH_SUPPID" xml:space="preserve">
+    <value>Id поставщ.</value>
+  </data>
+  <data name="ActiveSpellCannotBeDeleted" xml:space="preserve">
+    <value>Открытая смена не может быть удалена</value>
+  </data>
+  <data name="CREATE_ACTION" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="GestUserNic_EXISTS" xml:space="preserve">
+    <value>В БД уже существует пользователь с указанным NIC</value>
+  </data>
+  <data name="CategorySearchByParent" xml:space="preserve">
+    <value>Код родителя категории</value>
+  </data>
+  <data name="ArticleSearchByExternArticle" xml:space="preserve">
+    <value>Внешний Артукул</value>
+  </data>
+  <data name="OpenSpellInBlockedMode" xml:space="preserve">
+    <value>Смена открывается в блокированном состоянии. Не забудьте разблокировать.</value>
+  </data>
+  <data name="BranchType_INDEX" xml:space="preserve">
+    <value>Типы подразделений</value>
+  </data>
+  <data name="CARMODELTYPETREEITEMANALOG_INDEX" xml:space="preserve">
+    <value>Аналог</value>
+  </data>
+  <data name="GuestOrderTDES_LastUpdatedLessThan" xml:space="preserve">
+    <value>Создан начиная с</value>
+  </data>
+  <data name="ArticleSearchByTecDoc" xml:space="preserve">
+    <value>Артикул Внешний</value>
+  </data>
+  <data name="TecDocCountryLang" xml:space="preserve">
+    <value>Язык и Cтрана TecDoc</value>
+  </data>
+  <data name="GuestBranchSumTDES_INDEX" xml:space="preserve">
+    <value>Предложения магазинов</value>
+  </data>
+  <data name="ReturnBasketTDES_ISCREATED_IN_ANOTHERSPELL" xml:space="preserve">
+    <value>Корзина создана в другой смене</value>
+  </data>
+  <data name="CARMODELTYPETREEITEMDETAIL_INDEX" xml:space="preserve">
+    <value>Артикул</value>
+  </data>
+  <data name="BranchBookerName" xml:space="preserve">
+    <value>Главный продавец (бухгалтер) подразделения</value>
+  </data>
+  <data name="BranchGuestProfileTDES_INDEX" xml:space="preserve">
+    <value>Профиль заказа</value>
+  </data>
+  <data name="ReturnBasketReportTDES_INDEX" xml:space="preserve">
+    <value>Возвраты за смену</value>
+  </data>
+  <data name="TECDOC_ART_ARTICLE_NR" xml:space="preserve">
+    <value>Aрткл.Пост.</value>
+  </data>
+  <data name="CREATENEW_ACTION" xml:space="preserve">
+    <value>Создать запись</value>
+  </data>
+  <data name="User2WorkPlaceHstTDES_INDEX" xml:space="preserve">
+    <value>История Польз. на Раб.месте</value>
+  </data>
+  <data name="NewArtPriceSum" xml:space="preserve">
+    <value>Сумма в новых ценах</value>
+  </data>
+  <data name="User_IS_NOT_DEFINED" xml:space="preserve">
+    <value>Не определен пользователь</value>
+  </data>
+  <data name="SuppRestTDES_INDEX" xml:space="preserve">
+    <value>Остатки поставщиков</value>
+  </data>
+  <data name="CARMODELTYPETREEITEMS_INDEX" xml:space="preserve">
+    <value>Перечень деталей</value>
+  </data>
+  <data name="Rounding" xml:space="preserve">
+    <value>Округл.</value>
+  </data>
+  <data name="ReturnBasketArticleTDES_ROLECANNOTCHANGE" xml:space="preserve">
+    <value>Изменение списка корзины(возврата) не разрешается для текущей роли</value>
+  </data>
+  <data name="MakeUser2WorkPlace" xml:space="preserve">
+    <value>Закрепить пользователя за рабоч.местом</value>
+  </data>
+  <data name="GUEST_SEARCH_SUPPID" xml:space="preserve">
+    <value>Номер изготовителя</value>
+  </data>
+  <data name="SaleBasket_ISCREATED_IN_ANOTHERSPELL" xml:space="preserve">
+    <value>Заказ создан в другой смене</value>
+  </data>
+  <data name="PartialControl" xml:space="preserve">
+    <value>Редактирование Без права удаления(добавления)</value>
+  </data>
+  <data name="GuestOrderTDES_NOTFOUND" xml:space="preserve">
+    <value>Не найду указанный заказ : </value>
+  </data>
+  <data name="BranchRestTDES_NOTDEFINED" xml:space="preserve">
+    <value>Входной объект не определен</value>
+  </data>
+  <data name="LANGUAGES_INDEX" xml:space="preserve">
+    <value>Язык вывода</value>
+  </data>
+  <data name="SEARCH_ACTION" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="SaleBasketTDES_ISREVERCED" xml:space="preserve">
+    <value>Заказ сторнирован</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_INDEX" xml:space="preserve">
+    <value>Настройки репликаций</value>
+  </data>
+  <data name="TECDOC_TEX_VALUE" xml:space="preserve">
+    <value>Значение</value>
+  </data>
+  <data name="DoMakeSheetRevaluation_INDEX" xml:space="preserve">
+    <value>Провести переоценку</value>
+  </data>
+  <data name="MakeReturn" xml:space="preserve">
+    <value>Провести возврат</value>
+  </data>
+  <data name="DELETE_ACTION" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="SpellCloseDateLargeThanOpenDate" xml:space="preserve">
+    <value>Дата  открытия смены новой не может быть меньше даты закрытия одной из предыдущих</value>
+  </data>
+  <data name="DOCANCEL_TITLE" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="ArticleSearchByExternArticleEAN" xml:space="preserve">
+    <value>Внешний EAN</value>
+  </data>
+  <data name="SEARCH_TECDOCID" xml:space="preserve">
+    <value>Id TecDoc</value>
+  </data>
+  <data name="SearchTecDocByArticle" xml:space="preserve">
+    <value>Искать по номеру</value>
+  </data>
+  <data name="TECDOC_SUP_ID" xml:space="preserve">
+    <value>Пр.Id</value>
+  </data>
+  <data name="DOSELECT_TITLE" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="SHOWALL" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="YOUAREGUESTif" xml:space="preserve">
+    <value>Если вы автолюбитель</value>
+  </data>
+  <data name="BasketDefinitionIsNotDefined" xml:space="preserve">
+    <value>Данные корзины не определены</value>
+  </data>
+  <data name="Address_INDEX" xml:space="preserve">
+    <value>Адреса</value>
+  </data>
+  <data name="SOATO" xml:space="preserve">
+    <value>СОАТО</value>
+  </data>
+  <data name="EnterpriseBranchRateTDES_INDEX" xml:space="preserve">
+    <value>Обменные курсы</value>
+  </data>
+  <data name="BranchAudit1" xml:space="preserve">
+    <value>Роль дает возможность просматривать данные предприятия, к которому привязан исполнитель.</value>
+  </data>
+  <data name="BranchAudit2" xml:space="preserve">
+    <value>Роль дает возможность просматривать данные подразделения, к которому привязан исполнитель.</value>
+  </data>
+  <data name="TECDOC_GA_NR" xml:space="preserve">
+    <value>Группа</value>
+  </data>
+  <data name="ArtAmountSum" xml:space="preserve">
+    <value>Кол.Закуп</value>
+  </data>
+  <data name="BranchAdmin2" xml:space="preserve">
+    <value>Частично редактировать (без права удаления или добавления) атрибуты своего подразделения</value>
+  </data>
+  <data name="BranchAdmin3" xml:space="preserve">
+    <value>И полный контроль на данных привязанных к своему подразделению</value>
+  </data>
+  <data name="BranchAdmin1" xml:space="preserve">
+    <value>Роль администратора подразделения дает возможность просматривать данные предприятия, к которому привязан исполнитель. </value>
+  </data>
+  <data name="SpellGivenNotFound" xml:space="preserve">
+    <value>Выбранная смена не определена</value>
+  </data>
+  <data name="IncomePayRollTDES_INDEX" xml:space="preserve">
+    <value>Приходная ведомость</value>
+  </data>
+  <data name="Branch_INDEX" xml:space="preserve">
+    <value>Подразделения</value>
+  </data>
+  <data name="ToReverce" xml:space="preserve">
+    <value>К сторнированию</value>
+  </data>
+  <data name="CurrentOptionsAreApplied" xml:space="preserve">
+    <value>Текущие настройки Применены</value>
+  </data>
+  <data name="EnterpriseTDES_ITEM" xml:space="preserve">
+    <value>Предприятие</value>
+  </data>
+  <data name="CanChangeRecordForYourSelf" xml:space="preserve">
+    <value>Можете менять только свои учетные данные</value>
+  </data>
+  <data name="GuestBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Не могу создать профиль -- не найду подразделение</value>
+  </data>
+  <data name="ReportTypePayed" xml:space="preserve">
+    <value>Оплаченные</value>
+  </data>
+  <data name="ReturnBasketTDES_AMOUNTINCORRECT" xml:space="preserve">
+    <value>Кол-во к возврату превышает проданное минус сторнированное</value>
+  </data>
+  <data name="BranchSpellTDES_UNBLOCK" xml:space="preserve">
+    <value>Разблокировать</value>
+  </data>
+  <data name="YOUARESELLERifThan" xml:space="preserve">
+    <value>Вам БЕСПЛАТНО предоставляется программное обеспечение -полнофункциональная учетная система, используя которую вы в автоматическом режиме сможете публиковать наличие своих товаров и цены. Вы можете развернуть и использовать это программное обеспечение локально и публиковать остатки и цены в интернет. Вы можете развернуть и использовать это программное обеспечение в Интернет без потери функциональности.</value>
+  </data>
+  <data name="SaleBasketArticleTDES_NOTFOUND" xml:space="preserve">
+    <value>Не найду указанный товар как проданный (с закрытой сменой)</value>
+  </data>
+  <data name="MakeOrderReply" xml:space="preserve">
+    <value>Реплицировать заказы</value>
+  </data>
+  <data name="DoMakeOrder" xml:space="preserve">
+    <value>В корзину</value>
+  </data>
+  <data name="EnterpriseBrandHelp1" xml:space="preserve">
+    <value>Не путайте поставщика и брэнд. Примерами брэнда являются Coca-Cola,  Oriflame. Примером поставщика является Шатэ-М. Поставщик -- это ваш бизнес партнер у которого вы закупаете товар. Брэнд -- это то, что вы найдете на коробке вашего товара. С каждой записью брэнда связывается перечень артикулов, торговлю которыми осуществляет ваше предприятие. Чтобы перейти к перечню артикулов по выбранному бренду зайдите на страничку "Подробно". Кнопка в нижней части экрана переведет вас на страничку Артикулов.</value>
+  </data>
+  <data name="TreeUniversals" xml:space="preserve">
+    <value>Универсальный</value>
+  </data>
+  <data name="ReturnBasketArticleTDES_INDEX" xml:space="preserve">
+    <value>Товары возврата</value>
+  </data>
+  <data name="EnterpriseTDES_NOTDEFINED" xml:space="preserve">
+    <value>Предприятие не найдено</value>
+  </data>
+  <data name="SAVE_ACTION" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="SaleBasketTDES_DISTRIBUTEDERROR" xml:space="preserve">
+    <value>Не могу провести операцию: ошибка распределенной транзакции</value>
+  </data>
+  <data name="EnterpriseBranchUsersHelp1" xml:space="preserve">
+    <value>За подразделением закрепляется штат подразделения со следующим набором ролей: администратор подразделения, аудитор подразделения, бухгалтер (или старший продавец) и продавец. За каждым исполнителем можно закрепить контакты. Сделать это можно через страничку "Подробно" для выбранного пользователя из списка.</value>
+  </data>
+  <data name="TecDocLang" xml:space="preserve">
+    <value>Язык вывода результатов</value>
+  </data>
+  <data name="EnterpriseArticleHelp1" xml:space="preserve">
+    <value>Артикул предприятия реально состоит из двух артикулов: внутреннего и внешнего. Внутренний артикул используется самим предприятием и его подразделениями для реализации учета движения товаров и услуг. Внешний артикул -- это, то что понятно покупателю, т.е. то, что он видит на коробке товара: Брэнд, Наименование, и Штрих-код (EAN). Допускается разным внутренним артикулам ставить в соответствие один и тот же внешний артикул. При редактировании артикула предоставлена возможность выбрать внешний артикул из каталога TecDoc.</value>
+  </data>
+  <data name="EnterpriseArticleHelp2" xml:space="preserve">
+    <value>Реализованы два представления для работы с артикулами. На первое представление можно выйти со стоанички "Подробно" описания Брэнда. В этом случае вы получаете артикулы с фильтром по Брэнду. Либо вы можете перейти на артикулы со странички "Подробно" вашего предприятия. В этом случае вы получаете все артикулы без фильтрации по Брэнду.</value>
+  </data>
+  <data name="EnterpriseBranchRestHelp1" xml:space="preserve">
+    <value>Запись остатка включает в себя артикур+поставщик подразделения, внешние артикур+поставщик, кол-во в наличии и цена за единицу продукции. Есть два технических поля -- это время последнего обновления записи и время последней репликации на центральный сервер, если решение настроено на работу с репликацией.</value>
+  </data>
+  <data name="EnterpriseBranchWorkPlacesHelp1" xml:space="preserve">
+    <value>Рабочее место продаца является обобщением кассового аппарата. После открытия смены (открывается в блокированном режиме) необходимо рассадить продавцов по рабочим местам. После этого разблокировать. Если при открытии смены продавцы не меняют свои рабочие места, то операцию прикрепления можно не выполнять. смену.</value>
+  </data>
+  <data name="ArticleSearchByIncomePayRollTDESGuid" xml:space="preserve">
+    <value>Ведомость</value>
+  </data>
+  <data name="ReportTypeReturned_INDEX" xml:space="preserve">
+    <value>Возвраты за смену</value>
+  </data>
+  <data name="ReturnBasketTDES_INDEX" xml:space="preserve">
+    <value>Возвраты</value>
+  </data>
+  <data name="Soato_INDEX" xml:space="preserve">
+    <value>Соато</value>
+  </data>
+  <data name="ToMakeReturn" xml:space="preserve">
+    <value>К проведению</value>
+  </data>
+  <data name="SaleBasketTDES_USER_ERROR" xml:space="preserve">
+    <value>Не могу провести операцию: изменился исполнитель</value>
+  </data>
+  <data name="COUNTRIES_INDEX" xml:space="preserve">
+    <value>Впервые продана в</value>
+  </data>
+  <data name="MakeIncome_INDEX" xml:space="preserve">
+    <value>Оприходовать ведомость</value>
+  </data>
+  <data name="FILTER_ISREVERSE" xml:space="preserve">
+    <value>Сторнированно</value>
+  </data>
+  <data name="SaleBasketTDES_RESTERROR" xml:space="preserve">
+    <value>Не могу провести операцию: ошибка изменения остатка</value>
+  </data>
+  <data name="PriceCurrencyIso" xml:space="preserve">
+    <value>Валюта цены</value>
+  </data>
+  <data name="CurrArtPriceSum" xml:space="preserve">
+    <value>Сумм.ост.в тек.ценах</value>
+  </data>
+  <data name="BranchRest_INDEXDetail" xml:space="preserve">
+    <value>Детализируйте выбор</value>
+  </data>
+  <data name="ExchRate" xml:space="preserve">
+    <value>Курс</value>
+  </data>
+  <data name="GuestOrderTDES_INDEX" xml:space="preserve">
+    <value>Мои заказы</value>
+  </data>
+  <data name="GuestOrderTDES_ISMAX" xml:space="preserve">
+    <value>Кол-во заказов  максимально. Для создания нового удалите старые заказы.</value>
+  </data>
+  <data name="CreateSheetRevaluation" xml:space="preserve">
+    <value>Сформировать ведомость переоценки</value>
+  </data>
+  <data name="ArticleSearchByBranch" xml:space="preserve">
+    <value>Артикул подразделения</value>
+  </data>
+  <data name="Currency_INDEX" xml:space="preserve">
+    <value>Валюта</value>
+  </data>
+  <data name="AutoParts" xml:space="preserve">
+    <value>Автозапчасти</value>
+  </data>
+  <data name="ProductCategory_INDEX" xml:space="preserve">
+    <value>Категории товаров</value>
+  </data>
+  <data name="GuestOrderTDES_EDIT" xml:space="preserve">
+    <value>Изменить профиль заказа (активность)</value>
+  </data>
+  <data name="ReturnBasketTDES_ISPAYED_OR_REVERSED" xml:space="preserve">
+    <value>Текущая корзина уже проведена</value>
+  </data>
+  <data name="OverallControl" xml:space="preserve">
+    <value>Редактирование</value>
+  </data>
+  <data name="EnterpriseAddressHelp1" xml:space="preserve">
+    <value>При заполнении полей адреса воспользуйтесь кодификатором COATO. Выбор населенного пункта через кодификатор COATO правильно (автоматически) заполнит область, район, тип населенного пункта. Флаг активности выключается, если адрес стал не актуален. Флаг видимость определяет видимость адреса внешним системам или в интернете</value>
+  </data>
+  <data name="GETSTATEINFO" xml:space="preserve">
+    <value>Состояние процесса</value>
+  </data>
+  <data name="CanNotParceDateTil" xml:space="preserve">
+    <value>Не могу преобразовать строку в дату для фильтра (Не превышая чем)</value>
+  </data>
+  <data name="TreePassengerCars" xml:space="preserve">
+    <value>Пассажирские авто</value>
+  </data>
+  <data name="ReportTypeNotReturned_INDEX" xml:space="preserve">
+    <value>Не проведены за смену</value>
+  </data>
+  <data name="HideHelp" xml:space="preserve">
+    <value>Спрятать справку</value>
+  </data>
+  <data name="BrandSearchByDesc" xml:space="preserve">
+    <value>По наименованию</value>
+  </data>
+  <data name="CloseSpellWhenBlocked" xml:space="preserve">
+    <value>Закрыть смену можно, если она блокирована</value>
+  </data>
+  <data name="TECDOC_EAN_INDEX" xml:space="preserve">
+    <value>EAN</value>
+  </data>
+  <data name="SaleBasketArticleTDES_CANNOTCHANGE" xml:space="preserve">
+    <value>Изменение списка корзины(продажи) допускается, если она активна и неоплачени.</value>
+  </data>
+  <data name="EnterpriseCategoryItemTDES_INDEX" xml:space="preserve">
+    <value>Узлы категории</value>
+  </data>
+  <data name="ReplyArticles" xml:space="preserve">
+    <value>Товары</value>
+  </data>
+  <data name="ReportTypeNotReturned" xml:space="preserve">
+    <value>Не проведены</value>
+  </data>
+  <data name="OperSum" xml:space="preserve">
+    <value>Сумма переоценки</value>
+  </data>
+  <data name="MAKEPAYMENT" xml:space="preserve">
+    <value>Оплатить</value>
+  </data>
+  <data name="SEARCH_EAN" xml:space="preserve">
+    <value>EAN</value>
+  </data>
+  <data name="TecDocSelect" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="BranchUserNotSeller" xml:space="preserve">
+    <value>Исполнитель не является продавцом</value>
+  </data>
+  <data name="BACKTOLIST_ACTION" xml:space="preserve">
+    <value>К списку</value>
+  </data>
+  <data name="CategorySearchByDescr" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="BRANDS_INDEX" xml:space="preserve">
+    <value>Брэнд</value>
+  </data>
+  <data name="ReportTypeReturned" xml:space="preserve">
+    <value>Проведены</value>
+  </data>
+  <data name="TECDOC_TEX_UNIT" xml:space="preserve">
+    <value>Единица</value>
+  </data>
+  <data name="TECDOC_TEX_TEXT" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="EnterpriseTDES_INDEX" xml:space="preserve">
+    <value>Предприятия</value>
+  </data>
+  <data name="BranchSpellTDES_CLOSED_CANNOTWORK" xml:space="preserve">
+    <value>Если смена закрыта, допускается открытие новой смены и только</value>
+  </data>
+  <data name="BranchSpellHstTDES_OpenAtLessThan" xml:space="preserve">
+    <value>Дата открытия: Начиная с:</value>
+  </data>
+  <data name="FILTER_TITLE" xml:space="preserve">
+    <value>Текущий фильтр</value>
+  </data>
+  <data name="ArtPriceSum" xml:space="preserve">
+    <value>Сумм.в нач.ценах</value>
+  </data>
+  <data name="BranchSpellTDES_ISNOTACTIVE" xml:space="preserve">
+    <value>Текущая смена или блокирована или закрыта</value>
+  </data>
+  <data name="YOUAREGUEST" xml:space="preserve">
+    <value>Вы покупатель (Автолюбитель).</value>
+  </data>
+  <data name="GuestOrderArticleTDES_CREATE" xml:space="preserve">
+    <value>Добавить в заказ</value>
+  </data>
+  <data name="YOUARESELLERif" xml:space="preserve">
+    <value>Если вы продавец автозапчастей в розницу</value>
+  </data>
+  <data name="IncomePayRollReport" xml:space="preserve">
+    <value>Отчет</value>
+  </data>
+  <data name="FILTER_BRANCHTYPE" xml:space="preserve">
+    <value>Тип подразделения</value>
+  </data>
+  <data name="MakeSpellClosed_INDEX" xml:space="preserve">
+    <value>Списать с прихода</value>
+  </data>
+  <data name="ENTERPRISEUSERSLIST" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="BranchSpellHstTDES_INDEX" xml:space="preserve">
+    <value>История смен</value>
+  </data>
+  <data name="BranchSpellHstTDES_TITLE" xml:space="preserve">
+    <value>Смена</value>
+  </data>
+  <data name="NEXT_TITLE" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="SearchOriginal" xml:space="preserve">
+    <value>Оригинальные каталоги</value>
+  </data>
+  <data name="ViewControl" xml:space="preserve">
+    <value>Просмотр.</value>
+  </data>
+  <data name="FILTER_NIC" xml:space="preserve">
+    <value>Фильтр по NIC</value>
+  </data>
+  <data name="AutoPartsMessage" xml:space="preserve">
+    <value>Сайт для автолюбителей и продавцов автозапчастей в розницу</value>
+  </data>
+  <data name="DISTRIBUTE_RATES" xml:space="preserve">
+    <value>Разнести курсы</value>
+  </data>
+  <data name="ReturnBasketTDES_PROFILE" xml:space="preserve">
+    <value>Профиль тек. корзины(Возврата)</value>
+  </data>
+  <data name="BranchUser_INDEX" xml:space="preserve">
+    <value>Штат подразделения</value>
+  </data>
+  <data name="IncomePayRollTDES_CANNOTCHANGE" xml:space="preserve">
+    <value>Не могу изменять(удалять) уже оприходованую ведомость</value>
+  </data>
+  <data name="FILTER_ADDRESSTYPE" xml:space="preserve">
+    <value>Тип адреса</value>
+  </data>
+  <data name="SolutionRoles" xml:space="preserve">
+    <value>В решении реализована поддержка ниже перечисленных ролей</value>
+  </data>
+  <data name="ContactType_INDEX" xml:space="preserve">
+    <value>Типы контактов</value>
+  </data>
+  <data name="SaleBasketTDES_ISPAYED" xml:space="preserve">
+    <value>Заказ оплачен</value>
+  </data>
+  <data name="CategoryItemSearchByGroup" xml:space="preserve">
+    <value>Поиск по подгруппе</value>
+  </data>
+  <data name="CategoryItemSearchByDescr" xml:space="preserve">
+    <value>Поиск по Наименованию</value>
+  </data>
+  <data name="YOUARESELLER" xml:space="preserve">
+    <value>Вы продавец или владелец бизнеса по продаже автозапчастей</value>
+  </data>
+  <data name="ArticleSearchByEntArticle" xml:space="preserve">
+    <value>Артукул</value>
+  </data>
+  <data name="BranchUserNotFound" xml:space="preserve">
+    <value>Исполнитель не найден в БД</value>
+  </data>
+  <data name="GuestOrderTDES_RESETPRICES_ISENDED" xml:space="preserve">
+    <value>Актуализация цен закончена</value>
+  </data>
+  <data name="EnterpriseUserTDES_INDEX" xml:space="preserve">
+    <value>Штат предприятия</value>
+  </data>
+  <data name="CARMODELTYPE_INDEX" xml:space="preserve">
+    <value>Типы модели</value>
+  </data>
+  <data name="ReturnBasketTDES_NOTFOUND" xml:space="preserve">
+    <value>Не найду корзину возврата</value>
+  </data>
+  <data name="User2WorkPlace_INDEX" xml:space="preserve">
+    <value>Пользователь на Раб.месте</value>
+  </data>
+  <data name="EnterpriseBrand_INDEX" xml:space="preserve">
+    <value>Брэнды</value>
+  </data>
+  <data name="EnterpriseAdminName" xml:space="preserve">
+    <value>Администратор предприятия</value>
+  </data>
+  <data name="EnterpriseUsersHelp3" xml:space="preserve">
+    <value>Если вы создали пользователя, но он не может войти в систему. Воспользуйтесь кнопкой "Применить настройки". При этом будет выполнена повторная репликация ролей пользователя в инфраструктуру безопасности информационной системы. Если окажется, что пользователь уже зарегистрирован, его пароль не меняется.</value>
+  </data>
+  <data name="EnterpriseUsersHelp2" xml:space="preserve">
+    <value>Если для выбранной учетной записи перейти на страничку "Подробно", то предоставится возможность редактировать и просматривать контакты (e-mail  телефоны). Для перехода используйте кнопку "контакты" внизу экрана.</value>
+  </data>
+  <data name="EnterpriseUsersHelp1" xml:space="preserve">
+    <value>За каждым пользователем закрепляются NIC (Это логин), ФИО, флаг Активен (доступ в систему), Флаг Админ (роль администратора предприятия), Флаг Аудит (аудитор предприятия) и пароль. Пароль вводится при создании учетной записи. Далее пользователю передается его логин и пароль. При первом входе в систему, пользователь обязан изменить свой пароль. Администратор предприятия может блокировать другого администратора. Может блокировать и самого себя при желании. После блокировки всех администраторов предприятия, необходимо привлекать администратора экосистемы для выполнения разблокировки.</value>
+  </data>
+  <data name="FILTER_ISDONE" xml:space="preserve">
+    <value>Заказ Обработан</value>
+  </data>
+  <data name="FILTER_ISPAID" xml:space="preserve">
+    <value>С оплатой</value>
+  </data>
+  <data name="InStock" xml:space="preserve">
+    <value>В наличии</value>
+  </data>
+  <data name="BranchAuditName" xml:space="preserve">
+    <value>Аудитор подразделения</value>
+  </data>
+  <data name="SaleBasketTDES_PROFILE" xml:space="preserve">
+    <value>Профиль тек. корзины(продажи)</value>
+  </data>
+  <data name="GuestOrderArticleTDES_EDIT" xml:space="preserve">
+    <value>Изменить заказ</value>
+  </data>
+  <data name="GuestProfileTDES_CREATE" xml:space="preserve">
+    <value>Создать мой профиль</value>
+  </data>
+  <data name="GuestEnterpriseBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Не настроен стол заказов</value>
+  </data>
+  <data name="SheetRevaluationTDES_CANNOTCANGE" xml:space="preserve">
+    <value>Не могу изменить уже проведенную ведомость</value>
+  </data>
+  <data name="SaleBasketTDES_PAYMENTERROR" xml:space="preserve">
+    <value>Ошибка БД при выполнении операции для</value>
+  </data>
+  <data name="EnterpriseTecDocSrcTypeTDES_TITLE" xml:space="preserve">
+    <value>Типы источников TecDoc</value>
+  </data>
+  <data name="BranchUserNotActive" xml:space="preserve">
+    <value>Исполнитель блокирован</value>
+  </data>
+  <data name="FILTER_ISVISIBLE" xml:space="preserve">
+    <value>Дост.</value>
+  </data>
+  <data name="SURE_TO_DELETE" xml:space="preserve">
+    <value>Уверены в удалении этой записи?</value>
+  </data>
+  <data name="OriginalCatalog" xml:space="preserve">
+    <value>Оригинальный каталог</value>
+  </data>
+  <data name="CanNotDeletePaidBasket" xml:space="preserve">
+    <value>Не могу удалить после оплаты</value>
+  </data>
+  <data name="ReportTypeStorned_INDEX" xml:space="preserve">
+    <value>Сторнированные за смену</value>
+  </data>
+  <data name="GuestProfileTDES_DELETE" xml:space="preserve">
+    <value>Удалить мой профиль</value>
+  </data>
+  <data name="GoToForum" xml:space="preserve">
+    <value>Форум</value>
+  </data>
+  <data name="CARMODELTYPETREE_INDEX" xml:space="preserve">
+    <value>Категории товаров</value>
+  </data>
+  <data name="TecDocCountry" xml:space="preserve">
+    <value>Страна, где продан экземпляр автомобиля</value>
+  </data>
+  <data name="UnderTheOrder" xml:space="preserve">
+    <value>Под заказ</value>
+  </data>
+  <data name="IndexByRoles" xml:space="preserve">
+    <value>Меню по ролям</value>
+  </data>
+  <data name="MakeBranchReply" xml:space="preserve">
+    <value>Реплицировать остатки</value>
+  </data>
+  <data name="GestUserNic_NOT_DEFINED" xml:space="preserve">
+    <value>Не определен Nic заказчика</value>
+  </data>
+  <data name="DoSelectArticle_INDEX" xml:space="preserve">
+    <value>Ошибка формирования заказа</value>
+  </data>
+  <data name="BranchRest_INDEX" xml:space="preserve">
+    <value>Каталог остатков</value>
+  </data>
+  <data name="DoSelectArticle_Error" xml:space="preserve">
+    <value>Произошел сброс выбора артикула. Такое возникает, если вы не вошли в систему, но начали формировать заказ.</value>
+  </data>
+  <data name="ByEntSupplierDescription" xml:space="preserve">
+    <value>Поиск по наименованию</value>
+  </data>
+  <data name="AlreadyReplicated" xml:space="preserve">
+    <value>Уже в обработке</value>
+  </data>
+  <data name="FILTER_TITLE_TOWN" xml:space="preserve">
+    <value>Фильтр по городу</value>
+  </data>
+  <data name="Rest2Income" xml:space="preserve">
+    <value>Приход по остатку</value>
+  </data>
+  <data name="User2WorkPlaceTDES_NOTFOUND" xml:space="preserve">
+    <value>Заказ создан на другом рабочем месте</value>
+  </data>
+  <data name="ReverseIncome_INDEX" xml:space="preserve">
+    <value>Сторнирование</value>
+  </data>
+  <data name="EnterpriseSupplier_INDEX" xml:space="preserve">
+    <value>Поставщики</value>
+  </data>
+  <data name="ENTERPRISEUSER_NOTDEFINED" xml:space="preserve">
+    <value>Пользователь не определен</value>
+  </data>
+  <data name="FILTER_ISACTIVE" xml:space="preserve">
+    <value>Акт.</value>
+  </data>
+  <data name="GuestOrderTDES_CREATESALE" xml:space="preserve">
+    <value>Сформировать корзину продажи</value>
+  </data>
+  <data name="CREATE_NEW_SPELL" xml:space="preserve">
+    <value>Открыть новую смену</value>
+  </data>
+  <data name="ShowMargin" xml:space="preserve">
+    <value>С наценкой</value>
+  </data>
+  <data name="BranchAdminName" xml:space="preserve">
+    <value>Администратор подразделения</value>
+  </data>
+  <data name="GuestProfileTDES_INDEX" xml:space="preserve">
+    <value>Мой Профиль</value>
+  </data>
+  <data name="ReplyRests" xml:space="preserve">
+    <value>Остатки</value>
+  </data>
+  <data name="BasketCreateDateLessThanSpellDate" xml:space="preserve">
+    <value>Дата создания корзины меньше даты открытия смены</value>
+  </data>
+  <data name="EnterprisesHelp2" xml:space="preserve">
+    <value>Флаг активности позволяет блокировать работу предприятия. Кроме выключения флага необходимо выключить флаг активности у администраторов данного предприятия, т.к. у них есть право включать и блокировать работу своего предприятия.</value>
+  </data>
+  <data name="EnterprisesHelp3" xml:space="preserve">
+    <value>Поле Каталог артикулов -- это ИМЯ строки в файле web.config как приведено ниже</value>
+  </data>
+  <data name="EnterprisesHelp1" xml:space="preserve">
+    <value>Запись предприятия состоит из четырех элементов: Флаг активности, Уникальный идентификатор, Наименование, Каталог артикулов. 
+Уникальный идентификатор реализован не как целое число, но как 16-байтовый GUID. 
+Реализация в виде GUID дает уникальность на глобальном уровне (уровень Internet) и гарантирует, что идентификатор вашего предприятия НИКОГДА не совпадет с идентификатором какого-либо другого. 
+Этот идентификатор генерируется автоматически, но при создании НОВОЙ записи у вас есть возможность внести свой собственный. 
+Необходимость в этом (редактировать GUID) возникает, если вы переносите ваши данные с одной площадки на другую.</value>
+  </data>
+  <data name="EnterprisesHelp6" xml:space="preserve">
+    <value>Текущая страница доступна всем исполнителям. Но исполнители с привязкой к предприятию будут видеть ровно одну строку -- свое предприятие. И только администраторы предприятия могут редактировать наименование и флаг активности предприятия</value>
+  </data>
+  <data name="EnterprisesHelp7" xml:space="preserve">
+    <value>Для редактирования(просмотра) "Штат предприятия", "Подразделения", "Адреса", "Поставщики", "Брэнды", "Артикулы" кликните на ссылку в нижней части экрана для работы с соответствующими узлами данных.</value>
+  </data>
+  <data name="EnterprisesHelp4" xml:space="preserve">
+    <value>Как и было заявлено, описание артикулов может находиться в отдельной базе данных, которую обрабатывает отдельный экземпляр SQL сервера. С одной стороны вы должны внести в web.config строку связи. С другой стороны вы должны привязать имя этой строки к предприятию.</value>
+  </data>
+  <data name="EnterprisesHelp5" xml:space="preserve">
+    <value>Для редактирования(просмотра) "Штат предприятия", "Подразделения", "Адреса", "Поставщики", "Брэнды", "Артикулы" кликните на ссылку подробно и в нижней части экрана получите ссылки на странички для работы с соответствующими узлами данных.</value>
+  </data>
+  <data name="EnterprisesHelp8" xml:space="preserve">
+    <value>Только Администраторам предприятия разрешено изменять любые данные привязанные к предприятию. Пользователи с другими ролями могут изменить данные своей учетной записи, добавить или изменить свои контакты и свои адреса.</value>
+  </data>
+  <data name="EnterprisesHelp9" xml:space="preserve">
+    <value>В рамках одного предприятия данные других пользователей доступны для просмотра остальным пользователям, при условии если флаг видимости включен на соответствующей записи. Доступность учетных данных другим пользователям предоставляется в силу производственной необходимости. К примеру, продавцу может потребоваться помощь администратора.</value>
+  </data>
+  <data name="ReportTypeNotPayed" xml:space="preserve">
+    <value>Неоплаченные</value>
+  </data>
+  <data name="TECDOC_SUP_TEXT" xml:space="preserve">
+    <value>Производитель</value>
+  </data>
+  <data name="SaleBasketTDES_SPELL_ERROR" xml:space="preserve">
+    <value>Не могу провести операцию: изменилась смена</value>
+  </data>
+  <data name="BranchUserHasNoWorkPlace" xml:space="preserve">
+    <value>Исполнитель не закреплен за рабочим местом</value>
+  </data>
+</root>

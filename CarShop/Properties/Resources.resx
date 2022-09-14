@@ -1,0 +1,1288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GUEST_SEARCH_EAN" xml:space="preserve">
+    <value>EAN</value>
+  </data>
+  <data name="ENTERPRISE_NOT_DEFINED" xml:space="preserve">
+    <value>Enterprise is not defined</value>
+  </data>
+  <data name="SpellNotFound" xml:space="preserve">
+    <value>Spell is Not Found</value>
+  </data>
+  <data name="SaleBasketReportStornedTDES_INDEX" xml:space="preserve">
+    <value>Storned by spell</value>
+  </data>
+  <data name="AddressType_INDEX" xml:space="preserve">
+    <value>Address Types</value>
+  </data>
+  <data name="ArticleSearchByEntArticleDescription" xml:space="preserve">
+    <value>Article Description</value>
+  </data>
+  <data name="EcoSystemAdminAction1" xml:space="preserve">
+    <value>The role of "Administrator ecosystem" gives the opportunity to register in the information system, one or several companies and to bind to each of the companies users with a roles administrators and auditors. After creating Ecosystems Administrator sends login to enterprise administrators.</value>
+  </data>
+  <data name="EcoSystemAdminAction2" xml:space="preserve">
+    <value>Every now secured the active flag. Flag off stops ecosystem response to queries and update data for this plant.</value>
+  </data>
+  <data name="EcoSystemAdminAction3" xml:space="preserve">
+    <value>Nevertheless, the right option switches the active flag is left for enterprise administrators. To prevent re-enterprise administrators vlyuchenie enterprise information resources to the work, the administrator is required to turn off the ecosystem similar flag on an enterprise administrator.</value>
+  </data>
+  <data name="EcoSystemAdminAction4" xml:space="preserve">
+    <value>Conversely, when the resources of the enterprise to work. Administrator ecosystem must include the active flag At least one Enterprise Administrator.</value>
+  </data>
+  <data name="EcoSystemAdminAction5" xml:space="preserve">
+    <value>When you disable (or enable) flag activity for the administrator account of the enterprise is no change, no passwords or credentials. Performs a simple lock (unlock).</value>
+  </data>
+  <data name="EcoSystemAdminAction6" xml:space="preserve">
+    <value>Strktura data organized as a tree with the top node in the enterprise. So the first step - is to move to the list of companies. On the page that will provide recommendations to work with other nodes in the tree.</value>
+  </data>
+  <data name="EcoSystemAdminAction7" xml:space="preserve">
+    <value>Types</value>
+  </data>
+  <data name="Boolean_YES" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="TECDOC_APPLICABLE" xml:space="preserve">
+    <value>Applicability</value>
+  </data>
+  <data name="FILTER_TITLE_FLUEL" xml:space="preserve">
+    <value>Filter by fluel</value>
+  </data>
+  <data name="SaleBasketTDES_PAYMENT_OK" xml:space="preserve">
+    <value>Payment is done. Rests are changed.</value>
+  </data>
+  <data name="GuestOrderTDES_LastUpdatedLargeThan" xml:space="preserve">
+    <value>Created till</value>
+  </data>
+  <data name="EDIT_ACTION" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EnterpriseSupplierTDES_NOTFOUND" xml:space="preserve">
+    <value>Supplier not found</value>
+  </data>
+  <data name="ReturnBasketArticleTDES_CANNOTCHANGE" xml:space="preserve">
+    <value>Change list for current ReturnBasket is possible if it is not paied and active</value>
+  </data>
+  <data name="PutArticleInBasket" xml:space="preserve">
+    <value>Put Article In Basket</value>
+  </data>
+  <data name="EnterpriseArticle_INDEX" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="SaleBasketTDES_WP_ERROR" xml:space="preserve">
+    <value>Can not pay: workplace is changed</value>
+  </data>
+  <data name="ArtAmountRestSum" xml:space="preserve">
+    <value>Rest Amount</value>
+  </data>
+  <data name="TreeAxles" xml:space="preserve">
+    <value>Axles</value>
+  </data>
+  <data name="SpellCloseDateLessThanOpenDate" xml:space="preserve">
+    <value>Close Date is Less Than OpenDate</value>
+  </data>
+  <data name="SqlDublicateValue" xml:space="preserve">
+    <value>Dublicate Values</value>
+  </data>
+  <data name="ReplyProfile" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="BySoatoSettlementName" xml:space="preserve">
+    <value>Search by Settlement Name</value>
+  </data>
+  <data name="SheetRevaluationTDES_INDEX" xml:space="preserve">
+    <value>Sheet Revaluation</value>
+  </data>
+  <data name="GuestOrderTDES_AUTOCREATE" xml:space="preserve">
+    <value>Orders on the store is created automatically when choosing a product.</value>
+  </data>
+  <data name="SEARCH_STRING_IS_EMPTY" xml:space="preserve">
+    <value>Search string is empty</value>
+  </data>
+  <data name="EnterpriseBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Branch not found</value>
+  </data>
+  <data name="FILTER_ISSELLER" xml:space="preserve">
+    <value>Seller</value>
+  </data>
+  <data name="Soato_LOOKUP" xml:space="preserve">
+    <value>LookUp Soato</value>
+  </data>
+  <data name="BranchSpellTDES_UNBLOCKED_CANNOTCLOSE" xml:space="preserve">
+    <value>Can not close spell if it is unblocked</value>
+  </data>
+  <data name="IncomeArticleTDES_INDEX" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="SaleBasketReportTDES_INDEX" xml:space="preserve">
+    <value>Sales by spell</value>
+  </data>
+  <data name="EcoSystemAdminName" xml:space="preserve">
+    <value>EcoSystem Administrator</value>
+  </data>
+  <data name="BranchSpellTDES_BLOCK" xml:space="preserve">
+    <value>Block</value>
+  </data>
+  <data name="BranchSpellTDES_CLOSE" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="FILTER_ISADMIN" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="FILTER_ISAUDIT" xml:space="preserve">
+    <value>Audit</value>
+  </data>
+  <data name="PAGE_OF" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="SaleBasketArticleTDES_ROLECANNOTCHANGE" xml:space="preserve">
+    <value>Current role can not change the list of SaleBasket</value>
+  </data>
+  <data name="MYCONTACTS" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="SendEnterpriseBranchTDES_ISNOTACTIVE" xml:space="preserve">
+    <value>At the sending party is disabled Activity</value>
+  </data>
+  <data name="EnterpriseCategoryTDES_INDEX" xml:space="preserve">
+    <value>Categories of goods</value>
+  </data>
+  <data name="TecDocModel_INDEX" xml:space="preserve">
+    <value>Models by brand</value>
+  </data>
+  <data name="OrderBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Advance orders not deployed administrator</value>
+  </data>
+  <data name="ByEntSupplierId" xml:space="preserve">
+    <value>Search by Nic</value>
+  </data>
+  <data name="ReturnBasketTDES_PRICELESSZERO" xml:space="preserve">
+    <value>Price is less than zero</value>
+  </data>
+  <data name="Multiplexer" xml:space="preserve">
+    <value>Multiplexer</value>
+  </data>
+  <data name="SendEnterpriseBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Originating party not registered in the system</value>
+  </data>
+  <data name="LookForArticleSelt_INDEX" xml:space="preserve">
+    <value>Selt article</value>
+  </data>
+  <data name="ArticleSearchByBrandNic" xml:space="preserve">
+    <value>Search By Brand Nic</value>
+  </data>
+  <data name="ReportTypeStorned" xml:space="preserve">
+    <value>Storned</value>
+  </data>
+  <data name="OpenSpellDoWorkPlaceAndUnBlock" xml:space="preserve">
+    <value>Do not forget set users to workplaces and unblock the spell</value>
+  </data>
+  <data name="CreateNewSpellIfCurrentClose" xml:space="preserve">
+    <value>Open New Spell If Current Spell is closed</value>
+  </data>
+  <data name="SearchTecDocByTree" xml:space="preserve">
+    <value>Search TecDoc By Tree</value>
+  </data>
+  <data name="TreeMotors" xml:space="preserve">
+    <value>Motors</value>
+  </data>
+  <data name="GuestProfileTDES_EDIT" xml:space="preserve">
+    <value>Edit My profile</value>
+  </data>
+  <data name="EnterpriseBranchTDES_ISNOTACTIVE" xml:space="preserve">
+    <value>Enterprise Branch is not active</value>
+  </data>
+  <data name="ShowMarkdown" xml:space="preserve">
+    <value>Markdown</value>
+  </data>
+  <data name="SqlError" xml:space="preserve">
+    <value>SqlError</value>
+  </data>
+  <data name="BranchSpell_INDEX" xml:space="preserve">
+    <value>Current Branch Splell</value>
+  </data>
+  <data name="IncomePayRollTDES_ISPOCESSES" xml:space="preserve">
+    <value>Income PayRoll IS POCESSES</value>
+  </data>
+  <data name="CANT_PARS_TO_INT" xml:space="preserve">
+    <value>Can not translate string as int</value>
+  </data>
+  <data name="ReturnBasketTDES_AMOUNTLESSZERO" xml:space="preserve">
+    <value>Return Amount is less than zero</value>
+  </data>
+  <data name="SHOWNOTACTIVE" xml:space="preserve">
+    <value>Flag OFF</value>
+  </data>
+  <data name="SettlementType_INDEX" xml:space="preserve">
+    <value>Settlement Type</value>
+  </data>
+  <data name="HomePageIndex" xml:space="preserve">
+    <value>This site will interest both buyers and sellers of automotive parts.</value>
+  </data>
+  <data name="EnterpriseAdminAction1" xml:space="preserve">
+    <value>The first thing you should do after receiving the enterprise administrator login and password - is log on and change your login password.</value>
+  </data>
+  <data name="EnterpriseAdminAction3" xml:space="preserve">
+    <value>The next step - is to create records for one or more departments. One department must be created in any case.</value>
+  </data>
+  <data name="EnterpriseAdminAction2" xml:space="preserve">
+    <value>If necessary, an enterprise administrator can change the name of the company.</value>
+  </data>
+  <data name="EnterpriseAdminAction4" xml:space="preserve">
+    <value>Enterprise Administrator role allows you to change the state of the enterprise: "Enterprise Admins" and "Enterprise auditors"</value>
+  </data>
+  <data name="ProfileSearchByLastName" xml:space="preserve">
+    <value>Search By Last Name</value>
+  </data>
+  <data name="ReturnBasketTDES_ISPAYED" xml:space="preserve">
+    <value>Return has been made</value>
+  </data>
+  <data name="ShopAttribute" xml:space="preserve">
+    <value>Shop Attributes</value>
+  </data>
+  <data name="SiteUrl" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="BranchSellerName" xml:space="preserve">
+    <value>Branch Seller</value>
+  </data>
+  <data name="GuestOrderTDES_CREATE" xml:space="preserve">
+    <value>Create my order</value>
+  </data>
+  <data name="SaleBasket_NOTDEFINED" xml:space="preserve">
+    <value>SaleBasket is not defined</value>
+  </data>
+  <data name="EnterpriseAuditName" xml:space="preserve">
+    <value>Enterprise Auditor</value>
+  </data>
+  <data name="ReturnBasketReportIncomeTDES_INDEX" xml:space="preserve">
+    <value>Сopied to parish</value>
+  </data>
+  <data name="ProfileSearchByNic" xml:space="preserve">
+    <value>Search By Nic</value>
+  </data>
+  <data name="DETAILS_ACTION" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="NO_ANY_DATA" xml:space="preserve">
+    <value>No any data</value>
+  </data>
+  <data name="EnterpriseUserContactHelp1" xml:space="preserve">
+    <value>Contact this person or phone number or e-mail. When creating, editing kongtakta this type can be set. Contact the following fields Guid - a unique identifier of a record at the Internet, Contact - it or phone or e-mail, Activity - flag off if contact is outdated and Visibility - if the flag is off, then other users will not see this contact.</value>
+  </data>
+  <data name="IncomePayRollTDES_NOTFOUND" xml:space="preserve">
+    <value>Income PayRoll NOT FOUND</value>
+  </data>
+  <data name="LookForArticleRest_INDEX" xml:space="preserve">
+    <value>Look For Article in Rests</value>
+  </data>
+  <data name="StreetType_INDEX" xml:space="preserve">
+    <value>Street type</value>
+  </data>
+  <data name="SaleBasketTDES_BY_GuestOrderGuid" xml:space="preserve">
+    <value>Created by order:</value>
+  </data>
+  <data name="Phones" xml:space="preserve">
+    <value>Phones</value>
+  </data>
+  <data name="TECDOC_GA_TEXT" xml:space="preserve">
+    <value>Group Name</value>
+  </data>
+  <data name="GuestOrderTDES_DETAIL" xml:space="preserve">
+    <value>Order profile</value>
+  </data>
+  <data name="CanNotParceDateFrom" xml:space="preserve">
+    <value>Can Not Parce DateFrom filter</value>
+  </data>
+  <data name="BranchRestTDES_NOTFOUND" xml:space="preserve">
+    <value>Input object is not found in db</value>
+  </data>
+  <data name="Results_TITLE" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="Country_INDEX" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="RevaluationArticleTDES_INDEX" xml:space="preserve">
+    <value>Revaluation Article</value>
+  </data>
+  <data name="BranchOrderTDES_INDEX" xml:space="preserve">
+    <value>Order to store</value>
+  </data>
+  <data name="TECDOC_MASTER_BEZ" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="CategorySearchById" xml:space="preserve">
+    <value>Category Code</value>
+  </data>
+  <data name="GUEST_MANUF_IDS_INDEX" xml:space="preserve">
+    <value>Construct Number</value>
+  </data>
+  <data name="SaleBasketTDES_INDEX" xml:space="preserve">
+    <value>Baskets for current Spell</value>
+  </data>
+  <data name="GuestOrderArticleTDES_INDEX" xml:space="preserve">
+    <value>Articles of order</value>
+  </data>
+  <data name="GuestOrderArticleTDES_ISMAX" xml:space="preserve">
+    <value>Reached the maximum items in the order.</value>
+  </data>
+  <data name="EnterpriseSupplierHelp1" xml:space="preserve">
+    <value>Do not confuse the supplier and brand. Examples are the brand Coca-Cola, Oriflame. An example of a vendor is Shate-M. Supplier - is your business partner from whom you purchase goods. Each entry supplier bind address of the supplier and contacts. To edit (view) addresses and contacts the supplier tab "Details". Button at the bottom of the screen give you switch to the appropriate page.</value>
+  </data>
+  <data name="YOUAREGUESTifThan" xml:space="preserve">
+    <value>On this site, auto parts stores publish their products and prices. And you are given the opportunity to find and order completion, on one or a few shops in your city.</value>
+  </data>
+  <data name="ArticleSearchByExternBrandNic" xml:space="preserve">
+    <value>Extern Brand Nic</value>
+  </data>
+  <data name="OrderBranchTDES_ISNOTACTIVE" xml:space="preserve">
+    <value>Advance orders blocked by the administrato</value>
+  </data>
+  <data name="WorkPlace_INDEX" xml:space="preserve">
+    <value>WorkPlaces</value>
+  </data>
+  <data name="SaleBasket_ISPAYED_OR_REVERSED" xml:space="preserve">
+    <value>SaleBasket is paied</value>
+  </data>
+  <data name="SaleBasketReportNotPayedTDES_INDEX" xml:space="preserve">
+    <value>Not Payed by spell</value>
+  </data>
+  <data name="GuestOrderTDES_NOARTCOUNT" xml:space="preserve">
+    <value>Count of Articles is zero</value>
+  </data>
+  <data name="ShowHideBtn" xml:space="preserve">
+    <value>Hide/Show</value>
+  </data>
+  <data name="BranchSpellHstTDES_OpenAtLargeThan" xml:space="preserve">
+    <value>Less than:</value>
+  </data>
+  <data name="TreeCommercialVehicles" xml:space="preserve">
+    <value>Commercial Vehicles</value>
+  </data>
+  <data name="SheetRevaluationTDES_CANNOTDELETE" xml:space="preserve">
+    <value>Can not delete processed sheet</value>
+  </data>
+  <data name="BranchSpellTDES_NOTFOUND" xml:space="preserve">
+    <value>there is no BranchSpell</value>
+  </data>
+  <data name="SHOWACTIVE" xml:space="preserve">
+    <value>Flag ON</value>
+  </data>
+  <data name="AmbiguousChoiceOrLackOfChoice" xml:space="preserve">
+    <value>ambiguous choice or lack of choice</value>
+  </data>
+  <data name="ArtDistrib" xml:space="preserve">
+    <value>Distribution</value>
+  </data>
+  <data name="ToPayment" xml:space="preserve">
+    <value>To payment</value>
+  </data>
+  <data name="UnBlockSpellWhenActive" xml:space="preserve">
+    <value>Spell can be (un)blocked when opened</value>
+  </data>
+  <data name="GuestBranchTDES_INDEX" xml:space="preserve">
+    <value>Internet profile of shop</value>
+  </data>
+  <data name="GuestOrderTDES_RESETPRICES" xml:space="preserve">
+    <value>Reset Actual Prices</value>
+  </data>
+  <data name="SaleBasketArticleTDES_INDEX" xml:space="preserve">
+    <value>Sale Basket Article</value>
+  </data>
+  <data name="CategoryItemSearchById" xml:space="preserve">
+    <value>Search By Id</value>
+  </data>
+  <data name="CloseCurrentSpellFirst" xml:space="preserve">
+    <value>Close Current Spell First</value>
+  </data>
+  <data name="GuestOrderTDES_ISDONE" xml:space="preserve">
+    <value>Order is done or replicated</value>
+  </data>
+  <data name="BrandSearchByNic" xml:space="preserve">
+    <value>Search By Nic</value>
+  </data>
+  <data name="BySoatoId" xml:space="preserve">
+    <value>Search by Soato</value>
+  </data>
+  <data name="MANUF_IDS_INDEX" xml:space="preserve">
+    <value>Manufacture ids</value>
+  </data>
+  <data name="SaleBasketTDES_PAYMENTERROR_STATUS" xml:space="preserve">
+    <value>DB Error while changing status for order</value>
+  </data>
+  <data name="SaleBasketReportIncomeTDES_INDEX" xml:space="preserve">
+    <value>Сopied from parish</value>
+  </data>
+  <data name="GUEST_SEARCH_TECDOCID" xml:space="preserve">
+    <value>TecDoc Number</value>
+  </data>
+  <data name="BranchSpellIsBlockedOrIsNotActive" xml:space="preserve">
+    <value>Branch Spell Is Blocked Or Is Not Active</value>
+  </data>
+  <data name="EnterpriseCategoryTDES_NOT_DEFINED" xml:space="preserve">
+    <value>Category is not defined</value>
+  </data>
+  <data name="ReplyOrders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="EnterpriseAudit1" xml:space="preserve">
+    <value>The auditor's role Enterprise allows you to view all enterprise data tree to which the auditor is bound.</value>
+  </data>
+  <data name="EnterpriseAudit2" xml:space="preserve">
+    <value>For each node, the data link is provided to the auditor "Detail", allowing to plunge the entire depth of the data tree. For example, clicking on the shape of the "Details" for node "Enterprise", the auditor obtains the possibility to see a list of users. Again, clicking on the shape of the "Details" selected user auditor obtains access to the contact list of the user.</value>
+  </data>
+  <data name="DoSelectArticle_RESTNOTFOUND" xml:space="preserve">
+    <value>Rest not found</value>
+  </data>
+  <data name="NoSuchArticule" xml:space="preserve">
+    <value>No Such Articule by TECDOC IDs</value>
+  </data>
+  <data name="PurchasePriceSum" xml:space="preserve">
+    <value>Purchase Price Sum</value>
+  </data>
+  <data name="WorkPlace_IS_NOT_DEFINED" xml:space="preserve">
+    <value>WorkPlace is not defined</value>
+  </data>
+  <data name="ApplyOptions" xml:space="preserve">
+    <value>Apply Options</value>
+  </data>
+  <data name="TECDOC_ART_ID" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="Boolean_NO" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="SaleBasketArticleTDES_NOTHINGTOSTORN" xml:space="preserve">
+    <value>for Sale Basket Article nothing to storn</value>
+  </data>
+  <data name="SEARCH_SUPPID" xml:space="preserve">
+    <value>Supplier Id</value>
+  </data>
+  <data name="ActiveSpellCannotBeDeleted" xml:space="preserve">
+    <value>Active Spell Cannot Be Deleted</value>
+  </data>
+  <data name="CREATE_ACTION" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="GestUserNic_EXISTS" xml:space="preserve">
+    <value>Such user nic exists in db</value>
+  </data>
+  <data name="CategorySearchByParent" xml:space="preserve">
+    <value>Category Parent Code</value>
+  </data>
+  <data name="ArticleSearchByExternArticle" xml:space="preserve">
+    <value>Extern Article</value>
+  </data>
+  <data name="OpenSpellInBlockedMode" xml:space="preserve">
+    <value>New Spell can be opened in blocked state only.</value>
+  </data>
+  <data name="BranchType_INDEX" xml:space="preserve">
+    <value>Branch types</value>
+  </data>
+  <data name="CARMODELTYPETREEITEMANALOG_INDEX" xml:space="preserve">
+    <value>Analogs</value>
+  </data>
+  <data name="GuestOrderTDES_LastUpdatedLessThan" xml:space="preserve">
+    <value>Created from</value>
+  </data>
+  <data name="ArticleSearchByTecDoc" xml:space="preserve">
+    <value>TecDoc Article</value>
+  </data>
+  <data name="TecDocCountryLang" xml:space="preserve">
+    <value>Language and country of TecDoc</value>
+  </data>
+  <data name="GuestBranchSumTDES_INDEX" xml:space="preserve">
+    <value>Shops</value>
+  </data>
+  <data name="ReturnBasketTDES_ISCREATED_IN_ANOTHERSPELL" xml:space="preserve">
+    <value>Return Basket is created in another spell</value>
+  </data>
+  <data name="CARMODELTYPETREEITEMDETAIL_INDEX" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="BranchBookerName" xml:space="preserve">
+    <value>Branch Booker (Senior Seller)</value>
+  </data>
+  <data name="BranchGuestProfileTDES_INDEX" xml:space="preserve">
+    <value>Order Profile</value>
+  </data>
+  <data name="ReturnBasketReportTDES_INDEX" xml:space="preserve">
+    <value>Returns for spell</value>
+  </data>
+  <data name="TECDOC_ART_ARTICLE_NR" xml:space="preserve">
+    <value>Suppl.Article</value>
+  </data>
+  <data name="CREATENEW_ACTION" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="User2WorkPlaceHstTDES_INDEX" xml:space="preserve">
+    <value>History: User to WorkPlace</value>
+  </data>
+  <data name="NewArtPriceSum" xml:space="preserve">
+    <value>New Price sum</value>
+  </data>
+  <data name="User_IS_NOT_DEFINED" xml:space="preserve">
+    <value>User is not defined</value>
+  </data>
+  <data name="SuppRestTDES_INDEX" xml:space="preserve">
+    <value>Suppliers Rests</value>
+  </data>
+  <data name="CARMODELTYPETREEITEMS_INDEX" xml:space="preserve">
+    <value>Items list</value>
+  </data>
+  <data name="Rounding" xml:space="preserve">
+    <value>Rounding</value>
+  </data>
+  <data name="ReturnBasketArticleTDES_ROLECANNOTCHANGE" xml:space="preserve">
+    <value>Current role can not change the list of ReturnBasket</value>
+  </data>
+  <data name="MakeUser2WorkPlace" xml:space="preserve">
+    <value>Put User onto WorkPlace</value>
+  </data>
+  <data name="GUEST_SEARCH_SUPPID" xml:space="preserve">
+    <value>Suplier Number</value>
+  </data>
+  <data name="SaleBasket_ISCREATED_IN_ANOTHERSPELL" xml:space="preserve">
+    <value>SaleBasket IS CREATED IN ANOTHER SPELL</value>
+  </data>
+  <data name="PartialControl" xml:space="preserve">
+    <value>Without deletion</value>
+  </data>
+  <data name="GuestOrderTDES_NOTFOUND" xml:space="preserve">
+    <value>Can not found given Order</value>
+  </data>
+  <data name="BranchRestTDES_NOTDEFINED" xml:space="preserve">
+    <value>Input object is not defined</value>
+  </data>
+  <data name="LANGUAGES_INDEX" xml:space="preserve">
+    <value> LANGUAGES</value>
+  </data>
+  <data name="SEARCH_ACTION" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SaleBasketTDES_ISREVERCED" xml:space="preserve">
+    <value>Sale Basket is storned</value>
+  </data>
+  <data name="EnterpriseBranchReplyTDES_INDEX" xml:space="preserve">
+    <value>Branch Reply settings</value>
+  </data>
+  <data name="TECDOC_TEX_VALUE" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="DoMakeSheetRevaluation_INDEX" xml:space="preserve">
+    <value>Process SheetRevaluation</value>
+  </data>
+  <data name="MakeReturn" xml:space="preserve">
+    <value>Make Return</value>
+  </data>
+  <data name="DELETE_ACTION" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="SpellCloseDateLargeThanOpenDate" xml:space="preserve">
+    <value>Open Date of the New Spell   is Less Than Close Date of Previous one</value>
+  </data>
+  <data name="DOCANCEL_TITLE" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ArticleSearchByExternArticleEAN" xml:space="preserve">
+    <value>Extern EAN</value>
+  </data>
+  <data name="SEARCH_TECDOCID" xml:space="preserve">
+    <value>Id TecDoc</value>
+  </data>
+  <data name="SearchTecDocByArticle" xml:space="preserve">
+    <value>Search TecDoc By Article</value>
+  </data>
+  <data name="TECDOC_SUP_ID" xml:space="preserve">
+    <value>Supplier Id</value>
+  </data>
+  <data name="DOSELECT_TITLE" xml:space="preserve">
+    <value>Select current</value>
+  </data>
+  <data name="SHOWALL" xml:space="preserve">
+    <value>Show All</value>
+  </data>
+  <data name="YOUAREGUESTif" xml:space="preserve">
+    <value>If you are car owner</value>
+  </data>
+  <data name="BasketDefinitionIsNotDefined" xml:space="preserve">
+    <value>Data Basket is not defined</value>
+  </data>
+  <data name="Address_INDEX" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
+  <data name="SOATO" xml:space="preserve">
+    <value>SOATO</value>
+  </data>
+  <data name="EnterpriseBranchRateTDES_INDEX" xml:space="preserve">
+    <value>Exchange Rate</value>
+  </data>
+  <data name="BranchAudit1" xml:space="preserve">
+    <value>Role of the Auditor units allows you to view data enterprise is bound performer.</value>
+  </data>
+  <data name="BranchAudit2" xml:space="preserve">
+    <value>Allows you to view the data unit to which the Executive is bound.</value>
+  </data>
+  <data name="TECDOC_GA_NR" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="ArtAmountSum" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="BranchAdmin2" xml:space="preserve">
+    <value>Partially edited (without the right to add or remove) attributes units to whom the administrator is bound</value>
+  </data>
+  <data name="BranchAdmin3" xml:space="preserve">
+    <value>And full control over the data listed below</value>
+  </data>
+  <data name="BranchAdmin1" xml:space="preserve">
+    <value>Division Administrator role enables users to view data enterprise is bound performer.</value>
+  </data>
+  <data name="SpellGivenNotFound" xml:space="preserve">
+    <value>Given Spell Not Found</value>
+  </data>
+  <data name="IncomePayRollTDES_INDEX" xml:space="preserve">
+    <value>Income Pay Roll</value>
+  </data>
+  <data name="Branch_INDEX" xml:space="preserve">
+    <value>Branches</value>
+  </data>
+  <data name="ToReverce" xml:space="preserve">
+    <value>To reverce</value>
+  </data>
+  <data name="CurrentOptionsAreApplied" xml:space="preserve">
+    <value>Current Options Are Applied</value>
+  </data>
+  <data name="EnterpriseTDES_ITEM" xml:space="preserve">
+    <value>Enterprise</value>
+  </data>
+  <data name="CanChangeRecordForYourSelf" xml:space="preserve">
+    <value>You can change your data only</value>
+  </data>
+  <data name="GuestBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Can not find such a Branch</value>
+  </data>
+  <data name="ReportTypePayed" xml:space="preserve">
+    <value>Payed</value>
+  </data>
+  <data name="ReturnBasketTDES_AMOUNTINCORRECT" xml:space="preserve">
+    <value>Return Amount is large than seld minus storned</value>
+  </data>
+  <data name="BranchSpellTDES_UNBLOCK" xml:space="preserve">
+    <value>UnBlock</value>
+  </data>
+  <data name="YOUARESELLERifThan" xml:space="preserve">
+    <value>Provided you with a FREE full-featured software-accounting system, using which you can automatically publish their availability and prices of goods. You can deploy and use this software locally and publish balances and prices online. You can deploy and iseto software</value>
+  </data>
+  <data name="SaleBasketArticleTDES_NOTFOUND" xml:space="preserve">
+    <value>Sale Basket Article not found</value>
+  </data>
+  <data name="MakeOrderReply" xml:space="preserve">
+    <value>Replicate orders</value>
+  </data>
+  <data name="DoMakeOrder" xml:space="preserve">
+    <value>Make Order</value>
+  </data>
+  <data name="EnterpriseBrandHelp1" xml:space="preserve">
+    <value>Do not confuse the supplier and brand. Examples are the brand Coca-Cola, Oriflame. An example of a vendor is Shate-M. Supplier - is your business partner from whom you purchase goods. Each entry of the brand associated list item you traded your business. To go to the list of articles to choose a brand, go to the page "Details". Button at the bottom of the screen will take you to a page articles.</value>
+  </data>
+  <data name="TreeUniversals" xml:space="preserve">
+    <value>Universals</value>
+  </data>
+  <data name="ReturnBasketArticleTDES_INDEX" xml:space="preserve">
+    <value>Goods</value>
+  </data>
+  <data name="EnterpriseTDES_NOTDEFINED" xml:space="preserve">
+    <value>Enterprise not found</value>
+  </data>
+  <data name="SAVE_ACTION" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaleBasketTDES_DISTRIBUTEDERROR" xml:space="preserve">
+    <value>Can not pay: error of distributed transaction</value>
+  </data>
+  <data name="EnterpriseBranchUsersHelp1" xml:space="preserve">
+    <value>Per unit fixed unit staff with the following set of roles: administrator units auditor units accountant (or senior salesman) and the seller. Every performer can be fixed contacts. This can be done through the page "Details" for the selected user from the list.</value>
+  </data>
+  <data name="TecDocLang" xml:space="preserve">
+    <value>TecDoc Lang</value>
+  </data>
+  <data name="EnterpriseArticleHelp1" xml:space="preserve">
+    <value>Article enterprise really consists of two articles: internal and external. Domestic product is used by the enterprise and its business units to implement accounting movement of goods and services. Outside the article - it is clear that the buyer, ie what he sees on the box Item: Brand, Name and Barcode (EAN). Allowed different internal part numbers in the domain to the same external article. When editing an article provided the opportunity to choose the appearance of the product catalog TecDoc.</value>
+  </data>
+  <data name="EnterpriseArticleHelp2" xml:space="preserve">
+    <value>Implemented two views with part numbers. At first glimpse, you can go out with stoanichki "Details" describe Brenda. In this case, you get articles filtered by Brenda. Or you can go to a page with articles "Details" of your company. In this case, you get all articles without filtering by brand.</value>
+  </data>
+  <data name="EnterpriseBranchRestHelp1" xml:space="preserve">
+    <value>Record residue includes artikur + supplier units, external artikur + supplier, Quantity in stock and the price per unit of output. There are two technical field - the time of last update records and the last replication to a central server, if the solution is configured for replication.</value>
+  </data>
+  <data name="EnterpriseBranchWorkPlacesHelp1" xml:space="preserve">
+    <value>Workplace is a generalization of the seller to the cash register. After opening shift (opens in a locked mode), you must sit down sellers jobs. After that unlock shift. If you open shifts sellers do not change their jobs, then attach operation can not perform.</value>
+  </data>
+  <data name="ArticleSearchByIncomePayRollTDESGuid" xml:space="preserve">
+    <value>Income Pay Roll</value>
+  </data>
+  <data name="ReportTypeReturned_INDEX" xml:space="preserve">
+    <value>Returns by spell</value>
+  </data>
+  <data name="ReturnBasketTDES_INDEX" xml:space="preserve">
+    <value>Returns</value>
+  </data>
+  <data name="Soato_INDEX" xml:space="preserve">
+    <value>Soato</value>
+  </data>
+  <data name="ToMakeReturn" xml:space="preserve">
+    <value>To make return</value>
+  </data>
+  <data name="SaleBasketTDES_USER_ERROR" xml:space="preserve">
+    <value>Can not pay: user is changed</value>
+  </data>
+  <data name="COUNTRIES_INDEX" xml:space="preserve">
+    <value>Sale in</value>
+  </data>
+  <data name="MakeIncome_INDEX" xml:space="preserve">
+    <value>Process Income</value>
+  </data>
+  <data name="FILTER_ISREVERSE" xml:space="preserve">
+    <value>Storned</value>
+  </data>
+  <data name="SaleBasketTDES_RESTERROR" xml:space="preserve">
+    <value>Can not pay: error while changing rests</value>
+  </data>
+  <data name="PriceCurrencyIso" xml:space="preserve">
+    <value>Currency Price</value>
+  </data>
+  <data name="CurrArtPriceSum" xml:space="preserve">
+    <value>Curr Price Sum</value>
+  </data>
+  <data name="BranchRest_INDEXDetail" xml:space="preserve">
+    <value>BranchRest Detailed selection</value>
+  </data>
+  <data name="ExchRate" xml:space="preserve">
+    <value>Exch.Rate</value>
+  </data>
+  <data name="GuestOrderTDES_INDEX" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
+  <data name="GuestOrderTDES_ISMAX" xml:space="preserve">
+    <value>Order IS MAX. Delete old orders</value>
+  </data>
+  <data name="CreateSheetRevaluation" xml:space="preserve">
+    <value>Create Sheet Revaluation</value>
+  </data>
+  <data name="ArticleSearchByBranch" xml:space="preserve">
+    <value>Branch Article</value>
+  </data>
+  <data name="Currency_INDEX" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="AutoParts" xml:space="preserve">
+    <value>Auto Parts</value>
+  </data>
+  <data name="ProductCategory_INDEX" xml:space="preserve">
+    <value>Product category</value>
+  </data>
+  <data name="GuestOrderTDES_EDIT" xml:space="preserve">
+    <value>Edit Order profile</value>
+  </data>
+  <data name="ReturnBasketTDES_ISPAYED_OR_REVERSED" xml:space="preserve">
+    <value>Return Basket is already payed</value>
+  </data>
+  <data name="OverallControl" xml:space="preserve">
+    <value>overall control</value>
+  </data>
+  <data name="EnterpriseAddressHelp1" xml:space="preserve">
+    <value>While filling in the address, use the codifier COATO. Choice of settlement through codificator COATO correctly (automatically) fill region, district, type of settlement.Active flag is turned off, if the address was not the actual. Flag visibility determines visibility addresses external systems or the Internet.</value>
+  </data>
+  <data name="GETSTATEINFO" xml:space="preserve">
+    <value>Process State</value>
+  </data>
+  <data name="CanNotParceDateTil" xml:space="preserve">
+    <value>Can Not Parce DateTil filter</value>
+  </data>
+  <data name="TreePassengerCars" xml:space="preserve">
+    <value>Passenger Cars</value>
+  </data>
+  <data name="ReportTypeNotReturned_INDEX" xml:space="preserve">
+    <value>Not Returned by spell</value>
+  </data>
+  <data name="HideHelp" xml:space="preserve">
+    <value>Hide Help</value>
+  </data>
+  <data name="BrandSearchByDesc" xml:space="preserve">
+    <value>Search By Desc</value>
+  </data>
+  <data name="CloseSpellWhenBlocked" xml:space="preserve">
+    <value>Spell can be closed when blocked</value>
+  </data>
+  <data name="TECDOC_EAN_INDEX" xml:space="preserve">
+    <value>EAN</value>
+  </data>
+  <data name="SaleBasketArticleTDES_CANNOTCHANGE" xml:space="preserve">
+    <value>Change list for current SaleBasket is possible if it is not paied and active</value>
+  </data>
+  <data name="EnterpriseCategoryItemTDES_INDEX" xml:space="preserve">
+    <value>CategoryI tem</value>
+  </data>
+  <data name="ReplyArticles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="ReportTypeNotReturned" xml:space="preserve">
+    <value>Is not Done</value>
+  </data>
+  <data name="OperSum" xml:space="preserve">
+    <value>Margin sum</value>
+  </data>
+  <data name="MAKEPAYMENT" xml:space="preserve">
+    <value>Make Payment</value>
+  </data>
+  <data name="SEARCH_EAN" xml:space="preserve">
+    <value>EAN</value>
+  </data>
+  <data name="TecDocSelect" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="BranchUserNotSeller" xml:space="preserve">
+    <value>User is Not Seller</value>
+  </data>
+  <data name="BACKTOLIST_ACTION" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="CategorySearchByDescr" xml:space="preserve">
+    <value>Category Descr</value>
+  </data>
+  <data name="BRANDS_INDEX" xml:space="preserve">
+    <value>BRANDS</value>
+  </data>
+  <data name="ReportTypeReturned" xml:space="preserve">
+    <value>Is Done</value>
+  </data>
+  <data name="TECDOC_TEX_UNIT" xml:space="preserve">
+    <value>UNIT</value>
+  </data>
+  <data name="TECDOC_TEX_TEXT" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EnterpriseTDES_INDEX" xml:space="preserve">
+    <value>Enterprises</value>
+  </data>
+  <data name="BranchSpellTDES_CLOSED_CANNOTWORK" xml:space="preserve">
+    <value>When Spell is closed you can open new one and nothing more</value>
+  </data>
+  <data name="BranchSpellHstTDES_OpenAtLessThan" xml:space="preserve">
+    <value>Open Date: Start from:</value>
+  </data>
+  <data name="FILTER_TITLE" xml:space="preserve">
+    <value>Current filter by</value>
+  </data>
+  <data name="ArtPriceSum" xml:space="preserve">
+    <value>Price Sum</value>
+  </data>
+  <data name="BranchSpellTDES_ISNOTACTIVE" xml:space="preserve">
+    <value>BranchSpell IS NOT ACTIVE or blocked</value>
+  </data>
+  <data name="YOUAREGUEST" xml:space="preserve">
+    <value>YOU ARE GUEST</value>
+  </data>
+  <data name="GuestOrderArticleTDES_CREATE" xml:space="preserve">
+    <value>Add Article to Order</value>
+  </data>
+  <data name="YOUARESELLERif" xml:space="preserve">
+    <value>If you are seller of auto parts retail</value>
+  </data>
+  <data name="IncomePayRollReport" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="FILTER_BRANCHTYPE" xml:space="preserve">
+    <value>Branch type</value>
+  </data>
+  <data name="MakeSpellClosed_INDEX" xml:space="preserve">
+    <value>Make Spell Closed</value>
+  </data>
+  <data name="ENTERPRISEUSERSLIST" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="BranchSpellHstTDES_INDEX" xml:space="preserve">
+    <value>Spell History</value>
+  </data>
+  <data name="BranchSpellHstTDES_TITLE" xml:space="preserve">
+    <value>Spell</value>
+  </data>
+  <data name="NEXT_TITLE" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="SearchOriginal" xml:space="preserve">
+    <value>Search in Original catalogs</value>
+  </data>
+  <data name="ViewControl" xml:space="preserve">
+    <value>View only</value>
+  </data>
+  <data name="FILTER_NIC" xml:space="preserve">
+    <value>Filter by NIC</value>
+  </data>
+  <data name="AutoPartsMessage" xml:space="preserve">
+    <value>Website for car owners and sellers of auto parts retail</value>
+  </data>
+  <data name="DISTRIBUTE_RATES" xml:space="preserve">
+    <value>Distribute rates</value>
+  </data>
+  <data name="ReturnBasketTDES_PROFILE" xml:space="preserve">
+    <value>Profile of current ReturnBasket</value>
+  </data>
+  <data name="BranchUser_INDEX" xml:space="preserve">
+    <value>Branche users</value>
+  </data>
+  <data name="IncomePayRollTDES_CANNOTCHANGE" xml:space="preserve">
+    <value>Can not change(delete) processed sheet</value>
+  </data>
+  <data name="FILTER_ADDRESSTYPE" xml:space="preserve">
+    <value>Address type</value>
+  </data>
+  <data name="SolutionRoles" xml:space="preserve">
+    <value>The solution supports the roles listed below</value>
+  </data>
+  <data name="ContactType_INDEX" xml:space="preserve">
+    <value>Contact Types</value>
+  </data>
+  <data name="SaleBasketTDES_ISPAYED" xml:space="preserve">
+    <value>Sale Basket IS PAYED</value>
+  </data>
+  <data name="CategoryItemSearchByGroup" xml:space="preserve">
+    <value>Search By Group</value>
+  </data>
+  <data name="CategoryItemSearchByDescr" xml:space="preserve">
+    <value>Search By Group</value>
+  </data>
+  <data name="YOUARESELLER" xml:space="preserve">
+    <value>YOU ARE SELLER</value>
+  </data>
+  <data name="ArticleSearchByEntArticle" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="BranchUserNotFound" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="GuestOrderTDES_RESETPRICES_ISENDED" xml:space="preserve">
+    <value>Resetting of prices is ended</value>
+  </data>
+  <data name="EnterpriseUserTDES_INDEX" xml:space="preserve">
+    <value>Enterprise users</value>
+  </data>
+  <data name="CARMODELTYPE_INDEX" xml:space="preserve">
+    <value>Car model type</value>
+  </data>
+  <data name="ReturnBasketTDES_NOTFOUND" xml:space="preserve">
+    <value>Return Basket is not defined</value>
+  </data>
+  <data name="User2WorkPlace_INDEX" xml:space="preserve">
+    <value>User to WorkPlace</value>
+  </data>
+  <data name="EnterpriseBrand_INDEX" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="EnterpriseAdminName" xml:space="preserve">
+    <value>Enterprise  Administrator</value>
+  </data>
+  <data name="EnterpriseUsersHelp3" xml:space="preserve">
+    <value>If you create a user, but he can not enter the system. Use the "Apply Settings". When this is re replication user roles in infrastructure information system security. If you find that you are already registered, the password is changed.</value>
+  </data>
+  <data name="EnterpriseUsersHelp2" xml:space="preserve">
+    <value>If the selected account go to the page "Details", then have the opportunity to edit and view contacts (e-mail phones). To move use the "contact" at the bottom of the screen.</value>
+  </data>
+  <data name="EnterpriseUsersHelp1" xml:space="preserve">
+    <value>For each user fixed NIC ( This login) , name , flag Active ( System Access ) , Flag Admin ( Enterprise Administrator role ) , Flag Audit ( Auditor Enterprise ) and password. Password is entered when creating your account . The user is then transferred to the login name and password. When you first log into the system , the user must change their password. The enterprise administrator can block another administrator . Can block and itself if desired. After blocking all enterprise administrators should be encouraged to perform administrator ecosystem unlock .</value>
+  </data>
+  <data name="FILTER_ISDONE" xml:space="preserve">
+    <value>Order is processed</value>
+  </data>
+  <data name="FILTER_ISPAID" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="InStock" xml:space="preserve">
+    <value>In Stock</value>
+  </data>
+  <data name="BranchAuditName" xml:space="preserve">
+    <value>Branch Auditor</value>
+  </data>
+  <data name="SaleBasketTDES_PROFILE" xml:space="preserve">
+    <value>Profile of current SaleBasket</value>
+  </data>
+  <data name="GuestOrderArticleTDES_EDIT" xml:space="preserve">
+    <value>Change Order</value>
+  </data>
+  <data name="GuestProfileTDES_CREATE" xml:space="preserve">
+    <value>Create My profile</value>
+  </data>
+  <data name="GuestEnterpriseBranchTDES_NOTFOUND" xml:space="preserve">
+    <value>Wrong setting for Order Table </value>
+  </data>
+  <data name="SheetRevaluationTDES_CANNOTCANGE" xml:space="preserve">
+    <value>Can not change processed sheet</value>
+  </data>
+  <data name="SaleBasketTDES_PAYMENTERROR" xml:space="preserve">
+    <value>DB Error while making payment for</value>
+  </data>
+  <data name="EnterpriseTecDocSrcTypeTDES_TITLE" xml:space="preserve">
+    <value>TecDoc Src Types</value>
+  </data>
+  <data name="BranchUserNotActive" xml:space="preserve">
+    <value>User is not Active</value>
+  </data>
+  <data name="FILTER_ISVISIBLE" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="SURE_TO_DELETE" xml:space="preserve">
+    <value>Are you sure you want to delete this?</value>
+  </data>
+  <data name="OriginalCatalog" xml:space="preserve">
+    <value>Original Catalog</value>
+  </data>
+  <data name="CanNotDeletePaidBasket" xml:space="preserve">
+    <value>Can not delete after payment</value>
+  </data>
+  <data name="ReportTypeStorned_INDEX" xml:space="preserve">
+    <value>Storned by spell</value>
+  </data>
+  <data name="GuestProfileTDES_DELETE" xml:space="preserve">
+    <value>Delete My profile</value>
+  </data>
+  <data name="GoToForum" xml:space="preserve">
+    <value>Forum</value>
+  </data>
+  <data name="CARMODELTYPETREE_INDEX" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="TecDocCountry" xml:space="preserve">
+    <value>TecDoc Country</value>
+  </data>
+  <data name="UnderTheOrder" xml:space="preserve">
+    <value>Under The Order</value>
+  </data>
+  <data name="IndexByRoles" xml:space="preserve">
+    <value>Menu by roles</value>
+  </data>
+  <data name="MakeBranchReply" xml:space="preserve">
+    <value>Reply Branch</value>
+  </data>
+  <data name="GestUserNic_NOT_DEFINED" xml:space="preserve">
+    <value>Nic is not defined customer</value>
+  </data>
+  <data name="DoSelectArticle_INDEX" xml:space="preserve">
+    <value>Mistake of ordering</value>
+  </data>
+  <data name="BranchRest_INDEX" xml:space="preserve">
+    <value>Branch rests Catalog</value>
+  </data>
+  <data name="DoSelectArticle_Error" xml:space="preserve">
+    <value>Part selection is reset. This occurs if you are not logged in, but began to form order.</value>
+  </data>
+  <data name="ByEntSupplierDescription" xml:space="preserve">
+    <value>Search by Supplier Description</value>
+  </data>
+  <data name="AlreadyReplicated" xml:space="preserve">
+    <value>Replicated</value>
+  </data>
+  <data name="FILTER_TITLE_TOWN" xml:space="preserve">
+    <value>Filter by town</value>
+  </data>
+  <data name="Rest2Income" xml:space="preserve">
+    <value>Income by Rest</value>
+  </data>
+  <data name="User2WorkPlaceTDES_NOTFOUND" xml:space="preserve">
+    <value>WorkPlace is not defined</value>
+  </data>
+  <data name="ReverseIncome_INDEX" xml:space="preserve">
+    <value>Reverse Income</value>
+  </data>
+  <data name="EnterpriseSupplier_INDEX" xml:space="preserve">
+    <value>Suppliers</value>
+  </data>
+  <data name="ENTERPRISEUSER_NOTDEFINED" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="FILTER_ISACTIVE" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="GuestOrderTDES_CREATESALE" xml:space="preserve">
+    <value>Create Sale</value>
+  </data>
+  <data name="CREATE_NEW_SPELL" xml:space="preserve">
+    <value>Create new Spell</value>
+  </data>
+  <data name="ShowMargin" xml:space="preserve">
+    <value>Margin</value>
+  </data>
+  <data name="BranchAdminName" xml:space="preserve">
+    <value>Branch Administrator</value>
+  </data>
+  <data name="GuestProfileTDES_INDEX" xml:space="preserve">
+    <value>My profile</value>
+  </data>
+  <data name="ReplyRests" xml:space="preserve">
+    <value>Rests</value>
+  </data>
+  <data name="BasketCreateDateLessThanSpellDate" xml:space="preserve">
+    <value>Basket CreateDate Less Than Spell Date</value>
+  </data>
+  <data name="EnterprisesHelp2" xml:space="preserve">
+    <value>Active flag allows you to block operation of the enterprise. Also off the flag must be turned off active flag administrators of the enterprise, as they have the right to include and to block the work of the enterprise.</value>
+  </data>
+  <data name="EnterprisesHelp3" xml:space="preserve">
+    <value>Directory field for the item - this name string in the web.config file as shown below</value>
+  </data>
+  <data name="EnterprisesHelp1" xml:space="preserve">
+    <value>Record company consists of four elements : A unique identifier name for the item catalog .
+The unique identifier is not implemented as an integer , but as a 16 -byte GUID.
+Implementing a GUID gives uniqueness to the global level ( Internet) and ensures that the identity of your company is never matched with any other identifier .
+This identifier is generated automatically , but when creating a new record you have the opportunity to make their own .
+The need for this ( edit GUID) occurs if you transfer your data from one site to another.</value>
+  </data>
+  <data name="EnterprisesHelp6" xml:space="preserve">
+    <value>Current page is available to all the performers. But artists bound to the enterprise will see exactly one row - their business. Only Enterprise Administrators can edit the name and flag of the enterprise activity</value>
+  </data>
+  <data name="EnterprisesHelp7" xml:space="preserve">
+    <value>Editing (view) "State Enterprise", "Division", "Address", "supplier", "brand", "Articles" click on the link at the bottom of the screen to work with relevant data nodes.</value>
+  </data>
+  <data name="EnterprisesHelp4" xml:space="preserve">
+    <value>As was stated, the item description can be in a separate database, which handles a separate instance of SQL Server. On the one hand you have to make to the web.config connection string. On the other hand you have to tie a string to the name of the enterprise.</value>
+  </data>
+  <data name="EnterprisesHelp5" xml:space="preserve">
+    <value>Editing (view) "State Enterprise", "Division", "Address", "supplier", "brand", "Articles" click on the link in detail and at the bottom of the screen will get links to pages for their respective data nodes.</value>
+  </data>
+  <data name="EnterprisesHelp8" xml:space="preserve">
+    <value>Enterprise admins only allowed to change any data tied to the enterprise. Users with other roles can change your account information, add or modify your contacts and their addresses.</value>
+  </data>
+  <data name="EnterprisesHelp9" xml:space="preserve">
+    <value>Within a single enterprise data about other users are available for viewing other users, provided if the visibility flag is enabled on the record. Availability credentials available to other users in force production needs. For example, the seller may require the assistance of an administrator.</value>
+  </data>
+  <data name="ReportTypeNotPayed" xml:space="preserve">
+    <value>Notpayed</value>
+  </data>
+  <data name="TECDOC_SUP_TEXT" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="SaleBasketTDES_SPELL_ERROR" xml:space="preserve">
+    <value>Can not pay: spell is changed</value>
+  </data>
+  <data name="BranchUserHasNoWorkPlace" xml:space="preserve">
+    <value>User has no workPlace yet</value>
+  </data>
+</root>

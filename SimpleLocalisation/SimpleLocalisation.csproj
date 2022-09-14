@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0E9C395-6613-4148-B716-DE259FF812AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleLocalisation</RootNamespace>
+    <AssemblyName>SimpleLocalisation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\SimpleLocalisation.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="DictionaryParameterSet.cs" />
+    <Compile Include="ExceptionHelper.cs" />
+    <Compile Include="ICultureContext.cs" />
+    <Compile Include="ITextSource.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="LocalisedText.cs" />
+    <Compile Include="LocalisedTextEntry.cs" />
+    <Compile Include="ParameterSet.cs" />
+    <Compile Include="Parsing\CustomExpressionPart.cs" />
+    <Compile Include="Parsing\DefaultExpressionParser.cs" />
+    <Compile Include="Parsing\Expression.cs" />
+    <Compile Include="Parsing\ExpressionParser.cs" />
+    <Compile Include="Parsing\ExpressionPart.cs" />
+    <Compile Include="Parsing\FormatGroup.cs" />
+    <Compile Include="Parsing\IPatternTransformer.cs" />
+    <Compile Include="Parsing\IPatternVisitor.cs" />
+    <Compile Include="Parsing\ParameterSpec.cs" />
+    <Compile Include="Parsing\PatternPart.cs" />
+    <Compile Include="Parsing\PatternPartPrinter.cs" />
+    <Compile Include="Parsing\StringTrimmer.cs" />
+    <Compile Include="Parsing\Switch.cs" />
+    <Compile Include="Parsing\SwitchCase.cs" />
+    <Compile Include="Parsing\Text.cs" />
+    <Compile Include="Parsing\TextParser.cs" />
+    <Compile Include="Parsing\XmlExpressionParser.cs" />
+    <Compile Include="Processing\DefaultDialect.cs" />
+    <Compile Include="Processing\DelegateSwitchConditionEvaluatorFactory.cs" />
+    <Compile Include="Processing\DescendingPatternVisitor.cs" />
+    <Compile Include="Processing\EvaluationContext.cs" />
+    <Compile Include="Processing\HashTagFormatGroupExpander.cs" />
+    <Compile Include="Processing\IFormatGroupExpander.cs" />
+    <Compile Include="Processing\IParameterEvaluator.cs" />
+    <Compile Include="Processing\IParameterEvaluatorFactory.cs" />
+    <Compile Include="Processing\IPatternProcessorFactory.cs" />
+    <Compile Include="Processing\ISwitchConditionEvaluator.cs" />
+    <Compile Include="Processing\ISwitchConditionEvaluatorFactory.cs" />
+    <Compile Include="Processing\IValueFormatter.cs" />
+    <Compile Include="Processing\IValueFormatterFactory.cs" />
+    <Compile Include="Processing\ParameterEvaluators\PatternLookupEvaluator.cs" />
+    <Compile Include="Processing\ParameterEvaluators\PatternLookupEvaluatorFactory.cs" />
+    <Compile Include="Processing\ParameterEvaluators\ReflectionParameterEvaluator.cs" />
+    <Compile Include="Processing\ParameterEvaluators\ReflectionParameterEvaluatorFactory.cs" />
+    <Compile Include="Processing\ParameterEvaluators\SimpleParameterEvaluator.cs" />
+    <Compile Include="Processing\ParameterEvaluators\SimpleParameterEvaluatorFactory.cs" />
+    <Compile Include="Processing\ParameterValue.cs" />
+    <Compile Include="Processing\ParameterValues\DelegateFormatWrapper.cs" />
+    <Compile Include="Processing\ParameterValues\FormatWrapper.cs" />
+    <Compile Include="Processing\ParameterValues\UnencodedParameterValue.cs" />
+    <Compile Include="Processing\PatternDecorator.cs" />
+    <Compile Include="Processing\PatternDialect.cs" />
+    <Compile Include="Processing\PatternEvaluator.cs" />
+    <Compile Include="Processing\StringBasedSwitchConditionEvaluatorFactory.cs" />
+    <Compile Include="Processing\SwitchConditions\ArithmeticCondition.cs" />
+    <Compile Include="Processing\SwitchConditions\ArithmeticConditionFactory.cs" />
+    <Compile Include="Processing\SwitchConditions\BooleanExpressionCondition.cs" />
+    <Compile Include="Processing\SwitchConditions\BooleanExpressionConditionFactory.cs" />
+    <Compile Include="Processing\SwitchConditions\IntervalCondition.cs" />
+    <Compile Include="Processing\SwitchConditions\IntervalConditionFactory.cs" />
+    <Compile Include="Processing\SwitchConditions\LookupCondition.cs" />
+    <Compile Include="Processing\SwitchConditions\LookupConditionFactory.cs" />
+    <Compile Include="Processing\SwitchConditions\SingleValueCondition.cs" />
+    <Compile Include="Processing\SwitchConditions\TakeAllCondition.cs" />
+    <Compile Include="Processing\SwitchConditions\TakeAllConditionFactory.cs" />
+    <Compile Include="Processing\SwitchConditions\ValueListCondition.cs" />
+    <Compile Include="Processing\SwitchConditions\ValueListConditionFactory.cs" />
+    <Compile Include="Processing\SwitchDecorator.cs" />
+    <Compile Include="Processing\TextDialect.cs" />
+    <Compile Include="Processing\ValueFormatters\DefaultFormatter.cs" />
+    <Compile Include="Processing\ValueFormatters\DefaultFormatterFactory.cs" />
+    <Compile Include="Processing\ValueFormatters\NumberToRomanConvertor.cs" />
+    <Compile Include="Processing\ValueFormatters\RomanNumberFormatter.cs" />
+    <Compile Include="Processing\ValueFormatters\RomanNumberFormatterFactory.cs" />
+    <Compile Include="Processing\ValueFormatters\StringCaseFormatter.cs" />
+    <Compile Include="Processing\ValueFormatters\StringCaseFormatterFactory.cs" />
+    <Compile Include="Processing\ValueFormatters\StringCaseTransformationType.cs" />
+    <Compile Include="Processing\ValueFormatters\StringFormatFormatter.cs" />
+    <Compile Include="Processing\ValueFormatters\StringFormatFormatterFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\XmlFileTextSource.cs" />
+    <Compile Include="Support\ArithmeticExtensions.cs" />
+    <Compile Include="Support\ArithmeticOperator.cs" />
+    <Compile Include="Support\CompareOperator.cs" />
+    <Compile Include="Support\ObjectHelper.cs" />
+    <Compile Include="TextManager.cs" />
+    <Compile Include="Providers\WindowsContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Processing\DelegateParameterEvaluatorFactory.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,180 @@
+﻿@using CarShop.Properties;
+
+@model TecDocEcoSystemDbClassLibrary.RevaluationArticleTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+
+    Guid? searchSheetRevaluationTDESGuid = ViewBag.searchSheetRevaluationTDESGuid;
+    String searchSheetRevaluationDescr = ViewBag.searchSheetRevaluationDescr;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Управление ведомостями переоценки", "SheetRevaluation", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.DELETE_ACTION</h2>
+
+@if (!searchSheetRevaluationTDESGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid}, new { })</li>
+                if (searchSheetRevaluationTDESGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(searchSheetRevaluationDescr, "Details", "SheetRevaluation", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = searchSheetRevaluationTDESGuid}, new { })</li>
+                    <li>@Html.ActionLink(Resources.IncomeArticleTDES_INDEX, "Index", "RevaluationArticle", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchSheetRevaluationTDESGuid = searchSheetRevaluationTDESGuid}, new { })</li>
+                }
+            }
+        }
+    </ol>
+    <div class="alert alert-warning">@Html.ValidationSummary(true)</div>
+} else {
+
+    
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid}, new { })</li>
+                if (searchSheetRevaluationTDESGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(searchSheetRevaluationDescr, "Details", "SheetRevaluation", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = searchSheetRevaluationTDESGuid}, new { })</li>
+                    <li>@Html.ActionLink(Resources.IncomeArticleTDES_INDEX, "Index", "RevaluationArticle", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchSheetRevaluationTDESGuid = searchSheetRevaluationTDESGuid}, new { })</li>
+                }
+            }
+        }
+    </ol>
+
+    @Html.ValidationSummary(true)
+
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomePayRollTDESGuid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IncomePayRollTDESGuid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntArticle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntArticle)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntBrandNic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntBrandNic)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntArticleDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntArticleDescription)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsProcessed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsProcessed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReversed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsReversed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrArtPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrArtPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtAmountRest)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtAmountRest)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewArtPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewArtPrice)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperSum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OperSum)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("searchEntGuid" , Model.EntGuid)
+        @Html.Hidden("searchEntBranchGuid" , Model.EntBranchGuid)
+        @Html.Hidden("EntArticle" , Model.EntArticle)
+        @Html.Hidden("EntBrandNic" , Model.EntBrandNic)
+        @Html.Hidden("IncomePayRollTDESGuid" , Model.IncomePayRollTDESGuid)
+        @Html.Hidden("SheetRevaluationTDESGuid" , Model.SheetRevaluationTDESGuid)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "RevaluationArticle", new {searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchSheetRevaluationTDESGuid = searchSheetRevaluationTDESGuid}, new { })
+        </div>
+    }
+</div>
+    
+}

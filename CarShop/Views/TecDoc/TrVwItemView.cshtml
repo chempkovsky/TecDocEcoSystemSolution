@@ -1,0 +1,56 @@
+﻿@model TecDocEcoSystemDbClassLibrary.MODELTYPESTREE_TD
+
+@{
+    int CountryId = ViewBag.CountryId;
+    int LangId = ViewBag.LangId;
+    int BandId = ViewBag.BandId;
+    int ModelId = ViewBag.ModelId;
+    int ModelTypeId = ViewBag.ModelTypeId;
+
+}
+
+
+
+@if (Model.Subitems == null)
+{
+
+
+    @*<li>@Html.DisplayFor(modelItem => Model.TEX_TEXT)</li>*@
+
+    <li>
+        @Html.ActionLink(@Html.DisplayFor(modelItem => Model.TEX_TEXT).ToString(), "ModelTypeTreeItems",
+             new { topicId = Model.STR_ID, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId },
+             new { })
+    </li>
+
+
+}
+else
+{
+    <li>
+
+        @if (Model.isOpen)
+        {
+            <input type="checkbox" id="item-@Model.STR_ID.ToString()" checked="checked" />
+        }
+        else
+        {
+            <input type="checkbox" id="item-@Model.STR_ID.ToString()" />
+        }
+        <label for="item-@Model.STR_ID.ToString()">@Html.DisplayFor(modelItem => Model.TEX_TEXT)</label>
+        <ul>
+            @*<li>
+                @Html.DisplayFor(modelItem => Model.TEX_TEXT)
+    @Html.ActionLink(@Html.DisplayFor(modelItem => Model.TEX_TEXT).ToString(), "ModelTypeTreeItems",
+     new { topicId = Model.STR_ID, modelTypeId = ViewBag.ModelTypeId, modelId = ViewBag.ModelId, countryId = ViewBag.CountryId, langId = ViewBag.LangId, bandId = ViewBag.BandId, fluelId = ViewBag.FluelId },
+     new { })
+            </li>*@
+
+
+            @foreach (var subItm in Model.Subitems)
+            {
+                @Html.Partial("TrVwItemView", subItm)
+            }
+        </ul>
+    </li>
+}

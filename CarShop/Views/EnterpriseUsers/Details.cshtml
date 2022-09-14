@@ -1,0 +1,139 @@
+﻿@model TecDocEcoSystemDbClassLibrary.EnterpriseUserTDES
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseUsersHelp3
+    </div>
+</div>
+
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+
+@if (!SearchEntGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", new { searchEntGuid = SearchEntGuid })</li>
+        }
+    </ol>
+
+    @Html.ValidationSummary(true)
+}
+else
+{
+    @Html.ValidationSummary(true)
+
+    <div>
+        @*<h4>EnterpriseUserTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", new { searchEntGuid = SearchEntGuid })</li>
+            }
+        </ol>
+
+        <hr />
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EntUserNic)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EntUserNic)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MiddleName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.MiddleName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsAdmin)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsAdmin)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsAudit)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsAudit)
+                    </dd>
+
+                </dl>
+            </div>
+
+            <div class="col-xs-8 col-sm-3 col-md-3">
+                <div class="btn-group-vertical">
+                    @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseUserContact", new { searchEntGuid = SearchEntGuid, searchEntUserNic = Model.EntUserNic }, new { @class = "btn btn-info" })
+                    @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))  // || (ViewBag.IsBranchAdmin))
+                    {
+                        using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("userId",  Model.EntUserNic)
+                            <input type="submit" value="@Resources.ApplyOptions" class="btn btn-warning" />
+                        }
+                    }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <p>
+
+        @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+        {
+            @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { userId = Model.EntUserNic }, new { @class = "btn btn-primary" })
+        }
+        @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid })
+    </p>
+
+}

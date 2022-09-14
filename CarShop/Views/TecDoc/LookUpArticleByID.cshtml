@@ -1,0 +1,312 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@using Newtonsoft.Json;
+
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPETREEITEMS_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREEITEMDETAIL_INDEX;
+    SelectList sliLANGUAGES = ViewBag.sliLANGUAGES as SelectList;
+    SelectList sliCOUNTRIES = ViewBag.sliCOUNTRIES as SelectList;
+    SelectList slisrchTp = ViewBag.slisrchTp as SelectList;
+
+    List<MODELTYPETREEITEMMANID_TD> ManufIds = ViewBag.ManufIds;
+    List<MODELTYPETREEITEMDESCR_TD> Modeltypetreeitemdescr = ViewBag.Modeltypetreeitemdescr;
+    List<ANALOGOUS_REST_TD> Analoglist = ViewBag.Analoglist;
+    List<MODELTYPETREEITEMS_TD> Modeltypetreeitems = ViewBag.Modeltypetreeitems;
+    List<FUEL_TD> Eans = ViewBag.Eans;
+
+    String RedirecData = ViewBag.RedirecData;
+    String RedirectContriller = ViewBag.RedirectContriller;
+    String RedirectAction = ViewBag.RedirectAction;
+
+}
+
+<h2>@Resources.CARMODELTYPETREEITEMDETAIL_INDEX</h2>
+
+@using (Html.BeginForm("LookUpArticleByID", "TecDoc", FormMethod.Get, new { @class = "form-inline danger", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+
+    @Html.Hidden("redirecData", RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+
+    <div class="form-group">
+    @Html.DropDownList("countryId", sliCOUNTRIES, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("langId", sliLANGUAGES, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("srchTp", slisrchTp, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Html.TextBox("artId", ViewBag.artId as string, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+    </div>
+}
+
+
+@Html.ValidationSummary(true)
+
+
+@using (Html.BeginForm("LookUpArticleByIDSelected", "TecDoc", FormMethod.Post))
+{
+
+    @Html.Hidden("redirecData",  RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+
+
+
+if ((Model != null) && (Model.Count() > 0))
+{
+
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+}
+<input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SUP_TEXT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ART_ID) : @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+            </th>
+
+        </tr>
+
+@{
+    var selected = true;
+//    System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+}
+
+@foreach (var item in Model)
+{
+    <tr class=@(selected ? "active" : "")>
+        <td>
+            @Html.RadioButton("SimpleArticle", JsonConvert.SerializeObject(new SimpleArticle_TD() { ART_ID = item.ART_ID, ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, MASTER_BEZ = item.MASTER_BEZ }), selected, selected)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SUP_ID) : @Html.DisplayFor(modelItem => item.SUP_TEXT)
+        </td>
+        <td class="btn-group btn-group-xs">
+            @Html.ActionLink(Html.DisplayFor(modelItem => item.ART_ID).ToHtmlString() + " : " +
+                        @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR).ToHtmlString(),
+                        "LookUpArticleByID", "TecDoc",
+                        new
+                        {
+                            redirecData = ViewBag.RedirecData,
+                            redirectContriller = ViewBag.RedirectContriller,
+                            redirectAction = ViewBag.RedirectAction,
+                            countryId = ViewBag.CountryId,
+                            langId = ViewBag.LangId,
+                            artId = item.ART_ID,
+                            srchTp = "1"
+                        }, new { @class = "btn btn-info" })
+        </td>
+    </tr>
+    <tr class="warning">
+        <td colspan="3">
+            @Html.DisplayNameFor(model => model.MASTER_BEZ) : @Html.DisplayFor(modelItem => item.MASTER_BEZ)
+        </td>
+    </tr>
+    selected = false;
+}
+
+    </table>
+
+if ((Model != null) && (Model.Count() > 0))
+{
+
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+}
+<input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+    
+}    
+
+
+
+@if ((Eans != null) && (Eans.Count > 0))
+{
+    <h3>@Resources.TECDOC_EAN_INDEX</h3>
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Resources.TECDOC_TEX_TEXT
+            </th>
+        </tr>
+        @foreach (var item in Eans)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_TEXT)
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+
+@if ((Modeltypetreeitems != null) && (Modeltypetreeitems.Count > 0))
+{
+
+
+<h3>@Resources.DETAILS_ACTION</h3>
+
+if ((Modeltypetreeitemdescr != null) && (Modeltypetreeitemdescr.Count() > 0))
+{
+    var dummy = Modeltypetreeitemdescr[0];
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Resources.TECDOC_TEX_TEXT
+            </th>
+            <th>
+                @Resources.TECDOC_TEX_UNIT
+            </th>
+            <th>
+                @Resources.TECDOC_TEX_VALUE
+            </th>
+        </tr>
+
+        @foreach (var item in Modeltypetreeitemdescr)
+{
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_TEXT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_VALUE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_UNIT)
+                </td>
+            </tr>
+}
+    </table>
+} else {
+    <h4>@Resources.NO_ANY_DATA</h4>
+}
+
+
+<h3>@Resources.MANUF_IDS_INDEX</h3>
+if ((ManufIds != null) && (ManufIds.Count > 0))
+{
+
+
+    <table class="table table-condensed">
+
+        <tr>
+            <th>
+                @Resources.BRANDS_INDEX
+            </th>
+            <th>
+                @Resources.MANUF_IDS_INDEX
+            </th>
+        </tr>
+
+        @foreach (var item in ManufIds) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUP_TEXT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEX_VALUE)
+                </td>
+            </tr>
+}
+    </table>
+
+} else {
+  <h4>@Resources.NO_ANY_DATA</h4>   
+}
+
+
+<h3>@Resources.CARMODELTYPETREEITEMANALOG_INDEX</h3>
+    if ((Analoglist != null) && (Analoglist.Count > 0))
+    {
+
+        <table class="table table-condensed">
+
+            <tr>
+                <th>
+                    @Resources.TECDOC_ART_ID/@Resources.TECDOC_ART_ARTICLE_NR
+                </th>
+                @*<th>
+                @Resources.TECDOC_ART_ARTICLE_NR
+            </th>*@
+                <th>
+                    @Resources.TECDOC_SUP_TEXT
+                </th>
+                @*<th>
+                @Resources.TECDOC_MASTER_BEZ
+            </th>
+
+            <th>
+                @Resources.TECDOC_GA_NR
+            </th>
+
+            <th>
+                @Resources.TECDOC_GA_TEXT
+            </th>*@
+
+            </tr>
+            @{ int curGA_NR = 0; }
+
+
+            @foreach (var item in Analoglist)
+            {
+                if (curGA_NR != item.GA_NR)
+                {
+                    curGA_NR = item.GA_NR;
+                    <tr class="warning">
+                        <th colspan="2"> @Html.DisplayFor(modelItem => item.GA_NR) : @Html.DisplayFor(modelItem => item.GA_TEXT) : @Html.DisplayFor(modelItem => item.MASTER_BEZ)</th>
+                    </tr>
+                }
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ART_ID) : @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SUP_TEXT)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.MASTER_BEZ)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GA_NR)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GA_TEXT)
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+
+    }
+    else
+    {
+  <h4>@Resources.NO_ANY_DATA</h4>   
+}
+
+    
+}

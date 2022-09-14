@@ -1,0 +1,149 @@
+﻿@using CarShop.Properties;
+@using PagedList.Mvc;
+@using TecDocEcoSystemDbClassLibrary;
+
+@using Newtonsoft.Json;
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.EnterpriseSupplierTDES>
+
+@{
+    ViewBag.Title = Resources.EnterpriseSupplier_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+
+    SelectList sliIsActive = ViewBag.sliIsActive as SelectList;
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy as SelectList;
+
+    String RedirecData = ViewBag.RedirecData;
+    String RedirectContriller = ViewBag.RedirectContriller;
+    String RedirectAction = ViewBag.RedirectAction;
+
+}
+
+<h2>@Resources.EnterpriseSupplier_INDEX</h2>
+
+@Html.ValidationSummary(true)
+
+
+@if (SearchEntGuid.HasValue)
+{
+
+using (Html.BeginForm("LookUpSupplierByID", "EnterpriseSupplier", FormMethod.Get,  new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("redirecData",  RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+    
+    
+    
+    <div class="form-group">
+    @Resources.FILTER_ISACTIVE     
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsActive", sliIsActive, new
+                    {
+                        @class = "form-control",
+                        data_autocomplete_selector = "data-autocomplete-url", 
+                        sel1 = Url.Action("Autocomplete", new {currentIsActive="1", searchEntGuid = SearchEntGuid }), 
+                        sel2 = Url.Action("Autocomplete", new { currentIsActive="2", searchEntGuid = SearchEntGuid }), 
+                        sel3 = Url.Action("Autocomplete", new { currentIsActive="3", searchEntGuid = SearchEntGuid }) })
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("searchStringBy", sliSearchStringBy, new
+                    {
+                        @class = "form-control",
+                        data_autocomplete_selector = "data-autocomplete-url", 
+                        sel1 = Url.Action("Autocomplete", new {currentFilterBy="1", searchEntGuid = SearchEntGuid }), 
+                        sel2 = Url.Action("Autocomplete", new { currentFilterBy="2", searchEntGuid = SearchEntGuid }) })
+    </div>
+    <div class="form-group">
+    @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new {
+                        @class = "form-control",
+                        data_autocomplete_url = Url.Action("Autocomplete", new { currentIsActive = ViewBag.CurrentIsActive, currentFilterBy = ViewBag.currentFilterBy, searchEntGuid = SearchEntGuid })
+})
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+using (Html.BeginForm("LookUpSupplierByIDSelected", "EnterpriseSupplier", FormMethod.Post))
+{
+
+    @Html.Hidden("redirecData",  RedirecData)
+    @Html.Hidden("redirectContriller", RedirectContriller)
+    @Html.Hidden("redirectAction", RedirectAction)
+
+if ((Model != null) && (Model.Count > 0))
+{
+
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+}
+<input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+
+var dummy = Model.FirstOrDefault();
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntSupplierId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntSupplierDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsActive)
+        </th>
+        
+    </tr>
+
+@{
+    var selected = true;
+//    System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+}
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.RadioButton("SimpleSupplier", JsonConvert.SerializeObject(new EnterpriseSupplierTDES() { EntSupplierId = item.EntSupplierId, EntSupplierDescription = item.EntSupplierDescription }), selected, selected)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.EntSupplierId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntSupplierDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+    </tr>
+    selected = false;
+}
+
+</table>
+
+<p/>
+if ((Model != null) && (Model.Count > 0))
+{
+    <input type="submit" value="@Resources.DOSELECT_TITLE" name="DOSELECT_TITLE" class="btn btn-success" />
+} else {
+    <h4>@Resources.NO_ANY_DATA</h4>
+}
+<input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+}
+<p/>
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { searchEntGuid=SearchEntGuid, currentFilter=ViewBag.CurrentFilter, currentFilterBy=ViewBag.currentFilterBy,currentIsActive=ViewBag.CurrentIsActive, page=page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocomplete")
+}
+        
+}    
+        

@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{65A4F13B-F8AC-40BE-BBE5-A324347339E7}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WpfCarShopInstaller</RootNamespace>
+    <AssemblyName>WpfCarShopInstaller</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Converters\BooleanConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="ModelTecDoc\ANALOGOUS_TD.cs" />
+    <Compile Include="ModelTecDoc\ArticleGroup_TD.cs" />
+    <Compile Include="ModelTecDoc\ARTICLE_LOOKUP_TD.cs" />
+    <Compile Include="ModelTecDoc\BRAND_TD.cs" />
+    <Compile Include="ModelTecDoc\COUNTRIES_TD.cs" />
+    <Compile Include="ModelTecDoc\DICT_TD.cs" />
+    <Compile Include="ModelTecDoc\FUEL_TD.cs" />
+    <Compile Include="ModelTecDoc\ITecDocContext.cs" />
+    <Compile Include="ModelTecDoc\LANGUAGES_TD.cs" />
+    <Compile Include="ModelTecDoc\MODELTYPEITEMS_TD.cs" />
+    <Compile Include="ModelTecDoc\MODELTYPESTREE_TD.cs" />
+    <Compile Include="ModelTecDoc\MODELTYPETREEITEMDESCR_TD.cs" />
+    <Compile Include="ModelTecDoc\MODELTYPETREEITEMMANID_TD.cs" />
+    <Compile Include="ModelTecDoc\MODELTYPE_TD.cs" />
+    <Compile Include="ModelTecDoc\MODEL_TD.cs" />
+    <Compile Include="ModelTecDoc\SimpleArticle_TD.cs" />
+    <Compile Include="ModelTecDoc\SIMPLEMODELTYPES_TD.cs" />
+    <Compile Include="ModelTecDoc\TecDocContext.cs" />
+    <Compile Include="Utility\AutoCompleteBehavior.cs" />
+    <Compile Include="Utility\FilterAutoCompleteParameters.cs" />
+    <Compile Include="ViewModel\AddressTypeViewModel.cs" />
+    <Compile Include="ViewModel\BranchTypeViewModel.cs" />
+    <Compile Include="ViewModel\ContactTypeViewModel.cs" />
+    <Compile Include="ViewModel\CountryViewModel.cs" />
+    <Compile Include="ViewModel\CurrencyViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseAddressTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseBranchContactsTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseBranchTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseBranchUserContactTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseBranchUserTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseBranchWorkPlaceTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseProductCategoryTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseUserContactTDESViewModel.cs" />
+    <Compile Include="ViewModel\EnterpriseUserTDESViewModel.cs" />
+    <Compile Include="ViewModel\LoadCategoryTreeViewModel.cs" />
+    <Compile Include="ViewModel\LookUpSoatoViewModel.cs" />
+    <Compile Include="ViewModel\SettlementTypeViewModel.cs" />
+    <Compile Include="ViewModel\SimpleTypesLoadUnloadViewModel.cs" />
+    <Compile Include="ViewModel\SoatoViewModel.cs" />
+    <Compile Include="ViewModel\StreetTypeViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewModelSateBase.cs" />
+    <Compile Include="View\AddressTypeView.xaml.cs">
+      <DependentUpon>AddressTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BranchTypeView.xaml.cs">
+      <DependentUpon>BranchTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ContactTypeView.xaml.cs">
+      <DependentUpon>ContactTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CountryView.xaml.cs">
+      <DependentUpon>CountryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CurrencyView.xaml.cs">
+      <DependentUpon>CurrencyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseAddressTDESView.xaml.cs">
+      <DependentUpon>EnterpriseAddressTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseBranchContactsTDESView.xaml.cs">
+      <DependentUpon>EnterpriseBranchContactsTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseBranchTDESView.xaml.cs">
+      <DependentUpon>EnterpriseBranchTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseBranchUserContactTDESView.xaml.cs">
+      <DependentUpon>EnterpriseBranchUserContactTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseBranchUserTDESView.xaml.cs">
+      <DependentUpon>EnterpriseBranchUserTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseBranchWorkPlaceTDESView.xaml.cs">
+      <DependentUpon>EnterpriseBranchWorkPlaceTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseNavigationView.xaml.cs">
+      <DependentUpon>EnterpriseNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseProductCategoryTDESView.xaml.cs">
+      <DependentUpon>EnterpriseProductCategoryTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseTDESView.xaml.cs">
+      <DependentUpon>EnterpriseTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseUserContactTDESView.xaml.cs">
+      <DependentUpon>EnterpriseUserContactTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnterpriseUserTDESView.xaml.cs">
+      <DependentUpon>EnterpriseUserTDESView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoadCategoryTreeView.xaml.cs">
+      <DependentUpon>LoadCategoryTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LookUpSoatoView.xaml.cs">
+      <DependentUpon>LookUpSoatoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettlementTypeView.xaml.cs">
+      <DependentUpon>SettlementTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SimpleTypesLoadUnloadView.xaml.cs">
+      <DependentUpon>SimpleTypesLoadUnloadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SoatoView.xaml.cs">
+      <DependentUpon>SoatoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StackPanelMngBottons.xaml.cs">
+      <DependentUpon>StackPanelMngBottons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StackPanelPagination.xaml.cs">
+      <DependentUpon>StackPanelPagination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StackPanelSearch.xaml.cs">
+      <DependentUpon>StackPanelSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StackPanelSearchGrid.xaml.cs">
+      <DependentUpon>StackPanelSearchGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StreetTypeView.xaml.cs">
+      <DependentUpon>StreetTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfCarShopInstallerModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CircularLoading.png" />
+    <Resource Include="Images\Information.png" />
+    <Resource Include="Images\Question.png" />
+    <Resource Include="Images\Scenarios.png" />
+    <Resource Include="Images\Shield.png" />
+    <Resource Include="Images\Stop.png" />
+    <Resource Include="Images\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MicrosoftExpressionInteractions">
+      <Version>3.0.40218</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity">
+      <Version>7.2.0.1367</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Wpf" Version="7.2.0.1367" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarShopDataService\CarShopDataService.csproj">
+      <Project>{24d50c0c-c0ee-45f1-b218-98bbf01bfdcd}</Project>
+      <Name>CarShopDataService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfCarShopCommon\WpfCarShopCommon.csproj">
+      <Project>{19e2e55b-c2ac-41c4-9c04-93cc07799f6a}</Project>
+      <Name>WpfCarShopCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="View\AddressTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\BranchTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ContactTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CountryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CurrencyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseAddressTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseBranchContactsTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseBranchTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseBranchUserContactTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseBranchUserTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseBranchWorkPlaceTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseNavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseProductCategoryTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseUserContactTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EnterpriseUserTDESView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LoadCategoryTreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LookUpSoatoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SettlementTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SimpleTypesLoadUnloadView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SoatoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StackPanelMngBottons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StackPanelPagination.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StackPanelSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StackPanelSearchGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StreetTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)WpfCarShopInstaller.*" "$(SolutionDir)\WpfCarShop\bin\Debug\" /Y</PostBuildEvent>
+  </PropertyGroup>
+</Project>

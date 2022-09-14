@@ -1,0 +1,187 @@
+﻿@using CarShop.Properties;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.SaleBasketArticleTDES>
+
+
+@{
+    ViewBag.Title = Resources.SaleBasketArticleTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription;
+
+    Guid? searchSpellGuid = ViewBag.searchSpellGuid;
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перечень полей должен быть понятен<br/>
+        <b>Артикул, Брэнд и Наименование</b> - это идентификатор товара, присвоенный предприятием<br />
+        <b>Внешние Артикул, Брэнд и Внеш.EAN</b> - это идентификатор товара во внешнем каталоге (к примеру в TecDoc)<br />
+        <b>Флаг Оплачен</b> - это признак проведения оплаты<br />
+        <b>Дата оплаты</b> - это время и дата выполнения оплаты<br />
+        <b>Nic</b> - исполнитель, выполнивший продажу<br />
+        <b>Раб.место</b> - Id рабочего места, на котором была проведена продажа<br />
+        <b>Цена продажи</b> - это цена за единицу товара<br />
+        <b>Кол-во</b> - кол-во единиц товара<br />
+        <b>Спис.с ост</b> - кол-во единиц товара, которое списано с остатков приходных ведомостей. Изменение значения этого поля происходит 
+        при запуске процесса списания с прихода после закрытия смены.<br />
+        <b>Возврат</b> - поле возврат становится ненулевым, когда проводится возврат товара на магазин<br />
+        Возврат товара - это возврат ранее купленного товара, у которого выявлен дефект и магазин осуществляет такую услугу.
+</div>
+</div>
+
+
+<h2>@Resources.SaleBasketArticleTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+       if (SearchEntBranchGuid.HasValue)
+       {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>   
+            <li>@Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", new {searchEntGuid=SearchEntGuid,  searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>   
+           if (searchSpellGuid.HasValue)
+           {
+               <li>@Html.ActionLink(searchSpellGuid.Value.ToString(), "Details", "BranchSpellHst", new { id = searchSpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>   
+           }
+       }
+    }
+</ol>
+
+@Html.ValidationSummary(true)
+
+@if (searchSpellGuid.HasValue)
+{
+
+
+using (Html.BeginForm("Index", "SaleArticle", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("searchSpellGuid", searchSpellGuid)
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+    <div class="form-group">
+                @Html.DropDownList("searchStringBy", sliSearchStringBy, new
+           {
+               @class = "form-control",
+               data_autocomplete_selector = "data-autocomplete-url", 
+                        sel1 = Url.Action("Autocomplete", new { currentFilterBy="1", searchEntGuid = SearchEntGuid, searchSpellGuid = searchSpellGuid, SearchEntBranchGuid = SearchEntBranchGuid}), 
+                        sel2 = Url.Action("Autocomplete", new { currentFilterBy="2", searchEntGuid = SearchEntGuid, searchSpellGuid = searchSpellGuid, SearchEntBranchGuid = SearchEntBranchGuid}), 
+                        sel3 = Url.Action("Autocomplete", new { currentFilterBy="3", searchEntGuid = SearchEntGuid, searchSpellGuid = searchSpellGuid, SearchEntBranchGuid = SearchEntBranchGuid}), 
+                        sel4 = Url.Action("Autocomplete", new { currentFilterBy="4", searchEntGuid = SearchEntGuid, searchSpellGuid = searchSpellGuid, SearchEntBranchGuid = SearchEntBranchGuid}), 
+                        sel5 = Url.Action("Autocomplete", new { currentFilterBy="5", searchEntGuid = SearchEntGuid, searchSpellGuid = searchSpellGuid, SearchEntBranchGuid = SearchEntBranchGuid}), 
+                        sel6 = Url.Action("Autocomplete", new { currentFilterBy="6", searchEntGuid = SearchEntGuid, searchSpellGuid = searchSpellGuid, SearchEntBranchGuid = SearchEntBranchGuid}) 
+                })
+    </div>
+    <div class="form-group">
+                @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new
+           {
+               @class = "form-control", 
+                        data_autocomplete_url = Url.Action("Autocomplete", "SaleArticle", new { currentFilterBy=ViewBag.currentFilterBy, searchSpellGuid = searchSpellGuid, SearchEntBranchGuid = SearchEntBranchGuid, searchEntGuid = SearchEntGuid }) })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+TecDocEcoSystemDbClassLibrary.SaleBasketArticleTDES dummy = null;
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntArticle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntBrandNic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsPaid)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => dummy.SalePrice)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntArticle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntBrandNic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPaid)
+        </td>
+        <td class="hidden-xs hidden-sm">
+            @Html.DisplayFor(modelItem => item.SalePrice)
+        </td>
+    </tr>
+    
+    <tr class="warning">
+        <td colspan="3">
+            <dl class="dl-horizontal">
+                <dt class="visible-xs visible-sm">@Html.DisplayNameFor(model => dummy.SalePrice)</dt>
+                <dd class="visible-xs visible-sm">@Html.DisplayFor(modelItem => item.SalePrice)</dd>
+
+
+                <dt>@Html.DisplayNameFor(model => dummy.SaleArticleDescriptionTDES.EntArticleDescription)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.SaleArticleDescriptionTDES.EntArticleDescription)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.ExternArticle)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.ExternArticle)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.ExternBrandNic)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.ExternBrandNic)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.ExternArticleEAN)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.ExternArticleEAN)</dd>
+
+                <dt class="alert-info">@Html.DisplayNameFor(model => dummy.ArtAmount)/@Html.DisplayNameFor(model => dummy.CribFromIncome)</dt>
+                <dd class="alert-info">@Html.DisplayFor(modelItem => item.ArtAmount)/@Html.DisplayFor(modelItem => item.CribFromIncome)</dd>
+
+                <dt class="alert-danger">@Html.DisplayNameFor(model => dummy.ReverseAmount)</dt>
+                <dd class="alert-danger">@Html.DisplayFor(modelItem => item.ReverseAmount)</dd>
+
+                
+
+                @if (item.IsPaid)
+                {
+                    <dt>@Html.DisplayNameFor(model => dummy.PaidAt)</dt>
+                    <dd>@Html.DisplayFor(modelItem => item.PaidAt)</dd>
+                }
+
+                <dt>@Html.DisplayNameFor(model => dummy.EntUserNic)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.EntUserNic)</dd>
+
+                <dt>@Html.DisplayNameFor(model => dummy.WorkPlaceGuid)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.WorkPlaceGuid)</dd>
+
+            </dl>
+        </td>
+    </tr>
+    
+}
+
+</table>
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { searchSpellGuid=searchSpellGuid, searchEntGuid=SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid, 
+                                                               currentFilter=ViewBag.CurrentFilter,
+                                                               currentFilterBy=ViewBag.currentFilterBy,  page=page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+    
+@section Scripts {
+    @Scripts.Render("~/bundles/autocompleteEx")
+}
+    
+        
+    
+}
+    

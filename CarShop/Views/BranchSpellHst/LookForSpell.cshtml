@@ -1,0 +1,250 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.BranchSpellHstTDES>
+
+@{
+    ViewBag.Title = Resources.BranchSpellHstTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+
+    String redirecData = ViewBag.RedirecData;
+    String redirectContriller = ViewBag.RedirectContriller;
+    String redirectAction = ViewBag.RedirectAction;
+
+}
+
+<h2>@Resources.BranchSpellHstTDES_INDEX</h2>
+
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+</ol>
+
+
+@Html.ValidationSummary(true)
+
+
+@if (SearchEntBranchGuid.HasValue)
+{
+
+using (Html.BeginForm("LookForSpell", "BranchSpellHst", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+        
+    
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+    
+    <div class="form-group">
+    @Resources.BranchSpellHstTDES_OpenAtLessThan
+    </div>
+    <div class="form-group">
+    @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+    </div>
+    <div class="form-group">
+    @Resources.BranchSpellHstTDES_OpenAtLargeThan
+    </div>
+    <div class="form-group">
+    @Html.TextBox("searchString1", ViewBag.CurrentFilter1 as string)
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+
+using (Html.BeginForm("LookForSpellSelected", "BranchSpellHst", FormMethod.Post))
+{
+
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+}
+
+
+
+
+
+var dummy = Model.FirstOrDefault();
+
+<input type="button" class="btn btn-info visible-xs visible-sm" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => dummy.SpellGuid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.IsBlocked)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => dummy.IsCribFromIncome)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => dummy.OpenAt)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => dummy.CloseAt)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => dummy.OpenedBy)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => dummy.ClosedBy)
+        </th>
+
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpellGuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBlocked)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsCribFromIncome)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.OpenAt)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.CloseAt)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.OpenedBy)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.ClosedBy)
+            </td>
+            <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+                @Html.ActionLink(Resources.SaleBasketArticleTDES_INDEX, "LookForSpellArticle", "SaleArticle", new
+                {
+                searchSpellGuid = item.SpellGuid,
+                searchEntGuid = SearchEntGuid,
+                searchEntBranchGuid = SearchEntBranchGuid,
+                redirecData = redirecData,
+                redirectContriller = redirectContriller,
+                redirectAction = redirectAction
+                }, new { @class = "btn btn-info" })
+            </td>
+
+
+        </tr>
+
+        <tr class="warning">
+            <td colspan="3" class=" visible-xs visible-sm">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => dummy.IsCribFromIncome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsCribFromIncome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => dummy.OpenAt)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.OpenAt)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => dummy.CloseAt)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.CloseAt)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => dummy.OpenedBy)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.OpenedBy)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => dummy.ClosedBy)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.ClosedBy)
+                    </dd>
+
+                </dl>
+            </td>
+        </tr>
+
+        <tr class="visible-xs  visible-sm active">
+            <td colspan="3" class="btn-group btn-group-xs">
+                @Html.ActionLink(Resources.SaleBasketArticleTDES_INDEX, "LookForSpellArticle", "SaleArticle", new
+                {
+                    searchSpellGuid = item.SpellGuid,
+                    searchEntGuid = SearchEntGuid,
+                    searchEntBranchGuid = SearchEntBranchGuid,
+                    redirecData = redirecData,
+                    redirectContriller = redirectContriller,
+                    redirectAction = redirectAction
+                }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+        
+        
+    }
+
+</table>
+
+
+
+    using (Html.BeginForm("LookForSpellSelected", "BranchSpellHst", FormMethod.Post))
+    {
+
+    @Html.Hidden("redirecData", redirecData)
+    @Html.Hidden("redirectContriller", redirectContriller)
+    @Html.Hidden("redirectAction", redirectAction)
+
+    <input type="submit" value="@Resources.DOCANCEL_TITLE" name="DOCANCEL_TITLE" class="btn btn-default" />
+    }
+
+
+
+@Html.PagedListPager( Model, page => Url.Action("LookForSpell", new {redirecData = redirecData, redirectContriller = redirectContriller, redirectAction = redirectAction,
+                      searchEntGuid=SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid, currentFilter=ViewBag.CurrentFilter, currentFilter1=ViewBag.CurrentFilter1, page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+    
+    
+    
+@section Scripts {
+    @Scripts.Render("~/bundles/autocomplete")
+}
+        
+    
+}    

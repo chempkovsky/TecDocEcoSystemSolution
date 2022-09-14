@@ -1,0 +1,222 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.GuestBranchTDES>
+
+@{
+    ViewBag.Title = Resources.GuestBranchTDES_INDEX;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Данный ресурс является инструментом настройки удаленного интернет сервера в части обработки запросов
+        покупателей на <b>ПОИСК</b> товаров для автомобиля с просмотром остатков и цен в разрезе по магазинам, 
+        зарегистрированным в системе.
+        Эта информация используется и при обработке запросов покупателей на формирование <b>ЗАКАЗОВ</b> на магазин.
+        <p />
+        Напомним, условия, когда это требуется. Пусть вы в своей локальной сети (или на одном компьютере) на площадке
+        вашего магазина развернули решение и проводите продажи. Такой узел мы назовем <b>локальным узлом</b>.
+        Теперь вы захотели опубликовать информацию о наличии товара и ценах в интернет. Сервер в интернет мы назовем
+        <b>удаленным узлом</b>. <br />
+        Системный  администратор удаленного узла регистрирует ваше подразделение и высылает вам логин и пароль, 
+        а так же URL адреса сервисов для репликации остатков и цен с вашего <b>локального</b> узла на <b>удаленный</b>.
+        Кроме этого сервисы используются и для получения информации об оформленных в интернет заказах на ваш магазин с <b>удаленного</b> узла на ваш <b>локальный узел</b>.
+        <br />
+        Помимо остатков на даленном сервере должна быть информация о местонахождении вашего магазина, рабочих днях и т.д.
+        Внесение таких данных является разовым действием и выполняется с использованием этой страницы и кнопок <b>Создать (редактировать).</b>
+    <p />
+    Еще раз, информация о подразделении, отображаемая на этой странице размещается ТОЛЬКО на удаленном сервере в интернет
+    или на том сервере,  который обслуживает запросы покупателей на наличие товара, опубликованного вашим подразделением (магазином).
+    Эту информацию покупатель будет видеть просматривая остатки и цены по выбраным автозапчастям.
+    <br />
+    Для внесения (изменения) информации о своем подразделении вы должны от администратора удаленного интернет сервера
+    получить логин и пароль. Вносимая информация размещается в модуле работы с остатками (<b>CarShopRest</b>).<br />
+    Если вы не внесли информацию о подразделении в данный ресурс, удаленный покупатель
+    не сможет увидеть ни ваше подразделение, ни остатки, ни цены по вашему магазину.
+</div>
+</div>
+
+
+<h2>@Resources.GuestBranchTDES_INDEX</h2>
+
+@if(Model != null) {
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues: new {  }, htmlAttributes: new { @class = "btn btn-primary" })
+    </p>
+
+var dummy = Model.FirstOrDefault();
+
+    <input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+<table class="table table-condensed">
+    <tr>
+
+
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntBranchGuid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.EntBranchDescription)
+        </th>
+
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntBranchGuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntBranchDescription)
+            </td>
+
+
+            <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id=item.EntBranchGuid }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id=item.EntBranchGuid }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id=item.EntBranchGuid }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+
+    <tr class="warning">
+        <td colspan="2">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.AddressPostCode)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.AddressPostCode)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.AddressRegion)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.AddressRegion)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.AddressSettlementName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.AddressSettlementName)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.AddressStreetName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.AddressStreetName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.AddressLongitude)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.AddressLongitude)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.AddressLatitude)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.AddressLatitude)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.WorkingDays)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.WorkingDays)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.WorkingTime)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.WorkingTime)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.PriceCurrencyIso)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.PriceCurrencyIso)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.ExchRate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.ExchRate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.Rounding)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Rounding)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.Multiplexer)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Multiplexer)
+                </dd>
+                
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.Phones)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Phones)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.SiteUrl)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.SiteUrl)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.ShopLicense)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.ShopLicense)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.ShopSupply)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.ShopSupply)
+                </dd>
+                
+            </dl>
+        </td>
+    </tr>
+
+        <tr class="visible-xs visible-sm active">
+            <td colspan="2" class="btn-group btn-group-xs">
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id=item.EntBranchGuid }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id=item.EntBranchGuid }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id=item.EntBranchGuid }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+
+
+}
+
+</table>
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new {  page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+} else {
+    
+}    

@@ -1,0 +1,384 @@
+﻿@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.BranchSellerName;
+}
+
+<h2>@Resources.IndexByRoles</h2>
+<h3>@Resources.SolutionRoles</h3>
+
+
+
+<ul class="nav nav-pills">
+    <li class="active"><a href="#">Подразделение</a></li>
+    <li>@Html.ActionLink("Предприятие", "IndexByEnterpriseAdmin", "Home")</li>
+</ul>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">@Resources.BranchSellerName</a></li>
+    <li>@Html.ActionLink(Resources.BranchBookerName, "IndexByBooker", "Home")</li>
+    <li>@Html.ActionLink(Resources.BranchAdminName, "IndexByBranchAdmin", "Home")</li>
+    <li>@Html.ActionLink(Resources.BranchAuditName, "IndexByBranchAudit", "Home")</li>
+</ul>
+
+@*<ul class="nav nav-pills">
+        <li><a href="#">@Resources.EnterpriseAdminName</a></li>
+        <li><a href="#">@Resources.EnterpriseAuditName</a></li>
+        <li><a href="#">@Resources.EcoSystemAdminName</a></li>
+    </ul>*@
+
+<p />
+
+
+<div class="row">
+
+
+    <div class="col-md-2">
+        <div class="btn-group-vertical">
+            @Html.ActionLink(Resources.SaleBasketTDES_INDEX, "Index", "SaleBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.LookForArticleRest_INDEX, "Index", "EnterpriseArticleAndRest", routeValues: new { redirectContriller = "SaleBasketArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.SuppRestTDES_INDEX, "Index", "EnterpriseSuppArticleAndRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+
+
+
+            @Html.ActionLink(Resources.TecDocCountryLang, "ReSettings", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.ReturnBasketTDES_INDEX, "Index", "ReturnBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.LookForArticleSelt_INDEX, "LookForSpell", "BranchSpellHst", routeValues: new { redirectContriller = "ReturnBasketArticle", redirectAction = "GetReturnArticuleForCreate" }, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+
+            @Html.ActionLink(Resources.BranchGuestProfileTDES_INDEX, "Index", "BranchGuestProfile", routeValues: new { }, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.BranchOrderTDES_INDEX, "Index", "BranchOrderSearch", routeValues: new { }, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.MakeOrderReply, "DoMakeOrdersReply", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.MakeBranchReply, "DoMakeReply", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+            @Html.ActionLink(Resources.BranchSpell_INDEX, "Index", "BranchSpell", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.User2WorkPlace_INDEX, "Index", "User2WorkPlace", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.User2WorkPlaceHstTDES_INDEX, "Index", "User2WorkPlaceHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+
+            @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+
+            @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+            @Html.ActionLink(Resources.EnterpriseBranchRateTDES_INDEX, "Index", "EnterpriseBranchRate", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-warning" })
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="col-md-5">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Проведение продажи выполняется в три шага:</div>
+            <div class="panel-body">
+                <ul>
+                    <li>создать корзину</li>
+                    <li>наполнить корзину товаром</li>
+                    <li>провести оплату</li>
+                    <li>если после оплаты покупатель отказался от покупки - сторнировать оплату</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Управлени корзинами</div>
+            <div class="panel-body">
+                Переход на страницу
+                @Html.ActionLink(Resources.SaleBasketTDES_INDEX, "Index", "SaleBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                даст возможность управлять вашими продажами(корзинами) созданными в течение смены. В данном решении реализован <span style="font-weight:bold">функционал отложенного платежа.</span>
+                Предположим пришел покупатель и вы начали формировать корзину товаров. Вдруг он сказал, что вернется к вам через 10 мин.
+                Чтобы начать обслуживать следующего покупателя нет нужды удалять текущую корзину, но достаточно снять флаг активности для текущей корзины.
+                Когда через 10 мин вернется первый покупатель. Установить на его корзине флаг активности.
+                Операция наполнения товаром производится только для активной корзины. <b>
+                    Если активной корзины нет или активная корзина уже оплачена,
+                    при выборе товара автоматически будет создана новая корзина с включенным флагом активности.
+                </b> На страничке управления вашими продажами(корзинами)
+                дается детальная инструкция как переключать активность неоплаченных корзин.
+                <p />
+                <span style="font-weight:bold">Наполнение корзины осуществляется поиском товара одним из трех способов:</span>
+                <ul>
+                    <li>
+                        @Html.ActionLink(Resources.LookForArticleRest_INDEX, "Index", "EnterpriseArticleAndRest", routeValues: new { redirectContriller = "SaleBasketArticle", redirectAction = "GetArticuleRestForCreate" }, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Выбор товара в каталоге остатков вашего подразделения. Поиск товара проводится по внутренним(внешним) идентификаторам и по наименованию.<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Выбор товара в каталоге TecDoc. Поиск товара проводится по внутренним(внешним) идентификаторам и по наименованию.<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.SuppRestTDES_INDEX, "Index", "EnterpriseSuppArticleAndRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Поиск товара в каталоге остатков вашего подразделения. Поиск товара проводится по внутренним(внешним) идентификаторам и по наименованию.<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Выбор товара в каталоге TecDoc через дерево.
+                    </li>
+                </ul><p />
+                Отпозиционируйтесь на найденный товар и кликните кнопку выбрать. Появится форма предлагающая задать количество товара и позволяющая изменить цену продажи,
+                если это Vip-клиент и необходима скидка. Кликните на кнопку "В заказ(корзину)" и товар переместится в активную неоплаченную корзину.
+                Если такой корзины нет, автоматически будет создана новая, на ней будет установлен флаг активности и товар будет помещен в данную корзину.
+                После этого вы попадете на станичку с переченем товаров активной корзины.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">Замечание по TecDoc</div>
+            <div class="panel-body">
+                @Html.ActionLink(Resources.TecDocCountryLang, "ReSettings", "TecDocRests", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Если вы работаете с TecDoc, переход на данную страницу дает возможность выбрать язык выборки данных из TecDoc и страну, в салоне которой был продан автомобиль вашего покупателя.
+                Бывает так, что модели авто для продажи в разных странах комплектуются по-разному. Если вы переходите на данную страницу впервые, то по умолчанию выбрана любая страна.
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Управление товаром в корзине (удаление, изменение кол-ва и цены)</div>
+            <div class="panel-body">
+                Перейдите на страницу
+                @Html.ActionLink(Resources.SaleBasketTDES_INDEX, "Index", "SaleBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                кликниет на ссылку Подробно для интересующей вас корзины(продажи) на появившейся странице кликните на кнопку "Товары". Появится список.
+                Для каждого наименования представлены ссылки "Удалить", "Изменить". По ссылке изменить перейдете на страницу для изменения кол-ва или цены.
+                Заменить, что редактировать(удалять) товар в корзине можно только до операции оплаты.
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Оплата</div>
+            <div class="panel-body">
+                Перейдите на страницу
+                @Html.ActionLink(Resources.SaleBasketTDES_INDEX, "Index", "SaleBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                кликниет на ссылку Подробно для интересующей вас корзины(продажи). На появившейся странице кликните на кнопку "Оплатить".
+                Заметим, что оплаченную корзину и товар в ней нельзя ни редактировать, ни удалять.
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">Сторнирование</div>
+            <div class="panel-body">
+                Перейдите на страницу
+                @Html.ActionLink(Resources.SaleBasketTDES_INDEX, "Index", "SaleBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                кликниет на ссылку Подробно для интересующей вас корзины(продажи). На появившейся странице кликните на кнопку "Сторнирование".
+                Заметим, что сторнирование можно провести только для оплаченной корзины(заказа).
+                Кроме того, что сторнированную корзину и товар в ней нельзя ни редактировать, ни удалять.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">Возврат товара</div>
+            <div class="panel-body">
+                <b>Замечание:</b> Мы не рекомендуем пользоваться данным функционалом. При проведении возврата должен вырасти остаток по артикулу в какой-либо приходной ведомости.
+                В качестве такой ведомости выбирается первая попавшаяся (что не есть хорошо), у которой остаток по артикулу меньше количества поступившего товара по данной ведомости.
+                Мы рекомендуем воспользоваться механизмом приходных ведомостей (и ведомостей переоценки), чтобы зафиксировать возврат товара:
+                оформите приходную ведомость на перечне товаров, который возвращается на магазин.<p />
+                Переход на страницу
+                @Html.ActionLink(Resources.ReturnBasketTDES_INDEX, "Index", "ReturnBasket", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                даст возможность управлять вашими Возвратами(корзинами) созданными в течение смены.
+                Чем возврат отличается от сторнирования. Отличий два. Сторнирование разрешено в рамках одной операционной смены. Если смена закрыта, то провести сторнирование уже нельзя.
+                Возврат отлмчается от сторнирования тем, что может быть проведен в другую операционную смену. Второе отличие - это избирательность товаров для возврата. При сторнировании
+                выполняется откат продажи всех товаров в корзине. При проведении возврата вы формируете перечень товаров из разных корзин и разных смен. <p />
+
+                Проведение возврата товара выполняется в три шага:
+                <ul>
+                    <li>создать корзину</li>
+                    <li>наполнить корзину товаром</li>
+                    <li>провести оплату</li>
+                    <li>если после оплаты покупатель отказался от возврата - сторнировать возврат</li>
+                </ul>
+                В данном решении реализован <span style="font-weight:bold">функционал отложенного проведения возврата.</span>
+                Предположим пришел покупатель и вы начали формировать корзину возвратов. Вдруг он сказал, что вернется к вам через 10 мин.
+                Чтобы начать обслуживать следующего покупателя нет нужды удалять текущую корзину, но достаточно снять флаг активности для текущей корзины.
+                Когда через 10 мин вернется первый покупатель. Установить на его корзине флаг активности.
+                Операция наполнения товаром производится только для активной корзины. <b>
+                    Если активной корзины нет или активная корзина уже оплачена,
+                    при выборе товара автоматически будет создана новая корзина с включенным флагом активности.
+                </b> На страничке управления вашими возвратами(корзинами)
+                дается детальная инструкция как переключать активность непроведенных корзин. <p />
+
+                <span style="font-weight:bold">Наполнение корзины возврата осуществляется через выбор смены и поиском проданного товара в рамках смены:</span>
+                <ul>
+                    <li>
+                        @Html.ActionLink(Resources.LookForArticleSelt_INDEX, "LookForSpell", "BranchSpellHst", routeValues: new { redirectContriller = "ReturnBasketArticle", redirectAction = "GetReturnArticuleForCreate" }, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Переход на страничку для выбора смены. Данная страница предоставляет возможность перейти к выбору проданного товара в рамках выбранной смены
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Создание и обработка заказов по телефону или через интернет</div>
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        @Html.ActionLink(Resources.BranchGuestProfileTDES_INDEX, "Index", "BranchGuestProfile", routeValues: new { }, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Переход на страничку для для работы с профилями заказов. Позволяет создать профиль заказа: внести ФИО, контакты, адрес доставки. Для сформированного профиля можно офрмить
+                        один или несколько закзазов. Каждый заказ включает дату создания, флаг "Обработан" и перечень товаров, входящих в заказ. За каждым товаром закрепляется количество и цена.
+                        На этапе формирования заказа можно установить флаг "Обработан", если покупатель после формирования заказа отказался от покупки.<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.BranchOrderTDES_INDEX, "Index", "BranchOrderSearch", routeValues: new { }, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Обработка сформированных заказов. Обработка включает навигацию по списку заказов за период с функцией создания продажи(корзины) для проплаты и перевода статуса заказа
+                        в состояние "обработан". В перечень сформированных заказов входят заказы сформированные на площадке самого магазина (по телефону, к примеру) и заказы сформированные
+                        покупателями через интернет.<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.MakeOrderReply, "DoMakeOrdersReply", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Чтобы заказы сформированные через интернет стали видны на площадке магазина необходимо выполнить операцию репликации заказзов.<p />
+                    </li>
+                    <li>
+                        @Html.ActionLink(Resources.MakeBranchReply, "DoMakeReply", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                        Чтобы остатки и цены стали доступны покупателям через интернет необходимо выполнить операцию репликации остатков.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Просмотр данных операционной работы без права изменять</div>
+    <div class="panel-body">
+        <ul>
+            <li>
+                @Html.ActionLink(Resources.BranchSpell_INDEX, "Index", "BranchSpell", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Просмотр состояния текущей смены. Операции продажи, сторнирования возможны, если текущая смена открыта и незаблокирована<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" }) История смен подразделения<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.User2WorkPlace_INDEX, "Index", "User2WorkPlace", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Просмотр за каким рабочим местом закреплены исполнители. Операции продажи, сторнирования возможны, если исполнитель закреплен за рабочим местом<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.User2WorkPlaceHstTDES_INDEX, "Index", "User2WorkPlaceHst", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Каталог остатков товара вашего подразделения<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.IncomePayRollTDES_INDEX, "Index", "IncomePayRoll", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Ведомости прихода товара для вашего подразделения<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.SheetRevaluationTDES_INDEX, "Index", "SheetRevaluation", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Ведомости переоценки товара для вашего подразделения<p />
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Просмотр данных подразделения без права изменять</div>
+    <div class="panel-body">
+        <ul>
+            <li>
+                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseBranchAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Адреса подразделения<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.MYCONTACTS, "Index", "EnterpriseBranchContacts", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Ваши контакты (телефоны, e-mail)<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Штат вашего подразделения<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.WorkPlace_INDEX, "Index", "EnterpriseBranchWorkPlaces", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Рабочие места зарегистрированные для вашего подразделения<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.BranchRest_INDEX, "Index", "EnterpriseBranchRest", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Каталог остатков товара вашего подразделения<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Перечень подразделений вашего предприятия<p />
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Просмотр данных предприятия без права изменять</div>
+    <div class="panel-body">
+        <ul>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Профиль предприятия к которому вы прикреплены<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Адреса предприятия к которому вы прикреплены<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Исполнители уровня предприятия (админы и аудиторы)<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Ваши бизнес-партнеры или оптовые поставщики товара<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Мировые брэнды товаров, которыми торгует ваше предприятие<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Артикулы товаров, которыми торгует ваше предприятиею. Описание каждого артикула состоит из двух пар. Первая пара (Id, Брэнд)- это нумерация,
+                которую закрепило ваше предприятие за наименованием товара. Вторая пара (Id, Брэнд) - это нумерация, которая ведется в TecDoc (т.е. то, что написано на упаковке).
+                Как правило, эти пары (ваш нумератор и нумератор TecDoc) должны совпадать. Но если предприятие работает давно и так сложилось, что была заведена своя собственная нумерация.
+                При отсутствии такого ресурса в учетной системе, предприятия со своей собственной нумерацией товаров не смогут воспользоваться данным решением.
+                Другими словами, наличие данного ресурса позволяет предприятию вести свою собственную нумерацию, но при обслуживании клиентов использовать нумерацию TecDoc.
+                Покупателю понятны слова (B31991-00, GLASER), т.к. это он найдет на упаковке товара "Комплекта прокладок, блок-картер двигателя". На этой же упаковке он найдет европейский штрих-код=8429020262113.
+                Все это отнисится к нумерации TecDoc. Внутренняя нумерация вашего предприятия наверное интересует только вашего бухгалтера и только до тех пор пока тот находится на работе.
+                <span style="font-weight:bold">Этот ресурс учетной системы один из важнейших.</span> И причины следующие: это и определение аналогов, это и определение соответсвия европейских штрих-кодов вашей собственной нумерации и
+                это определение соответсвия конструкционных номеров деталей и вашей собственной нумерации<p />
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+

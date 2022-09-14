@@ -1,0 +1,145 @@
+﻿@using CarShop.Properties;
+
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODEL_TD>
+
+@{
+    ViewBag.Title = Resources.TecDocModel_INDEX;
+    Guid? searchEntGuid = ViewBag.searchEntGuid;
+    Guid? searchEntBranchGuid = ViewBag.searchEntBranchGuid;
+    int? MFA_ID = ViewBag.MFA_ID;
+
+    string redirecData = ViewBag.redirecData;
+    string redirectContriller = ViewBag.redirectContriller;
+    string redirectAction = ViewBag.redirectAction;
+
+}
+
+<h2>@Resources.TecDocModel_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(Resources.BRANDS_INDEX, "Manufact", "TecDocRests", new
+   {
+       redirecData = redirecData,
+       redirectContriller = redirectContriller,
+       redirectAction = redirectAction,
+       searchEntGuid = searchEntGuid,
+       searchEntBranchGuid = searchEntBranchGuid
+   }, new { })
+</li>
+</ol>
+
+
+@*<table class="table  table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MOD_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TEX_TEXT)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MOD_ID)
+            </td>
+            <td class="btn-group btn-group-xs">
+                @Html.ActionLink(
+              Html.DisplayFor(modelItem => item.TEX_TEXT).ToHtmlString(),
+             "ModelDetais", new
+             {
+                 redirecData = redirecData,
+                 redirectContriller = redirectContriller,
+                 redirectAction = redirectAction,
+                 searchEntGuid = searchEntGuid,
+                 searchEntBranchGuid = searchEntBranchGuid,
+                 MFA_ID = MFA_ID,
+                 MOD_ID = item.MOD_ID
+             }, new { @class = "btn btn-info" })
+        </td>
+        </tr>
+    }
+</table>*@
+
+@{
+    string firstLetter = "";
+    string curfirstLetter = "";
+    Boolean RowStarted = false;
+    Boolean ColumnStarted = false;
+    int column = 0;
+}
+@foreach (var item in Model)
+{
+    firstLetter = item.TEX_TEXT.Substring(0, 1);
+    if (!(firstLetter == curfirstLetter))
+    {
+        curfirstLetter = firstLetter;
+        if (ColumnStarted)
+        {
+            ColumnStarted = false;
+            @Html.Raw("</div>");
+    @Html.Raw("</div>");
+    @Html.Raw("</div>");
+                               if (column < 3) { column++; } else { column = 0; }
+        }
+
+        if ((RowStarted) && (column == 0))
+        {
+            RowStarted = false;
+            ColumnStarted = false;
+            @Html.Raw("</div>");
+        }
+
+        if (!RowStarted)
+        {
+            RowStarted = true;
+            column = 0;
+            ColumnStarted = false;
+            @Html.Raw("<div class=\"row\">");
+        }
+
+        if (!ColumnStarted)
+        {
+            ColumnStarted = true;
+            if (column == 0) { column++; }
+            @Html.Raw("<div class=\"col-xs-12 col-sm-4 col-md-4\">");
+    @Html.Raw("<div class=\"panel panel-default\">");
+    @Html.Raw("<div class=\"panel-heading\">" + curfirstLetter + "</div>");
+    @Html.Raw("<div class=\"panel-body\">");
+        }
+
+    }
+
+    @Html.ActionLink(
+              Html.DisplayFor(modelItem => item.TEX_TEXT).ToHtmlString(),
+             "ModelDetais", new
+             {
+                 redirecData = redirecData,
+                 redirectContriller = redirectContriller,
+                 redirectAction = redirectAction,
+                 searchEntGuid = searchEntGuid,
+                 searchEntBranchGuid = searchEntBranchGuid,
+                 
+                 MFA_ID = MFA_ID,
+                 MOD_ID = item.MOD_ID
+             }, new { @class = "btn btn-xs" })<br />
+
+
+}
+
+@if (ColumnStarted)
+{
+    @Html.Raw("</div>");
+    @Html.Raw("</div>");
+    @Html.Raw("</div>");
+
+                       if (column < 3) { column++; } else { column = 0; }
+}
+
+@if (RowStarted)
+{
+    @Html.Raw("</div>");
+}

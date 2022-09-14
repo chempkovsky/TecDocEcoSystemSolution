@@ -1,0 +1,202 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.GuestOrderArticleTDES>
+
+@{
+    ViewBag.Title = Resources.GuestOrderArticleTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+    String SearchGestUserNic = ViewBag.SearchGestUserNic;
+    Guid? SearchGuestOrderGuid = ViewBag.SearchGuestOrderGuid;
+    bool CanBeModified = ViewBag.CanBeModified;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Обработка заказов", "BranchOrderSearch", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.GuestOrderArticleTDES_INDEX</h2>
+
+@if (!SearchGuestOrderGuid.HasValue) {
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchOrderTDES_INDEX, "Index", "BranchOrderSearch", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                if (SearchGuestOrderGuid.HasValue) {
+                    <li>@Html.ActionLink(Resources.DETAILS_ACTION, "Details", "BranchOrderSearch", new {searchEntGuid=SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = SearchGuestOrderGuid}, new { })</li>
+                }
+
+            }
+        }
+    </ol>
+    @Html.ValidationSummary(true)
+} else {
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+            if (SearchEntBranchGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.BranchOrderTDES_INDEX, "Index", "BranchOrderSearch", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                if (SearchGuestOrderGuid.HasValue) {
+                    <li>@Html.ActionLink(Resources.DETAILS_ACTION, "Details", "BranchOrderSearch", new {searchEntGuid=SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = SearchGuestOrderGuid}, new { })</li>
+                }
+
+            }
+        }
+    </ol>
+    
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+    
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUP_TEXT)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ExternArticleEAN)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.ArtAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtPrice)
+        </th>
+
+
+
+
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.GuestOrderTDES.GestUserNic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntArticleDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ART_ARTICLE_NR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUP_TEXT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExternArticleEAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntBranchGuid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastReplicated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsReplicated)
+        </th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SUP_TEXT)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ExternArticleEAN)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtPrice)
+        </td>
+
+
+        @*<td>
+            @Html.DisplayFor(modelItem => item.GuestOrderTDES.GestUserNic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntArticleDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntBranchGuid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastReplicated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReplicated)
+        </td>*@
+    </tr>
+    <tr class="warning">
+        <td colspan="3">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExternArticleEAN)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.ExternArticleEAN)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntArticleDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.EntArticleDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntBranchArticle)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.EntBranchArticle)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntBranchSup)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.EntBranchSup)
+                </dd>
+            </dl>
+        </td>
+    </tr>
+
+
+}
+
+</table>
+
+}    

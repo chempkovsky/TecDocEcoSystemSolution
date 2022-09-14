@@ -1,0 +1,211 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.EnterpriseBranchAddressTDES>
+
+@{
+    ViewBag.Title = Resources.Address_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription;
+    SelectList sliIsActive = ViewBag.sliIsActive as SelectList;
+    SelectList sliIsVisible = ViewBag.sliIsVisible as SelectList;
+    SelectList sliAddressType = ViewBag.sliAddressType as SelectList;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseAddressHelp1
+    </div>
+</div>
+
+
+<h2>@Resources.Address_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>  
+    
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>   
+        }
+    }
+</ol>
+
+@Html.ValidationSummary(true)
+
+@if (SearchEntBranchGuid.HasValue)
+{
+
+
+if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin)) {
+<p>
+    @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-primary" })
+</p>
+}
+
+
+using (Html.BeginForm("Index", "EnterpriseBranchAddress", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+    <div class="form-group">
+                @Resources.FILTER_ISACTIVE     
+    </div>
+    <div class="form-group">
+                @Html.DropDownList("showIsActive", sliIsActive, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+                @Resources.FILTER_ISVISIBLE
+    </div>
+    <div class="form-group">
+                @Html.DropDownList("showIsVisible", sliIsVisible, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+                @Resources.FILTER_ADDRESSTYPE
+    </div>
+    <div class="form-group">
+                @Html.DropDownList("showAddressTypeId", sliAddressType, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressSettlementName)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.SettlementTypeId)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsVisible)
+        </th>
+        <th class="hidden-xs  hidden-sm"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressType.AddressTypeDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressSettlementName)
+        </td>
+        <td class="hidden-xs hidden-sm">
+            @Html.DisplayFor(modelItem => item.SettlementType.SettlementTypeDescription)
+        </td>
+        <td class="hidden-xs hidden-sm">
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td class="hidden-xs hidden-sm">
+            @Html.DisplayFor(modelItem => item.IsVisible)
+        </td>
+
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = item.AddressGuid }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = item.AddressGuid }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = item.AddressGuid }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+    
+    <tr class="warning">
+        <td colspan="2">
+            <dl class="dl-horizontal">
+                <dt class="visible-xs visible-sm">@Html.DisplayNameFor(model => model.SettlementTypeId)</dt>
+                <dd class="visible-xs visible-sm">@Html.DisplayFor(modelItem => item.SettlementType.SettlementTypeDescription)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.CountryIso)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.Country.CountryName)</dd>
+
+
+                <dt>@Html.DisplayNameFor(model => model.AddressRegion)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressRegion)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressDistrict)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressDistrict)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressRural)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressRural)</dd>
+
+
+                <dt>@Html.DisplayNameFor(model => model.SoatoId)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.SoatoId)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.StreetTypeId)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.StreetType.StreetTypeDescription)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressStreetName)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressStreetName)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressHouse)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressHouse)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressBuilding)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressBuilding)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressOffice)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressOffice)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressPostCode)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressPostCode)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressValidFrom)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressValidFrom)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressValidTo)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressValidTo)</dd>
+
+                <dt class="visible-xs visible-sm">@Html.DisplayNameFor(model => model.IsActive)</dt>
+                <dd class="visible-xs visible-sm">@Html.DisplayFor(modelItem => item.IsActive)</dd>
+
+                <dt class="visible-xs visible-sm">@Html.DisplayNameFor(model => model.IsVisible)</dt>
+                <dd class="visible-xs visible-sm">@Html.DisplayFor(modelItem => item.IsVisible)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressLongitude)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressLongitude)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.AddressLatitude)</dt>
+                <dd>@Html.DisplayFor(modelItem => item.AddressLatitude)</dd>
+            </dl>
+        </td>
+    </tr>
+
+    <tr class="visible-xs  visible-sm active">
+        <td colspan="3" class="btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = item.AddressGuid }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = item.AddressGuid }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, id = item.AddressGuid }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+
+}
+
+</table>
+
+}

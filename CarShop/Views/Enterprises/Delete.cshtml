@@ -1,0 +1,68 @@
+﻿@model TecDocEcoSystemDbClassLibrary.EnterpriseTDES
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+}
+
+<h2>@Resources.DELETE_ACTION <small>@Resources.EnterpriseTDES_INDEX</small></h2>
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+<div>
+    @*<h4>EnterpriseTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntGuid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntGuid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TecDocSrcTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnterpriseTecDocSrcTypeTDES.TecDocSrcTypeDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleCatalog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleCatalog)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+        </div>
+    }
+</div>

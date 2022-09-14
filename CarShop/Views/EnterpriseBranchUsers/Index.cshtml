@@ -1,0 +1,258 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.EnterpriseBranchUserTDES>
+
+@{
+    ViewBag.Title = Resources.BranchUser_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+    SelectList sliIsActive = ViewBag.sliIsActive as SelectList;
+    SelectList sliIsVisible = ViewBag.sliIsVisible as SelectList;
+    SelectList sliIsAdmin = ViewBag.sliIsAdmin as SelectList;
+    SelectList sliIsSeller = ViewBag.sliIsSeller as SelectList;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Resources.EnterpriseBranchUsersHelp1
+    </div>
+</div>
+
+
+<h2>@Resources.BranchUser_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+</ol>
+
+
+@Html.ValidationSummary(true)
+
+@if (SearchEntBranchGuid.HasValue)
+{
+
+
+if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin)) {
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", new {searchEntGuid = SearchEntGuid,  searchEntBranchGuid = SearchEntBranchGuid}, new { @class = "btn btn-primary" })
+    </p>
+}
+
+
+using (Html.BeginForm("Index", "EnterpriseBranchUsers", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+     <fieldset>
+    <h3>@Resources.FILTER_TITLE</h3>
+    @*<legend>@Resources.FILTER_TITLE</legend>*@
+    
+    
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+    <div class="form-group">
+    @Resources.FILTER_ISACTIVE     
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsActive", sliIsActive, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Resources.FILTER_ISVISIBLE
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsVisible", sliIsVisible, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Resources.FILTER_ISADMIN
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsAdmin", sliIsAdmin, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+    @Resources.FILTER_ISSELLER
+    </div>
+    <div class="form-group">
+    @Html.DropDownList("showIsSeller", sliIsSeller, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+    </fieldset>
+}
+
+
+<input type="button" class="btn btn-info visible-xs visible-sm" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EntUserNic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsVisible)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsAudit)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsSeller)
+        </th>
+        <th class="hidden-xs hidden-sm">
+            @Html.DisplayNameFor(model => model.IsBooker)
+        </th>
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntUserNic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsVisible)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsAudit)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsSeller)
+            </td>
+            <td class="hidden-xs hidden-sm">
+                @Html.DisplayFor(modelItem => item.IsBooker)
+            </td>
+            <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { userId = item.EntUserNic }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { userId = item.EntUserNic }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { userId = item.EntUserNic }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+        <tr class="warning">
+            <td colspan="2" class="visible-xs visible-sm">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MiddleName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.MiddleName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsActive)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsVisible)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsVisible)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsAdmin)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsAdmin)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsAudit)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsAudit)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsSeller)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsSeller)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsBooker)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => item.IsBooker)
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr class="visible-xs visible-sm active">
+            <td colspan="2" class="btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { userId = item.EntUserNic }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { userId = item.EntUserNic }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { userId = item.EntUserNic }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+@section Scripts {
+        @Scripts.Render("~/bundles/autocomplete")
+}
+
+}

@@ -1,0 +1,148 @@
+﻿@using PagedList.Mvc;
+@using CarShop.Properties;
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.GuestProfileTDES>
+
+@{
+    ViewBag.Title = Resources.BranchGuestProfileTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy as SelectList;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Создание заказов по телефону", "BranchGuestProfile", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.BranchGuestProfileTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+</ol>
+
+
+
+@if (  SearchEntBranchGuid.HasValue )
+{
+
+<p>
+    @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid }, new { @class = "btn btn-primary" })
+</p>
+
+using (Html.BeginForm("Index", "BranchGuestProfile", FormMethod.Post, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    @Html.Hidden("searchEntGuid", SearchEntGuid)
+    @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+    <div class="form-group">
+    @Html.DropDownList("searchStringBy", sliSearchStringBy, new { @class="form-control",
+                                            data_autocomplete_selector = "data-autocomplete-url", 
+                                            sel1 = Url.Action("Autocomplete", "BranchGuestProfile", new {currentFilterBy="1", searchEntGuid = SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid }), 
+                                            sel2 = Url.Action("Autocomplete", "BranchGuestProfile", new { currentFilterBy="2", searchEntGuid = SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid }) })
+    </div>
+    <div class="form-group">
+    @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class="form-control",
+                data_autocomplete_url = Url.Action("Autocomplete", "BranchGuestProfile", new {currentFilterBy=ViewBag.currentFilterBy, searchEntGuid = SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid }) })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+}
+
+
+var dummy = Model.FirstOrDefault();
+
+<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => dummy.GestUserNic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.MiddleName)
+        </th>
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GestUserNic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic=item.GestUserNic }, new { @class = "btn btn-primary" })
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic=item.GestUserNic }, new { @class = "btn btn-info" })
+        </td>
+    </tr>
+    
+    <tr class="warning">
+        <td colspan="2">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.Contact)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => dummy.Address)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Address)
+                </dd>
+            </dl>
+        </td>
+    </tr>
+    
+    <tr class="visible-xs visible-sm active">
+        <td colspan="2" class="btn-group btn-group-xs">
+            @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic=item.GestUserNic }, new { @class = "btn btn-primary" })
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchGestUserNic=item.GestUserNic }, new { @class = "btn btn-info" })
+        </td>
+    </tr>
+    
+    
+}
+
+</table>
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new {searchEntGuid=SearchEntGuid, searchEntBranchGuid=SearchEntBranchGuid, currentFilter=ViewBag.CurrentFilter, currentFilterBy=ViewBag.currentFilterBy, page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+    
+    @section Scripts {
+        @Scripts.Render("~/bundles/autocomplete")
+    }
+
+        
+}    

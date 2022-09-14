@@ -1,0 +1,105 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseCategoryItemTmp
+
+@{
+    ViewBag.Title = Resources.EDIT_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+    int? CategoryId = ViewBag.CategoryId;
+    string EntCategoryDescription = ViewBag.EntCategoryDescription;
+}
+
+<h2>@Resources.EDIT_ACTION</h2>
+
+@if (!CategoryId.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+    {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { })</li>
+        if (CategoryId.HasValue)
+        {
+            <li>@Html.ActionLink(EntCategoryDescription, "Details", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid, сategoryId = CategoryId }, new { })</li>
+            <li>@Html.ActionLink(Resources.EnterpriseCategoryItemTDES_INDEX, "Index", "EnterpriseCategoryItem", new { searchEntGuid = SearchEntGuid, categoryId = CategoryId }, new { })</li>
+        }
+
+    }
+    </ol>
+
+    @Html.ValidationSummary(true)
+} else {
+
+using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>EnterpriseCategoryItemTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { })</li>
+                if (CategoryId.HasValue)
+                {
+                    <li>@Html.ActionLink(EntCategoryDescription, "Details", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid, сategoryId = CategoryId }, new { })</li>
+                    <li>@Html.ActionLink(Resources.EnterpriseCategoryItemTDES_INDEX, "Index", "EnterpriseCategoryItem", new { searchEntGuid = SearchEntGuid, categoryId = CategoryId }, new { })</li>
+                }
+
+            }
+        </ol>
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.CategoryId)
+        @Html.HiddenFor(model => model.EntGuid)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryItemId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CategoryItemId, new { @readonly="true"} )
+                @Html.ValidationMessageFor(model => model.CategoryItemId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntCategoryItemDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntCategoryItemDescription)
+                @Html.ValidationMessageFor(model => model.EntCategoryItemDescription)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntCategoryDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntCategoryDescription)
+                @Html.ValidationMessageFor(model => model.EntCategoryDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "EnterpriseCategoryItem", new { searchEntGuid = SearchEntGuid, categoryId = CategoryId }, new { })
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+    
+    
+    
+}        

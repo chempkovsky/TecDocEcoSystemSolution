@@ -1,0 +1,29 @@
+﻿Данный проект реализован не как независимый проект 
+Но как проект для публикации в виде AREA в проекте CarShop
+
+
+Чтобы добиться указанного выше результата 
+
+1. создается пустое Web-иложение
+
+2. удаляются папки 
+2.1. App_Data
+2.2. App_Start
+
+3. удаляются файлы
+3.1.Global.asax
+3.2.packages.config
+
+4. Добавляется файл в корень проекта
+4.1.ForumAreaRegistration.cs
+4.2.ForumRouteRegistration.cs
+4.3.ForumConfigurator.cs
+4.4.ApplicationConfiguration.cs
+4.5.Log4NetLogger.cs
+4.6.TraceLog.cs
+
+5. Дальше собирается приложение как обычно (контролеры/вьюшки)
+
+6.После сборки
+6.1. Dll копируется в bin-папку CarShop-проекта
+6.2. Views-папка копируется в папку Areas/Forum

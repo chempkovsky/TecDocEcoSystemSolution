@@ -1,0 +1,92 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.EnterpriseBranchRateTDES>
+
+@{
+    ViewBag.Title = Resources.EnterpriseBranchRateTDES_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription;
+    
+}
+
+<h2>@Resources.EnterpriseBranchRateTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+</ol>
+
+@Html.ValidationSummary(true)
+
+@if (SearchEntBranchGuid.HasValue)
+{
+
+
+if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin)) {
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-primary" })
+        @Html.ActionLink(Resources.DISTRIBUTE_RATES, "DistribureRates", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-success" })
+        
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrencyIso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExchRate)
+        </th>
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrencyIso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExchRate)
+        </td>
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchCurrencyIso = item.CurrencyIso }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchCurrencyIso = item.CurrencyIso }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchCurrencyIso = item.CurrencyIso }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+    
+    <tr class="visible-xs  visible-sm active">
+        <td colspan="3" class="btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchCurrencyIso = item.CurrencyIso }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchCurrencyIso = item.CurrencyIso }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, searchCurrencyIso = item.CurrencyIso }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+    
+}
+
+</table>
+}

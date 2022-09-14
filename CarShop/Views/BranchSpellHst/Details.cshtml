@@ -1,0 +1,171 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.BranchSpellHstTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Запускать процесс <b>списания с прихода</b> можно <b>любое количество раз</b>.
+        При любом повторном запуске выполняется повторный проход по артикулам смены.
+        И если по артикулу уже было проведено списание, то оно не проводится. И наоборот, если по артикулу не было проведено списание, то будет попытка провести эту операцию.
+        Причины, по которым было проведено частичное списание - это или сбой в системе (к примеру, электричество) или не было найдено приходной ведомости,
+        с которой можно было провести списание. <br />
+        По каждому артикулу количество, которое удалось списать с прихода заносится в поле <b>Спис.с ост.</b>. Списание с прихода выполняется лишь в том случае,
+        если <b>Кол-во</b> больше <b>Спис.с ост.</b> и количество <b>Возврат</b> равно нулю. В поле <b>Возврат</b>
+        заносится количество сторнирования или количество возврата на магазин.<br />
+        Кликните по кнопке <b>Товары</b> чтобы перейти на страницу проданных товаров за смену.<br />
+        Кликните по кнопке <b>Товары возврата</b>, чтобы перейти на страницу с перечнем товаров для которых был проведен возврата на магазин.<br />
+        Кликните по кнопке <b>Продажи за смену</b>, чтобы просмотреть кол-во товара и на суммарную выручку от продаж за смену.<br />
+        Кликните по кнопке <b>Возвраты за смену</b>, чтобы просмотреть кол-во товара возврата и общую сумму денег возврата за смену.<br />
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Списание с прихода после закрытия смены", "BranchSpellHst", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+
+
+    </div>
+</div>
+
+
+<h2>@Resources.DETAILS_ACTION <small>@Resources.BranchSpellHstTDES_INDEX</small></h2>
+
+@if ( !SearchEntBranchGuid.HasValue )
+{
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", new { searchEntGuid = SearchEntGuid, SearchEntBranchGuid = SearchEntBranchGuid }, new { })</li>   
+        }
+    }
+</ol>
+    
+    @Html.ValidationSummary(true)
+} else {
+
+
+    <div>
+        @*<h4>BranchSpellHstTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.BranchSpellHstTDES_INDEX, "Index", "BranchSpellHst", new { searchEntGuid = SearchEntGuid, SearchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                }
+            }
+        </ol>
+
+        <hr />
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SpellGuid)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SpellGuid)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsBlocked)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IsBlocked)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsCribFromIncome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IsCribFromIncome)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OpenAt)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.OpenAt)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CloseAt)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CloseAt)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OpenedBy)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.OpenedBy)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ClosedBy)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ClosedBy)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="btn-group-vertical">
+                    @*<div class="btn-group-vertical">*@
+                        @Html.ActionLink(Resources.MakeSpellClosed_INDEX, "DoMakeSpellClosed", "BranchSpellHst", new { id = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-primary" })
+                    
+                        @Html.ActionLink(Resources.SaleBasketArticleTDES_INDEX, "Index", "SaleArticle", new { searchSpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-info" })
+
+                        @Html.ActionLink(Resources.ReturnBasketArticleTDES_INDEX, "Index", "ReturnArticle", new { searchSpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-info" })
+
+                        @Html.ActionLink(Resources.SaleBasketReportTDES_INDEX, "Index", "SaleReport", new { SpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, reportType = 1 }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink(Resources.SaleBasketReportNotPayedTDES_INDEX, "Index", "SaleReport", new { SpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, reportType = 2 }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink(Resources.SaleBasketReportStornedTDES_INDEX, "Index", "SaleReport", new { SpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, reportType = 3 }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink(Resources.SaleBasketReportIncomeTDES_INDEX, "Index", "SaleReport", new { SpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, reportType = 4 }, new { @class = "btn btn-primary" })
+
+                        @Html.ActionLink(Resources.ReportTypeReturned_INDEX, "Index", "ReturnReport", new { SpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, reportType = 1 }, new { @class = "btn btn-info" })
+                        @Html.ActionLink(Resources.ReportTypeNotReturned_INDEX, "Index", "ReturnReport", new { SpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, reportType = 2 }, new { @class = "btn btn-info" })
+                        @Html.ActionLink(Resources.ReportTypeStorned_INDEX, "Index", "ReturnReport", new { SpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, reportType = 3 }, new { @class = "btn btn-info" })
+                        @Html.ActionLink(Resources.ReturnBasketReportIncomeTDES_INDEX, "Index", "ReturnReport", new { SpellGuid = Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid, reportType = 4 }, new { @class = "btn btn-info" })
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        </div>
+<p>
+    @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker)) {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id=Model.SpellGuid, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new {  })
+</p>
+
+}    

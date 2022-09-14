@@ -1,0 +1,227 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.ReturnBasketTDES
+
+@{
+    ViewBag.Title = Resources.DETAILS_ACTION;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+
+    String SearchEntUserNic = ViewBag.SearchEntUserNic;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Перейдите по ссылке для получения более детальной информации
+        @Html.ActionLink("Возврат товара", "ReturnBasket", "ByTasks", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+    </div>
+</div>
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+@if (String.IsNullOrEmpty(SearchEntUserNic))
+{
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+            if (!String.IsNullOrEmpty(SearchEntUserNic))
+            {
+                <li>@Html.ActionLink(SearchEntUserNic, "Details", "EnterpriseBranchUsers", new { userId = SearchEntUserNic }, new { })</li>
+                <li>@Html.ActionLink(Resources.ReturnBasketTDES_INDEX, "Index", "ReturnBasket", new { searchEntUserNic = SearchEntUserNic, searchEntGuid=SearchEntGuid,  searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>    
+            }
+        }
+    }
+</ol>
+    <div class="alert alert-warning">
+        @Html.ValidationSummary(true)
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        @Html.ValidationSummary(true)
+    </div>
+
+    <div>
+        @*<h4>ReturnBasketTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+            {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+
+                if (SearchEntBranchGuid.HasValue)
+                {
+                    <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+                    <li>@Html.ActionLink(Resources.BranchUser_INDEX, "Index", "EnterpriseBranchUsers", new { searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                    if (!String.IsNullOrEmpty(SearchEntUserNic))
+                    {
+                        <li>@Html.ActionLink(SearchEntUserNic, "Details", "EnterpriseBranchUsers", new { userId = SearchEntUserNic }, new { })</li>
+                        <li>@Html.ActionLink(Resources.ReturnBasketTDES_INDEX, "Index", "ReturnBasket", new { searchEntUserNic = SearchEntUserNic, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })</li>
+                    }
+                }
+            }
+        </ol>
+
+
+        <hr />
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9">
+
+                <dl class="dl-horizontal">
+                    <dt class="alert-info">
+                        @Html.DisplayNameFor(model => model.ArtAmount)
+                    </dt>
+                    <dd class="alert-info">
+                        @Html.DisplayFor(model => model.ArtAmount)
+                    </dd>
+
+                    <dt class="alert-success">
+                        @Html.DisplayNameFor(model => model.PaymentSum)
+                    </dt>
+                    <dd class="alert-success">
+                        @Html.DisplayFor(model => model.PaymentSum)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RetBasketGuid)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.RetBasketGuid)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.WorkPlaceGuid)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.WorkPlaceGuid)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SetAt)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SetAt)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EntUserNic)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.EntUserNic)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SpellGuid)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SpellGuid)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedAt)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
+
+                    <dt class="alert-warning">
+                        @Html.DisplayNameFor(model => model.IsPaid)
+                    </dt>
+
+                    <dd class="alert-warning">
+                        @Html.DisplayFor(model => model.IsPaid)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PaidAt)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PaidAt)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsReverse)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsReverse)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Comments)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Comments)
+                    </dd>
+                </dl>
+
+            </div>
+
+            <div class="col-xs-8 col-sm-3 col-md-3">
+                    @using (Html.BeginForm("MakePaymentOrReverse", "ReturnBasket"))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.Hidden("searchEntGuid", SearchEntGuid)
+                        @Html.Hidden("searchEntBranchGuid", SearchEntBranchGuid)
+                        @Html.Hidden("searchRetBasketGuid", Model.RetBasketGuid)
+                        <div class="btn-group-vertical">
+                            @if (!Model.IsPaid)
+                            {
+                                <input type="submit" name="MAKEPAYMENT" value="@Resources.MakeReturn" class="btn btn-primary" />
+                            }
+                            @if (!Model.IsReverse)
+                            {
+                                <input type="submit" name="MAKEREVERSE" value="@Resources.ReverseIncome_INDEX" class="btn btn-danger" />
+                            }
+                            @Html.ActionLink(Resources.ReturnBasketArticleTDES_INDEX, "Index", "ReturnBasketArticle", new { searchRetBasketGuid = Model.RetBasketGuid, searchEntUserNic = SearchEntUserNic, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { @class = "btn btn-info" })
+                            @if (Model  != null) {
+                                if ((!Model.IsPaid) && (Model.IsActive)) {
+                                    @Html.ActionLink(Resources.LookForArticleSelt_INDEX, "LookForSpell", "BranchSpellHst", routeValues: new { redirectContriller = "ReturnBasketArticle", redirectAction = "GetReturnArticuleForCreate" }, htmlAttributes: new { @class = "btn btn-warning" })
+                                }
+                            }
+                        </div>
+                    }
+            </div>
+        </div>
+    </div>
+<p>
+    @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin) || (ViewBag.IsBranchAdmin) || (ViewBag.IsBranchBooker) || (ViewBag.IsBranchSeller))
+    {
+        @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntBasketGuid = Model.RetBasketGuid, searchEntGuid = Model.EntGuid, searchEntBranchGuid = Model.EntBranchGuid }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "ReturnBasket", new { searchEntUserNic = SearchEntUserNic, searchEntGuid = SearchEntGuid, searchEntBranchGuid = SearchEntBranchGuid }, new { })
+</p>
+
+
+}

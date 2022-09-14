@@ -1,0 +1,100 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.GuestOrderArticleTDES
+
+@{
+    ViewBag.Title = Resources.GuestOrderArticleTDES_EDIT;
+    Guid? searchGuestOrderGuid = ViewBag.GuestOrderGuid;
+}
+
+
+<h2>@Resources.GuestOrderArticleTDES_EDIT <small>@Resources.GuestOrderArticleTDES_INDEX</small></h2>
+
+@using (Html.BeginForm("Edit", "GuestOrderArticle"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>GuestOrderArticleTDES</h4>*@
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile")</li>
+            <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder")</li>
+            @if (searchGuestOrderGuid.HasValue)
+            {
+                <li>@Html.ActionLink(Resources.GuestOrderTDES_DETAIL, "Details", "GuestOrder", routeValues: new { id = searchGuestOrderGuid }, htmlAttributes: new { })</li>
+                <li>@Html.ActionLink(Resources.GuestOrderArticleTDES_INDEX, "Index", "GuestOrderArticle", new { searchGuestOrderGuid = searchGuestOrderGuid }, new { })</li>
+            }
+        </ul>
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.GuestOrderGuid)
+        @Html.HiddenFor(model => model.EntBranchGuid)
+        @Html.HiddenFor(model => model.LastUpdated)
+        @Html.HiddenFor(model => model.LastReplicated)
+        @Html.HiddenFor(model => model.EntBranchArticle)
+        @Html.HiddenFor(model => model.EntBranchSup)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtAmount)
+                @Html.ValidationMessageFor(model => model.ArtAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ArtPrice, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.ArtPrice)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ART_ARTICLE_NR, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ART_ARTICLE_NR, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.ART_ARTICLE_NR)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SUP_TEXT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.SUP_TEXT, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.SUP_TEXT)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntArticleDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EntArticleDescription, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.EntArticleDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExternArticleEAN, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ExternArticleEAN, new { @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.ExternArticleEAN)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SAVE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (searchGuestOrderGuid.HasValue)
+{
+    <div>
+        @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", "GuestOrderArticle", new { searchGuestOrderGuid = searchGuestOrderGuid }, new { })
+    </div>
+}

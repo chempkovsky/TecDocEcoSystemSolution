@@ -1,0 +1,62 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using CarShop.Areas.HelpPage.Models
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "ASP.NET Web API Help Page";
+
+    // Group APIs by controller
+    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+
+<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h2>Сервисы по типам</h2>
+            <p>
+                <hr />
+                Остатки: api/BranchRestSvc<br>
+                <hr />
+                Остатки поставщиков: api/BranchRestSvcEx<br>
+                <hr />
+                Профили: api/BranchProfileSvc<br>
+                <hr />
+                Заказы: api/BranchOrderSvc<br>
+                <hr />
+                Товары: api/BranchOrderArticle <br>
+                <hr />
+                Чтобы использовать перечисленные выше пять сервисов необходимо авторизоваться<br/>
+                Для проведения авторизации используется сервис api/BranchLogInSvc
+                <hr />
+                Расширение TecDoc: api/MsTecDocSvc<br>
+                <hr />
+                Расширение артикулов: api/ArticleSvc<br>
+                <hr />
+                <hr />
+                Чтобы использовать перечисленные выше последние два сервиса необходимо авторизоваться<br />
+                Для проведения авторизации используется сервис api/MsTecDocLogInSvc
+            </p>
+            
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        @foreach (var group in apiGroups)
+        {
+            @Html.DisplayFor(m => group, "ApiGroup")
+        }
+    </section>
+</div>
+
+@section Scripts {
+    <link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+}

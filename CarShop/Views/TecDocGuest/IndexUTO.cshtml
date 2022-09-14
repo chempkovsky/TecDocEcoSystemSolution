@@ -1,0 +1,213 @@
+﻿@using CarShop.Properties;
+@using TecDocEcoSystemDbClassLibrary;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.MODELTYPETREEITEMS_REST_TD>
+
+@{
+    ViewBag.Title = Resources.CARMODELTYPETREEITEMDETAIL_INDEX;
+    SelectList slisrchTp = ViewBag.slisrchTp as SelectList;
+    int? srchTpVal = ViewBag.srchTp;
+}
+
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        На примере детали <b>Маслосъемный щиток, вентиляция картера</b>, который устанавливается на <b>BMW 6 (E63) 630 i</b> разберем атрибуты поиска:<br>
+        Когда BMW разрабатывал спецификацию, то для этой детали был введен <b>Конструкционный номер = 11 61 7 531 423</b><br>
+        Когда производитель запасных частей VAICO начал выпускать эту деталь, то присвоил свой собственный <b>номер производителя = V20-1117</b> <br>
+        Когда деталь от VAICO поступила в европейскую торговую сеть, ей был присвоен <b>штрих-код (или EAN) = 40 46001 57432 0</b><br>
+        Когда когда деталь внесли в каталог TecDoc ей тоже присвоили <b>номер TecDoc=538406</b>
+        <hr />
+
+        Если список поиска не пуст, <b>кликните @Resources.DETAILS_ACTION</b>, чтобы получить доп. информацию, включающую: <br>
+        <b>Штрих-код (или EAN)</b><br>
+        <b>Аналоги</b> (артикулы других производителей этой детали)<br>
+        <b>Конструкционные номера</b> (если деталь устанавливается на несколько моделей, то и конструкционных номеров будет больше одного)
+        <p />
+
+        Если список поиска не пуст, <b>кликните @Resources.TECDOC_APPLICABLE</b> , чтобы просмотреть на какие модели можно устанавливать данную деталь.
+        <hr />
+        Если список поиска не пуст, <b>кликните по остатку</b> детали, чтобы получить перечень магазинов, предлагающих изделие и установленные ими цены.
+        На этой же странице (с перечнем маазинов) вы можете перенести артикул в корзину Ваших заказов, если вы уже зарегистрировались в системе.<br>
+        <hr />
+
+        Режим поиска <b>В наличии</b> покажет остатки и цены товаров, которые уже находятся на полках магазинов розничных продавцов.
+        <br />
+        Режим поиска <b>Под заказ</b> покажет остатки и цены товаров, которые находятся на складах оптовых поставщиков,
+        с которыми розница заключила договора на закупку товара.
+        Каждый магазин розничной продажи указывается свое время реализации заявки на товар <b>Под заказ</b>.
+        <hr />
+
+
+        <button type="button" class="btn btn-info" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-remove-sign"></span> @Resources.HideHelp
+        </button>
+
+    </div>
+</div>
+
+
+<h2>@Resources.SearchTecDocByArticle</h2>
+
+<ul class="nav nav-pills nav-justified">
+    <li>@Html.ActionLink(Resources.InStock, "Index", "TecDocGuest", new { artId = ViewBag.artId, srchTp = srchTpVal }, new { @class = "btn btn-warning" })</li>
+    <li class="active">@Html.ActionLink(Resources.UnderTheOrder, "IndexUTO", "TecDocGuest", new { artId = ViewBag.artId, srchTp = srchTpVal }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.SearchOriginal, "ByOriginalCatalogs", "Home", new { }, new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GuestOrderTDES_INDEX, "Index", "GuestOrder", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })</li>
+    <li>@Html.ActionLink(Resources.GoToForum, "Index", "Home", routeValues: new { area = "Forum" }, htmlAttributes: new { @class = "btn btn-warning" })</li>
+</ul>
+
+<p />
+
+
+@if (slisrchTp != null)
+{
+    using (Html.BeginForm("IndexUTO", "TecDocGuest", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+    {
+        @*<h3>@Resources.FILTER_TITLE</h3>*@
+        <p/>
+    
+        <div class="form-group">
+            @Html.DropDownList("srchTp", slisrchTp, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.TextBox("artId", ViewBag.artId as string, new { @class = "form-control" })
+        </div>
+        <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+
+        <button type="button" class="btn btn-warning" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-question-sign"></span>
+        </button>
+
+    }
+}
+
+@Html.ValidationSummary(true)
+
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @*@Resources.TECDOC_ART_ARTICLE_NR*@
+            @Html.DisplayNameFor(model => model.ArtAmount)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.SUP_TEXT)*@
+            @Resources.TECDOC_ART_ARTICLE_NR
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ArtPrice) min:max
+        </th>*@
+        <th class="hidden-xs">
+            @*@Html.DisplayNameFor(model => model.ArtAmount)*@
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+
+        <tr>
+            <td class="btn-group btn-group-xs">
+
+                @*@Html.ActionLink(
+                    @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR).ToHtmlString() + " : " +
+                    Html.DisplayFor(modelItem => item.ART_ID).ToHtmlString(),
+                      "Index", "TecDocGuest",
+                      new
+                      {
+                          artId = item.ART_ID,
+                          srchTp = "1"
+                      }, new { @class = "btn btn-info" })*@
+
+                @*@Html.ActionLink(@Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString(),
+                       "ArticleShopIndex", "TecDocGuest",
+                    new { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, artId = item.ART_ID, srchTp = "1" }, new { @class = "btn btn-success" })*@
+                @if (item.ArtAmount > 0) { 
+                    <a class="btn btn-success" href="@Url.Action("ArticleShopIndexUTO", "TecDocGuest", new { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, artId = item.ART_ID, srchTp = "1" })">
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                        @*<span class="sr-only"></span>*@
+                        @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString()
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-info" href="@Url.Action("ArticleShopIndexUTO", "TecDocGuest", new { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, artId = item.ART_ID, srchTp = "1" })">
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                        @*<span class="sr-only"></span>*@
+                        @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString()
+                    </a>
+                    
+                }
+
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.SUP_ID) : @Html.DisplayFor(modelItem => item.SUP_TEXT)*@
+                @Html.DisplayFor(modelItem => item.ART_ARTICLE_NR) : @Html.DisplayFor(modelItem => item.SUP_TEXT)
+            </td>
+
+            @*<td>
+                @Html.DisplayFor(modelItem => item.MinArtPrice) : @Html.DisplayFor(modelItem => item.ArtPrice)
+            </td>*@
+
+
+            <td class="hidden-xs btn-group btn-group-xs">
+                @*@Html.ActionLink( @Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString(),
+                       "ArticleShopIndex", "TecDocGuest",
+                    new { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, artId = item.ART_ID, srchTp = "1" }, new { @class = "btn btn-success" })*@
+
+                @Html.ActionLink(Resources.DETAILS_ACTION, "DetailsUTO", "TecDocGuest",
+                    new
+                    {
+                        ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                        artId = item.ART_ID,
+                        GA_NR = item.GA_NR
+                    }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.TECDOC_APPLICABLE,
+                 "AppliedToUTO", "TecDocGuest",
+                    new
+                    {
+                        artId = item.ART_ID,
+                        ART_ARTICLE_NR = item.ART_ARTICLE_NR
+                    }, new { @class = "btn btn-warning" })
+
+
+            </td>
+
+        </tr>
+        <tr class="warning">
+            <td colspan="3"> @*@Html.DisplayFor(modelItem => item.GA_NR) : @Html.DisplayFor(modelItem => item.GA_TEXT) :*@ @Html.DisplayFor(modelItem => item.MASTER_BEZ)</td>
+        </tr>
+
+        <tr class="visible-xs">
+            <td colspan="3" class="btn-group btn-group-xs">
+
+                @*@Html.ActionLink(@Html.DisplayFor(modelItem => item.ArtAmount).ToHtmlString(),
+                    "ArticleShopIndex", "TecDocGuest",
+                     new { ART_ARTICLE_NR = item.ART_ARTICLE_NR, SUP_TEXT = item.SUP_TEXT, artId = item.ART_ID, srchTp = "1" }, new { @class = "btn btn-success" })*@
+
+                @Html.ActionLink(Resources.DETAILS_ACTION, "DetailsUTO", "TecDocGuest",
+                    new
+                    {
+                        ART_ARTICLE_NR = item.ART_ARTICLE_NR,
+                        artId = item.ART_ID,
+                        GA_NR = item.GA_NR
+                    }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.TECDOC_APPLICABLE,
+                    "AppliedTo", "TecDocGuest",
+                    new
+                    {
+                        artId = item.ART_ID,
+                        ART_ARTICLE_NR = item.ART_ARTICLE_NR
+                    }, new { @class = "btn btn-warning" })
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+

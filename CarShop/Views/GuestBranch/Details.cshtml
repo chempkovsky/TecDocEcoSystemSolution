@@ -1,0 +1,170 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.GuestBranchTDES
+
+@{
+    ViewBag.Title = Resources.CREATENEW_ACTION;
+}
+
+
+
+<h2>@Resources.DETAILS_ACTION</h2>
+
+
+
+<div>
+    @*<h4>GuestBranchTDES</h4>*@
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8">
+
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntBranchGuid)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EntBranchGuid)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntBranchDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EntBranchDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressPostCode)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AddressPostCode)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressRegion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AddressRegion)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressSettlementName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AddressSettlementName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressStreetName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AddressStreetName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressLongitude)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AddressLongitude)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressLatitude)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AddressLatitude)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.WorkingDays)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.WorkingDays)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.WorkingTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.WorkingTime)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PriceCurrencyIso)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PriceCurrencyIso)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExchRate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ExchRate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Rounding)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Rounding)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Multiplexer)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Multiplexer)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phones)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Phones)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SiteUrl)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SiteUrl)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShopLicense)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ShopLicense)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShopSupply)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ShopSupply)
+                </dd>
+
+
+            </dl>
+            <p>
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = Model.EntBranchGuid }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+            </p>
+        </div>
+        <div class="col-xs-8 col-sm-4 col-md-4">
+            <div class="btn-group-vertical">
+                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "BranchSupp", new { searchEntBranchGuid = Model.EntBranchGuid }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+﻿@model TecDocEcoSystemDbClassLibrary.EnterpriseTDES
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.CREATENEW_ACTION;
+}
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Данная информация предназначена для <b>EcoSystemAdmin</b><p />
+        <b>Если вы создаете запись для стола заказов</b><br />
+        Предположим ваше предприятие планирует использование <b>стола заказов,</b> где любой покупатель смог бы сам выбрать товары и сформировать корзину своего заказа на ваш магазин.
+        Если планируется предоставить такую услугу, то необходимо настроить работу <b>стола заказов.</b> Здесь приводится информация того, что должно входить в процедуру настройки такого функционала.<br />
+        Первое - это <b>гостевой доступ к каталогу TecDoc.</b> Напомним, что решение может быть настроено (или перенастроено) на Transbase-ODBC источник, на MsSql сервер и т.п.
+        Для одного предприятия - это один источник, для другого предприятия - это другой источник. Ясно, что и гостевые запросы (<b>запросы стола заказов.</b>) должны как-то быть настроены.<br />
+        Мы объяснили, что настроить, теперь объясним как настроить.<br />
+        Для того, чтобы подсказать системе, где брать TecDoc-данные для гостевых запросов (<b>запросов стола заказов.</b>) необходимо зарегистривоать новое предприятие
+        с <b>Guid=00000000-0000-0000-1111-111111111111</b> и с <b>Наименованием="Стол заказов".</b>  Поле <b>"Каталог артикулов"</b> не используется функционалом <b>стола заказов</b>,
+        поэтому это поле можно заполнить любой строкой символов (к примеру, <b>НЕТ_ДАННЫХ</b>), т.к. поле обязательно к заполнению. Ну а <b>источник TecDoc</b> устанавливается вами в соответсвии с архитектурой развертывания
+        экосистемы вашего предприятия.<p />
+        <b>Если вы создаете запись для торговой сети (предприятие)</b><br />
+        Вопрос может возникнуть, чем наполнять поле <b>Каталог Артикулов</b>.
+        Используя утилиту WpfCarShop.exe вы можете создать любое количество копий любой базы данных.<p />
+        @Html.ActionLink("Создание баз данных с использованием утилиты WpfCarShop", "HowToWpfCarShop", "HowTo", routeValues: null, htmlAttributes: new { @class = "mainpageactlink" })<p />
+        Предположим вы создали две копии базы данных артикулов для двух разных предприятий (или торговых сетей) пусть базы данных называются
+        <b>CarShopArticleN1</b> и <b>CarShopArticleN2</b>. Эти базы данных необходимо прописать в файле <b>web.config</b> на вашем веб-сервере.
+<pre>
+@HttpUtility.HtmlDecode("<connectionStrings>")
+...
+@HttpUtility.HtmlDecode("    <add name=\"CarShopArticleContext001\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopArticleN1;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopArticleContext002\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopArticleN2;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+...
+@HttpUtility.HtmlDecode("</connectionStrings>") 
+</pre>
+        Имеем базу данных <b>Initial Catalog=CarShopArticleN1</b> с идентификатором  <b>name=CarShopArticleContext001</b> и <br />
+        базу данных <b>Initial Catalog=CarShopArticleN2</b> с идентификатором  <b>name=CarShopArticleContext002</b>.
+        В этом случае для одной тороговой сети поле <b>Каталог артикулов</b> заполняем именем <b>CarShopArticleContext001</b> и для второй
+        тороговой сети поле <b>Каталог артикулов</b> заполняем именем <b>CarShopArticleContext002</b>.
+    </div>
+</div>
+
+
+<h2>@Resources.CREATENEW_ACTION  <small>@Resources.EnterpriseTDES_INDEX</small></h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>EnterpriseTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntGuid)
+                @Html.ValidationMessageFor(model => model.EntGuid)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntDescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntDescription)
+                @Html.ValidationMessageFor(model => model.EntDescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArticleCatalog, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArticleCatalog)
+                @Html.ValidationMessageFor(model => model.ArticleCatalog)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TecDocSrcTypeId, "TecDocSrcTypeId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TecDocSrcTypeId", String.Empty)
+                @Html.ValidationMessageFor(model => model.TecDocSrcTypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.CREATE_ACTION" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index") 
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

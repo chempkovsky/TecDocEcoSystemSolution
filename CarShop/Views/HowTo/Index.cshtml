@@ -1,0 +1,189 @@
+﻿@using CarShop.Helpers;
+@{
+    ViewBag.Title = "Как развернуть решение";
+    Layout = "~/Views/HowTo/_Layout.cshtml";
+}
+
+@section headerscripts {
+    <h2>Шаги и очередность развертывания решения</h2>
+}
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    1. @Html.ActionLink("Развертывание MSSQL Express 2012", "HowToMSSQL", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Данный пункт описывает шаги развертывания сервера MS Sql Express 2012.
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    2. @Html.ActionLink("Запуск и знакомство с MSSQL Management Studio", "HowToMSSQLManagementStudio", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Данный пункт  описывает шаги подключения Management Studio к серверу MS Sql Express 2012.
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    3. @Html.ActionLink("Создание баз данных с использованием утилиты WpfCarShop", "HowToWpfCarShop", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Данный пункт описывает создания всех шаги всех баз данных, которые будут использоваться в решении.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    4. @Html.ActionLink("Загрузка справочников утилитой WpfCarShop", "WpfCarShopDict", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Данный пункт описывает шаги наполнения базовых справочников начальными данными с помощью утилины WpfCarShop.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    5. @Html.ActionLink("Конфигурирование ODBC TecDoc", "ODBCTecDoc", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>интернет сервер</b>.<br />
+                        Установка и настройка ODBC драйвера для временного или постоянного доступа к каталогу TecDoc.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    6. @Html.ActionLink("Регистрация вашей торговой сети", "Enterprise", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Шаги по регистрации вашей торговой сети. Под торговой сетью подразумевается сеть магазинов принадлежащих одному владельцу. Данное решение поддерживает двухуровневую
+                        архитектуру: Предприятие (это торговая сеть), которое содержит одно или несколько подразделений (магазинов). Даже если у вас ровно один магазин,
+                        вы должны зарегистрировать в системе свое предприятие
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    7. @Html.ActionLink("Наполнение каталога артикулов вашей торговой сети", "CarShopArticleContext", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Шаги по наполнению каталога товаров в автоматическом режиме для вашей торговой сети (или предприятия).
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    8. @Html.ActionLink("Добавление роли Internet Server", "InternetServer", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на проводятся на Работы проводятся на компьютере (или компьютерах), где будет развернут <b>интернет сервер</b>.<br />
+                        Решение реализована как Web-приложение и чтобы его развернуть необходимо на вашем выделенном компьютере добавить роль Internet Server.
+                        Именно этот модуль и будет исполнять наше Web-приложение.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    9. @Html.ActionLink("Создание экземпляра БД для поддержки учетных записей и безопасности", "AspNetSecurity", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        В решении реализована модель безопасности основанная ролях пользователей. Для работы данной модели необходимо создать БД с определенной инфраструктурой.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    10. @Html.ActionLink("Настройка поддержки распределенных транзакций", "MsDts", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>интернет сервер</b>.<br />
+                        В решении реализована модель распределенного хранения и обработки данных, при которой каждый ресурс (приход, продажи, заказы и т.п.) для каждого машгзина может храниться
+                        в отдельной базе данных база данных или даже на отдельном экземпляре MSSQL сервера. Реализация целостности обработки опирается на технологию Microsoft Trnsact Server.
+                        Чтобы использовать эту технологию необходимо ее активировать.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    11. @Html.ActionLink("Развертывание решения на узле интернет сервер", "InstallonIIS", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>интернет сервер</b>.<br />
+                        На данной странице можно получить ссылки для скачивания решения и описания шагов развертывания и конфигурирования на веб-сервере.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    12. @Html.ActionLink("Каталог TecDoc В формате Ms-Sql", "TecDocMsSql", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.<br />
+                        Описываются шаги по установке каталога TecDoc в формате базы данных Ms-Sql. Рассматриваются два варианта. Первый вариант - это использование уже созданного каталога.
+                        И второй вариант - это создание своей собственной версии.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    13. @Html.ActionLink("Настройка Брандмаура на компьютере, где развернут SQL сервер", "FirewallSettings", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>сервер баз данных</b>.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    14. @Html.ActionLink("Настройка Брандмаура на компьютере, где развернут Интернет сервер", "FirewallSettingsHttp", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>интернет сервер</b>.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    15. @Html.ActionLink("Первый запуск решения, где развернут Интернет сервер", "FirstStartApp", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>интернет сервер</b>.<br />
+                        После развертывания решения необходимо переопределить <b>пароль администратора экосистемы</b> и определить каким <b>URL</b>
+                        пользоваться в браузерах на рабочих станциях конечных пользователей(исполнителей).
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    16. @Html.ActionLink("Регистрация гостевого стола заказов", "RegAdvanceOrders", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>интернет сервер</b>.<br />
+                        Чтобы посетители вашего сами сайта смогли создать заказ необходимо сконфигурировать решение для поддержки данного функционала.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    17. @Html.ActionLink("Минимальное число шагов настройки, чтобы начать работать", "MinStepToGetWork", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Работы проводятся на компьютере (или компьютерах), где будет развернут <b>интернет сервер</b>.<br />
+                        Чтобы учетьная система начала функционировать необходимо 1. зарегистрировать торговую сеть (предприятие), 2. добавить штат администраторов в торговую сеть
+                        3. зарегистрировать магазин (подразделение), 4. добавить в магазин штат администраторов, бухгалтеров, продавцов, 5. Добавить поставщиков
+                        6. Сформировать остатки через создание приходной ведомости,
+                        7. Открыть смену, 8. Закрепить исполнителей за рабочими местами, 9. разблокировать смену 10. Перейти на страницу "Функции по ролям", 11. В конце рабочего дня закрыть смену,
+                        12. После закрытия смены списать с прихода. Повтоорять шаги 6-12 изо дня в день.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    18. @Html.ActionLink("Если вы используете Internet Explorer", "IESettings", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Приводятся рекомендации по настройке Internet Explorer, если возникли проблемы входа в систему или неправильного отображения веб-страниц.
+                    </p>
+                </li>
+
+                <li class="list-group-item">
+                    19. @Html.ActionLink("CarShopRestToWeb.exe", "CarShopRestToWeb", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Приводятся рекомендации по развертыванию утилиты CarShopRestToWeb.exe, которая позволяет:
+                        <ul>
+                            <li>
+                                1. импортировать в стол заказов решения остатки магазина из другой учетной системы.
+                            </li>
+                            <li>
+                                2. импортировать остатки оптовых поставщиков в стол заказов решения.
+                            </li>
+                            <li>
+                                3. расширять tecdoc в формате mssql новыми артикулами, которые отсутствуют в официальной поставке каталога.
+                            </li>
+                        </ul>
+                </li>
+                <li class="list-group-item">
+                    20. @Html.ActionLink("Загрузки", "Dounloads", "HowTo", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-xs" })
+                    <p class="list-group-item-text">
+                        Приводятся рекомендации по настройке Internet Explorer, если возникли проблемы входа в систему или неправильного отображения веб-страниц.
+                    </p>
+                </li>
+
+
+            </ul>
+

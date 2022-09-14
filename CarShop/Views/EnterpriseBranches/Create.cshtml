@@ -1,0 +1,217 @@
+﻿@using CarShop.Properties;
+@model TecDocEcoSystemDbClassLibrary.EnterpriseBranchTDES
+
+@{
+    ViewBag.Title = Resources.CREATENEW_ACTION;
+    Guid ? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    SelectList BranchTypes = ViewBag.sliBranchType as SelectList;
+}
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        <b>Если вы создаете запись для стола заказов</b><br />
+        Чтобы стол заказов заработал вы создали предприятие с <b>Guid=00000000-0000-0000-1111-111111111111</b> и для этого предприятия должны создать подразделение
+        с таким же <b>Guid=00000000-0000-0000-1111-111111111111</b>. Функционал стола заказов не использует  <b>Каталог продаж</b> и <b>Каталог прихода</b>.
+        Поэтому данные поля можно заполнить любой строкой символов (к примеру, <b>НЕТ_ДАННЫХ</b>). Вопрос может возникнуть, чем наполнять поле <b>Каталог остатков</b> и <b>Каталог заказов</b>.<br />
+        Используя утилиту WpfCarShop.exe вы можете создать любое количество копий любой базы данных.<p />
+        @Html.ActionLink("Создание баз данных с использованием утилиты WpfCarShop", "HowToWpfCarShop", "HowTo", routeValues: null, htmlAttributes: new {@class="mainpageactlink" })<p />
+        Предположим вы создали копии баз данных <b>Каталога остатков</b> с именем <b>CarShopRestN1</b> и <b>Каталога заказов</b> с именем <b>CarShopOrdersN1</b> для использования в столе заказов.
+        Эти базы данных необходимо прописать в файле <b>web.config</b> на вашем веб-сервере.
+<pre>
+@HttpUtility.HtmlDecode("<connectionStrings>")
+...
+@HttpUtility.HtmlDecode("    <add name=\"CarShopRestContext001\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopRestN1;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopOrdersContext001\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopOrdersN1;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+...
+@HttpUtility.HtmlDecode("</connectionStrings>") 
+</pre>
+        Имеем базу данных <b>Initial Catalog=CarShopRestN1</b> с идентификатором  <b>name=CarShopRestContext001</b> и
+        базу данных <b>Initial Catalog=CarShopOrdersN1</b> с идентификатором  <b>name=CarShopOrdersContext001</b>.
+        В этом случае для стола заказов поле <b>Каталога заказов</b> заполняем именем <b>CarShopOrdersContext001</b> и поле <b>Каталог остатков</b> заполняем именем <b>CarShopRestContext001</b>.<br />
+        Перед развертыванием стола заказов мы рекомендуем просмотреть статью<p />
+        @Html.ActionLink("Регистрация гостевого стола заказов", "RegAdvanceOrders", "HowTo", routeValues: null, htmlAttributes: new {@class="mainpageactlink" })<p />
+
+        <p />
+        <b>Если вы создаете запись для подразделения (магазина) для вашей торговой сети (предприятия)</b><br />
+        Вы должны создать физические базы данных с использованием утилиты WpfCarShop.exe<p />
+        @Html.ActionLink("Создание баз данных с использованием утилиты WpfCarShop", "HowToWpfCarShop", "HowTo", routeValues: null, htmlAttributes: new {@class="mainpageactlink" })<p />
+        Предположим вы создали копии баз данных <br />
+        <b>Каталога остатков</b> с именем <b>CarShopRestB7</b> <br />
+        <b>Каталога заказов</b> с именем <b>CarShopOrdersB7</b> <br />
+        <b>Каталог продаж</b> с именем <b>CarShopSalesB7</b> <br />
+        <b>Каталог прихода</b> с именем <b>CarShopIncomeB7</b> <br />
+
+        Эти базы данных необходимо прописать в файле <b>web.config</b> на вашем веб-сервере.
+
+<pre>
+@HttpUtility.HtmlDecode("<connectionStrings>")
+...
+@HttpUtility.HtmlDecode("    <add name=\"CarShopRestContext007\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopRestB7;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopOrdersContext007\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopOrdersB7;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopSalesContext007\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopSalesB7;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+@HttpUtility.HtmlDecode("    <add name=\"CarShopIncomeContext007\" ")
+@HttpUtility.HtmlDecode("              connectionString=\"Data Source=ИМЯ_КОМПЬЮТЕРА\\ИМЯ_SQL_СЕРВЕРА;")
+@HttpUtility.HtmlDecode("              Initial Catalog=CarShopIncomeB7;Persist Security Info=True;")
+@HttpUtility.HtmlDecode("              User ID=sa;Password=ТУТ_ПАРОЛЬ\" providerName=\"System.Data.SqlClient\"/>")
+...
+@HttpUtility.HtmlDecode("</connectionStrings>") 
+</pre>
+
+        Имеем базу данных <b>Initial Catalog=CarShopRestB7</b> с идентификатором  <b>name=CarShopRestContext007</b><br />
+        базу данных <b>Initial Catalog=CarShopOrdersB7</b> с идентификатором  <b>name=CarShopOrdersContext007</b><br />
+        базу данных <b>Initial Catalog=CarShopSalesB7</b> с идентификатором  <b>name=CarShopSalesContext007</b><br />
+        базу данных <b>Initial Catalog=CarShopIncomeB7</b> с идентификатором  <b>name=CarShopIncomeContext007</b><br />
+        В этом случае для подразделения <br />
+        поле <b>Каталога остатков</b> заполняем именем <b>CarShopRestContext007</b><br />
+        поле <b>Каталога заказов</b> заполняем именем <b>CarShopOrdersContext007</b><br />
+        поле <b>Каталог продаж</b> заполняем именем <b>CarShopSalesContext007</b><br />
+        поле <b>Каталог прихода</b> заполняем именем <b>CarShopIncomeContext007</b><br />
+    </div>
+</div>
+
+
+<h2>@Resources.CREATENEW_ACTION</h2>
+
+@if (!SearchEntGuid.HasValue)
+{
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+        @if (SearchEntGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+            <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+        }
+    </ol>
+
+    @Html.ValidationSummary(true)
+} else {
+
+
+using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>EnterpriseBranchTDES</h4>*@
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+            @if (SearchEntGuid.HasValue)
+        {
+                <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+                <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { })</li>
+        }
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.EntGuid)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EntBranchGuid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EntBranchGuid)
+                @Html.ValidationMessageFor(model => model.EntBranchGuid)
+            </div>
+        </div>
+
+        
+            <div class="form-group">
+                @Html.LabelFor(model => model.EntBranchDescription, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EntBranchDescription)
+                    @Html.ValidationMessageFor(model => model.EntBranchDescription)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsVisible, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IsVisible)
+                    @Html.ValidationMessageFor(model => model.IsVisible)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BranchTypeId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.BranchTypeId, BranchTypes, String.Empty)
+                    @Html.ValidationMessageFor(model => model.BranchTypeId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TecDocCatalog, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TecDocCatalog)
+                    @Html.ValidationMessageFor(model => model.TecDocCatalog)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SalesCatalog, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SalesCatalog)
+                    @Html.ValidationMessageFor(model => model.SalesCatalog)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IncomeCatalog, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IncomeCatalog)
+                    @Html.ValidationMessageFor(model => model.IncomeCatalog)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OrderCatalog, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OrderCatalog)
+                    @Html.ValidationMessageFor(model => model.OrderCatalog)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Resources.CREATE_ACTION" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        }
+
+        <div>
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index", new { searchEntGuid = SearchEntGuid }, new { })
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+}    

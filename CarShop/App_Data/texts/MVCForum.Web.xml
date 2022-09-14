@@ -1,0 +1,3025 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Localizations>
+
+	<Namespace Name="Navigation.AdminTopNavigation">
+		<Text Key="forumadmin.Home.Index">
+			<Translation Language="en-GB"><![CDATA[Home]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Домашняя]]></Translation>
+    </Text>
+		<Text Key="forumadmin.AntiSpam.Index">
+			<Translation Language="en-GB"><![CDATA[Anti-Spam Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Anti-Spam настройки]]></Translation>
+    </Text>
+		<Text Key="forumadmin.User.Index">
+			<Translation Language="en-GB"><![CDATA[Users]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пользователи]]></Translation>
+    </Text>
+		<Text Key="forumadmin.Group.Index">
+			<Translation Language="en-GB"><![CDATA[Groups]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Группы]]></Translation>
+    </Text>
+		<Text Key="forumadmin.Search.Index">
+			<Translation Language="en-GB"><![CDATA[Search Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки поиска]]></Translation>
+    </Text>
+		<Text Key="forumadmin.Settings.Index">
+			<Translation Language="en-GB"><![CDATA[Solution Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки решения]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.Events.ModerationEventListener">
+		<Text Key="PostSubject">
+			<Translation Language="en-GB"><![CDATA[A post has been put in quarantine]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщение было поставлено в карантин]]></Translation>
+    </Text>
+		<Text Key="PostBody">
+			<Translation Language="en-GB">
+				<![CDATA[The reply to the topic '{Title}' with the subject '{Subject}' was put in quarantine.
+
+Go take a look: {Url}.
+
+The reason given for putting it in quarantine is: {Reason}
+]]></Translation>
+
+      <Translation Language="ru-RU">
+        <![CDATA[Ответ на тему '{Title}' с темой '{Subject}' поместили в карантин.
+
+Перейдите: {URL}.
+
+Причиной перемещения в карантин является: ​​{Reason}
+]]>
+      </Translation>
+
+    </Text>
+		<Text Key="TopicSubject">
+			<Translation Language="en-GB"><![CDATA[A topic has been put in quarantine]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тему поместили в карантин]]></Translation>
+    </Text>
+		<Text Key="TopicBody">
+			<Translation Language="en-GB">
+				<![CDATA[The topic '{Title}' was put in quarantine.
+
+Go take a look: {Url}.
+
+The reason given for putting it in quarantine is: {Reason}
+]]></Translation>
+      
+      <Translation Language="ru-RU">
+        <![CDATA[Тему '{Title}' поместили в карантин.
+
+Перейдите: {URL}.
+
+Причиной перемещения в карантин является: ​​{Reason}
+]]>
+      </Translation>
+
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.AttachmentErrors">
+		<Text Key="PermissionsDenied">
+			<Translation Language="en-GB"><![CDATA[You are not allowed to attach files to a post.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы не можете прикреплять файлы к сообщению.]]></Translation>
+    </Text>
+		<Text Key="FileTooBig">
+			<Translation Language="en-GB"><![CDATA[The file is too big, the max allowed file size is {MaxFileSize} bytes.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Файл слишком велик, максимально допустимый размер файла {MaxFileSize} байт.]]></Translation>
+    </Text>
+		<Text Key="NotEnoughSpace">
+			<Translation Language="en-GB"><![CDATA[You are only allowed to have attachments for {MaxAttachmentsSize} bytes. With this attachment you exceed that. The file was not attached.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вам разрешено прикреплять файл с максимальным размером в {MaxAttachmentsSize} байт. У данного вложения размер превышает допустимое значение и файл не был прикреплен.]]></Translation>
+    </Text>
+		<Text Key="NotAllowedExtension">
+			<Translation Language="en-GB"><![CDATA[The file type is not allowed.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Этот тип файлов не допускается.]]></Translation>
+    </Text>
+		<Text Key="Unknown">
+			<Translation Language="en-GB"><![CDATA[Unknown error, files was not attached.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Неизвестная ошибка, файлы не были прикреплены.]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.ForgottenPassword">
+		<Text Key="PasswordChanged">
+			<Translation Language="en-GB"><![CDATA[Your password has been changed and you will receive an e-mail with your new password shortly.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваш пароль был изменен, и вы будете получать электронную почту с новым паролем в ближайшее время.]]></Translation>
+    </Text>
+		<Text Key="Headline">
+			<Translation Language="en-GB"><![CDATA[Forgotten Password]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вспомнить пароль]]></Translation>
+    </Text>
+		<Text Key="SubmitButton">
+			<Translation Language="en-GB"><![CDATA[Request new password]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Запросить новый пароль]]></Translation>
+    </Text>
+	</Namespace>
+	
+	<Namespace Name="mvcForum.WebUI.MembershipErrors">
+		<Text Key="UserRejected">
+			<Translation Language="en-GB"><![CDATA[The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Запрос на создание пользователя был отменен. Пожалуйста, проверьте ваш ввод и попробуйте еще ​​раз. Если проблема не устранена, пожалуйста, обратитесь к системному администратору.]]></Translation>
+    </Text>
+		<Text Key="ProviderError">
+			<Translation Language="en-GB"><![CDATA[The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Служба проверки подлинности вернула сообщение об ошибке. Пожалуйста, проверьте ваш ввод и попробуйте еще ​​раз. Если проблема не устранена, пожалуйста, обратитесь к системному администратору.]]></Translation>
+    </Text>
+		<Text Key="InvalidUserName">
+			<Translation Language="en-GB"><![CDATA[The user name provided is invalid. Please check the value and try again.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя пользователя является недействительной. Пожалуйста, проверьте значение и попробуйте еще раз.]]></Translation>
+    </Text>
+		<Text Key="InvalidQuestion">
+			<Translation Language="en-GB"><![CDATA[The password retrieval question provided is invalid. Please check the value and try again.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Запрос на восстановления пароля является недействительным. Пожалуйста, проверьте значение и попробуйте еще раз.]]></Translation>
+    </Text>
+		<Text Key="InvalidAnswer">
+			<Translation Language="en-GB"><![CDATA[The password retrieval answer provided is invalid. Please check the value and try again.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ответ на восстановления пароля является недействительным. Пожалуйста, проверьте значение и попробуйте еще раз.]]></Translation>
+    </Text>
+		<Text Key="InvalidEmail">
+			<Translation Language="en-GB"><![CDATA[The e-mail address provided is invalid. Please check the value and try again.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Адрес электронной почты является недействительной. Пожалуйста, проверьте значение и попробуйте еще раз.]]></Translation>
+    </Text>
+		<Text Key="InvalidPassword">
+			<Translation Language="en-GB"><![CDATA[The password provided is invalid. Please enter a valid password value.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пароль не является недействительным. Пожалуйста, введите допустимое значение пароля.]]></Translation>
+    </Text>
+		<Text Key="DuplicateEmail">
+			<Translation Language="en-GB"><![CDATA[A user name for that e-mail address already exists. Please enter a different e-mail address.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя пользователя для этого адреса электронной почты уже существует. Пожалуйста, введите другой адрес электронной почты.]]></Translation>
+    </Text>
+		<Text Key="DuplicateUserName">
+			<Translation Language="en-GB"><![CDATA[User name already exists. Please enter a different user name.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя пользователя уже существует. Пожалуйста, введите другое имя пользователя.]]></Translation>
+    </Text>
+		<Text Key="Default">
+			<Translation Language="en-GB"><![CDATA[An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Произошла неизвестная ошибка. Пожалуйста, проверьте ваш ввод и попробуйте еще ​​раз. Если проблема не устранена, пожалуйста, обратитесь к системному администратору.]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.Profile.Update">
+		<Text Key="ExternalUserFirstVisit">
+			<Translation Language="en-GB"><![CDATA[You are using an external account, and this is your first visit. If you're not interested in using the username the external provider has given us, this is your chance to change it.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы используете внешний аккаунт, и это ваш первый визит. Если вы не заинтересованы в использовании имени пользователя, который мы получили от внешнего поставщика, то это ваш шанс, чтобы изменить его.]]></Translation>
+    </Text>
+		<Text Key="MissingUsernameExternalUser">
+			<Translation Language="en-GB"><![CDATA[The name is required]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется имя]]></Translation>
+    </Text>
+		<Text Key="NameInUseExternalUser">
+			<Translation Language="en-GB"><![CDATA[The name is already in use, please choose another one.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Это имя уже используется, пожалуйста, выберите другое.]]></Translation>
+    </Text>
+		<Text Key="MissingEmailExternalUser">
+			<Translation Language="en-GB"><![CDATA[The e-mail address is required]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется адрес электронной почты ]]></Translation>
+    </Text>
+		<Text Key="InvalidEmailExternalUser">
+			<Translation Language="en-GB"><![CDATA[The given e-mail address is not valid]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Данный адрес электронной почты не является действительным]]></Translation>
+    </Text>
+		<Text Key="ChangesSaved">
+			<Translation Language="en-GB"><![CDATA[Your profile was updated.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Din profilen blev opdateret.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваша анкета была обновлена​​.]]></Translation>
+    </Text>
+		<Text Key="EmailInUse">
+			<Translation Language="en-GB"><![CDATA[The e-mail address is already in use on an existing account.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Адрес электронной почты уже используется для существующей учетной записи.]]></Translation>
+    </Text>
+		<Text Key="EmailChangeMissingPassword">
+			<Translation Language="en-GB"><![CDATA[Your password is required when changing e-mail address!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется ваш пароль при изменении адреса электронной почты!]]></Translation>
+    </Text>
+		<Text Key="PasswordsDoesNotMatch">
+			<Translation Language="en-GB"><![CDATA[The new password does not match the repeated password!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новый пароль не совпадает паролем повтора!]]></Translation>
+    </Text>
+		<Text Key="OldPasswordsRequired">
+			<Translation Language="en-GB"><![CDATA[Your old password is required when changing password!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваш старый пароль требуется при изменении пароля!]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Home.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Solution Statistics]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Статистика Решения]]></Translation>
+    </Text>
+		<Text Key="Heading">
+			<Translation Language="en-GB"><![CDATA[Solution]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Решение]]></Translation>
+    </Text>
+		<Text Key="SubHeading">
+			<Translation Language="en-GB"><![CDATA[Statistics]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Статистика]]></Translation>
+    </Text>
+		<Text Key="NewsSubHeading">
+			<Translation Language="en-GB"><![CDATA[News from MVC Forum HQ]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новости из MVC Forum HQ]]></Translation>
+    </Text>
+		<Text Key="ReadMore">
+			<Translation Language="en-GB"><![CDATA[Read more...]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Прочитать больше ...]]></Translation>
+    </Text>
+		<Text Key="By">
+			<Translation Language="en-GB"><![CDATA[by]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[от]]></Translation>
+    </Text>
+		<Text Key="PostsPD">
+			<Translation Language="en-GB"><![CDATA[Posts per day:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщений в день:]]></Translation>
+    </Text>
+		<Text Key="NOPosts">
+			<Translation Language="en-GB"><![CDATA[Number of posts:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Количество сообщений:]]></Translation>
+    </Text>
+		<Text Key="TopicsPD">
+			<Translation Language="en-GB"><![CDATA[Topics per day:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тем в день:]]></Translation>
+    </Text>
+		<Text Key="NOTopics">
+			<Translation Language="en-GB"><![CDATA[Number of topics:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Количество тем:]]></Translation>
+    </Text>
+		<Text Key="UsersPD">
+			<Translation Language="en-GB"><![CDATA[Users per day:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пользователей в день:]]></Translation>
+    </Text>
+		<Text Key="NOUsers">
+			<Translation Language="en-GB"><![CDATA[Number of users:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Количество пользователей:]]></Translation>
+    </Text>
+		<Text Key="AttachmentsPD">
+			<Translation Language="en-GB"><![CDATA[Attachments per day:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вложений в день:]]></Translation>
+    </Text>
+		<Text Key="NOAttachments">
+			<Translation Language="en-GB"><![CDATA[Number of attachments:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Количество вложений:]]></Translation>
+    </Text>
+		<Text Key="BoardStart">
+			<Translation Language="en-GB"><![CDATA[Board started:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Форум стартовал:]]></Translation>
+    </Text>
+		<Text Key="AttachmentSize">
+			<Translation Language="en-GB"><![CDATA[Attachments size:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Размер вложения:]]></Translation>
+    </Text>
+		<Text Key="Version">
+			<Translation Language="en-GB"><![CDATA[Version:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Весрия:]]></Translation>
+    </Text>
+		<Text Key="BoardsSubHeading">
+			<Translation Language="en-GB"><![CDATA[Boards]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Доски объявлений]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingBoardName">
+			<Translation Language="en-GB"><![CDATA[Board name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Название Доски объявлений]]></Translation>
+    </Text>
+		<Text Key="EditBoard">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменить]]></Translation>
+    </Text>
+		<Text Key="DeleteBoard">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="AddBoard">
+			<Translation Language="en-GB"><![CDATA[Add Board]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавить доску объявлений]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteHeading">
+			<Translation Language="en-GB"><![CDATA[Delete board?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить доску объявлений?]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteBody">
+			<Translation Language="en-GB"><![CDATA[Are you sure you want to delete the '{0}' board, categories, forums, topics and posts?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы уверены, что хотите удалить '{0}' доску, категории, форумы, темы и сообщения?]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Delete failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой удаления]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureBody">
+			<Translation Language="en-GB"><![CDATA[Deleting the board failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удаление доски объявлений не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="CreateBoardHeading">
+			<Translation Language="en-GB"><![CDATA[Create board]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать Доску объявлений]]></Translation>
+    </Text>
+		<Text Key="AddBoardClose">
+			<Translation Language="en-GB"><![CDATA[Close]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Закрыть]]></Translation>
+    </Text>
+		<Text Key="AddBoardCreate">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Board created]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Доска объявлений создана]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessBody">
+			<Translation Language="en-GB"><![CDATA[A new board was created successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новая доска объявлений создана успешно!]]></Translation>
+    </Text>
+		<Text Key="CreateFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Create failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать не удалось]]></Translation>
+    </Text>
+		<Text Key="CreateFailureBody">
+			<Translation Language="en-GB"><![CDATA[Creating a new board failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создание новоую доску объявлений не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Board.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Update Board]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить доску объявлений]]></Translation>
+    </Text>
+		<Text Key="CategoriesSubHeading">
+			<Translation Language="en-GB"><![CDATA[Categories]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Категирии]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingCategoryName">
+			<Translation Language="en-GB"><![CDATA[Category name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Название категирии]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingCategorySortOrder">
+			<Translation Language="en-GB"><![CDATA[Sort order]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Порядок сортировки]]></Translation>
+    </Text>
+		<Text Key="EditCategory">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменить]]></Translation>
+    </Text>
+		<Text Key="DeleteCategory">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="AddCategory">
+			<Translation Language="en-GB"><![CDATA[Add Category]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавить категирию]]></Translation>
+    </Text>
+		<Text Key="UpdateBoardForm">
+			<Translation Language="en-GB"><![CDATA[Update Board]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить доску объявлений]]></Translation>
+    </Text>
+		<Text Key="CreateMaskSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Access Mask Created]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Маска доступа создана]]></Translation>
+    </Text>
+		<Text Key="CreateMaskSuccessBody">
+			<Translation Language="en-GB"><![CDATA[The new access mask was created successfully]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новая маска доступа была успешно создана]]></Translation>
+    </Text>
+		<Text Key="SaveBoard">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Update successful]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление успешно]]></Translation>
+    </Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The board was updated successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Доска объявлений обновлена успешно!]]></Translation>
+    </Text>
+		<Text Key="FailureHeading">
+			<Translation Language="en-GB"><![CDATA[Update failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой обновления]]></Translation>
+    </Text>
+		<Text Key="FailureBody">
+			<Translation Language="en-GB"><![CDATA[Updating the board failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление доски объявлений не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteHeading">
+			<Translation Language="en-GB"><![CDATA[Delete category?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить категорию?]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteBody">
+			<Translation Language="en-GB"><![CDATA[Are you sure you want to delete the '{0}' category along with all forums, topics and posts?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы уверены, что хотите удалить '{0}' категорию наряду со всеми форумах, темами и сообщениями?]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Delete failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой удаления]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureBody">
+			<Translation Language="en-GB"><![CDATA[Deleting the category failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удаление категорию не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="AddCategoryHeading">
+			<Translation Language="en-GB"><![CDATA[Create category]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать категорию]]></Translation>
+    </Text>
+		<Text Key="AddCategoryClose">
+			<Translation Language="en-GB"><![CDATA[Close]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Закрыть]]></Translation>
+    </Text>
+		<Text Key="AddCategoryCreate">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Category created]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Категория создана]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessBody">
+			<Translation Language="en-GB"><![CDATA[A new category was created successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новая категория была создана успешно!]]></Translation>
+    </Text>
+		<Text Key="CategoryFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Create failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой при создании]]></Translation>
+    </Text>
+		<Text Key="CategoryFailureBody">
+			<Translation Language="en-GB"><![CDATA[Creating a new category failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создание новой категории не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="MasksSubHeading">
+			<Translation Language="en-GB"><![CDATA[Access Masks]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Маска доступа]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingMaskName">
+			<Translation Language="en-GB"><![CDATA[Access mask name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Наименование маски доступа]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingMaskFlag">
+			<Translation Language="en-GB"><![CDATA[Access flag(s)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Флаг(и) доступа]]></Translation>
+    </Text>
+		<Text Key="AddAccessMask">
+			<Translation Language="en-GB"><![CDATA[Add Access Mask]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавить маску доступа]]></Translation>
+    </Text>
+		<Text Key="DeleteAccessMask">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="EditAccessMask">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменить]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteMaskHeading">
+			<Translation Language="en-GB"><![CDATA[Delete Access Mask?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить маску доступа?]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteMaskBody">
+			<Translation Language="en-GB"><![CDATA[Are you sure you want to delete the '{0}' access mask?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы уверены, что хотите удалить '{0}' маску доступа?]]></Translation>
+    </Text>
+		<Text Key="DeleteMaskFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Delete failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой удаления]]></Translation>
+    </Text>
+		<Text Key="DeleteMaskFailureBody">
+			<Translation Language="en-GB"><![CDATA[Deleting the access mask failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удаление маски доступа не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="AddAccessMaskHeading">
+			<Translation Language="en-GB"><![CDATA[Create Access Mask]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать маску доступа]]></Translation>
+    </Text>
+		<Text Key="AddAccessMaskCreate">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="AddAccessMaskClose">
+			<Translation Language="en-GB"><![CDATA[Close]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Закрыть]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.LogOnModel">
+		<Text Key="EmailAddress">
+			<Translation Language="en-GB"><![CDATA[E-mail Address]]></Translation>
+			<Translation Language="da-DK"><![CDATA[E-mail adresse]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[E-mail адрес]]></Translation>
+    </Text>
+		<Text Key="Password">
+			<Translation Language="en-GB"><![CDATA[Password]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Kodeord]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пароль]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.ViewModels.BasicInstallViewModel">
+		<Text Key="SubmitInstallationText">
+			<Translation Language="en-GB"><![CDATA[Data is submitted to our main site. We only register the version and time of the installation. No other data will be kept. The data is used for statistics on how many installations are running and on which versions.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Данные представлены на нашем основном сайте. Мы только гистрируем версию и время установки. Никаких других данных мы не формируем. Эти данные используются для статистики о том, сколько установок работает и на какой версии.]]></Translation>
+    </Text>
+		<Text Key="SubmitInstallation">
+			<Translation Language="en-GB"><![CDATA[Submit installation]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отправить установку]]></Translation>
+    </Text>
+		<Text Key="CreateAdmin">
+			<Translation Language="en-GB"><![CDATA[Create administrator account]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать учетную запись администратора]]></Translation>
+    </Text>
+		<Text Key="AdminUsername">
+			<Translation Language="en-GB"><![CDATA[Admin username]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя пользователя администратора]]></Translation>
+    </Text>
+		<Text Key="AdminEmail">
+			<Translation Language="en-GB"><![CDATA[Admin e-mail address]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[E-mail адрес администратора]]></Translation>
+    </Text>
+		<Text Key="AdminPassword">
+			<Translation Language="en-GB"><![CDATA[Admin password]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пароль администратора]]></Translation>
+    </Text>
+		<Text Key="CreateGroups">
+			<Translation Language="en-GB"><![CDATA[Create basic groups]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать базовую группу]]></Translation>
+    </Text>
+		<Text Key="CreateSimpleForum">
+			<Translation Language="en-GB"><![CDATA[Create simple forum structure]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать структуру простого форума]]></Translation>
+    </Text>
+		<Text Key="SiteURL">
+			<Translation Language="en-GB"><![CDATA[Site Url]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Url сайта]]></Translation>
+    </Text>
+		<Text Key="ExistingUserEmail">
+			<Translation Language="en-GB"><![CDATA[E-mail address of administrator]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[E-mail адрес администратора]]></Translation>
+    </Text>
+		<Text Key="ImportMembershipUsers">
+			<Translation Language="en-GB"><![CDATA[Import existing users]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Импорт существующих пользователей]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.AccessMask.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Update Access Mask]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить маску доступа]]></Translation>
+    </Text>
+		<Text Key="UpdateAceesMaskForm">
+			<Translation Language="en-GB"><![CDATA[Update Access Mask]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить маску доступа]]></Translation>
+    </Text>
+		<Text Key="SaveAccessMask">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Update successful]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление успешно]]></Translation>
+    </Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The access mask was updated successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Маска доступа успешно обновлена!]]></Translation>
+    </Text>
+		<Text Key="FailureHeading">
+			<Translation Language="en-GB"><![CDATA[Update failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой обновления]]></Translation>
+    </Text>
+		<Text Key="FailureBody">
+			<Translation Language="en-GB"><![CDATA[Updating the access mask failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление маски доступа не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Category.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Update Category]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить категорию]]></Translation>
+    </Text>
+		<Text Key="ForumsSubHeading">
+			<Translation Language="en-GB"><![CDATA[Forums]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Форумы]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingForumName">
+			<Translation Language="en-GB"><![CDATA[Forum name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Наименование форума]]></Translation>
+    </Text>
+		<Text Key="EditForum">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменить]]></Translation>
+    </Text>
+		<Text Key="DeleteForum">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="AddForum">
+			<Translation Language="en-GB"><![CDATA[Add Forum]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавить форум]]></Translation>
+    </Text>
+		<Text Key="UpdateCategoryForm">
+			<Translation Language="en-GB"><![CDATA[Update Category]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить категорию]]></Translation>
+    </Text>
+		<Text Key="SaveCategory">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteHeading">
+			<Translation Language="en-GB"><![CDATA[Delete forum?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить форум?]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteBody">
+			<Translation Language="en-GB"><![CDATA[Are you sure you want to delete the '{0}' forum along with all sub-forums, topics and posts?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы уверены, что хотите удалить '{0}' форум вместе со всеми под-форумами, темами и сообщениями?]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Delete failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить не удалось]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureBody">
+			<Translation Language="en-GB"><![CDATA[Deleting the forum failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удаление форума не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Forum created]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Форум создан]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessBody">
+			<Translation Language="en-GB"><![CDATA[A new forum was created successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новый форум был создан успешно!]]></Translation>
+    </Text>
+		<Text Key="CreateFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Create failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать не удалось]]></Translation>
+    </Text>
+		<Text Key="CreateFailureBody">
+			<Translation Language="en-GB"><![CDATA[Creating a new forum failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создание нового форума не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="AddHeading">
+			<Translation Language="en-GB"><![CDATA[Create forum]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать форум]]></Translation>
+    </Text>
+		<Text Key="AddClose">
+			<Translation Language="en-GB"><![CDATA[Close]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Закрыть]]></Translation>
+    </Text>
+		<Text Key="AddCreate">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Update successful]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление успешно]]></Translation>
+    </Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The category was updated successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Категория была успешно изменена!]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Forum.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Update Forum]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить форум]]></Translation>
+    </Text>
+		<Text Key="UpdateForumForm">
+			<Translation Language="en-GB"><![CDATA[Update Forum]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить форум]]></Translation>
+    </Text>
+		<Text Key="Updating">
+			<Translation Language="en-GB"><![CDATA[Updating...]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление...]]></Translation>
+    </Text>
+		<Text Key="SaveForum">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="ForumsSubHeading">
+			<Translation Language="en-GB"><![CDATA[Sub-forums]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Под-форумы]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingForumName">
+			<Translation Language="en-GB"><![CDATA[Forum name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Наименование форума]]></Translation>
+    </Text>
+		<Text Key="EditForum">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменить]]></Translation>
+    </Text>
+		<Text Key="DeleteForum">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="AddForum">
+			<Translation Language="en-GB"><![CDATA[Add Forum]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавить форум]]></Translation>
+		</Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Update successful]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление успешно]]></Translation>
+    </Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The forum was updated successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Форум был обновлен успешно!]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Sub-forum created]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Под-форум создан]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessBody">
+			<Translation Language="en-GB"><![CDATA[The sub.forum was created successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Под-форум создан успешно!]]></Translation>
+    </Text>
+		<Text Key="FailureHeading">
+			<Translation Language="en-GB"><![CDATA[Update failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой обновления]]></Translation>
+    </Text>
+		<Text Key="FailureBody">
+			<Translation Language="en-GB"><![CDATA[Updating the forum failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление форума не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="CreateSubForumForm">
+			<Translation Language="en-GB"><![CDATA[Sub-forum Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки под-форума]]></Translation>
+    </Text>
+		<Text Key="SubSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Sub-forum created]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Под-форума создан]]></Translation>
+    </Text>
+		<Text Key="SubSuccessBody">
+			<Translation Language="en-GB"><![CDATA[A new sub-forum was created successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новый под-форум создан успешно!]]></Translation>
+    </Text>
+		<Text Key="SubFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Create failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать не удалось]]></Translation>
+    </Text>
+		<Text Key="SubFailureBody">
+			<Translation Language="en-GB"><![CDATA[Creating a new sub-forum failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создание нового суб-форум не удалось, ошибку (ы) был: {0}]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteHeading">
+			<Translation Language="en-GB"><![CDATA[Delete forum?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить форум?]]></Translation>
+		</Text>
+		<Text Key="ConfirmDeleteBody">
+			<Translation Language="en-GB"><![CDATA[Are you sure you want to delete the '{0}' forum along with all sub-forums, topics and posts?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы уверены, что хотите удалить '{0}' форум вместе со всеми под-форумов, тем и сообщений?]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Delete failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить не удалось]]></Translation>
+		</Text>
+		<Text Key="DeleteFailureBody">
+			<Translation Language="en-GB"><![CDATA[Deleting the forum failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить форум не удалось, ошибка (и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="AddSubClose">
+			<Translation Language="en-GB"><![CDATA[Close]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Закрыть]]></Translation>
+    </Text>
+		<Text Key="AddSubCreate">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="AccessMaskHeading">
+			<Translation Language="en-GB"><![CDATA[Permissions]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Права]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingAccessMaskName">
+			<Translation Language="en-GB"><![CDATA[Access]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Доступ]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingGroupName">
+			<Translation Language="en-GB"><![CDATA[Group]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Группа]]></Translation>
+    </Text>
+		<Text Key="UpdateMasks">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.User.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Users]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пользователи]]></Translation>
+    </Text>
+		<Text Key="UsersSubHeading">
+			<Translation Language="en-GB"><![CDATA[Users]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пользователи]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingUserName">
+			<Translation Language="en-GB"><![CDATA[User name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[имя пользователя]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingEmailAddress">
+			<Translation Language="en-GB"><![CDATA[E-mail address]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Адрес электронной почты]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingDeleted">
+			<Translation Language="en-GB"><![CDATA[Deleted]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удален]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingActive">
+			<Translation Language="en-GB"><![CDATA[Active]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Активен]]></Translation>
+    </Text>
+		<Text Key="EditUser">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать]]></Translation>
+    </Text>
+		<Text Key="DeleteUser">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="AddUser">
+			<Translation Language="en-GB"><![CDATA[Add user]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавить пользователя]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteHeading">
+			<Translation Language="en-GB"><![CDATA[Delete user?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить пользователя?]]></Translation>
+		</Text>
+		<Text Key="ConfirmDeleteBody">
+			<Translation Language="en-GB"><![CDATA[Are you sure you want to delete the '{0}' user?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы уверены, что хотите удалить '{0}' пользователя?]]></Translation>
+		</Text>
+		<Text Key="DeleteFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Delete failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить не удалось]]></Translation>
+		</Text>
+		<Text Key="DeleteFailureBody">
+			<Translation Language="en-GB"><![CDATA[Deleting the user failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удаление пользователя не удалось, ошибка (и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="CreateUserHeading">
+			<Translation Language="en-GB"><![CDATA[Create user]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать пользователя]]></Translation>
+    </Text>
+		<Text Key="AddUserClose">
+			<Translation Language="en-GB"><![CDATA[Close]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Закрыть]]></Translation>
+    </Text>
+		<Text Key="AddUserCreate">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[User created]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пользователь создан]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessBody">
+			<Translation Language="en-GB"><![CDATA[A new user was created successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новый пользователь был успешно создан!]]></Translation>
+    </Text>
+		<Text Key="CreateFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Create failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать не удалось]]></Translation>
+    </Text>
+		<Text Key="CreateFailureBody">
+			<Translation Language="en-GB"><![CDATA[Creating a new user failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создание нового пользователя не удалось, ошибка (ы) был: {0}]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.User.Update">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Update user]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить пользователя]]></Translation>
+    </Text>
+		<Text Key="UpdateUserForm">
+			<Translation Language="en-GB"><![CDATA[Update user]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить пользователя]]></Translation>
+    </Text>
+		<Text Key="SaveUser">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Update successful]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление успешно]]></Translation>
+    </Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The user was updated successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пользователь был успешно обновлен!]]></Translation>
+    </Text>
+		<Text Key="FailureHeading">
+			<Translation Language="en-GB"><![CDATA[Update failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой обновления]]></Translation>
+    </Text>
+		<Text Key="FailureBody">
+			<Translation Language="en-GB"><![CDATA[Updating the user failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление пользователю не удалось, ошибка (ы) был: {0}]]></Translation>
+    </Text>
+		<Text Key="GroupsSubHeading">
+			<Translation Language="en-GB"><![CDATA[Group membership]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Членство в группе]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingGroupName">
+			<Translation Language="en-GB"><![CDATA[Group name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя группы]]></Translation>
+    </Text>
+		<Text Key="DeleteGroupMember">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+		</Text>
+		<Text Key="AddGroupMember">
+			<Translation Language="en-GB"><![CDATA[Add Group]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавить группу]]></Translation>
+		</Text>
+		<Text Key="ConfirmDeleteHeading">
+			<Translation Language="en-GB"><![CDATA[Delete membership?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить членство?]]></Translation>
+		</Text>
+		<Text Key="ConfirmDeleteBody">
+			<Translation Language="en-GB"><![CDATA[Are you sure you want to remove the user from the '{0}' group?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы уверены, что хотите удалить пользователя из '{0}' группы?]]></Translation>
+		</Text>
+		<Text Key="DeleteFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Delete failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить не удалось]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureBody">
+			<Translation Language="en-GB"><![CDATA[Deleting the membership failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удаление членства не удалось, ошибка (и) был: {0}]]></Translation>
+		</Text>
+		<Text Key="CreateMembershipHeading">
+			<Translation Language="en-GB"><![CDATA[Join group]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вступить в группу]]></Translation>
+    </Text>
+		<Text Key="AddMembershipClose">
+			<Translation Language="en-GB"><![CDATA[Close]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Закрыть]]></Translation>
+    </Text>
+		<Text Key="AddMembershipCreate">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="CreateFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Join failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Регистрация не удалась]]></Translation>
+    </Text>
+		<Text Key="CreateFailureBody">
+			<Translation Language="en-GB"><![CDATA[Adding the user to the group failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавление пользователя в группу не удалось, ошибка (и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Group joined]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Группа присоединилась]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessBody">
+			<Translation Language="en-GB"><![CDATA[The user has been added to the group!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пользователь был добавлен в группу!]]></Translation>
+    </Text>
+		<Text Key="UpdateRoleForm">
+			<Translation Language="en-GB"><![CDATA[User Roles]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Роли пользователи]]></Translation>
+    </Text>
+		<Text Key="SaveRole">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="LockStatusUnlocked">
+			<Translation Language="en-GB"><![CDATA[Account is unlocked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Учетную запись разблокирована]]></Translation>
+    </Text>
+		<Text Key="LockStatusLocked">
+			<Translation Language="en-GB"><![CDATA[Account is locked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Учетную запись заблокирована]]></Translation>
+    </Text>
+		<Text Key="LockButton">
+			<Translation Language="en-GB"><![CDATA[Unlock account]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разблокировать учетную запись]]></Translation>
+		</Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Group.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Groups]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Группы]]></Translation>
+    </Text>
+		<Text Key="GroupsSubHeading">
+			<Translation Language="en-GB"><![CDATA[Groups]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Группы]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingName">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="EditGroup">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать]]></Translation>
+    </Text>
+		<Text Key="DeleteGroup">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="AddGroup">
+			<Translation Language="en-GB"><![CDATA[Add Group]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Добавить группу]]></Translation>
+    </Text>
+		<Text Key="ConfirmDeleteHeading">
+			<Translation Language="en-GB"><![CDATA[Delete group?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить группу]]></Translation>
+		</Text>
+		<Text Key="ConfirmDeleteBody">
+			<Translation Language="en-GB"><![CDATA[Are you sure you want to delete the '{0}' group?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы уверены, что хотите удалить '{0}' группу?]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Delete failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить не удалось]]></Translation>
+    </Text>
+		<Text Key="DeleteFailureBody">
+			<Translation Language="en-GB"><![CDATA[Deleting the group failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удаление группы не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="CreateGroupHeading">
+			<Translation Language="en-GB"><![CDATA[Create group]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать группу]]></Translation>
+    </Text>
+		<Text Key="AddGroupClose">
+			<Translation Language="en-GB"><![CDATA[Close]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Закрыть]]></Translation>
+    </Text>
+		<Text Key="AddGroupCreate">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="CreateFailureHeading">
+			<Translation Language="en-GB"><![CDATA[Create failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать не удалось]]></Translation>
+    </Text>
+		<Text Key="CreateFailureBody">
+			<Translation Language="en-GB"><![CDATA[Creating a new group failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создание новой группы не удалось, ошибка(и) была: {0}]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Group created]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Группа создана]]></Translation>
+    </Text>
+		<Text Key="CreateSuccessBody">
+			<Translation Language="en-GB"><![CDATA[A new group was created successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новая группа была создана успешно!]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Group.Update">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Update group]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить группу]]></Translation>
+    </Text>
+		<Text Key="UpdateGroupForm">
+			<Translation Language="en-GB"><![CDATA[Update group]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить группу]]></Translation>
+    </Text>
+		<Text Key="SaveGroup">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Update successful]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление успешно]]></Translation>
+		</Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The group was updated successfully!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Группа была успешно обновлены!]]></Translation>
+    </Text>
+		<Text Key="FailureHeading">
+			<Translation Language="en-GB"><![CDATA[Update failed]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сбой обновления]]></Translation>
+    </Text>
+		<Text Key="FailureBody">
+			<Translation Language="en-GB"><![CDATA[Updating the group failed, the error(s) was: {0}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновление группы не удалось, ошибка(и) был: {0}]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Search.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Search Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки поиска]]></Translation>
+    </Text>
+		<Text Key="SubHeading">
+			<Translation Language="en-GB"><![CDATA[Search add-ons]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поисковый add-ons]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingName">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingDescription">
+			<Translation Language="en-GB"><![CDATA[Description]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Описание]]></Translation>
+    </Text>
+		<Text Key="ResetAction">
+			<Translation Language="en-GB"><![CDATA[Clear all indexes]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Очистить все индексы]]></Translation>
+    </Text>
+		<Text Key="ClearWarning">
+			<Translation Language="en-GB"><![CDATA[Clearing all indexes will delete all indexed data, and rebuild the indexes. Depending on the number of topics and posts, this may take anywhere from seconds to hours.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Очистка всех индексов удалит все индексированных данных, и перестроить индексы. В зависимости от количества тем и сообщений, это может занять от нескольких секунд до нескольких часов.]]></Translation>
+    </Text>
+		<Text Key="EditSearch">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.AntiSpam.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Anti-Spam Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Анти-спам настройки]]></Translation>
+    </Text>
+		<Text Key="SubHeading">
+			<Translation Language="en-GB"><![CDATA[Anti-spam add-ons]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Анти-спам add-ons]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingName">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="ColumnHeadingDescription">
+			<Translation Language="en-GB"><![CDATA[Description]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Описание]]></Translation>
+    </Text>
+		<Text Key="EditAntiSpam">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Settings.Index">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Solution Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки решения]]></Translation>
+    </Text>
+		<Text Key="Heading">
+			<Translation Language="en-GB"><![CDATA[Solution Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки решения]]></Translation>
+    </Text>
+		<Text Key="UpdateSettingsForm">
+			<Translation Language="en-GB"><![CDATA[General Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Общие настройки]]></Translation>
+    </Text>
+		<Text Key="SaveSettings">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="GeneralSettingsTabTitle">
+			<Translation Language="en-GB"><![CDATA[General]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Общие]]></Translation>
+    </Text>
+		<Text Key="UserRegistrationTabTitle">
+			<Translation Language="en-GB"><![CDATA[Account]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Учетная запись]]></Translation>
+    </Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Changes Saved]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменения сохранены]]></Translation>
+    </Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The changes has been saved]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменения были сохранены]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.ForumAdmin.Settings.UserRegistration">
+		<Text Key="PageTitle">
+			<Translation Language="en-GB"><![CDATA[Solution Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки решения]]></Translation>
+    </Text>
+		<Text Key="Heading">
+			<Translation Language="en-GB"><![CDATA[Solution Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки решения]]></Translation>
+    </Text>
+		<Text Key="UserRegistrationForm">
+			<Translation Language="en-GB"><![CDATA[Account Settings]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки аккаунта]]></Translation>
+    </Text>
+		<Text Key="SaveSettings">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+		<Text Key="GeneralSettingsTabTitle">
+			<Translation Language="en-GB"><![CDATA[General]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Общие]]></Translation>
+    </Text>
+		<Text Key="UserRegistrationTabTitle">
+			<Translation Language="en-GB"><![CDATA[Account]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Учетная запись]]></Translation>
+    </Text>
+		<Text Key="ValidationBodyHelpText">
+			<Translation Language="en-GB"><![CDATA[Please remember to include the \{Url\} tag in the text, otherwise no activation link is included. Other tags available are: \{Email\} and \{Password\}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пожалуйста, не забудьте включить \{Url\} тег в тексте, в противном случае ссылка активации не входит. Другие теги доступны: \{E-mail\} и \{Password\}]]></Translation>
+		</Text>
+		<Text Key="ForgottenPasswordBodyHelpText">
+			<Translation Language="en-GB"><![CDATA[Please remember to include the \{Password\} tag in the text. Other tags available are: \{Email\}.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пожалуйста, не забудьте включить \{Password\} тег в тексте. Другие теги доступны: \{E-mail\}.]]></Translation>
+    </Text>
+		<Text Key="AllowOpenAuthHelpText">
+			<Translation Language="en-GB"><![CDATA[The allowed OpenAuth providers are configured in the web.config file.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Допустимые провайдеры OpenAuth настроены в файле web.config.]]></Translation>
+    </Text>
+		<Text Key="SuccessHeading">
+			<Translation Language="en-GB"><![CDATA[Changes Saved]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменения сохранены]]></Translation>
+    </Text>
+		<Text Key="SuccessBody">
+			<Translation Language="en-GB"><![CDATA[The changes has been saved]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Изменения были сохранены]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.UserRegistrationViewModel">
+		<Text Key="UseForumAccountController">
+			<Translation Language="en-GB"><![CDATA[Use MVC Forum's log-on and register pages]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Используйте входа в MVC Форума и регистрировать страницы]]></Translation>
+    </Text>
+		<Text Key="AllowLocalUsers">
+			<Translation Language="en-GB"><![CDATA[Allow local accounts]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разрешить локальные учетные записи]]></Translation>
+    </Text>
+		<Text Key="AllowSignUp">
+			<Translation Language="en-GB"><![CDATA[Allow new accounts]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разрешить новые учетные записи]]></Translation>
+    </Text>
+		<Text Key="RequireEmailValidation">
+			<Translation Language="en-GB"><![CDATA[Require e-mail validation for new accounts]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требовать проверку электронной почты для новых аккаунтов]]></Translation>
+    </Text>
+		<Text Key="AllowOpenAuthUsers">
+			<Translation Language="en-GB"><![CDATA[Allow external accounts]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разрешить внешние аккаунты]]></Translation>
+    </Text>
+		<Text Key="ValidationSubject">
+			<Translation Language="en-GB"><![CDATA[Subject for validation e-mail]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тема для проверки e-mail]]></Translation>
+    </Text>
+		<Text Key="ValidationBody">
+			<Translation Language="en-GB"><![CDATA[Body for validation e-mail]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тело для проверки e-mail]]></Translation>
+    </Text>
+		<Text Key="ForgottenPasswordSubject">
+			<Translation Language="en-GB"><![CDATA[Subject for forgotten password e-mail]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тема почты, если забыли пароль]]></Translation>
+    </Text>
+		<Text Key="ForgottenPasswordBody">
+			<Translation Language="en-GB"><![CDATA[Body for forgotten password e-mail]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Электронная почта Органа, если забыли пароль]]></Translation>
+    </Text>
+		<Text Key="RequireRulesAccept">
+			<Translation Language="en-GB"><![CDATA[Require new users to accept rules]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требовать новых пользователей принять правила]]></Translation>
+    </Text>
+		<Text Key="SignUpRules">
+			<Translation Language="en-GB"><![CDATA[Rules for new users]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Правила для новых пользователей]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.ForumSettingsViewModel">
+		<Text Key="TopicsPerPage">
+			<Translation Language="en-GB"><![CDATA[Topics shown per page]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тем показываемых на странице]]></Translation>
+    </Text>
+		<Text Key="MessagesPerPage">
+			<Translation Language="en-GB"><![CDATA[Messages shown per page]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщения, за страницу]]></Translation>
+    </Text>
+		<Text Key="ShowDeletedMessages">
+			<Translation Language="en-GB"><![CDATA[Show entries for deleted messages]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Показать записи для удаленных сообщений]]></Translation>
+    </Text>
+		<Text Key="DefaultCulture">
+			<Translation Language="en-GB"><![CDATA[Default language/region]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Язык/регион по умолчанию]]></Translation>
+    </Text>
+		<Text Key="DefaultTimezone">
+			<Translation Language="en-GB"><![CDATA[Default timezone]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Часовой пояс по умолчанию]]></Translation>
+    </Text>
+		<Text Key="SiteURL">
+			<Translation Language="en-GB"><![CDATA[The site's Url]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Url сайта]]></Translation>
+    </Text>
+		<Text Key="RobotEmailAddress">
+			<Translation Language="en-GB"><![CDATA[E-mail address to use when sending mail]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Адрес электронной почты для использования при отправке почты]]></Translation>
+    </Text>
+		<Text Key="NewUserGroups">
+			<Translation Language="en-GB"><![CDATA[Groups for new users]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Группы новых пользователей]]></Translation>
+    </Text>
+		<Text Key="Editor">
+			<Translation Language="en-GB"><![CDATA[Text editor]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Текстовый редактор]]></Translation>
+    </Text>
+		<Text Key="Theme">
+			<Translation Language="en-GB"><![CDATA[Theme]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Схема]]></Translation>
+		</Text>
+		<Text Key="AllowUserDefinedTheme">
+			<Translation Language="en-GB"><![CDATA[Allow the users to select a theme]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разрешить пользователям выбирать схему]]></Translation>
+    </Text>
+		<Text Key="PostsOnReply">
+			<Translation Language="en-GB"><![CDATA[The number of old posts to show]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Количество старых сообщений для показать]]></Translation>
+    </Text>
+		<Text Key="ShowOldPostsOnReply">
+			<Translation Language="en-GB"><![CDATA[Show old posts when replying]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Показать старые сообщения при ответе]]></Translation>
+    </Text>
+		<Text Key="MaxFileSize">
+			<Translation Language="en-GB"><![CDATA[Maximum size of a single attachment (megabyte, 0 for unlimited)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Максимальный размер отдельного вложенного файла пользователя (мегабайт, 0 если без ограничений)]]></Translation>
+    </Text>
+		<Text Key="MaxAttachmentsSize">
+			<Translation Language="en-GB"><![CDATA[Maximum size of all the user's attachments (megabyte, 0 for unlimited)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Максимальный размер вложенных файлов пользователя (мегабайт, 0 если без ограничений)]]></Translation>
+    </Text>
+		<Text Key="AllowedExtensions">
+			<Translation Language="en-GB"><![CDATA[Allowed extensions on attachments (separate with ';')]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Допустимые расширения для вложений (разделенных ';')]]></Translation>
+    </Text>
+		<Text Key="AsynchronousAntiSpam">
+			<Translation Language="en-GB"><![CDATA[Allow anti-spam to run asynchronously]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разрешить анти-спам асинхронное выполнение]]></Translation>
+    </Text>
+		<Text Key="ShowOnlineUsers">
+			<Translation Language="en-GB"><![CDATA[Show online users (might not be supported by the membership provider)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Показать пользователей онлайн (может не поддерживаться поставщиком членства]]></Translation>
+    </Text>
+		<Text Key="InformOnQuarantine">
+			<Translation Language="en-GB"><![CDATA[E-mail to moderators when quarantined post]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пошлите E-mail модератору когда сообщение в карантине]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.ForumUser">
+		<Text Key="RepeatPassword">
+			<Translation Language="en-GB"><![CDATA[Repeat the password]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Повторить пароль]]></Translation>
+    </Text>
+		<Text Key="Password">
+			<Translation Language="en-GB"><![CDATA[Password]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пароль]]></Translation>
+    </Text>
+		<Text Key="EmailAddress">
+			<Translation Language="en-GB"><![CDATA[E-mail address]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[E-mail адрес]]></Translation>
+    </Text>
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[User name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя пользователя]]></Translation>
+    </Text>
+		<Text Key="Deleted">
+			<Translation Language="en-GB"><![CDATA[Deleted]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удален]]></Translation>
+    </Text>
+		<Text Key="Active">
+			<Translation Language="en-GB"><![CDATA[Activated]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Активирован]]></Translation>
+    </Text>
+		<Text Key="Locked">
+			<Translation Language="en-GB"><![CDATA[Locked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Блокирован]]></Translation>
+    </Text>
+		<Text Key="FirstVisit">
+			<Translation Language="en-GB"><![CDATA[First visit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Первый визит]]></Translation>
+    </Text>
+		<Text Key="LastVisit">
+			<Translation Language="en-GB"><![CDATA[Latest visit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последний визит]]></Translation>
+    </Text>
+		<Text Key="LastIP">
+			<Translation Language="en-GB"><![CDATA[Last know IP address]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последние известный IP адрес]]></Translation>
+    </Text>
+		<Text Key="RepeatPasswordRequired">
+			<Translation Language="en-GB"><![CDATA[You have to repeat the password.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы должны повторить пароль!]]></Translation>
+    </Text>
+		<Text Key="PasswordRequired">
+			<Translation Language="en-GB"><![CDATA[A password is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется пароль!]]></Translation>
+    </Text>
+		<Text Key="EmailAddressRequired">
+			<Translation Language="en-GB"><![CDATA[The e-mail address is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется e-mail адрес!]]></Translation>
+		</Text>
+		<Text Key="NameRequired">
+			<Translation Language="en-GB"><![CDATA[An user name is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется имя пользователя!]]></Translation>
+    </Text>
+		<Text Key="LastIP">
+			<Translation Language="en-GB"><![CDATA[Last known IP address]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последний известный IP]]></Translation>
+    </Text>
+		<Text Key="Deleted">
+			<Translation Language="en-GB"><![CDATA[Deleted]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удален]]></Translation>
+    </Text>
+		<Text Key="Active">
+			<Translation Language="en-GB"><![CDATA[Active]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Активный]]></Translation>
+    </Text>
+		<Text Key="Ban">
+			<Translation Language="en-GB"><![CDATA[Ban IP]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Забанить IP]]></Translation>
+    </Text>
+		<Text Key="Unban">
+			<Translation Language="en-GB"><![CDATA[Unban IP]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разбанить IP]]></Translation>
+    </Text>
+		<Text Key="FirstVisit">
+			<Translation Language="en-GB"><![CDATA[First visit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Первый визит]]></Translation>
+		</Text>
+		<Text Key="LatestVisit">
+			<Translation Language="en-GB"><![CDATA[Latest visit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последний визит]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.Group">
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="NameRequired">
+			<Translation Language="en-GB"><![CDATA[The group name is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется Имя группы]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.Board">
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="NameRequired">
+			<Translation Language="en-GB"><![CDATA[The board name is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется название доски объявлений!]]></Translation>
+    </Text>
+		<Text Key="Description">
+			<Translation Language="en-GB"><![CDATA[Site description]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Описание сайта]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.AccessMask">
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="NameRequired">
+			<Translation Language="en-GB"><![CDATA[The access mask name is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется название маски доступа!]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.Category">
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="NameRequired">
+			<Translation Language="en-GB"><![CDATA[The category name is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется название категории]]></Translation>
+    </Text>
+		<Text Key="SortOrder">
+			<Translation Language="en-GB"><![CDATA[Sort order]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Порядок сортировки]]></Translation>
+    </Text>
+		<Text Key="SortOrderRequired">
+			<Translation Language="en-GB"><![CDATA[The sort order is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется порядок сортировки!]]></Translation>
+		</Text>
+		<Text Key="SortOrderInteger">
+			<Translation Language="en-GB"><![CDATA[The sort order must be an integer!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Порядок сортировки должен быть целым числом!]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.AccessMask">
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="NameRequired">
+			<Translation Language="en-GB"><![CDATA[The access mask name is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется имя маски доступа!]]></Translation>
+    </Text>
+		<Text Key="AccessFlag">
+			<Translation Language="en-GB"><![CDATA[Permissions]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разрешения]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.Forum">
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="NameRequired">
+			<Translation Language="en-GB"><![CDATA[The forum name is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Название форума требуется!]]></Translation>
+    </Text>
+		<Text Key="SortOrder">
+			<Translation Language="en-GB"><![CDATA[Sort order]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Порядок сортировки]]></Translation>
+    </Text>
+		<Text Key="SortOrderRequired">
+			<Translation Language="en-GB"><![CDATA[The sort order is required!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Требуется порядок сортировки!]]></Translation>
+    </Text>
+		<Text Key="SortOrderInteger">
+			<Translation Language="en-GB"><![CDATA[The sort order must be an integer!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Порядок сортировки должен быть целым числом!]]></Translation>
+    </Text>
+		<Text Key="Description">
+			<Translation Language="en-GB"><![CDATA[Description]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Описание]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.ViewModels.Update.UpdateUserViewModel">
+		<Text Key="Culture">
+			<Translation Language="en-GB"><![CDATA[Language/Region]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Язык/Регион]]></Translation>
+    </Text>
+		<Text Key="Timezone">
+			<Translation Language="en-GB"><![CDATA[Timezone]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Часовой пояс]]></Translation>
+		</Text>
+		<Text Key="FullName">
+			<Translation Language="en-GB"><![CDATA[Full Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Полное Имя]]></Translation>
+    </Text>
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="Email">
+			<Translation Language="en-GB"><![CDATA[Email Address]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[E-mail Адрес]]></Translation>
+    </Text>
+		<Text Key="Theme">
+			<Translation Language="en-GB"><![CDATA[Theme]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Схема]]></Translation>
+    </Text>
+		<Text Key="OldPassword">
+			<Translation Language="en-GB"><![CDATA[Password]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пароль]]></Translation>
+    </Text>
+		<Text Key="NewPassword">
+			<Translation Language="en-GB"><![CDATA[New Password]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новый пароль]]></Translation>
+    </Text>
+		<Text Key="RepeatNewPassword">
+			<Translation Language="en-GB"><![CDATA[Repeat New Password]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Подтверждение пароля]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.ViewModels.UserViewModel">
+		<Text Key="FullName">
+			<Translation Language="en-GB"><![CDATA[Full Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Полное Имя]]></Translation>
+    </Text>
+		<Text Key="Name">
+			<Translation Language="en-GB"><![CDATA[Name]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+		<Text Key="Email">
+			<Translation Language="en-GB"><![CDATA[Email Address]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[E-mail Адрес]]></Translation>
+    </Text>
+		<Text Key="FirstVisit">
+			<Translation Language="en-GB"><![CDATA[First Visit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Первое посещение]]></Translation>
+    </Text>
+		<Text Key="LastVisit">
+			<Translation Language="en-GB"><![CDATA[Last Visit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последнее посещение]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="MVCForum.Web.ViewModels.RegisterModel">
+		<Text Key="Username">
+			<Translation Language="en-GB"><![CDATA[Username]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Brugernavn]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя пользователя]]></Translation>
+    </Text>
+		<Text Key="EmailAddress">
+			<Translation Language="en-GB"><![CDATA[E-mail address]]></Translation>
+			<Translation Language="da-DK"><![CDATA[E-mail adresse]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[E-mail Адрес]]></Translation>
+    </Text>
+		<Text Key="Password">
+			<Translation Language="en-GB"><![CDATA[Password]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Kodeord]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пароль]]></Translation>
+    </Text>
+		<Text Key="ConfirmPassword">
+			<Translation Language="en-GB"><![CDATA[Confirm password]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Gentag kodeord]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Подтверждение пароля]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.DeleteMessage">
+		<Text Key="Delete">
+			<Translation Language="en-GB"><![CDATA[Delete message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить сообщение]]></Translation>
+    </Text>
+		<Text Key="DeleteMessage">
+			<Translation Language="en-GB"><![CDATA[Delete message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить сообщение]]></Translation>
+    </Text>
+		<Text Key="Submit">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="Reason">
+			<Translation Language="en-GB"><![CDATA[Delete reason]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Begrundelse for sletning]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Причина удаления ]]></Translation>
+    </Text>
+		<Text Key="Title">
+			<Translation Language="en-GB"><![CDATA[Delete post: {Subject}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet besked: {Subject}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить пост: {Subject}]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.CreateTopic">
+		<Text Key="Subject">
+			<Translation Language="en-GB"><![CDATA[Subject]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тема]]></Translation>
+    </Text>
+		<Text Key="Type">
+			<Translation Language="en-GB"><![CDATA[Type]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Type]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тип]]></Translation>
+    </Text>
+		<Text Key="Message">
+			<Translation Language="en-GB"><![CDATA[Message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщение]]></Translation>
+    </Text>
+		<Text Key="AttachFile">
+			<Translation Language="en-GB"><![CDATA[Attach file]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæft fil]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Прикрепить файл]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.CreateMessage">
+		<Text Key="Subject">
+			<Translation Language="en-GB"><![CDATA[Subject]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тема]]></Translation>
+    </Text>
+		<Text Key="Message">
+			<Translation Language="en-GB"><![CDATA[Message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщение]]></Translation>
+    </Text>
+		<Text Key="AttachFile">
+			<Translation Language="en-GB"><![CDATA[Attach file]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæft fil]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Прикрепить файл]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.UpdateMessage">
+		<Text Key="Message">
+			<Translation Language="en-GB"><![CDATA[Content]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indhold]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Содержимое]]></Translation>
+    </Text>
+		<Text Key="Subject">
+			<Translation Language="en-GB"><![CDATA[Title]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Titel]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Название]]></Translation>
+    </Text>
+		<Text Key="Flag">
+			<Translation Language="en-GB"><![CDATA[Flag]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Flag]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Флаг]]></Translation>
+    </Text>
+		<Text Key="AttachFile">
+			<Translation Language="en-GB"><![CDATA[Attach file]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæft fil]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Прикрепить файл]]></Translation>
+    </Text>
+		<Text Key="Reason">
+			<Translation Language="en-GB"><![CDATA[Edit/Delete Reason]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Grund for sletning/redigering]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Причина Редактирования/Удаления]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.EditTopic">
+		<Text Key="Title">
+			<Translation Language="en-GB"><![CDATA[Edit topic: {Title}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér emne: {Title}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать тему: {Title}]]></Translation>
+    </Text>
+		<Text Key="EditTopic">
+			<Translation Language="en-GB"><![CDATA[Edit Topic]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér Emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать тему]]></Translation>
+    </Text>
+		<Text Key="Submit">
+			<Translation Language="en-GB"><![CDATA[Save]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Gem]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сохранить]]></Translation>
+    </Text>
+		<Text Key="Message">
+			<Translation Language="en-GB"><![CDATA[Content]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indhold]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Содержимое]]></Translation>
+    </Text>
+		<Text Key="TopicTitle">
+			<Translation Language="en-GB"><![CDATA[Title]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Titel]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Название]]></Translation>
+    </Text>
+		<Text Key="Reason">
+			<Translation Language="en-GB"><![CDATA[Edit/Delete Reason]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Grund for sletning/redigering]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Причина Редактирования/Удаления]]></Translation>
+    </Text>
+		<Text Key="Type">
+			<Translation Language="en-GB"><![CDATA[Type]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Type]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тип]]></Translation>
+    </Text>
+		<Text Key="Flag">
+			<Translation Language="en-GB"><![CDATA[Flag]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Flag]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Флаг]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web.Search">
+		<Text Key="Title">
+			<Translation Language="en-GB"><![CDATA[Search]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поиск]]></Translation>
+    </Text>
+		<Text Key="Headline">
+			<Translation Language="en-GB"><![CDATA[Search]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поиск]]></Translation>
+    </Text>
+		<Text Key="QuerySubHeading">
+			<Translation Language="en-GB"><![CDATA[Search Query]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Запрос]]></Translation>
+    </Text>
+		<Text Key="OptionsSubHeading">
+			<Translation Language="en-GB"><![CDATA[Search Options]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Опции поиска]]></Translation>
+    </Text>
+		<Text Key="ResetButton">
+			<Translation Language="en-GB"><![CDATA[Reset]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сброс]]></Translation>
+    </Text>
+		<Text Key="NoResults">
+			<Translation Language="en-GB"><![CDATA[Your search for '{Query}' did not return any results.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваш поиск '{Query}' не дал никаких результатов.]]></Translation>
+    </Text>
+		<Text Key="SearchButton">
+			<Translation Language="en-GB"><![CDATA[Search]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поиск]]></Translation>
+    </Text>
+		<Text Key="Query">
+			<Translation Language="en-GB"><![CDATA[Search for keywords:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поиск по ключевым словам:]]></Translation>
+		</Text>
+		<Text Key="Forums">
+			<Translation Language="en-GB"><![CDATA[Search in forums:]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поиск в форумах:]]></Translation>
+    </Text>
+		<Text Key="BackToAdvancedTitle">
+			<Translation Language="en-GB"><![CDATA[Advanced search]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Расширенный поиск]]></Translation>
+    </Text>
+		<Text Key="BackToAdvanced">
+			<Translation Language="en-GB"><![CDATA[Return to advanced search]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вернуться к расширенному поиску]]></Translation>
+    </Text>
+		<Text Key="FoundTitle">
+			<Translation Language="en-GB"><![CDATA[Search found {Results} #Results:{1:match|matches}: {Query}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Результаты поиска: найдено {Results} #Results:{1:match|matches}: {Query}]]></Translation>
+    </Text>
+	</Namespace>
+
+	<Namespace Name="mvcForum.Web">
+		<Text Key="Register.Title">
+			<Translation Language="en-GB"><![CDATA[Register New Account]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Opret ny konto]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Зарегистрировать новый аккаунт]]></Translation>
+    </Text>
+		<Text Key="Register.Headline">
+			<Translation Language="en-GB"><![CDATA[Register New Account]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Opret ny konto]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Зарегистрировать новый аккаунт]]></Translation>
+    </Text>
+		<Text Key="Register.Accept">
+			<Translation Language="en-GB"><![CDATA[I accept]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Jeg accepterer]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Я принимаю]]></Translation>
+    </Text>
+		<Text Key="Register.Submit">
+			<Translation Language="en-GB"><![CDATA[Register]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Opret]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Зарегистрироваться]]></Translation>
+    </Text>
+		<Text Key="Register.RulesMustBeAccepted">
+			<Translation Language="en-GB"><![CDATA[The forum rules has to be accepted!]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Forum regler skal accepteres!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Правила форума должны быть приняты!]]></Translation>
+    </Text>
+		<Text Key="Register.EmailActivation">
+			<Translation Language="en-GB"><![CDATA[Your new account has been created and you will receive an e-mail with details on how to activate the account shortly.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Din nye konto er oprettet og du vil om kort tid, modtage en e-mail med en beskrivelse af hvad du skal gøre for at aktivere din konto.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваш новый счет был создан, и вы будете получать по электронной почте с подробной информацией о том, как активировать учетную запись в ближайшее время.]]></Translation>
+    </Text>
+		<Text Key="Register.AccountReady">
+			<Translation Language="en-GB"><![CDATA[Your new account has been created and is ready to use.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Din nye konto er oprettet og klar til brug.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваш новый аккаунт создан и готов к использованию.]]></Translation>
+    </Text>
+
+		<Text Key="Success.Title">
+			<Translation Language="en-GB"><![CDATA[New account created.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ny konto oprettet.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новая учетная запись создана.]]></Translation>
+    </Text>
+		<Text Key="Success.Headline">
+			<Translation Language="en-GB"><![CDATA[New account created.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ny konto oprettet.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новая учетная запись создана.]]></Translation>
+    </Text>
+
+		<Text Key="External.Title">
+			<Translation Language="en-GB"><![CDATA[External Account Sign In.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ekstern konto validering.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вход через Внешнюю учетную запись.]]></Translation>
+    </Text>
+		<Text Key="External.Headline">
+			<Translation Language="en-GB"><![CDATA[Username already in use.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Brugernavn allerede i brug.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя уже используется.]]></Translation>
+    </Text>
+		<Text Key="External.Body">
+			<Translation Language="en-GB"><![CDATA[The username of your external account is already in use on this site. You'll have to use another external account, or register for a local account.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Brugernavnet fra din eksterne konto er allerede brugt på dette site. Du bliver nødt til at benytte en anden ekstern konto, eller registrere en lokalt konto.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя пользователя из внешней учетной записи уже используется на этом сайте. Вам придется использовать другой внешний аккаунт, или зарегистрироваться на локальной учетной записи]]></Translation>
+    </Text>
+
+		<Text Key="Activate.Title">
+			<Translation Language="en-GB"><![CDATA[Activate account]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Aktivér konto]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Активировать аккаунт]]></Translation>
+    </Text>
+		<Text Key="Activate.Headline">
+			<Translation Language="en-GB"><![CDATA[New Account]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ny konto]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новый аккаунт]]></Translation>
+    </Text>
+		<Text Key="Activate.Success">
+			<Translation Language="en-GB"><![CDATA[Your new account has now been activated and is ready to use!]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Din nye konto er nu aktiveret og er klar til brug!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваш новый аккаунт в настоящее время активизировался и готов к использованию!]]></Translation>
+    </Text>
+		<Text Key="Activate.Failure">
+			<Translation Language="en-GB"><![CDATA[We could not activate your new account!]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Din nye konto kunne ikke aktiveres!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Мы не можем активировать ваш новый аккаунт!]]></Translation>
+    </Text>
+
+		<Text Key="LogOn.Title">
+			<Translation Language="en-GB"><![CDATA[Log On]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Log på]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вход]]></Translation>
+    </Text>
+		<Text Key="LogOn.Headline">
+			<Translation Language="en-GB"><![CDATA[Local Log On]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Lokalt log på]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Локальный Вход]]></Translation>
+    </Text>
+		<Text Key="LogOn.Headline2">
+			<Translation Language="en-GB"><![CDATA[External Log On]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Eksternt log på]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Внешний Вход]]></Translation>
+    </Text>
+		<Text Key="LogOn.RememberMe">
+			<Translation Language="en-GB"><![CDATA[Remember me]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Husk mig]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Запомни меня]]></Translation>
+    </Text>
+		<Text Key="LogOn.RegisterText">
+			<Translation Language="en-GB"><![CDATA[Or you can \<a href="register"\>register a new account\</a\>]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Eller du kan \<a href="register"\>registrere en ny konto\</a\>]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Или вы можете \<a href="register"\>зарегистрировать новый аккаунт\</a\>]]></Translation>
+    </Text>
+		<Text Key="LogOn.Submit">
+			<Translation Language="en-GB"><![CDATA[Log On]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Log på]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вход]]></Translation>
+    </Text>
+
+		<Text Key="ValidationErrorHeading">
+			<Translation Language="en-GB"><![CDATA[Validation errors]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Valideringsfejl]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ошибки проверки]]></Translation>
+    </Text>
+
+		<Text Key="PoweredBy">
+			<Translation Language="en-GB"><![CDATA[Powered by {Product} v{ShortVersion} &copy; 2011-{EndYear} {CopyrightOwner}.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Kører på {Product} v{ShortVersion} &copy; 2011-{EndYear} {CopyrightOwner}.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разработка {Product} v{ShortVersion} &copy; 2011-{EndYear} {CopyrightOwner}.]]></Translation>
+    </Text>
+		<Text Key="TimeOffset">
+			<Translation Language="en-GB"><![CDATA[All times are #TotalOffset:{0:UTC|UTC+{OffsetHours}:{OffsetMinutes:d2}}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Tiden angivet som {0:hh:mm}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Часовой пояс #TotalOffset:{0:UTC|UTC+{OffsetHours}:{OffsetMinutes:d2}}]]></Translation>
+    </Text>
+		<Text Key="CurrentTime">
+			<Translation Language="en-GB"><![CDATA[It is currently {0:f}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Det er {0:f}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сейчас {0:f}]]></Translation>
+    </Text>
+		<Text Key="Forum">
+			<Translation Language="en-GB"><![CDATA[Forum]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Forum]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Форум]]></Translation>
+    </Text>
+		<Text Key="Moderate">
+			<Translation Language="en-GB"><![CDATA[Moderate]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Moderer]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Модерировать]]></Translation>
+    </Text>
+		<Text Key="NoAccess">
+			<Translation Language="en-GB"><![CDATA[ (no access)]]></Translation>
+			<Translation Language="da-DK"><![CDATA[ (ingen adgang)]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[ (без доступа)]]></Translation>
+    </Text>
+		<Text Key="TopicCount">
+			<Translation Language="en-GB"><![CDATA[{0} \<dfn\>Topics\</dfn\>]]></Translation>
+			<Translation Language="da-DK"><![CDATA[{0} \<dfn\>Emner\</dfn\>]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[{0} \<dfn\>Темы\</dfn\>]]></Translation>
+    </Text>
+		<Text Key="PostCount">
+			<Translation Language="en-GB"><![CDATA[{0} \<dfn\>Posts\</dfn\>]]></Translation>
+			<Translation Language="da-DK"><![CDATA[{0} \<dfn\>Beskeder\</dfn\>]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[{0} \<dfn\>Сообщения\</dfn\>]]></Translation>
+    </Text>
+		<Text Key="ModeratorCP">
+			<Translation Language="en-GB"><![CDATA[Moderate]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Moderer]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Модерировать]]></Translation>
+    </Text>
+
+		<Text Key="Labels.Topics">
+			<Translation Language="en-GB"><![CDATA[Topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Темы]]></Translation>
+    </Text>
+		<Text Key="Labels.Posts">
+			<Translation Language="en-GB"><![CDATA[Posts]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Beskeder]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщения]]></Translation>
+    </Text>
+		<Text Key="Labels.LastPost">
+			<Translation Language="en-GB"><![CDATA[Last post]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Seneste besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последнее сообщение]]></Translation>
+    </Text>
+		<Text Key="Labels.Forum">
+			<Translation Language="en-GB"><![CDATA[Forums]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Fora]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Форумы]]></Translation>
+    </Text>
+		<Text Key="Labels.Reporter">
+			<Translation Language="en-GB"><![CDATA[Reported by]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Rapporteret af]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Об этом сообщает]]></Translation>
+    </Text>
+		<Text Key="Labels.Replies">
+			<Translation Language="en-GB"><![CDATA[Replies]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Svar]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ответов]]></Translation>
+    </Text>
+		<Text Key="Labels.Views">
+			<Translation Language="en-GB"><![CDATA[Views]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Visninger]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Просмотров]]></Translation>
+    </Text>
+		<Text Key="Labels.Author">
+			<Translation Language="en-GB"><![CDATA[Author]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Forfatter]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Автор]]></Translation>
+    </Text>
+		<Text Key="Labels.Reported">
+			<Translation Language="en-GB"><![CDATA[Reported]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Rapporteret]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщается]]></Translation>
+    </Text>
+
+		<Text Key="LastPost.LastPost">
+			<Translation Language="en-GB"><![CDATA[Last post ]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Seneste besked ]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последнее сообщение ]]></Translation>
+    </Text>
+		<Text Key="LastPost.By">
+			<Translation Language="en-GB">
+				<![CDATA[by {0} on {1:f}]]>
+			</Translation>
+			<Translation Language="da-DK">
+				<![CDATA[af {0} den {1:f}]]>
+			</Translation>
+      <Translation Language="ru-RU">
+        <![CDATA[автор {0} от {1:f}]]>
+      </Translation>
+    </Text>
+		<Text Key="LastTopic.By">
+			<Translation Language="en-GB">
+				<![CDATA[by {0} in {2} on {1:f}]]>
+			</Translation>
+			<Translation Language="da-DK">
+				<![CDATA[af {0} i {2} den {1:f}]]>
+			</Translation>
+      <Translation Language="ru-RU">
+        <![CDATA[автор {0} в {2} от {1:f}]]>
+      </Translation>
+    </Text>
+		<Text Key="LastPost.NoPost">
+			<Translation Language="en-GB"><![CDATA[No posts]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ingen beskeder]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщений нет]]></Translation>
+    </Text>
+
+		<Text Key="Move.Submit">
+			<Translation Language="en-GB"><![CDATA[Move]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Flyt]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Переместить]]></Translation>
+    </Text>
+		<Text Key="Move.Heading">
+			<Translation Language="en-GB"><![CDATA[Move Topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Flyt emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Переместить темы]]></Translation>
+    </Text>
+		<Text Key="Move.Destination">
+			<Translation Language="en-GB"><![CDATA[Destination]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Destination]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Направление]]></Translation>
+    </Text>
+		<Text Key="Move.LeaveTopics">
+			<Translation Language="en-GB"><![CDATA[Create "moved topic"]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Opret "flyttet emne"]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создание "перемещенную тему"]]></Translation>
+    </Text>
+
+		<Text Key="Delete.Submit">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="Delete.Confirm">
+			<Translation Language="en-GB"><![CDATA[Confirm delete]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Validér sletning]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Подтвердить удаление]]></Translation>
+    </Text>
+		<Text Key="Delete.Heading">
+			<Translation Language="en-GB"><![CDATA[Delete Topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить темы]]></Translation>
+    </Text>
+		<Text Key="Delete.Reason">
+			<Translation Language="en-GB"><![CDATA[Reason]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Begrundelse]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Причина]]></Translation>
+    </Text>
+
+		<Text Key="Split.Submit">
+			<Translation Language="en-GB"><![CDATA[Split]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Split]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разделить]]></Translation>
+    </Text>
+		<Text Key="Split.OriginalTopicTitle">
+			<Translation Language="en-GB"><![CDATA[Existing topic's title]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Det originale emnes titel]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Название существующего раздела]]></Translation>
+    </Text>
+		<Text Key="Split.NewTopicTitle">
+			<Translation Language="en-GB"><![CDATA[New topic's title]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Titel på nyt emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Название нового раздела]]></Translation>
+    </Text>
+		<Text Key="Split.Heading">
+			<Translation Language="en-GB"><![CDATA[Split topic]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Split emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разделение темы]]></Translation>
+    </Text>
+		<Text Key="Split.Select">
+			<Translation Language="en-GB"><![CDATA[Select posts for new topic]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vælg beskeder til nyt emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Выберите сообщений для новой темы]]></Translation>
+    </Text>
+
+		<Text Key="Merge.Submit">
+			<Translation Language="en-GB"><![CDATA[Merge]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Flet]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Слияние]]></Translation>
+    </Text>
+		<Text Key="Merge.Confirm">
+			<Translation Language="en-GB"><![CDATA[Confirm merge]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Validér fletning]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Подтверждение слияния]]></Translation>
+    </Text>
+		<Text Key="Merge.Heading">
+			<Translation Language="en-GB"><![CDATA[Merge Topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Flet emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Слияние тем]]></Translation>
+    </Text>
+		<Text Key="Merge.MissingTopics">
+			<Translation Language="en-GB"><![CDATA[Merge failed, 2 or more topics needed for a merge]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Fletning fejlede, der skal vælges 2 eller flere emner.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Слияние не удалось, 2 или больше тем необходимы для слияния]]></Translation>
+    </Text>
+
+		<Text Key="NoAccess.ModeratorForum">
+			<Translation Language="en-GB"><![CDATA[You do not have moderator access to the forum '{Name}']]></Translation>
+			<Translation Language="da-DK"><![CDATA[Du har ikke moderator adgang til forummet '{Name}']]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы не должны модератора доступ к форуму '{Name}']]></Translation>
+    </Text>
+
+		<Text Key="NoAccess.ModeratorForums">
+			<Translation Language="en-GB"><![CDATA[You do not have moderator access.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Du har ikke moderator adgang.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы не имеете прав модератора.]]></Translation>
+    </Text>
+
+		<Text Key="NoAccess.MessageDelete">
+			<Translation Language="en-GB"><![CDATA[You can not delete the message '{Subject}']]></Translation>
+			<Translation Language="da-DK"><![CDATA[Du kan ikke slette beskeden '{Subject}']]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы не можете удалять сообщения '{Subject}']]></Translation>
+    </Text>
+		<Text Key="NoAccess.MessageUndelete">
+			<Translation Language="en-GB"><![CDATA[You can not undelete the message '{Subject}']]></Translation>
+			<Translation Language="da-DK"><![CDATA[Du kan ikke omgøre sletningen af beskeden '{Subject}']]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы не можете восстановить сообщение '{Subject}']]></Translation>
+    </Text>
+		<Text Key="NoAccess.Forum">
+			<Translation Language="en-GB"><![CDATA[You do not have access to the '{0}' forum]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Du har ikke adgang til forummet '{0}']]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы не имеете доступа к '{0}' форуму]]></Translation>
+    </Text>
+		<Text Key="NoAccess.ForumPosting">
+			<Translation Language="en-GB"><![CDATA[You are not allowed to post in the '{0}' forum]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Du har ikke adgang til at skrive beskeder i forummet '{0}']]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вам не разрешено создавать сообщения в '{0}' форуме]]></Translation>
+    </Text>
+		<Text Key="NoAccess.NoUpload">
+			<Translation Language="en-GB"><![CDATA[You are not allowed to attach a file to a post]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Du har ikke adgang til at vedhæfte filer til en besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы не можете прикрепить файл к сообщению]]></Translation>
+    </Text>
+		<Text Key="NoAccess.EditPost">
+			<Translation Language="en-GB"><![CDATA[You are not allowed to edit this post]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Du har ikke adgang til at redigere denne besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вы не можете редактировать это сообщение]]></Translation>
+    </Text>
+		<Text Key="NoAccess.BannedIP">
+			<Translation Language="en-GB"><![CDATA[You're IP address ({IPAddress}) has been banned. Please contact us for further details.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Din IP adresse ({IPAddress}) er sortlistet. Kontakt os for flere detaljer.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваш IP адрес ({IPAddress}) был запрещен. Пожалуйста, свяжитесь с нами для уточнения деталей.]]></Translation>
+    </Text>
+
+		<Text Key="CreateTopic.Title">
+			<Translation Language="en-GB"><![CDATA[New topic in '{Title}']]></Translation>
+			<Translation Language="da-DK"><![CDATA[Nyt emne i '{Title}']]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новая тема в '{Title}']]></Translation>
+    </Text>
+		<Text Key="CreateTopic.Subject">
+			<Translation Language="en-GB"><![CDATA[Subject]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тема]]></Translation>
+    </Text>
+		<Text Key="CreateTopic.Type">
+			<Translation Language="en-GB"><![CDATA[Type]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Type]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тип]]></Translation>
+    </Text>
+		<Text Key="CreateTopic.PostNewTopic">
+			<Translation Language="en-GB"><![CDATA[Post a new topic]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Skriv en ny besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Начать новую тему]]></Translation>
+    </Text>
+		<Text Key="CreateTopic.Message">
+			<Translation Language="en-GB"><![CDATA[Message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщение]]></Translation>
+    </Text>
+		<Text Key="CreateTopic.AttachFile">
+			<Translation Language="en-GB"><![CDATA[Attach file]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæft fil]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Прикрепить файл]]></Translation>
+    </Text>
+		<Text Key="CreateTopic.Submit">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Opret]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+
+		<Text Key="EditTopic.Submit">
+			<Translation Language="en-GB"><![CDATA[Save]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Gem]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сохранить]]></Translation>
+    </Text>
+		<Text Key="EditTopic.EditTopic">
+			<Translation Language="en-GB"><![CDATA[Edit topic]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать тему]]></Translation>
+    </Text>
+
+		<Text Key="CreateMessage.Subject">
+			<Translation Language="en-GB"><![CDATA[Subject]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тема]]></Translation>
+    </Text>
+		<Text Key="CreateMessage.PostNewMessage">
+			<Translation Language="en-GB"><![CDATA[Post a reply]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Skriv et nyt svar]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Дать ответ]]></Translation>
+    </Text>
+		<Text Key="CreateMessage.Message">
+			<Translation Language="en-GB"><![CDATA[Message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщение]]></Translation>
+    </Text>
+		<Text Key="CreateMessage.AttachFile">
+			<Translation Language="en-GB"><![CDATA[Attach file]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæft fil]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Прикрепить файл]]></Translation>
+    </Text>
+		<Text Key="CreateMessage.Submit">
+			<Translation Language="en-GB"><![CDATA[Create]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Opret]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Создать]]></Translation>
+    </Text>
+		<Text Key="CreateMessage.OldPosted">
+			<Translation Language="en-GB"><![CDATA[By: {Author}, at: {Timestamp:F}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[ {Author}, от: {Timestamp:F}]]></Translation>
+    </Text>
+		<Text Key="EditMessage.Flag">
+			<Translation Language="en-GB"><![CDATA[Flag]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Flag]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Флаг]]></Translation>
+    </Text>
+		<Text Key="EditMessage.Message">
+			<Translation Language="en-GB"><![CDATA[Message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщение]]></Translation>
+    </Text>
+		<Text Key="EditMessage.Subject">
+			<Translation Language="en-GB"><![CDATA[Subject]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тема]]></Translation>
+    </Text>
+		<Text Key="EditMessage.AttachFile">
+			<Translation Language="en-GB"><![CDATA[Attach file]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæft fil]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Прикрепить файл]]></Translation>
+    </Text>
+		<Text Key="EditMessage.Submit">
+			<Translation Language="en-GB"><![CDATA[Save]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Gem]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сохранить]]></Translation>
+    </Text>
+		<Text Key="EditMessage.EditMessage">
+			<Translation Language="en-GB"><![CDATA[Edit message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать сообщение]]></Translation>
+    </Text>
+
+		<Text Key="TopicType.Regular">
+			<Translation Language="en-GB"><![CDATA[Regular]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Normal]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обычное]]></Translation>
+    </Text>
+		<Text Key="TopicType.Sticky">
+			<Translation Language="en-GB"><![CDATA[Sticky]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Sticky]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Важное]]></Translation>
+    </Text>
+		<Text Key="TopicType.Announcement">
+			<Translation Language="en-GB"><![CDATA[Announcement]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Meddelelse]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Объявление]]></Translation>
+    </Text>
+		<Text Key="TopicFlag.Deleted">
+			<Translation Language="en-GB"><![CDATA[Deleted]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slettet]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалено]]></Translation>
+    </Text>
+		<Text Key="TopicFlag.Locked">
+			<Translation Language="en-GB"><![CDATA[Locked]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Låst]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Блокирована]]></Translation>
+    </Text>
+		<Text Key="TopicFlag.None">
+			<Translation Language="en-GB"><![CDATA[None]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ingen]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ни один]]></Translation>
+    </Text>
+		<Text Key="TopicFlag.Quarantined">
+			<Translation Language="en-GB"><![CDATA[Quarantined]]></Translation>
+			<Translation Language="da-DK"><![CDATA[I karantæne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[В карантине]]></Translation>
+    </Text>
+		<Text Key="PostFlag.Deleted">
+			<Translation Language="en-GB"><![CDATA[Deleted]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slettet]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удален]]></Translation>
+    </Text>
+		<Text Key="PostFlag.None">
+			<Translation Language="en-GB"><![CDATA[None]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ingen]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ни один]]></Translation>
+    </Text>
+		<Text Key="PostFlag.Quarantined">
+			<Translation Language="en-GB"><![CDATA[Quarantined]]></Translation>
+			<Translation Language="da-DK"><![CDATA[I karantæne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[В карантине]]></Translation>
+    </Text>
+
+		<Text Key="Topic.Title">
+			<Translation Language="en-GB"><![CDATA[Topic '{Title}']]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne '{Title}']]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Темв '{Title}']]></Translation>
+    </Text>
+		<Text Key="Topic.LastPost">
+			<Translation Language="en-GB"><![CDATA[by {0} on {1:f}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[af {0} den {1:f}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[автор {0} на дату {1:f}]]></Translation>
+    </Text>
+		<Text Key="Topic.Deleted">
+			<Translation Language="en-GB"><![CDATA[(Deleted) ]]></Translation>
+			<Translation Language="da-DK"><![CDATA[(Slettet) ]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[(Удалено) ]]></Translation>
+    </Text>
+		<Text Key="Topic.Replies">
+			<Translation Language="en-GB"><![CDATA[{0} \<dfn\>Replies\</dfn\>]]></Translation>
+			<Translation Language="da-DK"><![CDATA[{0} \<dfn\>Svar\</dfn\>]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[{0} \<dfn\>Ответов\</dfn\>]]></Translation>
+    </Text>
+		<Text Key="Topic.Views">
+			<Translation Language="en-GB"><![CDATA[{0} \<dfn\>Views\</dfn\>]]></Translation>
+			<Translation Language="da-DK"><![CDATA[{0} \<dfn\>Visninger\</dfn\>]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[{0} \<dfn\>Просмотров\</dfn\>]]></Translation>
+    </Text>
+
+		<Text Key="Paging.Topic">
+			<Translation Language="en-GB"><![CDATA[#MessageCount:{1:{#} post|{#} posts} &bull; Page \<strong\>{PageIndex}\</strong\> #PageCount:{>1: of \<strong\>{#}\</strong\>|: of \<strong\>1\</strong\>}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[#MessageCount:{1:{#} besked|{#} beskeder} &bull; Side \<strong\>{PageIndex}\</strong\> #PageCount:{>1: af \<strong\>{#}\</strong\>|: af \<strong\>1\</strong\>}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[#MessageCount:{1:{#} сообщение|{#} сообщений} &bull; Страница \<strong\>{PageIndex}\</strong\> #PageCount:{>1: из \<strong\>{#}\</strong\>|: из \<strong\>1\</strong\>}]]></Translation>
+    </Text>
+
+		<Text Key="Paging.Forum">
+			<Translation Language="en-GB"><![CDATA[#TopicCount:{1:{#} topic|{#} topics} &bull; Page \<strong\>{PageIndex}\</strong\> #PageCount:{>1: of \<strong\>{#}\</strong\>|: of \<strong\>1\</strong\>}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[#TopicCount:{1:{#} emne|{#} emner} &bull; Side \<strong\>{PageIndex}\</strong\> #PageCount:{>1: af \<strong\>{#}\</strong\>|: af \<strong\>1\</strong\>}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[#TopicCount:{1:{#} тема|{#} тем} &bull; Страница \<strong\>{PageIndex}\</strong\> #PageCount:{>1: из \<strong\>{#}\</strong\>|: из \<strong\>1\</strong\>}]]></Translation>
+    </Text>
+
+		<Text Key="Category.Title">
+			<Translation Language="en-GB"><![CDATA[Category - {Name}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Kategori - {Name}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Категория - {Name}]]></Translation>
+    </Text>
+
+		<Text Key="Board.Title">
+			<Translation Language="en-GB"><![CDATA[{Name}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[{Name}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Имя]]></Translation>
+    </Text>
+
+		<Text Key="Board.OnlineUsers">
+			<Translation Language="en-GB"><![CDATA[Online Users]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Online brugere]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пользователи сейчас на сайте]]></Translation>
+    </Text>
+
+		<Text Key="AttachFile.Title">
+			<Translation Language="en-GB"><![CDATA[Attach file to message: {Subject}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæft fil til besked: {Subject}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Прикрепить файл к сообщению: {Subject}]]></Translation>
+    </Text>
+
+		<Text Key="AttachFile.Headline">
+			<Translation Language="en-GB"><![CDATA[Attach file]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæft fil]]></Translation>
+		</Text>
+
+		<Text Key="AttachFile.Submit">
+			<Translation Language="en-GB"><![CDATA[Update]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Opdatér]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Обновить]]></Translation>
+    </Text>
+
+		<Text Key="NoAccess.Title">
+			<Translation Language="en-GB"><![CDATA[No access]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ingen adgang]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Нет доступа]]></Translation>
+    </Text>
+
+		<Text Key="NoAccess.Headline">
+			<Translation Language="en-GB"><![CDATA[No access]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ingen adgang]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Нет доступа]]></Translation>
+    </Text>
+
+		<Text Key="Forum.PostTopic">
+			<Translation Language="en-GB"><![CDATA[Post a new topic]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Skriv nyt emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Начать новую тему]]></Translation>
+    </Text>
+
+		<Text Key="Forum.Title">
+			<Translation Language="en-GB"><![CDATA[Forum - {Name}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Forum - {Name}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Форум - {Name}]]></Translation>
+    </Text>
+
+		<Text Key="CreateMessage.Title">
+			<Translation Language="en-GB"><![CDATA[Write new message in topic: {Title}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Skriv nyt svar til emnet: {Title}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Написать новое сообщение по теме: {Title}]]></Translation>
+    </Text>
+
+		<Text Key="EditMessage.Title">
+			<Translation Language="en-GB"><![CDATA[Edit message: {Subject}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér besked: {Subject}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать сообщение: {Subject}]]></Translation>
+    </Text>
+
+		<Text Key="EditMessage.Reason">
+			<Translation Language="en-GB"><![CDATA[Edit/Delete Reason]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Grund for sletning/redigering]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Причина Редакции/Удаления]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.Edited">
+			<Translation Language="en-GB"><![CDATA[Last edited by {Editor} on {Timestamp:f}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Sidst redigeret af {Editor} den {Timestamp:f}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последний раз редактировалось {Editor} на {Timestamp:f}]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.Moderate">
+			<Translation Language="en-GB"><![CDATA[Moderate]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Moderér]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Модерировать]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.Delete">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="ViewMessage.Undelete">
+			<Translation Language="en-GB"><![CDATA[Undelete]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Omgør sletning]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Откатить удаление]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.Report">
+			<Translation Language="en-GB"><![CDATA[Report]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Rapportér]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отчет]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.ModeratorDeleted">
+			<Translation Language="en-GB"><![CDATA[Deleted by a moderator, reason: {Reason}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slettet af en moderator, begrundelse: {Reason}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалено модератором, причины: {Reason}]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.AuthorDeleted">
+			<Translation Language="en-GB"><![CDATA[Deleted by the author, reason: {Reason}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slettet af forfatter, begrundelse: {Reason}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалено автором, причины: {Reason}]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.Edit">
+			<Translation Language="en-GB"><![CDATA[Edit]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.Quote">
+			<Translation Language="en-GB"><![CDATA[Reply with quote]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Besvar med ?quote?]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ответить в кавычках]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.Attachments">
+			<Translation Language="en-GB"><![CDATA[Attachments]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Vedhæftede filer]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Вложения]]></Translation>
+    </Text>
+
+		<Text Key="ViewMessage.PosterJoined">
+			<Translation Language="en-GB"><![CDATA[\<strong\>Joined:\</strong\> {Timestamp:d}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[\<strong\>Medlem fra:\</strong\> {Timestamp:d}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[\<strong\>Зарегистрирован:\</strong\> {Timestamp:d}]]></Translation>
+    </Text>
+
+		<Text Key="Moderator">
+			<Translation Language="en-GB"><![CDATA[a moderator]]></Translation>
+			<Translation Language="da-DK"><![CDATA[en moderator]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[модератор]]></Translation>
+    </Text>
+
+		<Text Key="UndeleteMessage.Title">
+			<Translation Language="en-GB"><![CDATA[Undelete post: {Subject}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Omgør sletning af besked: {Subject}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Откатить удаление сообщения: {Subject}]]></Translation>
+    </Text>
+
+		<Text Key="UndeleteMessage.UndeleteMessage">
+			<Translation Language="en-GB"><![CDATA[Undelete message]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Omgør sletning af besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Откатить удаление сообщения]]></Translation>
+    </Text>
+
+		<Text Key="UndeleteMessage.Submit">
+			<Translation Language="en-GB"><![CDATA[Undelete]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Omgør sletning]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Откатить удаление]]></Translation>
+    </Text>
+
+		<Text Key="ReportMessage.Title">
+			<Translation Language="en-GB"><![CDATA[Report post: {Subject}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Rapportér besked: {Subject}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщение по отчету: {Subject}]]></Translation>
+    </Text>
+
+		<Text Key="ReportMessage.ReportMessage">
+			<Translation Language="en-GB"><![CDATA[Report post]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Rapportér besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщение по отчету]]></Translation>
+    </Text>
+
+		<Text Key="ReportMessage.Submit">
+			<Translation Language="en-GB"><![CDATA[Report]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Rapportér]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отчет]]></Translation>
+    </Text>
+
+		<Text Key="ReportMessage.Confirm">
+			<Translation Language="en-GB"><![CDATA[Report]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Rapportér]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отчет]]></Translation>
+    </Text>
+
+		<Text Key="ReportMessage.Reason">
+			<Translation Language="en-GB"><![CDATA[Reason]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Begrundelse]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Причина]]></Translation>
+    </Text>
+
+		<Text Key="User.Title">
+			<Translation Language="en-GB"><![CDATA[View user profile: {Name}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Se brugerprofil: {Name}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Посмотреть профиль: {Name}]]></Translation>
+    </Text>
+
+		<Text Key="Forum.Follow">
+			<Translation Language="en-GB"><![CDATA[Follow]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Follow]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Подписаться]]></Translation>
+    </Text>
+
+		<Text Key="Forum.Unfollow">
+			<Translation Language="en-GB"><![CDATA[Unfollow]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Unfollow]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отписаться]]></Translation>
+    </Text>
+
+		<Text Key="Topic.Follow">
+			<Translation Language="en-GB"><![CDATA[Follow]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Follow]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Подписаться]]></Translation>
+    </Text>
+
+		<Text Key="Topic.Unfollow">
+			<Translation Language="en-GB"><![CDATA[Unfollow]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Unfollow]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отписаться]]></Translation>
+    </Text>
+
+		<Text Key="ShowUser.UserProfile">
+			<Translation Language="en-GB"><![CDATA[Profile for {User.Name}.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Profil for {User.Name}.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Профиль для {User.Name}.]]></Translation>
+    </Text>
+
+		<Text Key="EditUser.Title">
+			<Translation Language="en-GB"><![CDATA[Profile for {Name}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Profil for {Name}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Профиль для {Name}]]></Translation>
+    </Text>
+
+		<Text Key="EditUser.Heading">
+			<Translation Language="en-GB"><![CDATA[Edit profile: {Name}.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér profil {Name}.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать профиль: {Name}.]]></Translation>
+    </Text>
+
+		<Text Key="EditUser.AccountSettings">
+			<Translation Language="en-GB"><![CDATA[Account settings]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Konto oplysninger]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки аккаунта]]></Translation>
+    </Text>
+
+		<Text Key="EditUser.ProfileSettings">
+			<Translation Language="en-GB"><![CDATA[Profile settings]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Konto oplysninger]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Настройки Профиля]]></Translation>
+    </Text>
+
+		<Text Key="EditUser.SettingsSaved">
+			<Translation Language="en-GB"><![CDATA[The profile was updated.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Profilen blev opdateret.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Профиль был обновлен.]]></Translation>
+    </Text>
+
+		<Text Key="EditUser.UserProfile">
+			<Translation Language="en-GB"><![CDATA[Edit {Name}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Rediger {Name}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать {Name}]]></Translation>
+    </Text>
+
+		<Text Key="EditUser.Submit">
+			<Translation Language="en-GB"><![CDATA[Save]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Gem]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сохранить]]></Translation>
+    </Text>
+
+		<Text Key="SearchUnanswered.Title">
+			<Translation Language="en-GB"><![CDATA[View Unanswered Topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Se ubesvarede emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщения без ответов по Теме]]></Translation>
+		</Text>
+
+		<Text Key="SearchUnanswered.Breadcrumb">
+			<Translation Language="en-GB"><![CDATA[Unanswered Topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ubesvarede emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тмы без ответов]]></Translation>
+    </Text>
+
+		<Text Key="SearchUnanswered.Breadcrumb">
+			<Translation Language="en-GB"><![CDATA[View Unanswered Topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Se ubesvarede emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщения без ответов по Теме]]></Translation>
+		</Text>
+
+		<Text Key="SearchUnanswered.Heading">
+			<Translation Language="en-GB"><![CDATA[View unanswered topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Se ubesvarede emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщения без ответов по Теме]]></Translation>
+		</Text>
+
+		<Text Key="LinkText.UnansweredPosts">
+			<Translation Language="en-GB"><![CDATA[View unanswered topics]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Se ubesvarede emner]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщения без ответов по Теме]]></Translation>
+		</Text>
+
+		<Text Key="LinkText.MarkAsRead">
+			<Translation Language="en-GB"><![CDATA[Mark as read]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Markér alle læste]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отметить как прочитанное]]></Translation>
+    </Text>
+
+		<Text Key="EditProfile.InvalidEmailAddress">
+			<Translation Language="en-GB"><![CDATA[The e-mail address is not valid!]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Адрес электронной почты не является действительным!]]></Translation>
+    </Text>
+
+		<Text Key="AdvancedSearch">
+			<Translation Language="en-GB"><![CDATA[Advanced Search]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Расширенный поиск]]></Translation>
+    </Text>
+
+		<Text Key="AdvancedSearchTitle">
+			<Translation Language="en-GB"><![CDATA[View the advanced search options]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Посмотреть дополнительные параметры поиска]]></Translation>
+    </Text>
+
+		<Text Key="InitialSearchValue">
+			<Translation Language="en-GB"><![CDATA[Search...]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поиск...]]></Translation>
+    </Text>
+
+		<Text Key="SearchButton">
+			<Translation Language="en-GB"><![CDATA[Search]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поиск]]></Translation>
+    </Text>
+
+		<Text Key="SearchTitle">
+			<Translation Language="en-GB"><![CDATA[Search for keywords]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Поиск по ключевым словам]]></Translation>
+    </Text>
+
+		<Text Key="Moderate.Title">
+			<Translation Language="en-GB"><![CDATA[Moderator forum '{Name}']]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Форум модератора '{Name}']]></Translation>
+    </Text>
+
+		<Text Key="Moderate.TitleMain">
+			<Translation Language="en-GB"><![CDATA[Moderator Control Panel]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Панель управления модератора]]></Translation>
+    </Text>
+
+		<Text Key="Moderate.ActionMerge">
+			<Translation Language="en-GB"><![CDATA[Merge]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Слияние]]></Translation>
+    </Text>
+		<Text Key="Moderate.ActionMove">
+			<Translation Language="en-GB"><![CDATA[Move]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Переместить]]></Translation>
+    </Text>
+		<Text Key="Moderate.ActionDelete">
+			<Translation Language="en-GB"><![CDATA[Delete]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить]]></Translation>
+    </Text>
+		<Text Key="Moderate.ActionSplit">
+			<Translation Language="en-GB"><![CDATA[Split]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Разделить]]></Translation>
+    </Text>
+
+		<Text Key="Moderate.Deleted">
+			<Translation Language="en-GB"><![CDATA[(Deleted) ]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[(Удалено) ]]></Translation>
+    </Text>
+		<Text Key="Moderate.Quarantined">
+			<Translation Language="en-GB"><![CDATA[(Quarantined) ]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[(Карантин)]]></Translation>
+    </Text>
+		<Text Key="Moderate.DeleteReason">
+			<Translation Language="en-GB"><![CDATA[This message has been deleted, reason: {Reason}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Это сообщение было удалено, причина: {Reason}]]></Translation>
+    </Text>
+		<Text Key="Moderate.Moved">
+			<Translation Language="en-GB"><![CDATA[(Moved) ]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[(Перемещено)]]></Translation>
+    </Text>
+		<Text Key="Moderate.ExecuteAction">
+			<Translation Language="en-GB"><![CDATA[Submit]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отправить]]></Translation>
+    </Text>
+
+		<Text Key="Moderator.TopTitle">
+			<Translation Language="en-GB"><![CDATA[Moderator Control Panel]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Панель управления мдератора]]></Translation>
+    </Text>
+
+		<Text Key="Moderate.Button">
+			<Translation Language="en-GB"><![CDATA[Moderate forum]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Модерирует форум]]></Translation>
+    </Text>
+
+		<Text Key="Moderate.TopicsHeading">
+			<Translation Language="en-GB"><![CDATA[Topics]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Темы]]></Translation>
+    </Text>
+
+		<Text Key="Moderate.RepliesHeading">
+			<Translation Language="en-GB"><![CDATA[Replies]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ответов]]></Translation>
+    </Text>
+
+		<Text Key="Moderate.ViewsHeading">
+			<Translation Language="en-GB"><![CDATA[Views]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Просмотров]]></Translation>
+    </Text>
+
+		<Text Key="Moderate.LastPostHeading">
+			<Translation Language="en-GB"><![CDATA[Last Post]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последнее сообщение]]></Translation>
+    </Text>
+
+		<Text Key="PostReports.Title">
+			<Translation Language="en-GB"><![CDATA[Unresolved post reports]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ikke håndterede rapporterede indlæg]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[отчеты по неразрешенным сообщениям]]></Translation>
+    </Text>
+		<Text Key="PostReports.TopTitle">
+			<Translation Language="en-GB"><![CDATA[Unresolved reports]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ikke håndterede rapporter]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Неразрешенные отчеты]]></Translation>
+    </Text>
+		<Text Key="PostReports.PostHeading">
+			<Translation Language="en-GB"><![CDATA[Posts]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indlæg]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сообщения]]></Translation>
+    </Text>
+		<Text Key="PostReports.AuthorTopic">
+			<Translation Language="en-GB"><![CDATA[by {Author} in {Topic}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[af {Author} i {Topic}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[автор {Author} по {Topic}]]></Translation>
+    </Text>
+
+		<Text Key="PostReport.Submit">
+			<Translation Language="en-GB"><![CDATA[Save]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Gem]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Сохранить]]></Translation>
+    </Text>
+		<Text Key="PostReport.Reports">
+			<Translation Language="en-GB"><![CDATA[Unresolved reports]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Ikke håndterede rapporter]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Неразрешенные отчеты]]></Translation>
+    </Text>
+		<Text Key="PostReport.Reason">
+			<Translation Language="en-GB"><![CDATA[Reason for post report]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Begrundelse for indlægsrapport]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Причина для отчета по сообщениям]]></Translation>
+    </Text>
+		<Text Key="PostReport.Title">
+			<Translation Language="en-GB"><![CDATA[Post report for: {Subject}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indlægsrapport for: {Subject}]]></Translation>
+		</Text>
+		<Text Key="PostReport.TitleTop">
+			<Translation Language="en-GB"><![CDATA[Post report for: {Subject}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indlægsrapport for: {Subject}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отчет по сообщениям: {Subject}]]></Translation>
+    </Text>
+		<Text Key="PostReport.Edited">
+			<Translation Language="en-GB"><![CDATA[Last edited by {Editor} on {Timestamp:f}]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Sidst redigeret af {Editor} den {Timestamp:f}]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Последний раз редактировалось {Editor} на {Timestamp:f}]]></Translation>
+    </Text>
+		<Text Key="PostReport.Delete">
+			<Translation Language="en-GB"><![CDATA[Delete post]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet besked]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить сообщение]]></Translation>
+    </Text>
+		<Text Key="PostReport.EditPost">
+			<Translation Language="en-GB"><![CDATA[Edit post]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér indlæg]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать сообщение]]></Translation>
+    </Text>
+		<Text Key="PostReport.DeleteTopic">
+			<Translation Language="en-GB"><![CDATA[Delete topic]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Slet emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Удалить тему]]></Translation>
+    </Text>
+		<Text Key="PostReport.EditTopic">
+			<Translation Language="en-GB"><![CDATA[Edit topic]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Redigér emne]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Редактировать тему]]></Translation>
+    </Text>
+
+		<Text Key="PostReports">
+			<Translation Language="en-GB"><![CDATA[Post Reports]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indlægsrapporter]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Отчет по сообщениям]]></Translation>
+    </Text>
+
+		<Text Key="PostReportViewModel.Title">
+			<Translation Language="en-GB"><![CDATA[Topic Title]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne titel]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Наименование темы]]></Translation>
+    </Text>
+		<Text Key="PostReportViewModel.TopicFlag">
+			<Translation Language="en-GB"><![CDATA[Topic Flag]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne flag]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Флаг темы]]></Translation>
+    </Text>
+		<Text Key="PostReportViewModel.TopicType">
+			<Translation Language="en-GB"><![CDATA[Topic Type]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Emne type]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Тип темы]]></Translation>
+    </Text>
+		<Text Key="PostReportViewModel.Subject">
+			<Translation Language="en-GB"><![CDATA[Post Subject]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indlægstitel]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Пердмет Сообщения]]></Translation>
+    </Text>
+		<Text Key="PostReportViewModel.PostFlag">
+			<Translation Language="en-GB"><![CDATA[Post Flag]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indlægsflag]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Флаг Сообщения]]></Translation>
+    </Text>
+		<Text Key="PostReportViewModel.Content">
+			<Translation Language="en-GB"><![CDATA[Content]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Indhold]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Содержимое]]></Translation>
+    </Text>
+		<Text Key="PostReportViewModel.ChangeReason">
+			<Translation Language="en-GB"><![CDATA[Reason]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Begrundelse]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Причина]]></Translation>
+    </Text>
+		<Text Key="PostReportViewModel.Resolved">
+			<Translation Language="en-GB"><![CDATA[Resolved]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Løst]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Решено]]></Translation>
+    </Text>
+
+		<Text Key="FollowForum.EmailSubject">
+			<Translation Language="en-GB"><![CDATA[The new topic '{Topic.Title}' has been posted in the forum: '{Forum.Name}'.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Det nye emne "{Topic.Title}", er blevet oprettet i forummet "{Forum.Name}".]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новая тема '{Topic.Title}' была размещена на форуме: '{Forum.Name}'.]]></Translation>
+    </Text>
+		<Text Key="FollowForum.EmailBody">
+			<Translation Language="en-GB">
+				<![CDATA[To read the new topic '{Topic.Title}' in the forum '{Forum.Name}', please click this link or copy/paste the address into the address field in your browser:
+
+{Link}
+
+If you no longer want to follow this forum, please click the 'unfollow' link on the forum page.
+]]>
+			</Translation>
+			<Translation Language="da-DK">
+				<![CDATA[For at læse det nye emne "{Topic.Title}" i forummet "{Forum.Name}", klik det følgende link eller kopiér adressen ind i adresse feltet i din browser:
+
+{Link}
+
+Hvis du ikke længere ønsker at følge dette forum, klik venligst på 'unfollow' linket på forum siden.
+]]>
+			</Translation>
+
+      <Translation Language="ru-RU">
+        <![CDATA[Чтобы прочитать новую тему '{Topic.Title}' в форуме '{Forum.Name}', нажмите на эту ссылку или копировать / вставить адрес в поле адреса в адресной строке браузера:
+
+{Link}
+
+Если вы больше не хотите следовать темой, пожалуйста, нажмите на ссылку "Отписаться" на странице темы.
+]]>
+      </Translation>
+
+    </Text>
+		<Text Key="FollowTopic.EmailSubject">
+			<Translation Language="en-GB"><![CDATA[A new post '{Post.Subject}' has been posted in a topic you follow.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[Et nye indlæg "{Post.Subject}", er blevet oprettet i et emne du følger.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Новое сообщение '{Post.Subject}' была размещено по теме, за которой вы следуете.]]></Translation>
+    </Text>
+		<Text Key="FollowTopic.EmailBody">
+			<Translation Language="en-GB">
+				<![CDATA[To read the new post '{Post.Subject}' in the topic '{Topic.Title}', please click this link or copy/paste the address into the address field in your browser:
+
+{Link}
+
+If you no longer want to follow this topic, please click the 'unfollow' link on the topic page.
+]]>
+			</Translation>
+			<Translation Language="da-DK">
+				<![CDATA[For at læse det nye indlæg "{Post.Subject}" i emnet "{Topic.Title}", klik det følgende link eller kopiér adressen ind i adresse feltet i din browser:
+
+{Link}
+
+Hvis du ikke længere ønsker at følge dette emne, klik venligst på 'unfollow' linket på emne siden.
+]]>
+			</Translation>
+      
+      <Translation Language="ru-RU">
+          <![CDATA[Чтобы прочитать новое сообщение '{Post.Subject}' по теме '{Topic.Title}', нажмите на эту ссылку или копировать/вставить адрес в поле адреса в адресной строке браузера: 
+                  
+{Link}
+
+Если вы больше не хотите следовать темой, пожалуйста, нажмите на ссылку "Отписаться" на странице темы.
+]]>
+        </Translation>
+     </Text>
+
+		<Text Key="PostReportResolvedSubject">
+			<Translation Language="en-GB"><![CDATA[A post report by you have been resolved.]]></Translation>
+			<Translation Language="da-DK"><![CDATA[En indlægsrapport fra dig er blevet løst.]]></Translation>
+      <Translation Language="ru-RU"><![CDATA[Ваше сообщение уже разрешено.]]></Translation>
+    </Text>
+		<Text Key="PostReportResolvedBody">
+			<Translation Language="en-GB">
+				<![CDATA[The post '{Post.Subject}' you reported with the reason: '{Report.Reason}' has been resolved.]]>
+			</Translation>
+			<Translation Language="da-DK">
+				<![CDATA[Indlægget "{Post.Subject}" du rapporterede med begrundelse: "{Report.Reason}" er blevet løst.]]>
+			</Translation>
+      <Translation Language="ru-RU">
+        <![CDATA[Ваше сообщение '{Post.Subject}' с причиной: '{Report.Reason}' была решена.]]>
+      </Translation>
+    </Text>
+
+	</Namespace>
+
+</Localizations>

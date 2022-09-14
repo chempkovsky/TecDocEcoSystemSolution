@@ -1,0 +1,126 @@
+﻿@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.EcoSystemAdminName;
+}
+
+<h2>@Resources.IndexByRoles</h2>
+<h3>@Resources.SolutionRoles</h3>
+
+
+
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Подразделение", "IndexByRoles", "Home")</li>
+    <li class="active"><a href="#">Предприятие</a></li>
+</ul>
+
+
+<ul class="nav nav-tabs">
+    <li>@Html.ActionLink(Resources.EnterpriseAdminName, "IndexByEnterpriseAdmin", "Home")</li>
+    <li>@Html.ActionLink(Resources.EnterpriseAuditName, "IndexByEnterpriseAudit", "Home")</li>
+    <li class="active"><a href="#">@Resources.EcoSystemAdminName</a></li>
+</ul>
+
+<p />
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="btn-group-vertical">
+            @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+            @Html.ActionLink(Resources.AddressType_INDEX, "Index", "AddressType", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.SettlementType_INDEX, "Index", "SettlementType", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.Soato_INDEX, "Index", "Soato", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.StreetType_INDEX, "Index", "StreetType", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.ContactType_INDEX, "Index", "ContactTypes", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.EnterpriseTecDocSrcTypeTDES_TITLE, "Index", "EnterpriseTecDocSrcType", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.BranchType_INDEX, "Index", "BranchTypes", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.Currency_INDEX, "Index", "Currency", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.Country_INDEX, "Index", "Country", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink(Resources.GuestBranchTDES_INDEX, "Index", "GuestBranch", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+        </div>
+
+
+    </div>
+    <div class="col-md-5">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">В обязанности роли "@Resources.EcoSystemAdminName" входит</div>
+            <div class="panel-body">
+                Роль "Администратор экосистемы" дает возможность зарегистрировать в данной информационной системе одно или несколько предприятий и привязать к каждому из предприятий штат администраторов и аудиторов.
+                После создания Администратор экосистемы передает логин и пароль администраторам предприятий. За каждым предприятием закрепляется флаг активности. Флаг в выключенном состоянии останавливает отклик
+                экосистемы на запросы и изменение данных по этому предприятию. Тем не менее право влючить флаг активности оставляется за администраторами предприятия. Чтобы запретить администраторам предприятий
+                повторное влючение информационных ресурсов предприятия в работу, администратор экосистемы обязан выключить аналогичный флаг на учетных записях администраторов предприятий.
+                И наоборот, при включении ресурсов предприятия в работу. Администратор экосистемы обязан включить флаг активности хотябы у одного администратора предприятия. При отключении (или включении) флага
+                активности для учетной записи администратора предприятия не происходит изменение ни пароля, ни учетных данных. Выполняется простая блокировка (разблокировка). Стрктура данных организована в виде дерева
+                с вершиной в узле предприятия. Поэтому первый шаг -- это переход к списку предприятий. На появившееся странице будут даны рекомендации по работе с остальными узлами дерева.
+                <p>
+                    @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                </p>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Ведение типизаторов</div>
+            <div class="panel-body">
+
+
+                @Html.ActionLink(Resources.AddressType_INDEX, "Index", "AddressType", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                @Html.ActionLink(Resources.SettlementType_INDEX, "Index", "SettlementType", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                @Html.ActionLink(Resources.Soato_INDEX, "Index", "Soato", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                @Html.ActionLink(Resources.StreetType_INDEX, "Index", "StreetType", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                <hr />
+                @Html.ActionLink(Resources.ContactType_INDEX, "Index", "ContactTypes", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                <hr />
+                @Html.ActionLink(Resources.EnterpriseTecDocSrcTypeTDES_TITLE, "Index", "EnterpriseTecDocSrcType", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                <hr />
+                @Html.ActionLink(Resources.BranchType_INDEX, "Index", "BranchTypes", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                <hr />
+                @Html.ActionLink(Resources.Currency_INDEX, "Index", "Currency", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                @Html.ActionLink(Resources.Country_INDEX, "Index", "Country", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Стол заказов</div>
+            <div class="panel-body">
+                Для запуска функционала стола заказов администратор экосистемы обязан развернуть
+                <b>предприятие</b> с <b>GUID=00000000-0000-0000-1111-111111111111</b> и <b>для этого предприятия развернуть подразделение</b>
+                с таким же <b>GUID=00000000-0000-0000-1111-111111111111</b>
+                вы обязана предоставить логин и пароль администраторам подразделений для выполнения регистрации профилей магазинов на сервере в интернет<p>
+                    @Html.ActionLink(Resources.GuestBranchTDES_INDEX, "Index", "GuestBranch", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                <p />
+                Данный ресурс является инструментом настройки удаленного интернет сервера в части обработки запросов
+                покупателей на <b>ПОИСК</b> товаров для автомобиля с просмотром остатков и цен в разрезе по магазинам,
+                зарегистрированным в системе.
+                Эта информация используется и при обработке запросов покупателей на формирование <b>ЗАКАЗОВ</b> на магазин.
+                <p />
+                Напомним, условия, когда это требуется. Пусть вы в своей локальной сети (или на одном компьютере) на площадке
+                вашего магазина развернули решение и проводите продажи. Такой узел мы назовем <b>локальным узлом</b>.
+                Теперь вы захотели опубликовать информацию о наличии товара и ценах в интернет. Сервер в интернет мы назовем
+                <b>удаленным узлом</b>. <br />
+                Системный  администратор удаленного узла регистрирует ваше подразделение и высылает вам логин и пароль,
+                а так же URL адреса сервисов для репликации остатков и цен с вашего <b>локального</b> узла на <b>удаленный</b>.
+                Кроме этого сервисы используются и для получения информации об оформленных в интернет заказах на ваш магазин с <b>удаленного</b> узла на ваш <b>локальный узел</b>.
+                <br />
+                Помимо остатков на даленном сервере должна быть информация о местонахождении вашего магазина, рабочих днях и т.д.
+                Внесение таких данных является разовым действием и выполняется с использованием этой страницы и кнопок <b>Создать (редактировать).</b>
+                <p />
+                Еще раз, информация о подразделении, отображаемая на этой странице размещается ТОЛЬКО на удаленном сервере в интернет
+                или на том сервере,  который обслуживает запросы покупателей на наличие товара, опубликованного вашим подразделением (магазином).
+                Эту информацию покупатель будет видеть просматривая остатки и цены по выбраным автозапчастям.
+                <br />
+                Для внесения (изменения) информации о своем подразделении вы должны от администратора удаленного интернет сервера
+                получить логин и пароль. Вносимая информация размещается в модуле работы с остатками (<b>CarShopRest</b>).<br />
+                Если вы не внесли информацию о подразделении в данный ресурс, удаленный покупатель
+                не сможет увидеть ни ваше подразделение, ни остатки, ни цены по вашему магазину.
+            </div>
+        </div>
+    </div>
+</div>
+
+

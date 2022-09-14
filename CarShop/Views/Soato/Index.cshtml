@@ -1,0 +1,101 @@
+﻿@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.Soato>
+@using PagedList.Mvc;
+@using CarShop.Properties;
+
+
+@{
+    ViewBag.Title = Resources.Soato_INDEX;
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy as SelectList;
+}
+
+<h2>@Resources.Soato_INDEX</h2>
+
+@if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+{
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+    </p>
+}
+
+@{var dummy = Model.FirstOrDefault(); }
+
+
+@using (Html.BeginForm("Index", "Soato", FormMethod.Post, new { @class = "form-inline", role = "form" }))
+{
+    <h3>@Resources.FILTER_TITLE</h3>
+    <div class="form-group">
+        @Html.DropDownList("searchStringBy", sliSearchStringBy, new { @class = "form-control", data_autocomplete_selector = "data-autocomplete-url", sel1 = Url.Action("Autocomplete", new { currentFilterBy = "1" }), sel2 = Url.Action("Autocomplete", new { currentFilterBy = "2" }) })
+    </div>
+    <div class="form-group">
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control", data_autocomplete_url = Url.Action("Autocomplete", new { currentFilterBy = ViewBag.currentFilterBy }) })
+    </div>
+    <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-primary" />
+}
+
+
+<table class="table table-condensed">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => dummy.SoatoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => dummy.SoatoSettlementName)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => dummy.SettlementType.SettlementTypeDescription)
+        </th>
+        <th class="hidden-xs"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoatoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoatoSettlementName)
+            </td>
+            <td class="hidden-xs">
+                @Html.DisplayFor(modelItem => item.SettlementType.SettlementTypeDescription)
+            </td>
+            <td class="hidden-xs btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.SoatoId }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.SoatoId }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.SoatoId }, new { @class = "btn btn-danger" })
+                }
+            </td>
+        </tr>
+        <tr class="visible-xs active">
+            <td colspan="2" class="btn-group btn-group-xs">
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.SoatoId }, new { @class = "btn btn-primary" })
+                }
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.SoatoId }, new { @class = "btn btn-info" })
+                @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+                {
+                    @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.SoatoId }, new { @class = "btn btn-danger" })
+                }
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { currentFilter = ViewBag.CurrentFilter, currentFilterBy = ViewBag.currentFilterBy, page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/autocomplete")
+}

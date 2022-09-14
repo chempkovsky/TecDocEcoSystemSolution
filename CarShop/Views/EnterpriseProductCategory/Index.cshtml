@@ -1,0 +1,73 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.EnterpriseProductCategoryTDES>
+
+@{
+    ViewBag.Title = Resources.ProductCategory_INDEX;
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription as String;
+    Guid? SearchEntBranchGuid = ViewBag.SearchEntBranchGuid;
+    String EntBranchDescription = ViewBag.EntBranchDescription as String;
+}
+
+<h2>@Resources.ProductCategory_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+        <li>@Html.ActionLink(Resources.Branch_INDEX, "Index", "EnterpriseBranches", new { searchEntGuid = SearchEntGuid }, new { }) </li>
+
+        if (SearchEntBranchGuid.HasValue)
+        {
+            <li>@Html.ActionLink(EntBranchDescription, "Details", "EnterpriseBranches", new { id = SearchEntBranchGuid }, new { })</li>
+        }
+    }
+</ol>
+
+
+@Html.ValidationSummary(true)
+
+@if (SearchEntBranchGuid.HasValue)
+{
+
+<p>
+    @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", new {searchEntGuid = SearchEntGuid,  searchEntBranchGuid = SearchEntBranchGuid}, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PCId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCDescription)
+        </th>
+        <th class="hidden-xs hidden-sm"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PCId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PCDescription)
+        </td>
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.PCId, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-primary" })
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.PCId, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.PCId, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+        <tr class="visible-xs visible-sm active">
+            <td colspan="2" class="btn-group btn-group-xs">
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.PCId, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.PCId, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.PCId, searchEntBranchGuid = item.EntBranchGuid }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    
+}
+
+</table>
+}

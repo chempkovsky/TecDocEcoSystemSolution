@@ -1,0 +1,147 @@
+﻿@using CarShop.Properties;
+@model IEnumerable<TecDocEcoSystemDbClassLibrary.GuestOrderTDES>
+
+@{
+    ViewBag.Title = Resources.GuestOrderTDES_INDEX;
+    string msg = ViewBag.Msg as string;
+}
+
+<div class="panel panel-info" hidden>
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        Существенной информацией на данной странице является <b>Магазин</b>, на который вы оформили заказ, и два флага:<p />
+
+        <b>@Html.DisplayNameFor(model => model.IsReplicated)</b> -- указывает на то, просмотрел ли магазин информацию о вашем заказе. 
+        Если исполнитель на площадке мегазина выполнил просмотр вновь оформленных заказов (другими словами реплицировал новые заказы), то вы узнаете об этом по включенному флагу.<p />
+        
+        @*<b>@Html.DisplayNameFor(model => model.IsDone)</b> -- указывает на то, что магазин исполнил ваш заказ. <p />*@
+
+        Перейдите по ссылке <b>@Resources.GuestOrderArticleTDES_INDEX</b>, чтобы просмотреть перечень товаров в рамках заказа.<p />
+
+        Перейдите по ссылке <b>@Resources.DETAILS_ACTION</b>, чтобы просмотреть более детальную информацию о заказе: если заказ уже реплицирован на магазин, 
+        то вы увидите дату и время выполнеия репликации<p />
+
+        Выбор товара по ссылке @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" }) позволит вам
+        провести поиск, если вам известен или Штрих-код или Артикул производителя или Конструкционный номер или номер TecDoc.<p />
+
+        Выбор товара по ссылке @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" }) -- это
+        последовательность Web-страниц позволяющая выбрать Брэнд, Модель, Тип модели (по году выпуска, топливу, двигателю ).
+        Далее идет страница с деревом категорий деталей и по узлу в дереве вы переходите к перечню деталей с остатками и ценами.<p />
+
+        <b>Правила формирования заказов следующие:</b><br />
+        Товар может предлагаться несколькими магазинами. Выбирая товар вы вибираете и магазин. <br/>
+        Если заказ на выбранный магазин отсутствует в перечне ваших заказов, то будет оформлен новый заказ с указанием магазина и товар будет помещен в этот заказ.<br />
+        Если уже существует заказ на выбранный магазин, то товар будет помещен в этот заказ.<br />
+        Если при выборе товара, у ранее созданного заказа выставлен статус <b>Уже в обработке </b>, то будет оформлен новый заказ.
+    
+        <hr />
+
+        Важным ограничением является, то что количество наименований товаров в рамках одного заказа не может превышать 20.<p />
+        Вторым важным ограничением является, то что вы не можете создать более 20 заказов.
+        Если вы достигли предела, то удалите ранее сформированные заказы. Можно без страха удалять заказы со статусом <b>Уже в обработке </b>.
+        Копия такого заказа уже сформирована на стороне магазина и операция удаления на вашей стороне не повлияет на информацию на стороне магазина.
+        <hr />
+
+
+        <button type="button" class="btn btn-info" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+            <span class="glyphicon glyphicon-remove-sign"></span> @Resources.HideHelp
+        </button>
+
+</div>
+</div>
+
+
+
+<h2>@Resources.GuestOrderTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.GuestProfileTDES_INDEX, "Index", "GuestProfile")</li>
+</ol>
+
+
+
+<p>
+    @Html.ActionLink(Resources.SearchTecDocByArticle, "Index", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+    @Html.ActionLink(Resources.SearchTecDocByTree, "Manufact", "TecDocGuest", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+    <button type="button" class="btn btn-warning" onclick="$('.panel-info').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })">
+        <span class="glyphicon glyphicon-question-sign"></span>
+    </button>
+
+</p>
+
+
+@if(Model == null) {
+    @Html.ValidationSummary(true)
+} else {
+
+    @*<input type="button" class="btn btn-info" onclick="$('tr.warning').each(function () { if ($(this).is(':hidden')) $(this).show(); else $(this).hide(); })" value="@Resources.ShowHideBtn" />*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsDone)
+        </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.IsReplicated)*@
+            @Resources.AlreadyReplicated
+        </th>
+        <th class="hidden-xs"></th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsDone)
+        </td>*@
+        <td>
+            @if (item.IsReplicated > 0)
+            {
+                @Resources.Boolean_NO
+            }
+            else
+            {
+                @Resources.Boolean_YES
+            }
+        </td>
+        <td class="hidden-xs btn-group btn-group-xs">
+            @if ((!item.IsDone) && (item.IsReplicated > 0))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-danger" })
+            @Html.ActionLink(Resources.GuestOrderArticleTDES_INDEX, "Index", "GuestOrderArticle", new { searchGuestOrderGuid = item.GuestOrderGuid }, new { @class = "btn btn-warning" })
+        </td>
+    </tr>
+    <tr class="warning">
+        <td colspan="3">
+            @Html.DisplayNameFor(model => model.EntBranchDescription) : @Html.DisplayFor(modelItem => item.EntBranchDescription)
+        </td>
+    </tr>
+    <tr class="visible-xs active">
+        <td colspan="3" class="btn-group btn-group-xs">
+            @if ((!item.IsDone) && (item.IsReplicated > 0))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { id = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { id = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-info" })
+            @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { id = item.GuestOrderGuid }, htmlAttributes: new { @class = "btn btn-danger" })
+            @Html.ActionLink(Resources.GuestOrderArticleTDES_INDEX, "Index", "GuestOrderArticle", new { searchGuestOrderGuid = item.GuestOrderGuid }, new { @class = "btn btn-warning" })
+        </td>
+    </tr>
+}
+
+</table>
+    
+}

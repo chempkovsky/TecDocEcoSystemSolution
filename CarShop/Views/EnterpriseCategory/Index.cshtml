@@ -1,0 +1,113 @@
+﻿@using CarShop.Properties;
+@using PagedList.Mvc;
+
+@model PagedList.IPagedList<TecDocEcoSystemDbClassLibrary.EnterpriseCategoryTDES>
+
+@{
+    ViewBag.Title = Resources.EnterpriseCategoryTDES_INDEX;
+
+    Guid? SearchEntGuid = ViewBag.SearchEntGuid;
+    String EntDescription = ViewBag.EntDescription;
+
+    SelectList sliSearchStringBy = ViewBag.sliSearchStringBy;
+}
+
+
+<h2>@Resources.EnterpriseCategoryTDES_INDEX</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises")</li>
+    @if (SearchEntGuid.HasValue)
+    {
+        <li>@Html.ActionLink(EntDescription, "Details", "Enterprises", new { id = SearchEntGuid }, new { })</li>
+    }
+</ol>
+
+
+
+@if (SearchEntGuid.HasValue)
+{
+
+if ( (ViewBag.IsEcoSystemAdmin)  || (ViewBag.IsEnterpriseAdmin)) {
+    <p>
+        @Html.ActionLink(Resources.CREATENEW_ACTION, "Create", "EnterpriseCategory", new { searchEntGuid = SearchEntGuid }, new { @class = "btn btn-primary" })
+    </p>
+}
+
+    using (Html.BeginForm("Index", "EnterpriseCategory", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+    {
+        <h3>@Resources.FILTER_TITLE</h3>
+        @Html.Hidden("searchEntGuid", SearchEntGuid)
+        <div class="form-group">
+        @Html.DropDownList("searchStringBy", sliSearchStringBy, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+        </div>
+        <input type="submit" value="@Resources.SEARCH_ACTION" class="btn btn-info" />
+    }
+
+    var dummy = Model.FirstOrDefault();
+
+    <table class="table table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => dummy.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.CategoryDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => dummy.CategoryParent)
+            </th>
+            <th class="hidden-xs hidden-sm"></th>
+        </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryParent)
+        </td>
+        <td class="hidden-xs hidden-sm btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, сategoryId = item.CategoryId }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, сategoryId = item.CategoryId }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, сategoryId = item.CategoryId }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+
+    <tr class="visible-xs visible-sm active">
+        <td colspan="2" class="btn-group btn-group-xs">
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.EDIT_ACTION, "Edit", new { searchEntGuid = SearchEntGuid, сategoryId = item.CategoryId }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink(Resources.DETAILS_ACTION, "Details", new { searchEntGuid = SearchEntGuid, сategoryId = item.CategoryId }, new { @class = "btn btn-info" })
+            @if ((ViewBag.IsEcoSystemAdmin) || (ViewBag.IsEnterpriseAdmin))
+            {
+                @Html.ActionLink(Resources.DELETE_ACTION, "Delete", new { searchEntGuid = SearchEntGuid, сategoryId = item.CategoryId }, new { @class = "btn btn-danger" })
+            }
+        </td>
+    </tr>
+            
+}
+
+</table>
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { searchEntGuid=SearchEntGuid, currentFilter=ViewBag.CurrentFilter, currentFilterBy=ViewBag.currentFilterBy, page=page  }), PagedListRenderOptions.OnlyShowFivePagesAtATime  )
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.PAGE_OF  @Model.PageCount
+    
+    
+}        

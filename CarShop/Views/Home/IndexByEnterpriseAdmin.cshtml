@@ -1,0 +1,82 @@
+﻿@using CarShop.Properties;
+
+@{
+    ViewBag.Title = Resources.EnterpriseAdminName;
+}
+
+<h2>@Resources.IndexByRoles</h2>
+<h3>@Resources.SolutionRoles</h3>
+
+
+
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Подразделение", "IndexByRoles", "Home")</li>
+    <li class="active"><a href="#">Предприятие</a></li>
+</ul>
+
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">@Resources.EnterpriseAdminName</a></li>
+    <li>@Html.ActionLink(Resources.EnterpriseAuditName, "IndexByEnterpriseAudit", "Home")</li>
+    <li>@Html.ActionLink(Resources.EcoSystemAdminName, "IndexByEcoSystemAdmin", "Home")</li>
+</ul>
+
+<p />
+
+<div class="panel panel-default">
+    <div class="panel-heading">В обязанности роли "@Resources.EnterpriseAdminName" входит</div>
+    <div class="panel-body">
+        Первое, что должен делать Администратор предприятия после получения логина и пароля -- это войти в систему и изменить свой пароль входа.
+        При необходимости администратор предприятия может изменить наименование предприятия.
+        Следующей шаг -- это создание записей для одного или нескольких подразделений предприятия. Одно подразделение необходимо создать в любом случае.
+        Роль администратора предприятия позволяет изменять штат своего предприятия: "администраторы предприятия" и "аудиторы предприятия".
+        Нельзя блокировать свой профиль, иначе вы не сожете войти в систему.
+        <ul>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseTDES_INDEX, "Index", "Enterprises", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Профиль предприятия к которому вы прикреплены<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.Address_INDEX, "Index", "EnterpriseAddress", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Адреса предприятия к которому вы прикреплены<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseUserTDES_INDEX, "Index", "EnterpriseUsers", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Исполнители уровня предприятия (админы и аудиторы)<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseSupplier_INDEX, "Index", "EnterpriseSupplier", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Ваши бизнес-партнеры или оптовые поставщики товара. Право вносить (изменять, удалять) записи по бизнес партнерам предоставлено только администратору предприятия
+                Записи по бизнес партнерам используется при создании заголовков приходных ведомостей<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseBrand_INDEX, "Index", "EnterpriseBrand", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Мировые брэнды товаров, которыми торгует ваше предприятие. Право вносить (изменять, удалять) записи по брэндам товаров предоставлено только администратору предприятия.
+                При отсутствии брэндов нельзя создать артикул предприятия<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseCategoryTDES_INDEX, "Index", "EnterpriseCategory", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Категории товаров предприятия<p />
+            </li>
+            <li>
+                @Html.ActionLink(Resources.EnterpriseArticle_INDEX, "Index", "EnterpriseArticle2", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Артикулы товаров, которыми торгует ваше предприятиею. Право вносить (изменять, удалять) записи по артикулам предприятия предоставлено только администратору предприятия.
+                Описание каждого артикула состоит из двух пар. Первая пара (Id, Брэнд)- это нумерация,
+                которую закрепило ваше предприятие за наименованием товара. Вторая пара (Id, Брэнд) - это нумерация, которая ведется в TecDoc (т.е. то, что написано на упаковке).
+                Как правило, эти пары (ваш нумератор и нумератор TecDoc) должны совпадать. Но если предприятие работает давно и так сложилось, что была заведена своя собственная нумерация.
+                При отсутствии такого ресурса в учетной системе, предприятия со своей собственной нумерацией товаров не смогут воспользоваться данным решением.
+                Другими словами, наличие данного ресурса позволяет предприятию вести свою собственную нумерацию, но при обслуживании клиентов использовать нумерацию TecDoc.
+                Покупателю понятны слова (B31991-00, GLASER), т.к. это он найдет на упаковке товара "Комплекта прокладок, блок-картер двигателя". На этой же упаковке он найдет европейский штрих-код=8429020262113.
+                Все это отнисится к нумерации TecDoc. Внутренняя нумерация вашего предприятия наверное интересует только вашего бухгалтера и только до тех пор пока тот находится на работе.
+                <span style="font-weight:bold">Этот ресурс учетной системы один из важнейших.</span> И причины следующие: это и определение аналогов, это и определение соответсвия европейских штрих-кодов вашей собственной нумерации и
+                это определение соответсвия конструкционных номеров деталей и вашей собственной нумерации
+            </li>
+            <li>
+                @Html.ActionLink(Resources.OriginalCatalog, "Index", "OriginalCatalog", routeValues: null, htmlAttributes: new { @class = "btn btn-xs btn-primary" })
+                Позволяет настроить поиск по оригинальным каталогам в столе заказов<p />
+            </li>
+
+        </ul>
+    </div>
+</div>
+

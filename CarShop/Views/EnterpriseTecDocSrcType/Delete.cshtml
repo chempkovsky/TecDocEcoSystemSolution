@@ -1,0 +1,45 @@
+﻿@model TecDocEcoSystemDbClassLibrary.EnterpriseTecDocSrcTypeTDES
+@using CarShop.Properties;
+@{
+    ViewBag.Title = Resources.DELETE_ACTION;
+}
+
+<h2>@Resources.DELETE_ACTION</h2>
+
+<h3>@Resources.SURE_TO_DELETE</h3>
+
+
+<div>
+    @*<h4>EnterpriseTecDocSrcTypeTDES</h4>*@
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink(Resources.EnterpriseTecDocSrcTypeTDES_TITLE, "Index")</li>
+    </ol>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TecDocSrcTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TecDocSrcTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TecDocSrcTypeDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TecDocSrcTypeDescr)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.DELETE_ACTION" class="btn btn-danger" /> 
+            @Html.ActionLink(Resources.BACKTOLIST_ACTION, "Index")
+        </div>
+    }
+</div>

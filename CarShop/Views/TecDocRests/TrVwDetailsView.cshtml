@@ -1,0 +1,76 @@
+﻿@model TecDocEcoSystemDbClassLibrary.MODELTYPESTREE_TD
+
+@{
+    Guid? searchEntGuid = ViewBag.searchEntGuid;
+    Guid? searchEntBranchGuid = ViewBag.searchEntBranchGuid;
+    string redirecData = ViewBag.redirecData;
+    string redirectContriller = ViewBag.redirectContriller;
+    string redirectAction = ViewBag.redirectAction;
+
+}
+
+
+@if (Model.Subitems == null)
+{
+    <li>
+        @Html.ActionLink(@Html.DisplayFor(modelItem => Model.TEX_TEXT).ToString(), "ModelDetaisItems",
+             new
+             {
+                 redirecData = redirecData,
+                 redirectContriller = redirectContriller,
+                 redirectAction = redirectAction,
+                 searchEntGuid = searchEntGuid,
+                 searchEntBranchGuid = searchEntBranchGuid,
+                 topicId = Model.STR_ID,
+                 TYP_ID = ViewBag.TYP_ID,
+                 MOD_ID = ViewBag.MOD_ID,
+                 MFA_ID = ViewBag.MFA_ID,
+                 fluelId = ViewBag.FluelId,
+                 treeKindId = ViewBag.treeKindId
+             },
+             new { })
+    </li>
+
+
+}
+else
+{
+    <li>
+
+        @if (Model.isOpen)
+        {
+            <input type="checkbox" id="item-@Model.STR_ID.ToString()" checked="checked" />
+        }
+        else
+        {
+            <input type="checkbox" id="item-@Model.STR_ID.ToString()" />
+        }
+        <label for="item-@Model.STR_ID.ToString()">@Html.DisplayFor(modelItem => Model.TEX_TEXT)</label>
+        <ul>
+            @*<li>
+                @Html.ActionLink(@Html.DisplayFor(modelItem => Model.TEX_TEXT).ToString(), "ModelDetaisItems",
+                 new
+                 {
+                     redirecData = redirecData,
+                     redirectContriller = redirectContriller,
+                     redirectAction = redirectAction,
+                     searchEntGuid = searchEntGuid,
+                     searchEntBranchGuid = searchEntBranchGuid,
+                     topicId = Model.STR_ID,
+                     TYP_ID = ViewBag.TYP_ID,
+                     MOD_ID = ViewBag.MOD_ID,
+                     MFA_ID = ViewBag.MFA_ID,
+                     fluelId = ViewBag.FluelId,
+                     treeKindId = ViewBag.treeKindId
+                 },
+                 new { })
+            </li>*@
+            @foreach (var subItm in Model.Subitems)
+            {
+                @Html.Partial("TrVwDetailsView", subItm)
+            }
+        </ul>
+    </li>
+}
+
+
